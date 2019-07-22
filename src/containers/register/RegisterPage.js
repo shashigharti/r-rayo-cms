@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import M from 'materialize-css';
 
-import { userActions } from './../../actions';
+import { userActions } from '../../actions';
 
 class RegisterPage extends React.Component {
     constructor(props) {

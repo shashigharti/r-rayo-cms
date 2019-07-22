@@ -1,6 +1,8 @@
 var path = require('path');
+var HtmlWebPackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry: "./app/App.js",
+    entry: "./src/App.js",
     mode: 'development',
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -35,6 +37,12 @@ module.exports = {
         }
       ]
     },
+    plugins: [
+      new HtmlWebPackPlugin({
+        template: "./src/index.html",
+        filename: "./index.html"
+      })
+    ],
     devtool: "cheap-module-eval-source-map",
     externals: {
       // global app config object

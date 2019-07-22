@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form } from './../../components';
-import { userActions } from './../../actions';
+import { Form } from '../../components';
+import { userActions } from '../../actions';
 // import materialize
 import M from "materialize-css";
 

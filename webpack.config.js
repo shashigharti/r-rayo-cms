@@ -1,10 +1,10 @@
 var path = require('path');
 module.exports = {
-    entry: './resources/js/index.js',
+    entry: "./app/App.js",
     mode: 'development',
     output: {
-        path: path.resolve(__dirname, './public'),
-        filename: 'app/App.js'
+        path: path.resolve(__dirname, './dist'),
+        filename: './app.js'
     },
     module: {
       rules: [

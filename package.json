@@ -4,7 +4,8 @@
     "scripts": {
         "build": "webpack --mode development",
         "prod": "webpack --mode production",
-        "watch": "webpack --watch"
+        "watch": "webpack --watch",
+        "start": "cross-env NODE_ENV=development node server"
     },
     "devDependencies": {
         "@babel/core": "^7.4.4",

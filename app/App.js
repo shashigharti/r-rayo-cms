@@ -34,9 +34,7 @@ class App extends React.Component {
                 <Router>
                     <PrivateRoute exact path="/" component={HomePage}/>
                     <Route path="/login" component={LoginPage}/>
-                    <Route path="/map" component={Map}/>
                     <Route path="/register" component={RegisterPage}/>
-                    <Route exact path="/profile-reports" component={ProfileReport}/>
                 </Router>
             </div>
         );

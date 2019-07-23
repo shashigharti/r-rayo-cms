@@ -1,15 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {userActions} from '../../actions';
+import {userActions} from './../../actions';
 import Header from '../generic/Header';
 import Footer from '../generic/Footer';
+import {Main} from "../../components/Styled";
 
 
 class Dashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {            
-            }
     }
 
     componentDidMount() {
@@ -22,13 +21,18 @@ class Dashboard extends React.Component {
 
     render() {
         const {user, users} = this.props;
-        
         return (
             <div>
                 <Header/>
-                <div id="main">
-                    
-                </div>
+                <Main>
+                    <div className="row">
+                        <div className="col s12">
+                            <div className="container">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa dolores eos, est in itaque laborum nostrum odit omnis, provident quam quibusdam, quis reprehenderit veniam voluptate. Adipisci est quasi sed.
+                            </div>
+                        </div>
+                    </div>
+                </Main>
                 <Footer/>
             </div>
         )

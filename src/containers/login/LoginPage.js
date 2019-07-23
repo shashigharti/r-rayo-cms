@@ -36,7 +36,7 @@ class LoginPage extends React.Component {
         if (email && password) {
             dispatch(userActions.login(email, password));
         } else {
-            alert("Please enter valid email / password");
+            M.toast({html: "Please enter valid email / password"});
         }
     }
 

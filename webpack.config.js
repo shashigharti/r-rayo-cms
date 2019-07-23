@@ -1,8 +1,9 @@
 var path = require('path');
 var HtmlWebPackPlugin = require('html-webpack-plugin');
+require('http-proxy-middleware');
 
 module.exports = {
-    entry: "./src/App.js",
+    entry: "./src/index.js",
     mode: 'development',
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -36,6 +37,12 @@ module.exports = {
           loader: "file-loader?name=/images/[name].[ext]"
         }
       ]
+    },
+    devServer: {
+       historyApiFallback: true,
+        proxy: {
+           '/api': 'http://127.0.0.1:8000'
+        }
     },
     plugins: [
       new HtmlWebPackPlugin({

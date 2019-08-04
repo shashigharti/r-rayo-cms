@@ -32,7 +32,7 @@ module.exports = {
             ]
         },
         {
-          test: /\.(jpe?g|png|gif|svg)$/i, 
+          test: /\.(jpe?g|png|gif|svg|ttf|eot|woff|woff2)$/i, 
           loader: "file-loader?name=/images/[name].[ext]"
         }
       ]
@@ -44,6 +44,9 @@ module.exports = {
       })
     ],
     devtool: "cheap-module-eval-source-map",
+    devServer: {
+      historyApiFallback: true,
+    },
     externals: {
       // global app config object
       config: JSON.stringify({

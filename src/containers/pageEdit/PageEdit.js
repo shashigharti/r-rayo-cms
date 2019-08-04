@@ -5,7 +5,7 @@ import SideMenu from '../../components/SideMenu';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Button } from '../../components/Button';
 
-import camerasImage from '../../../assets/images/cards/cameras.png';
+const camerasImage = '../../../assets/images/cards/cameras.png';
 
 const crumbs = [
   {

@@ -8,9 +8,13 @@ import M from 'materialize-css';
 // import global css which can be overriden
 // TODO: Check if following to css for materialize are redundant
 import 'materialize-css/dist/css/materialize.min.css';
+import '../assets/fonts/fontawesome/css/font-awesome.css';
 import '../assets/css/themes/cms/materialize.css';
 import '../assets/css/themes/cms/style.css';
 import '../assets/css/components/color.css';
+import '../assets/vendors/dropify/css/dropify.min.css';
+
+import './app.css';
 
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';
@@ -20,6 +24,7 @@ import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordP
 
 import { PrivateRoute } from './components';
 import * as serviceWorker from './serviceWorker';
+import { PageEdit } from './containers/pageEdit';
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,6 +41,7 @@ class App extends React.Component {
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/page-list" component={PageList} />
+        <Route path="/page-edit" component={PageEdit} />
         <Route path="/forgot-password" component={ForgotPasswordPage} />
       </Router>
     );

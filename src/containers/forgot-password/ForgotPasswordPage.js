@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Form } from '../../components/Form';
+import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 
 class ForgotPasswordPage extends React.Component {
@@ -39,12 +41,9 @@ class ForgotPasswordPage extends React.Component {
                     </div>
                     <div className="row">
                       <InputField customClasses="col s12">
-                        <a
-                          href="index.html"
-                          className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12 mb-1"
-                        >
+                        <Button type="submit" customClasses="col s12 mb-1">
                           Reset Password
-                        </a>
+                        </Button>
                       </InputField>
                     </div>
                     <div className="row">

@@ -8,7 +8,7 @@ export const Button = (props = {}) => {
 
   return (
     <button
-      className={`btn waves-effect waves-light border-round ${customClasses}`}
+      className={`btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange ${customClasses}`}
       type={type || 'button'}
       onClick={onClick}
       {...otherProps}
@@ -22,4 +22,5 @@ Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
   customClasses: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };

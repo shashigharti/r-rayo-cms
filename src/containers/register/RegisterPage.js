@@ -7,6 +7,7 @@ import './register.css';
 
 // import { userActions } from '../../actions';
 import { Form } from '../../components/Form';
+import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 
 class RegisterPage extends React.Component {
@@ -113,12 +114,9 @@ class RegisterPage extends React.Component {
                     </div>
                     <div className="row">
                       <InputField customClasses="col s12">
-                        <a
-                          href="index.html"
-                          className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
-                        >
+                        <Button type="submit" customClasses="col s12">
                           Register
-                        </a>
+                        </Button>
                       </InputField>
                     </div>
                     <div className="row">

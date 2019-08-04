@@ -8,8 +8,8 @@ import { connect } from 'react-redux';
 import './login.css';
 
 // import { userActions } from '../../actions';
-import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
+import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 
 class LoginPage extends React.Component {
@@ -102,10 +102,7 @@ class LoginPage extends React.Component {
                     </div>
                     <div className="row">
                       <InputField customClasses="col s12">
-                        <Button
-                          type="submit"
-                          customClasses="gradient-45deg-purple-deep-orange col s12"
-                        >
+                        <Button type="submit" customClasses="col s12">
                           Login
                         </Button>
                       </InputField>

@@ -13,6 +13,7 @@ import '../assets/css/themes/cms/materialize.css';
 import '../assets/css/themes/cms/style.css';
 import '../assets/css/components/color.css';
 import '../assets/vendors/dropify/css/dropify.min.css';
+import '../assets/css/components/table.css';
 
 import './app.css';
 

@@ -4,12 +4,17 @@ import {connect} from 'react-redux';
 import {HomePage} from './containers/home/Dashboard';
 import {LoginPage} from './containers/login/LoginPage';
 import {RegisterPage} from './containers/register/RegisterPage';
+import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordPage';
 // import materialize
 import M from "materialize-css";
 import 'materialize-css/dist/css/materialize.min.css'
+
+import '../assets/css/themes/cms/materialize.css';
+import '../assets/css/themes/cms/style.css';
+import '../assets/css/components/color.css';
+
 import {PrivateRoute} from "./components";
 import * as serviceWorker from './serviceWorker';
-
 
 class App extends React.Component {
     constructor(props) {
@@ -32,6 +37,7 @@ class App extends React.Component {
                     <PrivateRoute exact path="/" component={HomePage}/>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/register" component={RegisterPage}/>
+                    <Route path="/forgot-password" component={ForgotPasswordPage}/>
                 </Router>
             </div>
         );

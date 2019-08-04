@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { Form } from '../../components';
 import { userActions } from '../../actions';
 // import materialize
-import M from "materialize-css";
+import M from 'materialize-css';
+
+import './login.css';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -36,18 +38,17 @@ class LoginPage extends React.Component {
         if (email && password) {
             dispatch(userActions.login(email, password));
         } else {
-            alert("Please enter valid email / password");
+            alert('Please enter valid email / password');
         }
     }
 
-
     componentDidUpdate(prevProps, prevState, snapshot) {
         // If Logged in redirect to dashboard.
-        const {authentication, alert, history} = this.props;
+        const { authentication, alert, history } = this.props;
         authentication.loggedIn && history.push('/');
 
-        if(alert.type !== prevProps.alert.type) {
-            M.toast({html: alert.message});
+        if (alert.type !== prevProps.alert.type) {
+            M.toast({ html: alert.message });
             alert.type = ''; // Reset alert after user alerted
         }
     }
@@ -56,40 +57,95 @@ class LoginPage extends React.Component {
         const { loggingIn } = this.props;
         const { username, password, submitted } = this.state;
         return (
-
-            <div className="container">
+            <div
+                className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column login-bg  blank-page blank-page"
+                data-open="click"
+                data-menu="vertical-menu-nav-dark"
+                data-col="1-column"
+            >
                 <div className="row">
-                    <div className="col s12 m5 z-depth-4 card-panel border-radius-6 bg-opacity-8 offset-m3">
-                        <h2 className="center-align">Login</h2>
-                        <Form className="login-form" onSubmit={this.handleSubmit}>
-                            <div className="row">
-                                <div className="col s12 center-align">
-                                    {/* <img src={logo} alt="Logo" className="responsive-img"/> */}
-                                    <small>LG Profile MIS</small>
+                    <div className="col s12">
+                        <div className="container">
+                            <div id="login-page" className="row">
+                                <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+                                    <form className="login-form">
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <h5 className="ml-4">
+                                                    Sign in
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div className="row margin">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix pt-2">
+                                                    person_outline
+                                                </i>
+                                                <input
+                                                    id="username"
+                                                    type="text"
+                                                />
+                                                <label
+                                                    htmlFor="username"
+                                                    className="center-align"
+                                                >
+                                                    Username
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div className="row margin">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix pt-2">
+                                                    lock_outline
+                                                </i>
+                                                <input
+                                                    id="password"
+                                                    type="password"
+                                                />
+                                                <label htmlFor="password">
+                                                    Password
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col s12 m12 l12 ml-2 mt-1">
+                                                <p>
+                                                    <label>
+                                                        <input type="checkbox" />
+                                                        <span>Remember Me</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <a
+                                                    href="index.html"
+                                                    className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
+                                                >
+                                                    Login
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="input-field col s6 m6 l6">
+                                                <p className="margin medium-small">
+                                                    <Link to="/register">
+                                                        Register Now!
+                                                    </Link>
+                                                </p>
+                                            </div>
+                                            <div className="input-field col s6 m6 l6">
+                                                <p className="margin right-align medium-small">
+                                                    <Link to="/forgot-password">
+                                                        Forgot password ?
+                                                    </Link>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                            <div className="row margin">
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix pt-2">person_outline</i>
-                                    <input id="email" name="email" type="text" className="validate" />
-                                    <label htmlFor="email" className="center-align">Email</label>
-                                </div>
-                            </div>
-                            <div className="row margin">
-                                <div className="input-field col s12">
-                                    <i className="material-icons prefix pt-2">lock_outline</i>
-                                    <input id="current-password" name="password" type="password" className="validate" />
-                                    <label htmlFor="current-password">Password</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <button className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange  light-blue darken-3 col s12">Login </button>
-                                </div>
-                            </div>
-                        </Form>
-                        <div>
-                            <p>Not Registered Yet? <Link to="/register">Register</Link></p>
                         </div>
                     </div>
                 </div>
@@ -99,11 +155,12 @@ class LoginPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {authentication, alert} = state;
+    const { authentication, alert } = state;
     return {
-        authentication, alert
+        authentication,
+        alert
     };
 }
 
 const connectedLoginPage = connect(mapStateToProps)(LoginPage);
-export { connectedLoginPage as LoginPage }; 
+export { connectedLoginPage as LoginPage };

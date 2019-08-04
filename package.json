@@ -55,6 +55,7 @@
     "dependencies": {
         "dexie": "^2.0.4",
         "extract-text-webpack-plugin": "^3.0.2",
+        "prop-types": "^15.7.2",
         "randomcolor": "^0.5.4"
     }
 }

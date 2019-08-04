@@ -34,14 +34,22 @@ module.exports = {
     'import/prefer-default-export': 0,
     indent: [
       2,
-      4,
+      2,
       {
         SwitchCase: 1,
       },
     ],
     'jsx-a11y/aria-props': 2,
     'jsx-a11y/heading-has-content': 0,
-    'jsx-a11y/label-has-for': 2,
+    'jsx-a11y/label-has-for': 0,
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
     'jsx-a11y/mouse-events-have-key-events': 2,
     'jsx-a11y/role-has-required-aria-props': 2,
     'jsx-a11y/role-supports-aria-props': 2,
@@ -60,5 +68,7 @@ module.exports = {
     'react/require-extension': 0,
     'react/self-closing-comp': 0,
     'react/sort-comp': 0,
+    'react/prop-types': 0, // TODO: Confirm that prop types validation will not be used or remote this
+    'react/button-has-type': 0,
   },
 };

@@ -19,30 +19,30 @@ import { PrivateRoute } from './components';
 import * as serviceWorker from './serviceWorker';
 
 class App extends React.Component {
-    componentDidMount() {
-        M.AutoInit();
+  componentDidMount() {
+    M.AutoInit();
 
-        // Register service worker
-        serviceWorker.register();
-    }
+    // Register service worker
+    serviceWorker.register();
+  }
 
-    render() {
-        return (
-            <Router>
-                <PrivateRoute exact path="/" component={HomePage} />
-                <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterPage} />
-                <Route path="/forgot-password" component={ForgotPasswordPage} />
-            </Router>
-        );
-    }
+  render() {
+    return (
+      <Router>
+        <PrivateRoute exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/forgot-password" component={ForgotPasswordPage} />
+      </Router>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    const { alert } = state;
-    return {
-        alert,
-    };
+  const { alert } = state;
+  return {
+    alert,
+  };
 }
 
 const connectedApp = connect(mapStateToProps)(App);

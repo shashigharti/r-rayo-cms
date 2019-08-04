@@ -1,54 +1,52 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { PageList } from './containers/pageList';
-import { HomePage } from './containers/home/Dashboard';
-import { LoginPage } from './containers/login/LoginPage';
-import { RegisterPage } from './containers/register/RegisterPage';
-import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordPage';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 // import materialize
 import M from 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 
+// import global css which can be overriden
+// TODO: Check if following to css for materialize are redundant
+import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/themes/cms/materialize.css';
 import '../assets/css/themes/cms/style.css';
 import '../assets/css/components/color.css';
+
+import { HomePage } from './containers/home/Dashboard';
+import { LoginPage } from './containers/login/LoginPage';
+import { PageList } from './containers/pageList/PageList';
+import { RegisterPage } from './containers/register/RegisterPage';
+import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordPage';
 
 import { PrivateRoute } from './components';
 import * as serviceWorker from './serviceWorker';
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        const { dispatch } = this.props;
-    }
+  componentDidMount() {
+    M.AutoInit();
 
-    componentDidMount() {
-        M.AutoInit();
+    // Register service worker
+    serviceWorker.register();
+  }
 
-        // Register service worker
-        serviceWorker.register();
-    }
-
-    render() {
-        const { alert } = this.props;
-        return (
-            <Router>
-                <PrivateRoute exact path="/" component={HomePage} />
-                <Route path="/login" component={LoginPage} />
-                <Route path="/register" component={RegisterPage} />
-                <Route path="/forgot-password" component={ForgotPasswordPage} />
-                <Route path="/page-list" component={PageList} />
-            </Router>
-        );
-    }
+  render() {
+    return (
+      <Router>
+        <PrivateRoute exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/page-list" component={PageList} />
+        <Route path="/forgot-password" component={ForgotPasswordPage} />
+      </Router>
+    );
+  }
 }
 
 function mapStateToProps(state) {
-    const { alert } = state;
-    return {
-        alert
-    };
+  const { alert } = state;
+  return {
+    alert,
+  };
 }
 
 const connectedApp = connect(mapStateToProps)(App);

@@ -10,6 +10,7 @@ import './login.css';
 // import { userActions } from '../../actions';
 import { Button } from '../../components/Button';
 import { Form } from '../../components/Form';
+import { InputField } from '../../components/InputField';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -69,25 +70,25 @@ class LoginPage extends React.Component {
                 <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
                   <Form customClasses="login-form">
                     <div className="row">
-                      <div className="input-field col s12">
+                      <InputField customClasses="col s12">
                         <h5 className="ml-4">Sign in</h5>
-                      </div>
+                      </InputField>
                     </div>
                     <div className="row margin">
-                      <div className="input-field col s12">
+                      <InputField customClasses="col s12">
                         <i className="material-icons prefix pt-2">person_outline</i>
                         <input id="username" type="text" />
                         <label htmlFor="username" className="center-align">
                           Username
                         </label>
-                      </div>
+                      </InputField>
                     </div>
                     <div className="row margin">
-                      <div className="input-field col s12">
+                      <InputField customClasses="col s12">
                         <i className="material-icons prefix pt-2">lock_outline</i>
                         <input id="password" type="password" />
                         <label htmlFor="password">Password</label>
-                      </div>
+                      </InputField>
                     </div>
                     <div className="row">
                       <div className="col s12 m12 l12 ml-2 mt-1">
@@ -100,26 +101,26 @@ class LoginPage extends React.Component {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="input-field col s12">
+                      <InputField customClasses="col s12">
                         <Button
                           type="submit"
                           customClasses="gradient-45deg-purple-deep-orange col s12"
                         >
                           Login
                         </Button>
-                      </div>
+                      </InputField>
                     </div>
                     <div className="row">
-                      <div className="input-field col s6 m6 l6">
+                      <InputField customClasses="col s6 m6 l6">
                         <p className="margin medium-small">
                           <Link to="/register">Register Now!</Link>
                         </p>
-                      </div>
-                      <div className="input-field col s6 m6 l6">
+                      </InputField>
+                      <InputField customClasses="col s6 m6 l6">
                         <p className="margin right-align medium-small">
                           <Link to="/forgot-password">Forgot password ?</Link>
                         </p>
-                      </div>
+                      </InputField>
                     </div>
                   </Form>
                 </div>

@@ -11,6 +11,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/css/themes/cms/materialize.css';
 import '../assets/css/themes/cms/style.css';
 import '../assets/css/components/color.css';
+import '../assets/css/components/table.css';
 
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';

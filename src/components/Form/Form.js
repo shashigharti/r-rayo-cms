@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import './form.css';
 
 export const Form = (props = {}) => {
-  const { children, onSubmit, classOverrides, ...otherProps } = props;
+  const { children, onSubmit, customClasses, ...otherProps } = props;
 
   return (
-    <form className={`form ${classOverrides}`} onSubmit={onSubmit} {...otherProps}>
+    <form className={`form ${customClasses}`} onSubmit={onSubmit} {...otherProps}>
       {children}
     </form>
   );
@@ -16,5 +16,5 @@ export const Form = (props = {}) => {
 Form.propTypes = {
   onSubmit: PropTypes.func,
   children: PropTypes.node.isRequired,
-  classOverrides: PropTypes.string,
+  customClasses: PropTypes.string,
 };

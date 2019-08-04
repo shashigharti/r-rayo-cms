@@ -20,7 +20,7 @@ class ForgotPasswordPage extends React.Component {
             <div className="container">
               <div id="forgot-password" className="row">
                 <div className="col s12 m6 l4 z-depth-4 offset-m4 card-panel border-radius-6 forgot-card bg-opacity-8">
-                  <Form classOverrides="login-form">
+                  <Form customClasses="login-form">
                     <div className="row">
                       <div className="input-field col s12">
                         <h5 className="ml-4">Forgot Password</h5>

@@ -67,7 +67,7 @@ class LoginPage extends React.Component {
             <div className="container">
               <div id="login-page" className="row">
                 <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
-                  <Form classOverrides="login-form">
+                  <Form customClasses="login-form">
                     <div className="row">
                       <div className="input-field col s12">
                         <h5 className="ml-4">Sign in</h5>
@@ -103,7 +103,7 @@ class LoginPage extends React.Component {
                       <div className="input-field col s12">
                         <Button
                           type="submit"
-                          classOverrides="gradient-45deg-purple-deep-orange col s12"
+                          customClasses="gradient-45deg-purple-deep-orange col s12"
                         >
                           Login
                         </Button>

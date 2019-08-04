@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import './button.css';
 
 export const Button = (props = {}) => {
-  const { children, type, onClick, classOverrides, ...otherProps } = props;
+  const { children, type, onClick, customClasses, ...otherProps } = props;
 
   return (
     <button
-      className={`btn waves-effect waves-light border-round ${classOverrides}`}
+      className={`btn waves-effect waves-light border-round ${customClasses}`}
       type={type || 'button'}
       onClick={onClick}
       {...otherProps}
@@ -21,5 +21,5 @@ export const Button = (props = {}) => {
 Button.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,
-  classOverrides: PropTypes.string,
+  customClasses: PropTypes.string,
 };

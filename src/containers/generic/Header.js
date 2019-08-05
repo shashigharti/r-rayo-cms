@@ -105,10 +105,10 @@ class Header extends Component {
                   <a className="grey-text text-darken-2" href="#!">
                     <span className="material-icons icon-bg-circle purple small">
                       add_shopping_cart
-                    </span>{' '}
+                    </span>
                     A new order has been placed!
                   </a>
-                  <time className="media-meta" datetime="2015-06-12T20:50:48+08:00">
+                  <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                     2 hours ago
                   </time>
                 </li>
@@ -117,7 +117,7 @@ class Header extends Component {
                     <span className="material-icons icon-bg-circle purple small">stars</span>{' '}
                     Completed the task
                   </a>
-                  <time className="media-meta" datetime="2015-06-12T20:50:48+08:00">
+                  <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                     3 days ago
                   </time>
                 </li>
@@ -126,7 +126,7 @@ class Header extends Component {
                     <span className="material-icons icon-bg-circle purple small">settings</span>{' '}
                     Settings updated
                   </a>
-                  <time className="media-meta" datetime="2015-06-12T20:50:48+08:00">
+                  <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                     4 days ago
                   </time>
                 </li>
@@ -154,7 +154,7 @@ class Header extends Component {
                 <form>
                   <div className="input-field">
                     <input className="search-box-sm" type="search" required="" />
-                    <label className="label-icon" for="search">
+                    <label className="label-icon" htmlFor="search">
                       <i className="material-icons search-sm-icon">search</i>
                     </label>
                     <i className="material-icons search-sm-close">close</i>

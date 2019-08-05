@@ -6,7 +6,7 @@ const Row = props => (
     <td>{props.name}</td>
     <td>{props.excerpt}</td>
     <td className="text right-align">
-      <a className="waves-effect waves-light btn-small cyan">
+      <a className="waves-effect waves-light btn-small cyan" onClick={() => console.log('wowowo')}>
         <i aria-hidden="true" className="fa fa-pencil"></i>
         Edit
       </a>

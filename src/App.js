@@ -7,7 +7,7 @@ import M from 'materialize-css';
 
 // import global css which can be overriden
 // TODO: Check if following to css for materialize are redundant
-import 'materialize-css/dist/css/materialize.min.css';
+// import 'materialize-css/dist/css/materialize.min.css';
 import '../assets/fonts/fontawesome/css/font-awesome.css';
 import '../assets/css/themes/cms/materialize.css';
 import '../assets/css/themes/cms/style.css';

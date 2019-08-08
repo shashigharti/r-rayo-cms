@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 // import materialize
-// import M from 'materialize-css';
+import M from 'materialize-css';
 
 import './login.css';
 
-// import { userActions } from '../../actions';
+import { userActions } from '../../actions';
 import { Form } from '../../components/Form';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
@@ -17,45 +17,44 @@ class LoginPage extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
+      email: '',
       password: '',
       submitted: false,
     };
   }
 
-  // handleChange = e => {
-  //   const { name, value } = e.target;
-  //   this.setState({ [name]: value });
-  // };
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
 
-  //   this.setState({ submitted: true });
-  //   // const { username, password } = this.state;
-  //   const email = e.target.elements.email.value;
-  //   const password = e.target.elements.password.value;
-  //   const { dispatch } = this.props;
+    this.setState({ submitted: true });
+    const { email, password } = this.state;
+    const { dispatch } = this.props;
 
-  //   if (email && password) {
-  //     dispatch(userActions.login(email, password));
-  //   } else {
-  //     alert('Please enter valid email / password');
-  //   }
-  // };
+    if (email && password) {
+      dispatch(userActions.login(email, password));
+    } else {
+      alert('Please enter valid email / password');
+    }
+  };
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   // If Logged in redirect to dashboard.
-  //   const { authentication, alert, history } = this.props;
-  //   authentication.loggedIn && history.push('/');
+  componentDidUpdate(prevProps) {
+    // If Logged in redirect to dashboard.
+    const { authentication, alert, history } = this.props;
+    authentication.loggedIn && history.push('/');
 
-  //   if (alert.type !== prevProps.alert.type) {
-  //     M.toast({ html: alert.message });
-  //     alert.type = ''; // Reset alert after user alerted
-  //   }
-  // }
+    if (alert.type !== prevProps.alert.type) {
+      M.toast({ html: alert.message });
+      alert.type = ''; // Reset alert after user alerted
+    }
+  }
 
   render() {
+    const { email, password, submitted } = this.state;
     return (
       <div
         className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column login-bg  blank-page blank-page"
@@ -77,17 +76,37 @@ class LoginPage extends React.Component {
                     <div className="row margin">
                       <InputField customClasses="col s12">
                         <i className="material-icons prefix pt-2">person_outline</i>
-                        <input id="username" type="text" />
-                        <label htmlFor="username" className="center-align">
-                          Username
+                        <input
+                          id="email"
+                          name="email"
+                          value={email}
+                          onChange={this.handleChange}
+                          type="text"
+                        />
+                        <label htmlFor="email" className="center-align">
+                          Email
                         </label>
+                        {submitted && !email && (
+                          <div className="help-block red-text darken-3">Email cannot be empty</div>
+                        )}
                       </InputField>
                     </div>
                     <div className="row margin">
                       <InputField customClasses="col s12">
                         <i className="material-icons prefix pt-2">lock_outline</i>
-                        <input id="password" type="password" />
+                        <input
+                          id="password"
+                          name="password"
+                          value={password}
+                          onChange={this.handleChange}
+                          type="password"
+                        />
                         <label htmlFor="password">Password</label>
+                        {submitted && !password && (
+                          <div className="help-block red-text darken-3">
+                            Password cannot be empty
+                          </div>
+                        )}
                       </InputField>
                     </div>
                     <div className="row">
@@ -102,7 +121,7 @@ class LoginPage extends React.Component {
                     </div>
                     <div className="row">
                       <InputField customClasses="col s12">
-                        <Button type="submit" customClasses="col s12">
+                        <Button type="submit" onClick={this.handleSubmit} customClasses="col s12">
                           Login
                         </Button>
                       </InputField>

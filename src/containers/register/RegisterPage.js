@@ -17,11 +17,11 @@ class RegisterPage extends React.Component {
 
     this.state = {
       user: {
-        first_name: 'Kundan',
-        last_name: 'Karna',
-        email: 'test@kundan.com',
-        password: '123456',
-        c_password: '123456',
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        c_password: '',
       },
       submitted: false,
     };

@@ -110,14 +110,14 @@ class Header extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <nav class="display-none search-sm">
-                                <div class="nav-wrapper">
+                            <nav className="display-none search-sm">
+                                <div className="nav-wrapper">
                                     <form>
-                                        <div class="input-field">
-                                            <input class="search-box-sm" type="search" required=""/>
-                                            <label class="label-icon" for="search"><i
-                                                class="material-icons search-sm-icon">search</i></label><i
-                                            class="material-icons search-sm-close">close</i>
+                                        <div className="input-field">
+                                            <input className="search-box-sm" type="search" required=""/>
+                                            <label className="label-icon" for="search"><i
+                                                className="material-icons search-sm-icon">search</i></label><i
+                                            className="material-icons search-sm-close">close</i>
                                         </div>
                                     </form>
                                 </div>

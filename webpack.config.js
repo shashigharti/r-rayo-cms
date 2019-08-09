@@ -10,51 +10,63 @@ module.exports = {
         filename: './app.js'
     },
     module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
-        },
-        {
-            test: /\.(s*)css$/,
-            use: [
-              {
-                loader: "style-loader" // creates style nodes from JS strings
-              },
-              {
-                loader: "css-loader" // translates CSS into CommonJS
-              },
-              {
-                loader: "sass-loader" // compiles Sass to CSS
-              }
-            ]
-        },
-        {
-          test: /\.(jpe?g|png|gif|svg)$/i, 
-          loader: "file-loader?name=/images/[name].[ext]"
-        }
-      ]
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.(s*)css$/,
+                use: [
+                    {
+                        loader: "style-loader" // creates style nodes from JS strings
+                    },
+                    {
+                        loader: "css-loader" // translates CSS into CommonJS
+                    },
+                    {
+                        loader: "sass-loader" // compiles Sass to CSS
+                    }
+                ]
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: "file-loader?name=/images/[name].[ext]"
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ]
+            }
+        ]
     },
     devServer: {
-       historyApiFallback: true,
+        historyApiFallback: true,
         proxy: {
-           '/api': 'http://127.0.0.1:8000'
+            '/api': 'http://127.0.0.1:8000'
         }
     },
     plugins: [
-      new HtmlWebPackPlugin({
-        template: "./src/index.html",
-        filename: "./index.html"
-      })
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+            filename: "./index.html"
+        })
     ],
     devtool: "cheap-module-eval-source-map",
     externals: {
-      // global app config object
-      config: JSON.stringify({
-          apiUrl: 'http://www.lgprofile.local/'
-      })
+        // global app config object
+        config: JSON.stringify({
+            apiUrl: 'http://www.lgprofile.local/'
+        })
     }
-  };
+};

@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import {HomePage} from './containers/home/Dashboard';
 import {LoginPage} from './containers/login/LoginPage';
 import {RegisterPage} from './containers/register/RegisterPage';
-// import materialize
 import M from "materialize-css";
-import 'materialize-css/dist/css/materialize.min.css'
+// Import materialize & static css
+import 'materialize-css/dist/css/materialize.min.css';
+
 import {PrivateRoute} from "./components";
-import * as serviceWorker from './serviceWorker';
 
 
 class App extends React.Component {
@@ -19,21 +19,16 @@ class App extends React.Component {
 
     componentDidMount() {
         M.AutoInit();
-
-        // Register service worker
-        serviceWorker.register();
     }
 
     render() {
         const {alert} = this.props;
         return (
-            <div>
-                <Router>
-                    <PrivateRoute exact path="/" component={HomePage}/>
-                    <Route path="/login" component={LoginPage}/>
-                    <Route path="/register" component={RegisterPage}/>
-                </Router>
-            </div>
+            <Router>
+                <PrivateRoute exact path="/" component={HomePage}/>
+                <Route path="/login" component={LoginPage}/>
+                <Route path="/register" component={RegisterPage}/>
+            </Router>
         );
     }
 }

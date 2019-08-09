@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     {
         background-color: ${props => props.theme.bodyBgColor};
     }
-    
+          
     
     select
     {
@@ -936,7 +936,8 @@ export const GlobalStyle = createGlobalStyle`
     
     html
     {
-        font-family: ${props => props.theme.font}, ${props => props.theme.fontFallback} !important;
+        font-family: ${props => props.theme.font}, ${props =>
+  props.theme.fontFallback} !important;
         font-weight: normal;
         line-height: 1.5;
     
@@ -971,7 +972,8 @@ export const GlobalStyle = createGlobalStyle`
     h5,
     h6
     {
-        font-family: ${props => props.theme.font}, ${props => props.theme.fontFallback};
+        font-family: ${props => props.theme.font}, ${props =>
+  props.theme.fontFallback};
         font-weight: 400;
         line-height: 1.1;
     
@@ -980,7 +982,8 @@ export const GlobalStyle = createGlobalStyle`
     
     p
     {
-        font-family: ${props => props.theme.font}, ${props => props.theme.fontFallback};
+        font-family: ${props => props.theme.font}, ${props =>
+  props.theme.fontFallback};
     }
     
     h1 a,

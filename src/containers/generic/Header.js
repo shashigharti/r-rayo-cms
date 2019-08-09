@@ -143,7 +143,7 @@ class Header extends Component {
                   </a>
                 </li>
                 <li>
-                  <a className="grey-text text-darken-1" href="user-login.html">
+                  <a className="grey-text text-darken-1" onClick={this.handleLogout}>
                     <i className="material-icons">keyboard_tab</i> Logout
                   </a>
                 </li>

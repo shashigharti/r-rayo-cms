@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Row = props => (
+const Row = ({ id, sn, name, excerpt, onEdit }) => (
   <tr>
-    <td>{props.sn}</td>
-    <td>{props.name}</td>
-    <td>{props.excerpt}</td>
+    <td>{sn}</td>
+    <td>{name}</td>
+    <td>{excerpt}</td>
     <td className="text right-align">
-      <a className="waves-effect waves-light btn-small cyan" onClick={() => console.log('wowowo')}>
+      <button className="waves-effect waves-light btn-small cyan" value={id} onClick={onEdit}>
         <i aria-hidden="true" className="fa fa-pencil"></i>
         Edit
-      </a>
+      </button>
       <a className="waves-effect waves-light btn-small amber">
         <i aria-hidden="true" className="fa fa-trash"></i>
         Delete

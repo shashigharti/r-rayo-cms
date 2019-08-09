@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
+import Axios from 'axios';
+import M from 'materialize-css';
 import Header from '../generic/Header';
 import SideMenu from '../../components/SideMenu';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { Button } from '../../components/Button';
-
-const camerasImage = '../../../assets/images/cards/cameras.png';
+import Form from './form';
 
 const crumbs = [
   {
@@ -25,9 +25,53 @@ const crumbs = [
   },
 ];
 
-// eslint-disable-next-line react/prefer-stateless-function
 class PageEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  getPage(id) {
+    Axios.get(`/api/page/edit/${id}`).then(({ data }) => {
+      const page = data.data;
+      const EditForm = <Form {...page} onSubmit={this.onSubmit} onChange={this.onChange} />;
+      this.setState({ EditForm, page });
+    });
+  }
+
+  onChange = event => {
+    const { name, value } = event.target;
+    const { page } = this.state;
+    this.setState({
+      page: {
+        ...page,
+        [name]: value,
+      },
+    });
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+    const { page } = this.state;
+    Axios.put(`/api/page/update/${page.id}`, { ...page })
+      .then(res => {
+        const { message } = res.data;
+        M.toast({ html: message });
+      })
+      .catch(err => {
+        M.toast({ html: err });
+      });
+  };
+
+  componentDidMount() {
+    const { location } = this.props;
+    const { state } = location;
+    const { id } = state;
+    this.getPage(id);
+  }
+
   render() {
+    const { EditForm } = this.state;
     return (
       <>
         <Header />
@@ -42,8 +86,17 @@ class PageEdit extends Component {
                     <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
                       Menus
                     </h5>
-
                     <BreadCrumbs rootPath="" crumbs={crumbs} />
+                  </div>
+                  <div className="col s12">
+                    <div className="panel card tab--content">
+                      <div id="pages" className="col s12">
+                        {EditForm}
+                      </div>
+                      <div id="downloads" className="col s12">
+                        Test 2
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,131 +117,6 @@ class PageEdit extends Component {
                         <a href="#downloads">Downloads</a>
                       </li>
                     </ul>
-                  </div>
-                  <div className="col s12">
-                    <div className="panel card tab--content">
-                      <div id="pages" className="col s12">
-                        <form>
-                          <div className="row">
-                            <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Page Name</label>
-                            </div>
-                            <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Slug</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="input-field col s6">
-                              <select defaultValue="">
-                                <option value="" disabled>
-                                  Choose your option
-                                </option>
-                                <option value="1">News And Events</option>
-                                <option value="2">Publications</option>
-                                <option value="3">About Us</option>
-                              </select>
-                              <label>Category</label>
-                            </div>
-                            <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Slug</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col s12">
-                              <label>Thumbnail</label>
-                              <a
-                                className="waves-effect gradient-45deg-purple-deep-orange waves-light btn modal-trigger"
-                                href="#modal1"
-                              >
-                                Add Image
-                              </a>
-                              <div id="modal1" className="modal modal-fixed-footer">
-                                <div className="modal-content">
-                                  <h5>Media Manager</h5>
-                                  <div className="col s12">
-                                    <ul className="tabs">
-                                      <li className="tab">
-                                        <a className="active" href="#upload">
-                                          Pages
-                                        </a>
-                                      </li>
-                                      <li className="tab">
-                                        <a href="#images">Downloads</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div id="upload" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <input
-                                        type="file"
-                                        id="input-file-now"
-                                        className="dropify"
-                                        data-default-file=""
-                                      />
-                                    </div>
-                                  </div>
-                                  <div id="images" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-red btn-flat "
-                                  >
-                                    Cancel
-                                  </a>
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-green btn-flat "
-                                  >
-                                    Apply
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="input-field col s12">
-                              <input type="text" />
-                              <label>Meta Title</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Meta Descriptions</label>
-                            </div>
-                            <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Meta Keywords</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col s12">
-                              <Button>Save</Button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <div id="downloads" className="col s12">
-                        Test 2
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>

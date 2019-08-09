@@ -1,11 +1,48 @@
 import React, { Component } from 'react';
 
+import Axios from 'axios';
 import Row from './Row';
 import Header from '../generic/Header';
 import SideMenu from '../../components/SideMenu';
 
 class PageList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    this.getAllPages();
+  }
+
+  getAllPages() {
+    Axios.get('/api/page/all')
+      .then(res => {
+        const pages = res.data.data;
+        const rows = pages.map(page => (
+          <Row
+            id={page.id}
+            sn={page.id}
+            name={page.name}
+            excerpt={page.excerpt}
+            key={page.id}
+            onEdit={this.editPage}
+          />
+        ));
+        this.setState({ rows });
+      })
+      .catch({});
+  }
+
+  editPage = event => {
+    event.preventDefault();
+    const id = event.target.value;
+    const { history } = this.props;
+    history.push({ pathname: '/page-edit', search: `query=${id}`, state: { id } });
+  };
+
   render() {
+    const { rows } = this.state;
     return (
       <>
         <Header />
@@ -66,13 +103,7 @@ class PageList extends Component {
                         <th className="text-nowrap center-align">Action</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                      <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                      <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                      <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                      <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                    </tbody>
+                    <tbody>{rows}</tbody>
                   </table>
                 </div>
               </div>

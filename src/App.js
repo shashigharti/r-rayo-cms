@@ -1,49 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { HomePage } from "./containers/home/Dashboard";
+import { LoginPage } from "./containers/login/LoginPage";
+import { RegisterPage } from "./containers/register/RegisterPage";
+import M from "materialize-css";
+// Import materialize & static css
+import "materialize-css/dist/css/materialize.min.css";
 
-// import materialize
-import M from 'materialize-css';
-
-// import global css which can be overriden
-// TODO: Check if following to css for materialize are redundant
-// import 'materialize-css/dist/css/materialize.min.css';
-import '../assets/fonts/fontawesome/css/font-awesome.css';
-import '../assets/css/themes/cms/materialize.css';
-import '../assets/css/themes/cms/style.css';
-import '../assets/css/components/color.css';
-import '../assets/vendors/dropify/css/dropify.min.css';
-import '../assets/css/components/table.css';
-
-import './app.css';
-
-import { HomePage } from './containers/home/Dashboard';
-import { LoginPage } from './containers/login/LoginPage';
-import { PageList } from './containers/pageList/PageList';
-import { RegisterPage } from './containers/register/RegisterPage';
-import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordPage';
-
-import { PrivateRoute } from './components';
-import * as serviceWorker from './serviceWorker';
-import { PageEdit } from './containers/pageEdit';
+import { PrivateRoute } from "./components";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    const { dispatch } = this.props;
+  }
+
   componentDidMount() {
     M.AutoInit();
-
-    // Register service worker
-    serviceWorker.register();
   }
 
   render() {
+    const { alert } = this.props;
     return (
       <Router>
         <PrivateRoute exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/page-list" component={PageList} />
-        <Route path="/page-edit" component={PageEdit} />
-        <Route path="/forgot-password" component={ForgotPasswordPage} />
       </Router>
     );
   }
@@ -52,7 +35,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
   const { alert } = state;
   return {
-    alert,
+    alert
   };
 }
 

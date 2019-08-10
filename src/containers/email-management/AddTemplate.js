@@ -31,7 +31,7 @@ class AddTemplate extends Component {
 
     axios.post('/api/email-template/store', values).then(data => {
       if (data.status === 200) {
-        M.toast({html: 'Successfully added.'});
+        M.toast({ html: 'Successfully added.' });
       }
     });
   }
@@ -57,7 +57,7 @@ class AddTemplate extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input id="title" name="title" type="text" required/>
+                  <input id="title" name="title" type="text" required />
                   <label htmlFor="title" className="center-align">
                     Title
                   </label>
@@ -65,7 +65,7 @@ class AddTemplate extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input id="subject" name="subject" type="text" required/>
+                  <input id="subject" name="subject" type="text" required />
                   <label htmlFor="subject" className="center-align">
                     Subject
                   </label>
@@ -98,14 +98,20 @@ class AddTemplate extends Component {
 
               <div className="row">
                 <div className="input-field col s6">
-                  <input type="text" name="startDate" id="startDate" className="datepicker" required/>
+                  <input
+                    type="text"
+                    name="startDate"
+                    id="startDate"
+                    className="datepicker"
+                    required
+                  />
                   <label htmlFor="startDate" className="center-align">
                     Start Date
                   </label>
                 </div>
 
                 <div className="input-field col s6">
-                  <input type="text" id="endDate" name="endDate" className="datepicker" required/>
+                  <input type="text" id="endDate" name="endDate" className="datepicker" required />
                   <label htmlFor="endDate" className="center-align">
                     End Date
                   </label>
@@ -114,10 +120,16 @@ class AddTemplate extends Component {
 
               <div className="row">
                 <div className="input-field col s12">
+                  <select name="frequency" id="frequency" required>
+                    <option>Select Frequency</option>
+                    <option value="1">Daily</option>
+                    <option value="2">Weekly</option>
+                    <option value="3">Bi Weekly</option>
+                    <option value="4">Monthly</option>
+                  </select>
                   <label htmlFor="frequency" className="center-align">
                     Frequency
                   </label>
-                  <input type="number" name="frequency" id="frequency" required/>
                 </div>
               </div>
               <div className="row">

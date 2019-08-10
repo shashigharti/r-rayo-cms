@@ -1,49 +1,35 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-// import materialize
-import M from 'materialize-css';
-
-// import global css which can be overriden
-// TODO: Check if following to css for materialize are redundant
-// import 'materialize-css/dist/css/materialize.min.css';
-import '../assets/fonts/fontawesome/css/font-awesome.css';
-import '../assets/css/themes/cms/materialize.css';
-import '../assets/css/themes/cms/style.css';
-import '../assets/css/components/color.css';
-import '../assets/vendors/dropify/css/dropify.min.css';
-import '../assets/css/components/table.css';
-
-import './app.css';
-
+import { connect } from 'react-redux';
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';
-import { PageList } from './containers/pageList/PageList';
 import { RegisterPage } from './containers/register/RegisterPage';
-import { ForgotPasswordPage } from './containers/forgot-password/ForgotPasswordPage';
+import AddTemplate from './containers/email-management/AddTemplate';
+
+import M from 'materialize-css';
+// Import materialize & static css
+import 'materialize-css/dist/css/materialize.min.css';
 
 import { PrivateRoute } from './components';
-import * as serviceWorker from './serviceWorker';
-import { PageEdit } from './containers/pageEdit';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    const { dispatch } = this.props;
+  }
+
   componentDidMount() {
     M.AutoInit();
-
-    // Register service worker
-    serviceWorker.register();
   }
 
   render() {
+    const { alert } = this.props;
     return (
       <Router>
         <PrivateRoute exact path="/" component={HomePage} />
+        <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
-        <Route path="/page-list" component={PageList} />
-        <Route path="/page-edit" component={PageEdit} />
-        <Route path="/forgot-password" component={ForgotPasswordPage} />
       </Router>
     );
   }

@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userActions } from '../../actions';
+import { userActions } from './../../actions';
 import Header from '../generic/Header';
-import Footer from '../generic/Footer';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   componentDidMount() {
@@ -20,13 +18,11 @@ class Dashboard extends React.Component {
 
   render() {
     const { user, users } = this.props;
-
     return (
-      <div>
+      <>
         <Header />
-        <div id="main"></div>
-        <Footer />
-      </div>
+        <div id="main">Welcome User</div>
+      </>
     );
   }
 }

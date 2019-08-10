@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../generic/Header';
 import axios from 'axios';
 import moment from 'moment';
+import M from 'materialize-css';
 
 class AddTemplate extends Component {
   constructor(props) {
@@ -29,11 +30,14 @@ class AddTemplate extends Component {
     };
 
     axios.post('/api/email-template/store', values).then(data => {
-      console.log(data);
+      if (data.status === 200) {
+        M.toast({html: 'Successfully added.'});
+      }
     });
   }
 
   handleStatusChange(e) {
+    // Reverse status on toggle
     this.setState({
       status: !this.state.status,
     });
@@ -53,7 +57,7 @@ class AddTemplate extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input id="title" name="title" type="text" />
+                  <input id="title" name="title" type="text" required/>
                   <label htmlFor="title" className="center-align">
                     Title
                   </label>
@@ -61,7 +65,7 @@ class AddTemplate extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input id="subject" name="subject" type="text" />
+                  <input id="subject" name="subject" type="text" required/>
                   <label htmlFor="subject" className="center-align">
                     Subject
                   </label>
@@ -69,7 +73,7 @@ class AddTemplate extends Component {
               </div>
               <div className="row">
                 <div className="input-field col s6">
-                  <select name="template" id="template">
+                  <select name="template" id="template" required>
                     <option>Select template</option>
                     <option value="1">Registration Template</option>
                     <option value="2">Listing Template</option>
@@ -80,7 +84,7 @@ class AddTemplate extends Component {
                   </label>
                 </div>
                 <div className="input-field col s6">
-                  <select name="group" id="group">
+                  <select name="group" id="group" required>
                     <option>Select Group</option>
                     <option value="1">Group 1</option>
                     <option value="2">Group 2</option>
@@ -94,14 +98,14 @@ class AddTemplate extends Component {
 
               <div className="row">
                 <div className="input-field col s6">
-                  <input type="text" name="startDate" id="startDate" className="datepicker" />
+                  <input type="text" name="startDate" id="startDate" className="datepicker" required/>
                   <label htmlFor="startDate" className="center-align">
                     Start Date
                   </label>
                 </div>
 
                 <div className="input-field col s6">
-                  <input type="text" id="endDate" name="endDate" className="datepicker" />
+                  <input type="text" id="endDate" name="endDate" className="datepicker" required/>
                   <label htmlFor="endDate" className="center-align">
                     End Date
                   </label>
@@ -113,7 +117,7 @@ class AddTemplate extends Component {
                   <label htmlFor="frequency" className="center-align">
                     Frequency
                   </label>
-                  <input type="number" name="frequency" id="frequency" />
+                  <input type="number" name="frequency" id="frequency" required/>
                 </div>
               </div>
               <div className="row">

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { userActions } from "../../actions";
-import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import M from "materialize-css";
-import { ImageSpan } from "../../components/Styled";
-import { SideNav } from "../../components/SideNav";
-import { Navbar } from "../../components/Navbar";
+import React, { Component } from 'react';
+import { userActions } from '../../actions';
+import { connect } from 'react-redux';
+import { Link, withRouter } from 'react-router-dom';
+import M from 'materialize-css';
+import { ImageSpan } from '../../components/Styled';
+import { SideNav } from '../../components/SideNav';
+import { Navbar } from '../../components/Navbar';
 
 class Header extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Header extends Component {
 
   componentDidMount() {
     let elems = document.querySelectorAll(
-      ".dropdown-menu, .profile-button, .notification-button, .translation-button, .dropdown-settings"
+      '.dropdown-menu, .profile-button, .notification-button, .translation-button, .dropdown-settings',
     );
     let instances = M.Dropdown.init(elems, {
       inDuration: 300,
@@ -24,16 +24,16 @@ class Header extends Component {
       hover: false,
       gutter: 0,
       coverTrigger: false,
-      alignment: "right",
-      stopPropagation: true
+      alignment: 'right',
+      stopPropagation: true,
     });
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { authentication, history } = this.props;
     if (!authentication.loggedIn) {
-      console.log("Logging out");
-      history.push("/login");
+      console.log('Logging out');
+      history.push('/login');
     }
   }
 
@@ -44,7 +44,7 @@ class Header extends Component {
 
   render() {
     const { user } = this.props;
-    const fullName = user ? user.first_name + " " + user.last_name : "NA";
+    const fullName = user ? user.first_name + ' ' + user.last_name : 'NA';
     return (
       <div
         className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns  "
@@ -67,17 +67,14 @@ class Header extends Component {
                 </div>
                 <ul className="navbar-list right">
                   <li className="hide-on-large-only">
-                    <a
-                      className="waves-effect waves-block waves-light search-button"
-                      href="javascript:void(0);"
-                    >
+                    <a className="waves-effect waves-block waves-light search-button" href="#">
                       <i className="material-icons">search</i>
                     </a>
                   </li>
                   <li>
                     <a
                       className="waves-effect waves-block waves-light notification-button"
-                      href="javascript:void(0);"
+                      href="#"
                       data-target="notifications-dropdown"
                     >
                       <i className="material-icons">
@@ -89,7 +86,7 @@ class Header extends Component {
                   <li>
                     <a
                       className="waves-effect waves-block waves-light profile-button"
-                      href="javascript:void(0);"
+                      href="#"
                       data-target="profile-dropdown"
                     >
                       <ImageSpan>
@@ -114,11 +111,7 @@ class Header extends Component {
                   </li>
                   <li className="divider"></li>
                   <li>
-                    <a
-                      className="grey-text text-darken-1"
-                      href="#"
-                      onClick={this.handleLogout}
-                    >
+                    <a className="grey-text text-darken-1" href="#" onClick={this.handleLogout}>
                       <i className="material-icons">keyboard_tab</i> Logout
                     </a>
                   </li>
@@ -135,41 +128,28 @@ class Header extends Component {
                     <a className="grey-text text-darken-2" href="#!">
                       <span className="material-icons icon-bg-circle purple small">
                         add_shopping_cart
-                      </span>{" "}
+                      </span>{' '}
                       A new order has been placed!
                     </a>
-                    <time
-                      className="media-meta"
-                      dateTime="2015-06-12T20:50:48+08:00"
-                    >
+                    <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                       2 hours ago
                     </time>
                   </li>
                   <li>
                     <a className="grey-text text-darken-2" href="#!">
-                      <span className="material-icons icon-bg-circle purple small">
-                        stars
-                      </span>{" "}
+                      <span className="material-icons icon-bg-circle purple small">stars</span>{' '}
                       Completed the task
                     </a>
-                    <time
-                      className="media-meta"
-                      dateTime="2015-06-12T20:50:48+08:00"
-                    >
+                    <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                       3 days ago
                     </time>
                   </li>
                   <li>
                     <a className="grey-text text-darken-2" href="#!">
-                      <span className="material-icons icon-bg-circle purple small">
-                        settings
-                      </span>{" "}
+                      <span className="material-icons icon-bg-circle purple small">settings</span>{' '}
                       Settings updated
                     </a>
-                    <time
-                      className="media-meta"
-                      dateTime="2015-06-12T20:50:48+08:00"
-                    >
+                    <time className="media-meta" dateTime="2015-06-12T20:50:48+08:00">
                       4 days ago
                     </time>
                   </li>
@@ -179,12 +159,8 @@ class Header extends Component {
                 <div className="nav-wrapper">
                   <form>
                     <div className="input-field">
-                      <input
-                        className="search-box-sm"
-                        type="search"
-                        required=""
-                      />
-                      <label className="label-icon" for="search">
+                      <input className="search-box-sm" type="search" required="" />
+                      <label className="label-icon" htmlFor="search">
                         <i className="material-icons search-sm-icon">search</i>
                       </label>
                       <i className="material-icons search-sm-close">close</i>
@@ -198,14 +174,9 @@ class Header extends Component {
         <SideNav className="nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded">
           <div className="brand-sidebar">
             <h1 className="logo-wrapper">
-              <a className="brand-logo darken-1" href="index.html">
-                <span className="logo-text hide-on-med-and-down">
-                  RealEstateNepal
-                </span>
-              </a>
-              <a className="navbar-toggler" href="#">
-                <i className="material-icons">radio_button_checked</i>
-              </a>
+              <Link className="brand-logo darken-1" to="/">
+                <span className="logo-text hide-on-med-and-down">RealEstateNepal</span>
+              </Link>
             </h1>
           </div>
           <ul
@@ -224,39 +195,43 @@ class Header extends Component {
             </li>
 
             <li className="bold">
-              <a
-                className="collapsible-header waves-effect waves-cyan "
-                href="#"
-              >
+              <a className="collapsible-header waves-effect waves-cyan " href="#">
                 <i className="material-icons">content_paste</i>
                 <span className="menu-title" data-i18n="">
                   Pages
                 </span>
               </a>
               <div className="collapsible-body">
-                <ul
-                  className="collapsible collapsible-sub"
-                  data-collapsible="accordion"
-                >
+                <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <a
-                      className="collapsible-body"
-                      href="page-edit.html"
-                      data-i18n=""
-                    >
+                    <a className="collapsible-body" href="page-edit.html" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Page Categories</span>
                     </a>
                   </li>
                   <li>
-                    <a
-                      className="collapsible-body"
-                      href="page-list.html"
-                      data-i18n=""
-                    >
+                    <a className="collapsible-body" href="page-list.html" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Pages</span>
                     </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="bold">
+              <a className="collapsible-header waves-effect waves-cyan " href="#">
+                <i className="material-icons">email</i>
+                <span className="menu-title" data-i18n="">
+                  Email Management
+                </span>
+              </a>
+              <div className="collapsible-body">
+                <ul className="collapsible collapsible-sub" data-collapsible="accordion">
+                  <li>
+                    <Link className="collapsible-body" to="add-email-template" data-i18n="">
+                      <i className="material-icons">radio_button_unchecked</i>
+                      <span>Add template</span>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -278,36 +253,22 @@ class Header extends Component {
               </a>
             </li>
             <li className="bold">
-              <a
-                className="collapsible-header waves-effect waves-cyan "
-                href="#"
-              >
+              <a className="collapsible-header waves-effect waves-cyan " href="#">
                 <i className="material-icons">people_outline</i>
                 <span className="menu-title" data-i18n="">
                   User Management
                 </span>
               </a>
               <div className="collapsible-body">
-                <ul
-                  className="collapsible collapsible-sub"
-                  data-collapsible="accordion"
-                >
+                <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <a
-                      className="collapsible-body"
-                      href="roles-list.html"
-                      data-i18n=""
-                    >
+                    <a className="collapsible-body" href="roles-list.html" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Roles</span>
                     </a>
                   </li>
                   <li>
-                    <a
-                      className="collapsible-body"
-                      href="user.html"
-                      data-i18n=""
-                    >
+                    <a className="collapsible-body" href="user.html" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Users</span>
                     </a>
@@ -336,7 +297,7 @@ function mapStateToProps(state) {
   return {
     user,
     users,
-    authentication
+    authentication,
   };
 }
 

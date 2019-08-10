@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { userActions } from "./../../actions";
-import Header from "../generic/Header";
+import React from 'react';
+import { connect } from 'react-redux';
+import { userActions } from './../../actions';
+import Header from '../generic/Header';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -21,16 +21,7 @@ class Dashboard extends React.Component {
     return (
       <>
         <Header />
-        {/*<Main>*/}
-        {/*    <div className="row">*/}
-        {/*        <div className="col s12">*/}
-        {/*            <div className="container">*/}
-        {/*                Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa dolores eos, est in itaque laborum nostrum odit omnis, provident quam quibusdam, quis reprehenderit veniam voluptate. Adipisci est quasi sed.*/}
-        {/*            </div>*/}
-        {/*        </div>*/}
-        {/*    </div>*/}
-        {/*</Main>*/}
-        {/*<Footer/>*/}
+        <div id="main">Welcome User</div>
       </>
     );
   }
@@ -41,7 +32,7 @@ function mapStateToProps(state) {
   const { user } = authentication;
   return {
     user,
-    users
+    users,
   };
 }
 

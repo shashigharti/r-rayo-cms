@@ -1,14 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import { HomePage } from "./containers/home/Dashboard";
-import { LoginPage } from "./containers/login/LoginPage";
-import { RegisterPage } from "./containers/register/RegisterPage";
-import M from "materialize-css";
-// Import materialize & static css
-import "materialize-css/dist/css/materialize.min.css";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { HomePage } from './containers/home/Dashboard';
+import { LoginPage } from './containers/login/LoginPage';
+import { RegisterPage } from './containers/register/RegisterPage';
+import AddTemplate from './containers/email-management/AddTemplate';
 
-import { PrivateRoute } from "./components";
+import M from 'materialize-css';
+// Import materialize & static css
+import 'materialize-css/dist/css/materialize.min.css';
+
+import { PrivateRoute } from './components';
 
 class App extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class App extends React.Component {
     return (
       <Router>
         <PrivateRoute exact path="/" component={HomePage} />
+        <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
       </Router>
@@ -35,7 +38,7 @@ class App extends React.Component {
 function mapStateToProps(state) {
   const { alert } = state;
   return {
-    alert
+    alert,
   };
 }
 

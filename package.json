@@ -45,6 +45,7 @@
     "dependencies": {
         "dexie": "^2.0.4",
         "extract-text-webpack-plugin": "^3.0.2",
+        "moment": "^2.24.0",
         "randomcolor": "^0.5.4"
     }
 }

@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';
 import { RegisterPage } from './containers/register/RegisterPage';
-import AddTemplate from './containers/email-management/AddTemplate';
+import { AddTemplate } from './containers/email-management/AddTemplate';
+import { Templates } from "./containers/email-management/Templates";
 
 import M from 'materialize-css';
 // Import materialize & static css
@@ -28,6 +29,7 @@ class App extends React.Component {
       <Router>
         <PrivateRoute exact path="/" component={HomePage} />
         <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
+        <PrivateRoute exact path="/templates" component={Templates} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
       </Router>

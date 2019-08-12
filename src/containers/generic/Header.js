@@ -17,7 +17,7 @@ class Header extends Component {
     let elems = document.querySelectorAll(
       '.dropdown-menu, .profile-button, .notification-button, .translation-button, .dropdown-settings',
     );
-    let instances = M.Dropdown.init(elems, {
+    M.Dropdown.init(elems, {
       inDuration: 300,
       outDuration: 225,
       constrainWidth: false,
@@ -227,6 +227,12 @@ class Header extends Component {
               </a>
               <div className="collapsible-body">
                 <ul className="collapsible collapsible-sub" data-collapsible="accordion">
+                  <li>
+                    <Link className="collapsible-body" to="templates" data-i18n="">
+                      <i className="material-icons">radio_button_unchecked</i>
+                      <span>Templates</span>
+                    </Link>
+                  </li>
                   <li>
                     <Link className="collapsible-body" to="add-email-template" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>

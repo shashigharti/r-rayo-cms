@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';
 import { RegisterPage } from './containers/register/RegisterPage';
+import { Settings } from './containers/settings/Settings';
 import AddTemplate from './containers/email-management/AddTemplate';
 
 import M from 'materialize-css';
-// Import materialize & static css
 import 'materialize-css/dist/css/materialize.min.css';
 
 import { PrivateRoute } from './components';
@@ -23,11 +23,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { alert } = this.props;
     return (
       <Router>
         <PrivateRoute exact path="/" component={HomePage} />
         <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
+        <PrivateRoute exact path="/settings" component={Settings} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
       </Router>

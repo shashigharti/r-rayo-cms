@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { userActions } from '../../actions';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
-import M from 'materialize-css';
+import { Link, withRouter, NavLink } from 'react-router-dom';
 import { ImageSpan } from '../../components/Styled';
 import { SideNav } from '../../components/SideNav';
 import { Navbar } from '../../components/Navbar';
@@ -35,6 +34,8 @@ class Header extends Component {
       console.log('Logging out');
       history.push('/login');
     }
+    // Init materialize on update
+    M.AutoInit();
   }
 
   handleLogout() {
@@ -185,13 +186,13 @@ class Header extends Component {
             data-menu="menu-navigation"
             data-collapsible="menu-accordion"
           >
-            <li className="active bold">
-              <a className="active waves-effect waves-cyan " href="#">
+            <li className="bold">
+              <NavLink exact className="waves-effect waves-cyan" to="/">
                 <i className="material-icons">settings_input_svideo</i>
                 <span className="menu-title" data-i18n="">
                   Dashboard
                 </span>
-              </a>
+              </NavLink>
             </li>
 
             <li className="bold">
@@ -234,29 +235,13 @@ class Header extends Component {
                     </Link>
                   </li>
                   <li>
-                    <Link className="collapsible-body" to="add-email-template" data-i18n="">
+                    <NavLink className="collapsible-body" to="add-email-template" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Add template</span>
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
-            </li>
-            <li className="bold">
-              <a className="waves-effect waves-cyan " href="create-menu.html">
-                <i className="material-icons">crop_original</i>
-                <span className="menu-title" data-i18n="">
-                  Menus
-                </span>
-              </a>
-            </li>
-            <li className="bold">
-              <a className="waves-effect waves-cyan " href="leads.html">
-                <i className="material-icons">show_chart</i>
-                <span className="menu-title" data-i18n="">
-                  Leads
-                </span>
-              </a>
             </li>
             <li className="bold">
               <a className="collapsible-header waves-effect waves-cyan " href="#">
@@ -281,6 +266,30 @@ class Header extends Component {
                   </li>
                 </ul>
               </div>
+            </li>
+            <li className="bold">
+              <a className="waves-effect waves-cyan " href="create-menu.html">
+                <i className="material-icons">crop_original</i>
+                <span className="menu-title" data-i18n="">
+                  Menus
+                </span>
+              </a>
+            </li>
+            <li className="bold">
+              <a className="waves-effect waves-cyan " href="leads.html">
+                <i className="material-icons">show_chart</i>
+                <span className="menu-title" data-i18n="">
+                  Leads
+                </span>
+              </a>
+            </li>
+            <li className="bold">
+              <NavLink className="waves-effect waves-cyan " to="/settings">
+                <i className="material-icons">settings</i>
+                <span className="menu-title" data-i18n="">
+                  Settings
+                </span>
+              </NavLink>
             </li>
           </ul>
           <div className="navigation-background"></div>

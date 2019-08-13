@@ -211,10 +211,10 @@ class Header extends Component {
                     </a>
                   </li>
                   <li>
-                    <a className="collapsible-body" href="page-list.html" data-i18n="">
+                    <Link className="collapsible-body" to="/pages" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Pages</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -253,27 +253,27 @@ class Header extends Component {
               <div className="collapsible-body">
                 <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <a className="collapsible-body" href="roles-list.html" data-i18n="">
+                    <Link className="collapsible-body" to="/roles" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Roles</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="collapsible-body" href="user.html" data-i18n="">
+                    <Link className="collapsible-body" to="/users" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Users</span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
             </li>
             <li className="bold">
-              <a className="waves-effect waves-cyan " href="create-menu.html">
+              <NavLink exact className="waves-effect waves-cyan " to="/menus">
                 <i className="material-icons">crop_original</i>
                 <span className="menu-title" data-i18n="">
                   Menus
                 </span>
-              </a>
+              </NavLink>
             </li>
             <li className="bold">
               <a className="waves-effect waves-cyan " href="leads.html">

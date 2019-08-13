@@ -20,18 +20,21 @@ const getBreadCrumbLink = (currentCrumb, currentCrumbIndex, crumbs = [], rootPat
 };
 
 export const BreadCrumbs = (props = {}) => {
-  const { crumbs, rootPath } = props;
+  const { crumbs, rootPath, title } = props;
 
   return (
-    <ol className="breadcrumbs mb-0">
-      {crumbs &&
-        crumbs.map((crumb, index) => {
-          const isActive = index === crumbs.length - 1;
-          const link = getBreadCrumbLink(crumb, index, crumbs, rootPath);
+    <>
+      <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">{title}</h5>
+      <ol className="breadcrumbs mb-0">
+        {crumbs &&
+          crumbs.map((crumb, index) => {
+            const isActive = index === crumbs.length - 1;
+            const link = getBreadCrumbLink(crumb, index, crumbs, rootPath);
 
-          return <BreadCrumbItem key={link} name={crumb.name} link={link} isActive={isActive} />;
-        })}
-    </ol>
+            return <BreadCrumbItem key={link} name={crumb.name} link={link} isActive={isActive} />;
+          })}
+      </ol>
+    </>
   );
 };
 

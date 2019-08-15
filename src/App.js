@@ -15,6 +15,8 @@ import { AddRole } from './containers/user-management/Roles/AddRole';
 import { AddUser } from './containers/user-management/Users/AddUser';
 import { Menus } from './containers/menus/Menus';
 import { AddMenu } from './containers/menus/AddMenu';
+import { Groups } from './containers/Groups/Groups';
+import { AddGroup } from './containers/Groups/AddGroup';
 
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -49,6 +51,10 @@ class App extends React.Component {
 
         <PrivateRoute exact path="/menus" component={Menus} />
         <PrivateRoute exact path="/add-menu" component={AddMenu} />
+
+        <PrivateRoute exact path="/groups" component={Groups} />
+        <PrivateRoute exact path="/add-group" component={AddGroup} />
+        <PrivateRoute exact path="/edit-group" component={AddGroup} />
 
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />

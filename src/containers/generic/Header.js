@@ -268,6 +268,14 @@ class Header extends Component {
               </div>
             </li>
             <li className="bold">
+              <NavLink exact className="waves-effect waves-cyan " to="/groups">
+                <i className="material-icons">group</i>
+                <span className="menu-title" data-i18n="">
+                  Groups
+                </span>
+              </NavLink>
+            </li>
+            <li className="bold">
               <NavLink exact className="waves-effect waves-cyan " to="/menus">
                 <i className="material-icons">crop_original</i>
                 <span className="menu-title" data-i18n="">

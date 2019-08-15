@@ -4,18 +4,17 @@ const Row = props => (
   <tr>
     <td>{props.sn}</td>
     <td>{props.name}</td>
-    <td>{props.excerpt}</td>
     <td className="text right-align">
       <a className="waves-effect waves-light btn-small cyan" onClick={() => console.log('wowowo')}>
-        <i aria-hidden="true" className="fa fa-pencil"></i>
+        <i className="material-icons left">edit</i>
         Edit
       </a>
       <a className="waves-effect waves-light btn-small amber">
-        <i aria-hidden="true" className="fa fa-trash"></i>
+        <i className="material-icons left">delete</i>
         Delete
       </a>
       <a className="waves-effect waves-light btn-small purple">
-        <i aria-hidden="true" className="fa fa-check-circle-o"></i>
+        <i className="material-icons">check</i>
         Enabled
       </a>
     </td>

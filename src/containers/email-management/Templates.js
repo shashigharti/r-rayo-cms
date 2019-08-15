@@ -31,6 +31,8 @@ class Templates extends Component {
   }
 
   componentDidMount() {
+    M.AutoInit();
+
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals, { dismissible: true });
 

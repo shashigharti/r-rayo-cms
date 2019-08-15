@@ -1,72 +1,86 @@
-var path = require('path');
-var HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 require('http-proxy-middleware');
 
-module.exports = {
-    entry: "./src/index.js",
+module.exports = () => {
+  // call dotenv and it will return an Object with a parsed key
+  const env = dotenv.config().parsed;
+
+  // reduce it to a nice object, the same as before
+  const envKeys = Object.keys(env).reduce((prev, next) => {
+    prev[`process.env.${next}`] = JSON.stringify(env[next]);
+    return prev;
+  }, {});
+
+  return {
+    entry: './src/index.js',
     mode: 'development',
     output: {
-        path: path.resolve(__dirname, './dist'),
-        filename: './app.js'
+      path: path.resolve(__dirname, './dist'),
+      filename: './app.js',
     },
     module: {
-        rules: [
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+          },
+        },
+        {
+          test: /\.(s*)css$/,
+          use: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
+              loader: 'style-loader', // creates style nodes from JS strings
             },
             {
-                test: /\.(s*)css$/,
-                use: [
-                    {
-                        loader: "style-loader" // creates style nodes from JS strings
-                    },
-                    {
-                        loader: "css-loader" // translates CSS into CommonJS
-                    },
-                    {
-                        loader: "sass-loader" // compiles Sass to CSS
-                    }
-                ]
+              loader: 'css-loader', // translates CSS into CommonJS
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: "file-loader?name=/images/[name].[ext]"
+              loader: 'sass-loader', // compiles Sass to CSS
             },
+          ],
+        },
+        {
+          test: /\.(jpe?g|png|gif|svg)$/i,
+          loader: 'file-loader?name=/images/[name].[ext]',
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'fonts/'
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    devServer: {
-        historyApiFallback: true,
-        proxy: {
-            '/api': 'http://127.0.0.1:8000'
-        }
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/',
+              },
+            },
+          ],
+        },
+      ],
     },
     plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
-        })
+      new HtmlWebPackPlugin({
+        template: './src/index.html',
+        filename: './index.html',
+      }),
+      new webpack.DefinePlugin(envKeys),
     ],
-    devtool: "cheap-module-eval-source-map",
+    devServer: {
+      historyApiFallback: true,
+      proxy: {
+        '/api': env.API_ENDPOINT,
+      },
+    },
+    devtool: 'cheap-module-eval-source-map',
     externals: {
-        // global app config object
-        config: JSON.stringify({
-            apiUrl: ''
-        })
-    }
+      // global app config object
+      config: JSON.stringify({
+        apiUrl: '',
+      }),
+    },
+  };
 };

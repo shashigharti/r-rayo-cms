@@ -21,7 +21,13 @@ class Dashboard extends React.Component {
     return (
       <>
         <Header />
-        <div id="main">Welcome User</div>
+        <div id="main">
+          <div className="container-fluid">
+            <div className="card">
+              <div className="card-content">Welcome User</div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

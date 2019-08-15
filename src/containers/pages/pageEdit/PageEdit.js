@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Header from '../generic/Header';
-import SideMenu from '../../components/SideMenu';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { Button } from '../../components/Button';
+import Header from '../../generic/Header';
+import SideMenu from '../../../components/SideMenu';
+import { BreadCrumbs } from '../../../components/BreadCrumbs';
+import { Button } from '../../../components/Button';
 
 const camerasImage = '../../../assets/images/cards/cameras.png';
 
@@ -31,8 +31,6 @@ class PageEdit extends Component {
     return (
       <>
         <Header />
-        <SideMenu />
-
         <div id="main">
           <div className="row">
             <div className="col s12">
@@ -40,7 +38,7 @@ class PageEdit extends Component {
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                      Menus
+                      Pages
                     </h5>
 
                     <BreadCrumbs rootPath="" crumbs={crumbs} />

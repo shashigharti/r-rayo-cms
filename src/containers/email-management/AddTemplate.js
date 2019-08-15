@@ -16,6 +16,11 @@ class AddTemplate extends Component {
     this.handleStatusChange = this.handleStatusChange.bind(this);
   }
 
+  componentDidMount() {
+    console.log('mounted');
+    M.AutoInit();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let values = {

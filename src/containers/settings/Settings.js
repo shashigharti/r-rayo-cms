@@ -14,9 +14,9 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/settings/getAll').then(response => {
+    axios.get('/api/settings/all').then(response => {
       this.setState({
-        settings: response.data,
+        settings: response.data.data,
       });
     });
     console.log('mounted');
@@ -33,40 +33,46 @@ class Settings extends Component {
       <>
         <Header />
         <div id="main">
-          <div className="container-fluid">
-            <div className="card">
-              <div className="card-content">
-                <div className="row">
-                  <div className="col s12 mb-3">
-                    <ul className="tabs">
-                      <li className="tab col s3">
-                        <a href="#test1">General</a>
-                      </li>
-                      <li className="tab col s3">
-                        <a className="active" href="#test2">
-                          Page
-                        </a>
-                      </li>
-                      <li className="tab col s3">
-                        <a href="#test3">Agent</a>
-                      </li>
-                      <li className="tab col s3">
-                        <a href="#test4">Users</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div id="test1" className="col s12">
-                    General Settings
-                  </div>
-                  <div id="test2" className="col s12">
-                    {/* Render only when page-setting is fetched from API */}
-                    {Object.keys(page_setting).length > 0 && <PageSettings values={page_setting} />}
-                  </div>
-                  <div id="test3" className="col s12">
-                    Agent Settings
-                  </div>
-                  <div id="test4" className="col s12">
-                    Users
+          <div className="row">
+            <div className="col s12">
+              <div className="container-fluid">
+                <div className="card">
+                  <div className="card-content">
+                    <div className="row">
+                      <div className="col s12 mb-3">
+                        <ul className="tabs">
+                          <li className="tab col s3">
+                            <a href="#test1">General</a>
+                          </li>
+                          <li className="tab col s3">
+                            <a className="active" href="#test2">
+                              Page
+                            </a>
+                          </li>
+                          <li className="tab col s3">
+                            <a href="#test3">Agent</a>
+                          </li>
+                          <li className="tab col s3">
+                            <a href="#test4">Users</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div id="test1" className="col s12">
+                        General Settings
+                      </div>
+                      <div id="test2" className="col s12">
+                        {/* Render only when page-setting is fetched from API */}
+                        {Object.keys(page_setting).length > 0 && (
+                          <PageSettings values={page_setting} />
+                        )}
+                      </div>
+                      <div id="test3" className="col s12">
+                        Agent Settings
+                      </div>
+                      <div id="test4" className="col s12">
+                        Users
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

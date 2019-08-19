@@ -1,0 +1,85 @@
+/*tabs*/
+
+.theme__tabs .tab a {
+  color: #333333 !important;
+  font-weight: 600;
+  padding: 0 10px;
+  font-size: 12px;
+}
+.theme__tabs .tab a:hover,
+.theme__tabs .tab a.active {
+  color: #6b4994 !important;
+}
+.theme__tabs .tab a:focus,
+.theme__tabs .tab a:focus.active {
+  background-color: transparent !important;
+}
+.theme__tabs.tabs {
+  height: 40px;
+}
+.theme__tabs .tab {
+  line-height: 40px;
+  height: 40px;
+}
+.filter--bar .tabs {
+  background-color: transparent !important;
+  margin-bottom: 15px;
+}
+/*select*/
+
+.theme--select .select-wrapper input.select-dropdown {
+  height: 16px;
+  line-height: 21px;
+  font-size: 14px;
+  padding: 0 0 3px;
+}
+.theme--select .select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid #6b4994 !important;
+}
+.theme--select .dropdown-content li > a,
+.theme--select .dropdown-content li > span {
+  color: #6b4994 !important;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 10px 12px;
+}
+.theme--select .dropdown-content li {
+  min-height: 32px;
+}
+.filter--bar .input-field {
+  margin-bottom: 0px;
+}
+
+/*btn*/
+
+.btn--bar .btn {
+  font-size: 10px;
+  box-shadow: none !important;
+  height: 16px;
+  line-height: 16px;
+  border-right: 1px solid #969292 !important;
+  border-radius: 0;
+  color: #333 !important;
+  background-color: transparent !important;
+  vertical-align: text-bottom;
+}
+.btn--bar .btn i {
+  font-size: 12px;
+}
+.theme--btn {
+  background-color: #6b4994 !important;
+}
+.theme--btn:hover {
+  background-color: #8d62c1 !important;
+}
+span.badge-secondary {
+  color: #333;
+  font-size: 11px;
+  font-weight: bold;
+}
+.theme--select {
+  margin-top: 10px;
+}
+.filter--bar {
+  margin-top: 20px;
+}

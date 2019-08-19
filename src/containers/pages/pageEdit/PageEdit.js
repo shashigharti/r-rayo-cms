@@ -34,7 +34,7 @@ class PageEdit extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
@@ -49,7 +49,7 @@ class PageEdit extends Component {
           </div>
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row">
                   <div className="col s12">
                     <ul className="tabs">

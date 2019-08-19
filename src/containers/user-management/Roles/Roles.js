@@ -28,7 +28,7 @@ class Roles extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <BreadCrumbs title="Roles" rootPath="" crumbs={crumbs} />
@@ -48,7 +48,7 @@ class Roles extends Component {
           </div>
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="card">
                   <div className="card-content">
                     <table className="table data-table">

@@ -17,19 +17,18 @@ const crumbs = [
 ];
 
 class Users extends Component {
+  componentDidMount() {
+    M.AutoInit();
+  }
 
-    componentDidMount() {
-        M.AutoInit();
-    }
-
-    render() {
+  render() {
     return (
       <>
         <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
@@ -49,7 +48,7 @@ class Users extends Component {
           </div>
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="card">
                   <div className="card-content">
                     <table className="table data-table">
@@ -69,7 +68,10 @@ class Users extends Component {
                           <td>info@robustitconcepts.com</td>
                           <td>Super Admin</td>
                           <td className="text right-align">
-                            <Link className="waves-effect waves-light btn-small cyan" to="/add-user">
+                            <Link
+                              className="waves-effect waves-light btn-small cyan"
+                              to="/add-user"
+                            >
                               <i className="material-icons left">edit</i>Edit
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
@@ -83,7 +85,10 @@ class Users extends Component {
                           <td>info1@robustitconcepts.com</td>
                           <td>Admin</td>
                           <td className="text right-align">
-                            <Link className="waves-effect waves-light btn-small cyan" to="/add-user">
+                            <Link
+                              className="waves-effect waves-light btn-small cyan"
+                              to="/add-user"
+                            >
                               <i className="material-icons left">edit</i>Edit
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
@@ -97,7 +102,10 @@ class Users extends Component {
                           <td>info2@robustitconcepts.com</td>
                           <td>Client</td>
                           <td className="text right-align">
-                            <Link className="waves-effect waves-light btn-small cyan" to="/add-user">
+                            <Link
+                              className="waves-effect waves-light btn-small cyan"
+                              to="/add-user"
+                            >
                               <i className="material-icons left">edit</i>Edit
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">

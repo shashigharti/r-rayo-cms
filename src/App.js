@@ -16,12 +16,15 @@ import { AddRole } from './containers/user-management/Roles/AddRole';
 import { AddUser } from './containers/user-management/Users/AddUser';
 import { Menus } from './containers/menus/Menus';
 import { AddMenu } from './containers/menus/AddMenu';
-import { Groups } from './containers/Groups/Groups';
-import { AddGroup } from './containers/Groups/AddGroup';
+import { Groups } from './containers/groups/Groups';
+import { AddGroup } from './containers/groups/AddGroup';
 import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
+import { Leads } from './containers/leads/Leads';
 
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
+
+import '@fortawesome/fontawesome-free/js/all.min';
 
 import { PrivateRoute } from './components';
 
@@ -59,6 +62,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/groups" component={Groups} />
         <PrivateRoute exact path="/add-group" component={AddGroup} />
         <PrivateRoute exact path="/edit-group" component={AddGroup} />
+
+        <PrivateRoute exact path="/leads" component={Leads} />
 
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />

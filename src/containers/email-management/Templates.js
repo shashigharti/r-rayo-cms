@@ -4,6 +4,21 @@ import Header from '../generic/Header';
 import M from 'materialize-css';
 import { Button } from '../../components/Button/Button';
 import moment from 'moment';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { Link } from 'react-router-dom';
+
+const crumbs = [
+  {
+    name: 'Home',
+    subPath: '',
+    path: '',
+  },
+  {
+    name: 'Templates',
+    subPath: 'pages',
+    path: 'templates',
+  },
+];
 
 class Templates extends Component {
   constructor(props) {
@@ -35,30 +50,30 @@ class Templates extends Component {
 
     let modals = document.querySelectorAll('.modal');
     M.Modal.init(modals, { dismissible: true });
-
-    // Not picking up events for date selection: commenting for now
-    // let pickers = document.querySelectorAll('.datepicker');
-    // let inst = M.Datepicker.init(pickers, {
-    //     onSelect(date) {
-    //         console.log(date);
-    //         // this.handleDateChange(date);
-    //     },
-    // });
-    // console.log(inst);
-
     this.getTemplates();
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    M.updateTextFields();
+    // Init datepicker
+    let pickers = document.querySelectorAll('.datepicker');
+    M.Datepicker.init(pickers, {
+      format: 'yyyy-mm-dd',
+      autoClose: true,
+    });
+  }
+
   getTemplates() {
-    axios.get('/api/templates').then(response => {
+    axios.get('/api/email-template/all').then(response => {
       this.setState({
-        templates: response.data,
+        templates: response.data.data,
       });
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    const { editTemplate } = this.state;
     // Format date from form elements
     let starts_at = moment(e.target.elements.starts_at.value).format('YYYY-MM-DD h:m:s');
     let ends_at = moment(e.target.elements.ends_at.value).format('YYYY-MM-DD h:m:s');
@@ -67,7 +82,7 @@ class Templates extends Component {
     formData.ends_at = ends_at;
 
     axios
-      .put('/api/email-template/update', formData)
+      .put(`/api/email-template/update/${editTemplate.id}`, formData)
       .then(response => {
         if (response.status === 200) {
           M.toast({ html: 'Successfully Updated!' });
@@ -168,25 +183,48 @@ class Templates extends Component {
       <>
         <Header />
         <div id="main">
-          <div className="container-fluid">
-            <div className="card">
-              <div className="card-content">
-                <table>
-                  <thead className="highlight">
-                    <tr>
-                      <th>Id</th>
-                      <th>Title</th>
-                      <th>Subject</th>
-                      <th>Group</th>
-                      <th>Template</th>
-                      <th>Starts At</th>
-                      <th>Ends At</th>
-                      <th>Frequency</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>{mapped}</tbody>
-                </table>
+          <div className="row">
+            <div className="container-fluid">
+              <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
+                <div className="col s10 m6 l6 breadcrumbs-left">
+                  <BreadCrumbs title="Templates" rootPath="" crumbs={crumbs} />
+                </div>
+                <div className="col s2 m6 l6 right--button">
+                  <Link
+                    className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
+                    title="add"
+                    to="/add-email-template"
+                  >
+                    <i className="material-icons">add</i>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="container-fluid">
+              <div className="col s12">
+                <div className="card">
+                  <div className="card-content">
+                    <table>
+                      <thead className="highlight">
+                        <tr>
+                          <th>Id</th>
+                          <th>Title</th>
+                          <th>Subject</th>
+                          <th>Group</th>
+                          <th>Template</th>
+                          <th>Starts At</th>
+                          <th>Ends At</th>
+                          <th>Frequency</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>{mapped}</tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -304,7 +342,6 @@ class Templates extends Component {
                       name="end_at"
                       className="datepicker"
                       value={editTemplate.ends_at}
-                      onInputCapture={this.handleTemplateChange}
                       onChange={this.handleTemplateChange}
                       required
                     />
@@ -354,7 +391,7 @@ class Templates extends Component {
                 </div>
                 <div className="row">
                   <div className="col s12">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-primary modal-close">
                       Save
                     </button>
                   </div>

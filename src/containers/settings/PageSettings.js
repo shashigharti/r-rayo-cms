@@ -6,7 +6,7 @@ class PageSettings extends Component {
   constructor(props) {
     super(props);
     // Get pageSettings from parent as props
-    let pageSettings = JSON.parse(props.values.values);
+    let pageSettings = props.values.values;
     this.state = {
       pageSettings,
     };

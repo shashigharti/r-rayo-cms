@@ -31,7 +31,7 @@ class AddUser extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s12 m6 l6 breadcrumbs-left">
                     <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
@@ -43,7 +43,7 @@ class AddUser extends Component {
 
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="panel card panel--box">
                   <div>
                     <form>

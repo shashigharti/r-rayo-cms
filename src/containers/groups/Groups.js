@@ -39,7 +39,7 @@ class Groups extends Component {
   fetchGroups() {
     axios.get('/api/groups/all').then(response => {
       this.setState({
-        groups: response.data,
+        groups: response.data.data,
       });
     });
   }
@@ -66,12 +66,11 @@ class Groups extends Component {
 
   handleStatus(id, status) {
     let formData = {
-      id,
       status: !status,
     };
     console.log(formData);
     axios
-      .put('/api/groups/update', formData)
+      .put(`/api/groups/update/${id}`, formData)
       .then(response => {
         console.log(response.data.message);
         M.toast({ html: response.data.message });
@@ -106,7 +105,7 @@ class Groups extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <BreadCrumbs title="Groups" rootPath="" crumbs={crumbs} />
@@ -126,7 +125,7 @@ class Groups extends Component {
           </div>
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="card">
                   <div className="card-content">
                     <table className="table data-table">

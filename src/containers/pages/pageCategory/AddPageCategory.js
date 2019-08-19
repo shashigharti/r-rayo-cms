@@ -53,7 +53,7 @@ class AddPageCategory extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s12 breadcrumbs-left">
                     <BreadCrumbs title="Pages" rootPath="" crumbs={crumbs} />
@@ -65,7 +65,7 @@ class AddPageCategory extends Component {
 
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="panel card panel--box">
                   <div>
                     <form onSubmit={this.handleSubmit}>

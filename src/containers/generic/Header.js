@@ -26,6 +26,8 @@ class Header extends Component {
       alignment: 'right',
       stopPropagation: true,
     });
+    // Init materialize on update
+    M.AutoInit();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -194,6 +196,14 @@ class Header extends Component {
                 </span>
               </NavLink>
             </li>
+            <li className="bold">
+              <NavLink exact className="waves-effect waves-cyan " to="/leads">
+                <i className="material-icons">show_chart</i>
+                <span className="menu-title" data-i18n="">
+                  Leads
+                </span>
+              </NavLink>
+            </li>
 
             <li className="bold">
               <a className="collapsible-header waves-effect waves-cyan " href="#">
@@ -220,28 +230,12 @@ class Header extends Component {
               </div>
             </li>
             <li className="bold">
-              <a className="collapsible-header waves-effect waves-cyan " href="#">
+              <NavLink exact className="waves-effect waves-cyan " to="/templates">
                 <i className="material-icons">email</i>
                 <span className="menu-title" data-i18n="">
                   Email Management
                 </span>
-              </a>
-              <div className="collapsible-body">
-                <ul className="collapsible collapsible-sub" data-collapsible="accordion">
-                  <li>
-                    <Link className="collapsible-body" to="templates" data-i18n="">
-                      <i className="material-icons">radio_button_unchecked</i>
-                      <span>Templates</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <NavLink className="collapsible-body" to="add-email-template" data-i18n="">
-                      <i className="material-icons">radio_button_unchecked</i>
-                      <span>Add template</span>
-                    </NavLink>
-                  </li>
-                </ul>
-              </div>
+              </NavLink>
             </li>
             <li className="bold">
               <a className="collapsible-header waves-effect waves-cyan " href="#">
@@ -282,14 +276,6 @@ class Header extends Component {
                   Menus
                 </span>
               </NavLink>
-            </li>
-            <li className="bold">
-              <a className="waves-effect waves-cyan " href="leads.html">
-                <i className="material-icons">show_chart</i>
-                <span className="menu-title" data-i18n="">
-                  Leads
-                </span>
-              </a>
             </li>
             <li className="bold">
               <NavLink className="waves-effect waves-cyan " to="/settings">

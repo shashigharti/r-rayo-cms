@@ -70,7 +70,7 @@ class AddGroup extends Component {
     // If edit mode modify url and method
     let axiosSetup = {
       method: this.state.edit ? 'put' : 'post',
-      url: this.state.edit ? '/api/groups/update' : '/api/groups/add',
+      url: this.state.edit ? `/api/groups/update/${this.state.group.id}` : '/api/groups/store',
       data,
     };
 
@@ -78,7 +78,16 @@ class AddGroup extends Component {
       .then(response => {
         let data = response.data;
         if (response.status === 200) {
-          M.toast({ html: data.message });
+          M.toast({ html: data.message, classes: data.class || '' });
+          if (!data.class) {
+            this.setState({
+              group: {
+                name: '',
+                status: '',
+                color: '#6b4994',
+              },
+            });
+          }
         }
       })
       .catch(e => {
@@ -106,10 +115,10 @@ class AddGroup extends Component {
         <div id="main">
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s12 m6 l6 breadcrumbs-left">
-                    <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
+                    <BreadCrumbs title="Groups" rootPath="" crumbs={crumbs} />
                   </div>
                 </div>
               </div>
@@ -118,7 +127,7 @@ class AddGroup extends Component {
 
           <div className="row">
             <div className="col s12">
-              <div className="container">
+              <div className="container-fluid">
                 <div className="panel card panel--box">
                   <div>
                     <form onSubmit={this.handleSubmit}>

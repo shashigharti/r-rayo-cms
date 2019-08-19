@@ -106,9 +106,9 @@ class Header extends Component {
                     </Link>
                   </li>
                   <li>
-                    <a className="grey-text text-darken-1" href="page-faq.html">
+                    <Link className="grey-text text-darken-1" to="/settings">
                       <i className="material-icons">settings</i> Settings
-                    </a>
+                    </Link>
                   </li>
                   <li className="divider"></li>
                   <li>
@@ -205,10 +205,10 @@ class Header extends Component {
               <div className="collapsible-body">
                 <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <a className="collapsible-body" href="page-edit.html" data-i18n="">
+                    <Link className="collapsible-body" to="/page-category" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Page Categories</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <Link className="collapsible-body" to="/pages" data-i18n="">

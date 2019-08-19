@@ -10,6 +10,7 @@ import { Settings } from './containers/settings/Settings';
 import { Roles } from './containers/user-management/Roles/Roles';
 import { Users } from './containers/user-management/Users/Users';
 import { PageEdit } from './containers/pages/pageEdit';
+import { PageCategory } from './containers/pages/pageCategory/PageCategory';
 import { PageList } from './containers/pages/pageList';
 import { AddRole } from './containers/user-management/Roles/AddRole';
 import { AddUser } from './containers/user-management/Users/AddUser';
@@ -17,6 +18,7 @@ import { Menus } from './containers/menus/Menus';
 import { AddMenu } from './containers/menus/AddMenu';
 import { Groups } from './containers/Groups/Groups';
 import { AddGroup } from './containers/Groups/AddGroup';
+import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -48,6 +50,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/add-user" component={AddUser} />
         <PrivateRoute exact path="/page-edit" component={PageEdit} />
         <PrivateRoute exact path="/pages" component={PageList} />
+        <PrivateRoute exact path="/page-category" component={PageCategory} />
+        <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
 
         <PrivateRoute exact path="/menus" component={Menus} />
         <PrivateRoute exact path="/add-menu" component={AddMenu} />

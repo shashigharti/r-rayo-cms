@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../generic/Header';
 import { PageSettings } from './PageSettings';
+import { FrontPageSettings } from './FrontPageSettings';
 import axios from 'axios';
 
 class Settings extends Component {
@@ -45,8 +46,11 @@ class Settings extends Component {
                             <a href="#test1">General</a>
                           </li>
                           <li className="tab col s3">
-                            <a className="active" href="#test2">
-                              Page
+                            <a href="#priceDiv">Price</a>
+                          </li>
+                          <li className="tab col s3">
+                            <a className="active" href="#frontPageDiv">
+                              Frontpage
                             </a>
                           </li>
                           <li className="tab col s3">
@@ -60,11 +64,14 @@ class Settings extends Component {
                       <div id="test1" className="col s12">
                         General Settings
                       </div>
-                      <div id="test2" className="col s12">
+                      <div id="priceDiv" className="col s12">
                         {/* Render only when page-setting is fetched from API */}
                         {Object.keys(page_setting).length > 0 && (
                           <PageSettings values={page_setting} />
                         )}
+                      </div>
+                      <div id="frontPageDiv" className="col s12">
+                        <FrontPageSettings />
                       </div>
                       <div id="test3" className="col s12">
                         Agent Settings

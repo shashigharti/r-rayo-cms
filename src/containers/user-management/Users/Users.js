@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../../generic/Header';
 import { Link } from 'react-router-dom';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 
@@ -24,7 +23,6 @@ class Users extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

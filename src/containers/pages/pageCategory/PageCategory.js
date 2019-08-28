@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Row } from '../../../components/Row';
 import { Link } from 'react-router-dom';
-import Header from '../../generic/Header';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 
 const crumbs = [
@@ -26,7 +25,6 @@ class PageCategory extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

@@ -27,7 +27,6 @@ class AddRole extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

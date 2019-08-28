@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userActions } from './../../actions';
-import Header from '../generic/Header';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -20,7 +19,6 @@ class Dashboard extends React.Component {
     const { user, users } = this.props;
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

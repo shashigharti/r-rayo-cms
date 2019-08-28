@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../generic/Header';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { Link } from 'react-router-dom';
 
@@ -22,7 +21,6 @@ class Menus extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../../generic/Header';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 
 const crumbs = [
@@ -49,7 +48,6 @@ class AddPageCategory extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

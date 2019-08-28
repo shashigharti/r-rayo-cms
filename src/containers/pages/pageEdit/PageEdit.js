@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-import Header from '../../generic/Header';
-import SideMenu from '../../../components/SideMenu';
+
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 import { Button } from '../../../components/Button';
 
@@ -30,7 +29,6 @@ class PageEdit extends Component {
   render() {
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

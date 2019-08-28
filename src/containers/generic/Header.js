@@ -215,16 +215,16 @@ class Header extends Component {
               <div className="collapsible-body">
                 <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <Link className="collapsible-body" to="/page-category" data-i18n="">
+                    <NavLink exact className="collapsible-body" to="/page-category" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Page Categories</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link className="collapsible-body" to="/pages" data-i18n="">
+                    <NavLink exact className="collapsible-body" to="/pages" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Pages</span>
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
@@ -247,16 +247,16 @@ class Header extends Component {
               <div className="collapsible-body">
                 <ul className="collapsible collapsible-sub" data-collapsible="accordion">
                   <li>
-                    <Link className="collapsible-body" to="/roles" data-i18n="">
+                    <NavLink exact className="collapsible-body" to="/roles" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Roles</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link className="collapsible-body" to="/users" data-i18n="">
+                    <NavLink exact className="collapsible-body" to="/users" data-i18n="">
                       <i className="material-icons">radio_button_unchecked</i>
                       <span>Users</span>
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>

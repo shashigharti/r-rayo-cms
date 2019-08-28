@@ -20,6 +20,7 @@ import { Groups } from './containers/groups/Groups';
 import { AddGroup } from './containers/groups/AddGroup';
 import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 import { Leads } from './containers/leads/Leads';
+import Header from './containers/generic/Header';
 
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -41,6 +42,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <Header />
         <PrivateRoute exact path="/" component={HomePage} />
         <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
         <PrivateRoute exact path="/templates" component={Templates} />

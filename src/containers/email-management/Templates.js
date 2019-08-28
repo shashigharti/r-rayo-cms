@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from '../generic/Header';
 import M from 'materialize-css';
 import { Button } from '../../components/Button/Button';
 import moment from 'moment';
@@ -162,7 +161,7 @@ class Templates extends Component {
                 href="#modal1"
                 data-json={JSON.stringify(data)}
               >
-                Edit
+                <i className="material-icons center">edit</i>
               </Button>
               <Button
                 customClasses="red darken-3 modal-trigger"
@@ -173,7 +172,7 @@ class Templates extends Component {
                   });
                 }}
               >
-                Delete
+                <i className="material-icons center">delete</i>
               </Button>
             </td>
           </tr>
@@ -181,7 +180,6 @@ class Templates extends Component {
       });
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="container-fluid">

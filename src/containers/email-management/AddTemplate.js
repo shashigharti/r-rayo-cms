@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import Header from '../generic/Header';
 import axios from 'axios';
 import moment from 'moment';
 import M from 'materialize-css';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { Link } from 'react-router-dom';
 
 const crumbs = [
   {
@@ -115,7 +113,6 @@ class AddTemplate extends Component {
     const { template } = this.state;
     return (
       <>
-        <Header />
         <div id="main">
           <div className="row">
             <div className="col s12">

@@ -1,15 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { store } from "./helpers";
-import { App } from "./App";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./components/GlobalStyle";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './helpers';
+import { App } from './App';
+import Header from './containers/generic/Header';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './components/GlobalStyle';
 
 const theme = {
-  font: "Muli",
-  fontFallback: "sans-serif",
-  bodyBgColor: "#f2f4f8"
+  font: 'Muli',
+  fontFallback: 'sans-serif',
+  bodyBgColor: '#f2f4f8',
 };
 
 ReactDOM.render(
@@ -22,5 +23,5 @@ ReactDOM.render(
       </Provider>
     </>
   </ThemeProvider>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );

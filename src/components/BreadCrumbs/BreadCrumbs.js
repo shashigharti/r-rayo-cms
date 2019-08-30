@@ -24,7 +24,6 @@ export const BreadCrumbs = (props = {}) => {
 
   return (
     <>
-      <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">{title}</h5>
       <ol className="breadcrumbs mb-0">
         {crumbs &&
           crumbs.map((crumb, index) => {

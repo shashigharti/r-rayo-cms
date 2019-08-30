@@ -23,7 +23,6 @@ import { Leads } from './containers/leads/Leads';
 import Header from './containers/generic/Header';
 
 import M from 'materialize-css';
-import 'materialize-css/dist/css/materialize.min.css';
 
 import '@fortawesome/fontawesome-free/js/all.min';
 

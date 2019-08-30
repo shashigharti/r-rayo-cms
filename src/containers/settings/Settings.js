@@ -45,13 +45,13 @@ class Settings extends Component {
                             <a href="#test1">General</a>
                           </li>
                           <li className="tab col s3">
-                            <a href="#priceDiv">Price</a>
+                            <a className="active" href="#priceDiv">Price</a>
                           </li>
                           <li className="tab col s3">
                             <a href="#frontPageDiv">Frontpage</a>
                           </li>
                           <li className="tab col s3">
-                            <a className="active" href="#linkDiv">
+                            <a href="#linkDiv">
                               Link
                             </a>
                           </li>

@@ -8,7 +8,7 @@ export const Button = (props = {}) => {
 
   return (
     <button
-      className={`btn waves-effect waves-light border-round ${customClasses || 'purple lighten-1'}`}
+      className={`btn waves-effect waves-light gradient-45deg-purple-deep-orange ${customClasses}`}
       type={type || 'button'}
       onClick={onClick}
       {...otherProps}

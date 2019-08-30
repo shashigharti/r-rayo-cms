@@ -80,7 +80,7 @@ class Header extends Component {
                       href="#"
                       data-target="notifications-dropdown"
                     >
-                      <i className="material-icons">
+                      <i className="material-icons left">
                         notifications_none
                         <small className="notification-badge">5</small>
                       </i>

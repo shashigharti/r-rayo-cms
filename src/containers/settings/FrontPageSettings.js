@@ -111,11 +111,11 @@ class FrontPageSettings extends Component {
                 onClick={() => {
                   this.handleAdd('label');
                 }}
-                customClasses="mr-4"
+                customClasses="mr-4 btn-small"
               >
                 <i className="material-icons center">add</i>
               </Button>
-              <Button type="submit">Save</Button>
+              <Button type="submit" customClasses="btn-small">Save</Button>
             </div>
           </div>
         </form>
@@ -129,11 +129,11 @@ class FrontPageSettings extends Component {
                 onClick={() => {
                   this.handleAdd('price');
                 }}
-                customClasses="mr-4"
+                customClasses="mr-4 btn-small"
               >
                 <i className="material-icons center">add</i>
               </Button>
-              <Button type="submit">Save</Button>
+              <Button type="submit" customClasses="btn-small">Save</Button>
             </div>
           </div>
         </form>

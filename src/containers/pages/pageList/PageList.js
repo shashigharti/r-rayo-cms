@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
-import Header from '../../generic/Header';
 
 class PageList extends Component {
   componentDidMount() {
@@ -71,10 +70,7 @@ class PageList extends Component {
                       </thead>
                       <tbody>
                         <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                        <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                        <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                        <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                        <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
+                        <Row sn={2} name="Vision" excerpt="Lorem ipsum dolor sit" />
                       </tbody>
                     </table>
                   </div>

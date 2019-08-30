@@ -26,8 +26,7 @@ export const SideNav = styled.aside`
 
     width: inherit;
     height: 64px;
-
-    background: #fff;
+    background: transparent;
     -webkit-box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
 
@@ -38,9 +37,7 @@ export const SideNav = styled.aside`
   .brand-sidebar .logo-wrapper {
     font-size: 3rem;
     line-height: 17px !important;
-
     margin: 0;
-
     white-space: nowrap;
   }
   .brand-sidebar .logo-wrapper a.brand-logo img {
@@ -63,16 +60,13 @@ export const SideNav = styled.aside`
   }
   .brand-sidebar span.logo-text {
     font-size: 24px;
-
+    color: #fff;
     visibility: visible;
-
     padding-left: 8px;
-
     -webkit-transition: opacity 0.2s linear;
     -moz-transition: opacity 0.2s linear;
     -o-transition: opacity 0.2s linear;
     transition: opacity 0.2s linear;
-
     opacity: 1;
   }
   .brand-sidebar .brand-logo {

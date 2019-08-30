@@ -118,10 +118,10 @@ class LinkSettings extends Component {
               <h5>Link Conditions</h5>
             </div>
             <div className="col s2">
-              <Button onClick={this.handleAdd} customClasses="mr-4">
+              <Button onClick={this.handleAdd} customClasses="btn-small mr-4">
                 <i className="material-icons center">add</i>
               </Button>
-              <Button type="submit">Save</Button>
+              <Button type="submit" customClasses="btn-small">Save</Button>
             </div>
           </div>
           {labelDiv}

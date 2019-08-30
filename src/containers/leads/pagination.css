@@ -8,7 +8,7 @@
   line-height: 24px;
 }
 .theme--pagination li.active {
-  background-color: #6b4994;
+  background-color: #6b4994 !important;
 }
 .theme--pagination li a {
   font-size: 12px;

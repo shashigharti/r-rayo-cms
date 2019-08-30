@@ -154,7 +154,7 @@ class Templates extends Component {
             <td>{data.status}</td>
             <td>
               <Button
-                customClasses="modal-trigger"
+                customClasses="modal-trigger btn-small"
                 onClick={e => {
                   this.handleEdit(e);
                 }}
@@ -164,7 +164,7 @@ class Templates extends Component {
                 <i className="material-icons center">edit</i>
               </Button>
               <Button
-                customClasses="red darken-3 modal-trigger"
+                customClasses="red darken-3 modal-trigger btn-small"
                 href="#deleteModal"
                 onClick={() => {
                   this.setState({
@@ -318,38 +318,6 @@ class Templates extends Component {
                 </div>
 
                 <div className="row">
-                  <div className="input-field col s6">
-                    <input
-                      type="text"
-                      name="starts_at"
-                      id="starts_at"
-                      className="datepicker"
-                      value={editTemplate.starts_at}
-                      onChange={this.handleTemplateChange}
-                      required
-                    />
-                    <label htmlFor="startDate" className="center-align">
-                      Start Date
-                    </label>
-                  </div>
-
-                  <div className="input-field col s6">
-                    <input
-                      type="text"
-                      id="ends_at"
-                      name="end_at"
-                      className="datepicker"
-                      value={editTemplate.ends_at}
-                      onChange={this.handleTemplateChange}
-                      required
-                    />
-                    <label htmlFor="endDate" className="center-align">
-                      End Date
-                    </label>
-                  </div>
-                </div>
-
-                <div className="row">
                   <div className="input-field col s12">
                     <select
                       name="frequency"
@@ -370,16 +338,47 @@ class Templates extends Component {
                   </div>
                 </div>
                 <div className="row">
-                  <div className="col s12">
+                  <div className="input-field col s6">
+                    <input
+                        type="text"
+                        name="starts_at"
+                        id="starts_at"
+                        className="datepicker"
+                        value={editTemplate.starts_at}
+                        onChange={this.handleTemplateChange}
+                        required
+                    />
+                    <label htmlFor="startDate" className="center-align">
+                      Start Date
+                    </label>
+                  </div>
+
+                  <div className="input-field col s6">
+                    <input
+                        type="text"
+                        id="ends_at"
+                        name="end_at"
+                        className="datepicker"
+                        value={editTemplate.ends_at}
+                        onChange={this.handleTemplateChange}
+                        required
+                    />
+                    <label htmlFor="endDate" className="center-align">
+                      End Date
+                    </label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
                     <div className="switch">
                       <label>
                         Disabled
                         <input
-                          type="checkbox"
-                          name="status"
-                          value={editTemplate.status}
-                          checked={editTemplate.status == '1'}
-                          onChange={this.handleTemplateChange}
+                            type="checkbox"
+                            name="status"
+                            value={editTemplate.status}
+                            checked={editTemplate.status == '1'}
+                            onChange={this.handleTemplateChange}
                         />
                         <span className="lever" />
                         Enabled

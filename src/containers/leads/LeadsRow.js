@@ -1,13 +1,52 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 class LeadsRow extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: 1
+    };
+
+    this.handleStatusChange = this.handleStatusChange.bind(this);
   }
 
+  componentDidMount() {
+    M.AutoInit();
+    const { status } = this.props.lead;
+    this.setState({
+      status: status ? status.id : 1
+    });
+
+    M.updateTextFields();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    M.AutoInit();
+    M.updateTextFields();
+  }
+
+  // Handle status change of lead
+  handleStatusChange(e) {
+    const id = e.target.value;
+    axios.put(`/api/lead-status/update/${this.props.lead.id}`, {status_id: id}).then(response => {
+      this.setState({
+        status: id
+      });
+
+      M.toast({html: response.data.message})
+    }).catch(e => {
+      console.log(e);
+    })
+
+  }
+
+
   render() {
-    const { lead } = this.props;
-    const { agent, metadata, status } = lead;
+    const { status } = this.state;
+    const { lead, statuses } = this.props;
+    const { agent, metadata } = lead;
     return (
       <tr>
         <td>
@@ -42,8 +81,10 @@ class LeadsRow extends Component {
           <div>
             <a href="#">{agent && agent.first_name + ' ' + agent.last_name}</a>
           </div>
-          <div className="status-dlg">
-            <a href="#">{status ? status.status : 'Untouched'}</a>
+          <div className="input-field theme--select">
+            <select className="browser-default" name="status" onChange={this.handleStatusChange} value={status}>
+              {statuses}
+            </select>
           </div>
         </td>
         <td>
@@ -51,7 +92,7 @@ class LeadsRow extends Component {
             <span>20 days ago</span>
           </small>
           <br />
-          <small>19 Total</small>
+          <small>{metadata ? metadata.login_count + ' times' : 'N/A'}</small>
           <br />
         </td>
         <td>
@@ -70,7 +111,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Click for Properties Viewed">
                         <i aria-hidden="true" className="fa fa-eye fa-fw" />
                         <small>
-                          <sub>3</sub>
+                          <sub>{metadata ? metadata.views_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -82,7 +123,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Favorite Properties">
                         <i className="fas fa-heart" />
                         <small>
-                          <sub>0</sub>
+                          <sub>{metadata ? metadata.favourites_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -96,7 +137,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Neighborhood Camps">
                         <i aria-hidden="true" className="fa fa-home" />
                         <small>
-                          <sub> 0</sub>
+                          <sub>0</sub>
                         </small>
                       </a>
                     </div>
@@ -108,7 +149,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Market Reports">
                         <small>MR</small>
                         <small>
-                          <sub> 0</sub>
+                          <sub>0</sub>
                         </small>
                       </a>
                     </div>
@@ -122,7 +163,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Listings / Alerts" className="position-relative">
                         <i aria-hidden="true" className="fa fa-bullhorn" />
                         <small>
-                          <sub>1</sub>
+                          <sub>{metadata ? metadata.search_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -134,7 +175,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Distance / Drivetime">
                         <i aria-hidden="true" className="fa fa-car fa-fw" />
                         <small>
-                          <sub> 0</sub>
+                          <sub>{metadata ? metadata.distance_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -154,7 +195,7 @@ class LeadsRow extends Component {
                       <a title="Click to see communications">
                         <i aria-hidden="true" className="fa fa-envelope fa-fw" />
                         <small>
-                          <sub>1</sub>
+                          <sub>{metadata ? metadata.emails_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -166,7 +207,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Click to see notes">
                         <i className="fas fa-sticky-note" />
                         <small>
-                          <sub>0</sub>
+                          <sub>{metadata ? metadata.notes_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -180,7 +221,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Click to see calls detail">
                         <i aria-hidden="true" className="fa fa-phone fa-fw" />
                         <small>
-                          <sub>0</sub>
+                          <sub>{metadata ? metadata.calls_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -192,7 +233,7 @@ class LeadsRow extends Component {
                       <a title="Click to see replies">
                         <i className="fas fa-reply" />
                         <small>
-                          <sub>0</sub>
+                          <sub>{metadata ? metadata.email_replies_count : 0}</sub>
                         </small>
                       </a>
                     </div>
@@ -206,7 +247,7 @@ class LeadsRow extends Component {
                       <a href="#" title="Click to rate lead.">
                         <i className="fas fa-star" />
                         <small>
-                          <sub>0</sub>
+                          <sub>{metadata ? metadata.distance_count : 0}</sub>
                         </small>
                       </a>
                     </div>

@@ -24,7 +24,7 @@ import Header from './containers/generic/Header';
 
 import M from 'materialize-css';
 
-import '@fortawesome/fontawesome-free/js/all.min';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { PrivateRoute } from './components';
 

@@ -10,6 +10,7 @@ class Leads extends Component {
     super(props);
     this.state = {
       leads: [],
+      status: [],
       pagination: {
         links: {},
         meta: {},
@@ -21,6 +22,13 @@ class Leads extends Component {
 
   componentDidMount() {
     this.getLeads(null);
+
+    // Get status
+    axios.get('/api/lead-status/all').then(response => {
+      this.setState({
+        status: response.data.data
+      });
+    })
   }
 
   getLeads(link) {
@@ -42,12 +50,17 @@ class Leads extends Component {
   }
 
   render() {
-    const { leads, loading } = this.state;
+    const { leads, loading, status } = this.state;
     const { links, meta } = this.state.pagination;
+    const statusOptions = status.map(s => {
+      return (
+          <option key={s.id} value={s.id}>{s.status}</option>
+      )
+    });
     const leadsRow =
-      leads.length > 0 &&
+      leads.length > 0 && status.length > 0 &&
       leads.map(lead => {
-        return <LeadsRow key={lead.id} lead={lead} />;
+        return <LeadsRow key={lead.id} statuses={statusOptions} lead={lead} />;
       });
     return (
       <>

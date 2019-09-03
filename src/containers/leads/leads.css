@@ -83,3 +83,9 @@ span.badge-secondary {
 .filter--bar {
   margin-top: 20px;
 }
+i.fa, i.fas {
+  margin-right: 3px;
+}
+.info-unit {
+  margin-right: 2px;
+}

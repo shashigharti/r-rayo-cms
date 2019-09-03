@@ -31,11 +31,11 @@ class Header extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    const { authentication, history } = this.props;
-    if (!authentication.loggedIn) {
-      console.log('Logging out');
-      history.push('/login');
-    }
+    // const { authentication, history } = this.props;
+    // if (!authentication.loggedIn) {
+    //   console.log('Logging out');
+    //   history.push('/login');
+    // }
     // Init materialize on update
     M.AutoInit();
   }

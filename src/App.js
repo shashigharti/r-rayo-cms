@@ -39,9 +39,11 @@ class App extends React.Component {
   }
 
   render() {
+    const { authentication } = this.props;
+    const loggedIn = authentication.loggedIn;
     return (
       <Router>
-        <Header />
+        {loggedIn && <Header />}
         <PrivateRoute exact path="/" component={HomePage} />
         <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
         <PrivateRoute exact path="/templates" component={Templates} />
@@ -74,9 +76,10 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { alert } = state;
+  const { alert, authentication } = state;
   return {
     alert,
+    authentication,
   };
 }
 

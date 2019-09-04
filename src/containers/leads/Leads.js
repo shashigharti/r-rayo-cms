@@ -11,6 +11,7 @@ class Leads extends Component {
     this.state = {
       leads: [],
       status: [],
+      agents: [],
       pagination: {
         links: {},
         meta: {},
@@ -18,25 +19,52 @@ class Leads extends Component {
       loading: true,
     };
     this.getLeads = this.getLeads.bind(this);
+    this.getLeadsByAgent = this.getLeadsByAgent.bind(this);
+    this.fetchRequest = this.fetchRequest.bind(this);
   }
 
   componentDidMount() {
-    this.getLeads(null);
+    this.getLeads(null, null);
+
+    // Get Agents
+    axios.get('/api/agents/all').then(response => {
+      this.setState({
+        agents: response.data.data,
+      });
+    });
 
     // Get status
     axios.get('/api/lead-status/all').then(response => {
       this.setState({
-        status: response.data.data
+        status: response.data.data,
       });
-    })
+    });
   }
 
-  getLeads(link) {
+  getLeadsByAgent(e) {
+    let agentId = e.target.value;
+    let url = `/api/leads/agent/${agentId}`;
+    this.fetchRequest(url);
+  }
+
+  getLeads(link, type) {
     this.setState({
       loading: true,
     });
 
-    let url = link || '/api/leads/all';
+    let url = '';
+
+    if (link) {
+      url = link;
+    } else if (type) {
+      url = `/api/leads/type/${type}`;
+    } else {
+      url = `/api/leads/type/active`;
+    }
+    this.fetchRequest(url);
+  }
+
+  fetchRequest(url) {
     axios.get(url).then(response => {
       this.setState({
         leads: response.data.data,
@@ -50,15 +78,27 @@ class Leads extends Component {
   }
 
   render() {
-    const { leads, loading, status } = this.state;
+    const { leads, agents, loading, status } = this.state;
     const { links, meta } = this.state.pagination;
     const statusOptions = status.map(s => {
       return (
-          <option key={s.id} value={s.id}>{s.status}</option>
-      )
+        <option key={s.id} value={s.id}>
+          {s.status}
+        </option>
+      );
     });
+    const agentsOptions =
+      agents.length > 0 &&
+      agents.map(s => {
+        return (
+          <option key={s.id} value={s.id}>
+            {s.first_name + ' ' + s.last_name}
+          </option>
+        );
+      });
     const leadsRow =
-      leads.length > 0 && status.length > 0 &&
+      leads.length > 0 &&
+      status.length > 0 &&
       leads.map(lead => {
         return <LeadsRow key={lead.id} statuses={statusOptions} lead={lead} />;
       });
@@ -73,34 +113,72 @@ class Leads extends Component {
                     <div className="col left">
                       <ul className="tabs theme__tabs">
                         <li className="tab">
-                          <a className="active" href="#">
+                          <a
+                            className="active"
+                            onClick={e => {
+                              this.getLeads(null, 'active');
+                            }}
+                            href="#"
+                          >
                             Active
                           </a>
                         </li>
                         <li className="tab">
-                          <a href="#">New</a>
+                          <a
+                            href="#"
+                            onClick={e => {
+                              this.getLeads(null, 'new');
+                            }}
+                          >
+                            New
+                          </a>
                         </li>
                         <li className="tab">
-                          <a href="#">Unassigned</a>
+                          <a
+                            href="#"
+                            onClick={e => {
+                              this.getLeads(null, 'unassigned');
+                            }}
+                          >
+                            Unassigned
+                          </a>
                         </li>
                         <li className="tab">
-                          <a href="#">Archived</a>
+                          <a
+                            href="#"
+                            onClick={e => {
+                              this.getLeads(null, 'archived');
+                            }}
+                          >
+                            Archived
+                          </a>
                         </li>
                         <li className="tab">
-                          <a href="#">Discarded</a>
+                          <a
+                            href="#"
+                            onClick={e => {
+                              this.getLeads(null, 'discarded');
+                            }}
+                          >
+                            Discarded
+                          </a>
                         </li>
                         <li className="tab">
-                          <a href="#">Unregistered</a>
+                          <a
+                            href="#"
+                            onClick={e => {
+                              this.getLeads(null, 'unregistered');
+                            }}
+                          >
+                            Unregistered
+                          </a>
                         </li>
                       </ul>
                     </div>
                     <div className="input-field theme--select col s2">
-                      <select>
-                        <option value="" disabled>
-                          All Agents
-                        </option>
-                        <option value="1">John C</option>
-                        <option value="2">Sam Mazor</option>
+                      <select onChange={this.getLeadsByAgent}>
+                        <option value="0">All Agents</option>
+                        {agentsOptions}
                       </select>
                     </div>
                     <div className="col s12 btn--bar">

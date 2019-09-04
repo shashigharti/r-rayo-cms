@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 class LeadsRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: 1
+      status: 1,
     };
 
     this.handleStatusChange = this.handleStatusChange.bind(this);
@@ -16,7 +16,7 @@ class LeadsRow extends Component {
     M.AutoInit();
     const { status } = this.props.lead;
     this.setState({
-      status: status ? status.id : 1
+      status: status ? status.id : 1,
     });
 
     M.updateTextFields();
@@ -30,18 +30,19 @@ class LeadsRow extends Component {
   // Handle status change of lead
   handleStatusChange(e) {
     const id = e.target.value;
-    axios.put(`/api/lead-status/update/${this.props.lead.id}`, {status_id: id}).then(response => {
-      this.setState({
-        status: id
+    axios
+      .put(`/api/lead-status/update/${this.props.lead.id}`, { status_id: id })
+      .then(response => {
+        this.setState({
+          status: id,
+        });
+
+        M.toast({ html: response.data.message });
+      })
+      .catch(e => {
+        console.log(e);
       });
-
-      M.toast({html: response.data.message})
-    }).catch(e => {
-      console.log(e);
-    })
-
   }
-
 
   render() {
     const { status } = this.state;
@@ -56,9 +57,9 @@ class LeadsRow extends Component {
           <div className="row">
             <div className="col s12">
               <span className="name lead">
-                <a href="#" className="">
+                <Link to={`/leads/${lead.id}`} className="">
                   {lead.firstname + ' ' + lead.lastname}
-                </a>
+                </Link>
               </span>
               {lead.phone_number && (
                 <div>
@@ -82,7 +83,12 @@ class LeadsRow extends Component {
             <a href="#">{agent && agent.first_name + ' ' + agent.last_name}</a>
           </div>
           <div className="input-field theme--select">
-            <select className="browser-default" name="status" onChange={this.handleStatusChange} value={status}>
+            <select
+              className="browser-default"
+              name="status"
+              onChange={this.handleStatusChange}
+              value={status}
+            >
               {statuses}
             </select>
           </div>

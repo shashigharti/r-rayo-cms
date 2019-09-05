@@ -268,9 +268,9 @@ class AddTemplate extends Component {
                           </label>
                         </div>
                       </div>
-                      <div className="row">
+                      <div className="row mt-2">
                         <div className="col s12">
-                          <button type="submit" className="btn btn-primary">
+                          <button type="submit" className="btn waves-effect waves-light gradient-45deg-purple-deep-orange modal-trigger btn-small">
                             Save
                           </button>
                         </div>

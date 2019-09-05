@@ -3729,6 +3729,7 @@ export const GlobalStyle = createGlobalStyle`
             td
             {
                 border: none;
+                font-size:12px;
             }
             
             table
@@ -8937,7 +8938,7 @@ export const GlobalStyle = createGlobalStyle`
             }
             .switch label input[type=checkbox]:checked + .lever
             {
-                background-color: #6adbea;
+                background-color: #9b75cc;
             }
             .switch label input[type=checkbox]:checked + .lever:before,
             .switch label input[type=checkbox]:checked + .lever:after
@@ -8946,7 +8947,7 @@ export const GlobalStyle = createGlobalStyle`
             }
             .switch label input[type=checkbox]:checked + .lever:after
             {
-                background-color: #00bcd4;
+                background-color:#9b75cc;
             }
             
             .switch label .lever
@@ -11522,7 +11523,12 @@ export const GlobalStyle = createGlobalStyle`
                 max-width: 325px;
                 max-height: none;
             }
-            
+            .modal-content h4{
+                font-size:24px;
+            }
+            .modal-footer .btn{
+                margin:6px 6px !important;
+            }
             .datepicker-container.modal-content
             {
                 display: -webkit-box;
@@ -14004,7 +14010,7 @@ export const GlobalStyle = createGlobalStyle`
     .gradient-45deg-purple-deep-orange
     {
         background: #9b75cc !important; 
-        box-shadow: 3px 3px 8px 0 rgb(132, 65, 144);
+        box-shadow: 3px 3px 4px 0 rgb(132, 65, 144);
     }
     .gradient-45deg-purple-deep-orange:hover,.gradient-45deg-purple-deep-orange:focus
     {

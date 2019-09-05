@@ -16,10 +16,7 @@ class PageList extends Component {
             <div className="col s12">
               <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
-                  <div className="col s10 m6 l6 breadcrumbs-left">
-                    <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                      Pages
-                    </h5>
+                  <div className="col s10 m6 l6 breadcrumbs-left">                   
                     <ol className="breadcrumbs mb-0">
                       <li className="breadcrumb-item">
                         <Link to="/">Home</Link>

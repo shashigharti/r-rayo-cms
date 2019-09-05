@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './helpers';
 import { App } from './App';
-import Header from './containers/generic/Header';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './components/GlobalStyle';
 

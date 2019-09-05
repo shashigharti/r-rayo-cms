@@ -21,10 +21,11 @@ import { AddGroup } from './containers/groups/AddGroup';
 import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 import { Leads } from './containers/leads/Leads';
 import Header from './containers/generic/Header';
+import { LeadDetails } from './containers/leads/LeadDetails';
 
 import M from 'materialize-css';
 
-import '@fortawesome/fontawesome-free/js/all.min';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { PrivateRoute } from './components';
 
@@ -67,6 +68,7 @@ class App extends React.Component {
         <PrivateRoute exact path="/edit-group" component={AddGroup} />
 
         <PrivateRoute exact path="/leads" component={Leads} />
+        <PrivateRoute exact path="/leads/:id" component={LeadDetails} />
 
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />

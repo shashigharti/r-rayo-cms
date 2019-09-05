@@ -238,7 +238,7 @@ export const SideNav = styled.aside`
   .sidenav li a.active {
     color: #fff;
     background: #9b75cc;
-    box-shadow: 3px 3px 20px 0 rgb(132, 65, 144);
+    box-shadow: 1px 2px 3px 0 rgb(132,65,144);
   }
   .sidenav li a.active i {
     color: #fff;

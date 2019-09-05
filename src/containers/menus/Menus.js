@@ -60,10 +60,10 @@ class Menus extends Component {
                           <td>Main Menu</td>
                           <td className="text right-align">
                             <a className="waves-effect waves-light btn-small cyan">
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </a>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>
@@ -72,10 +72,10 @@ class Menus extends Component {
                           <td>Quick Links</td>
                           <td className="text right-align">
                             <a className="waves-effect waves-light btn-small cyan">
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </a>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>

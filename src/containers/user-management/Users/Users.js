@@ -70,10 +70,10 @@ class Users extends Component {
                               className="waves-effect waves-light btn-small cyan"
                               to="/add-user"
                             >
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>
@@ -87,10 +87,10 @@ class Users extends Component {
                               className="waves-effect waves-light btn-small cyan"
                               to="/add-user"
                             >
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>
@@ -104,10 +104,10 @@ class Users extends Component {
                               className="waves-effect waves-light btn-small cyan"
                               to="/add-user"
                             >
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>

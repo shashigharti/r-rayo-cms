@@ -154,7 +154,7 @@ class Templates extends Component {
             <td>{data.status}</td>
             <td>
               <Button
-                customClasses="modal-trigger btn-small"
+                customClasses="modal-trigger cyan btn-small"
                 onClick={e => {
                   this.handleEdit(e);
                 }}
@@ -164,7 +164,7 @@ class Templates extends Component {
                 <i className="material-icons center">edit</i>
               </Button>
               <Button
-                customClasses="red darken-3 modal-trigger btn-small"
+                customClasses="amber modal-trigger btn-small"
                 href="#deleteModal"
                 onClick={() => {
                   this.setState({

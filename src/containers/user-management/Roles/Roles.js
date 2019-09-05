@@ -66,10 +66,10 @@ class Roles extends Component {
                               className="waves-effect waves-light btn-small cyan"
                               to="/roles-add"
                             >
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>
@@ -81,10 +81,10 @@ class Roles extends Component {
                               className="waves-effect waves-light btn-small cyan"
                               to="/roles-add"
                             >
-                              <i className="material-icons left">edit</i>Edit
+                              <i className="material-icons left">edit</i>
                             </Link>
                             <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>Delete
+                              <i className="material-icons left">delete</i>
                             </a>
                           </td>
                         </tr>

@@ -115,7 +115,7 @@ class FrontPageSettings extends Component {
               >
                 <i className="material-icons center">add</i>
               </Button>
-              <Button type="submit" customClasses="btn-small">Save</Button>
+              <Button type="submit" customClasses="btn-small purple">Save</Button>
             </div>
           </div>
         </form>
@@ -133,7 +133,7 @@ class FrontPageSettings extends Component {
               >
                 <i className="material-icons center">add</i>
               </Button>
-              <Button type="submit" customClasses="btn-small">Save</Button>
+              <Button type="submit" customClasses="btn-small purple">Save</Button>
             </div>
           </div>
         </form>

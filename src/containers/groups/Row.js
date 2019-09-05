@@ -32,8 +32,7 @@ const Row = props => {
             },
           }}
         >
-          <i className="material-icons left">edit</i>
-          Edit
+          <i className="material-icons left">edit</i>          
         </Link>
         <a
           className="waves-effect waves-light btn-small amber modal-trigger"
@@ -42,8 +41,7 @@ const Row = props => {
           }}
           data-target="modal1"
         >
-          <i className="material-icons left">delete</i>
-          Delete
+          <i className="material-icons left">delete</i>          
         </a>
         <a
           className={`waves-effect waves-light btn-small ${color}`}
@@ -53,11 +51,11 @@ const Row = props => {
         >
           {props.status ? (
             <>
-              <i className="material-icons left">check</i> Enabled
+              <i className="material-icons left">check</i>
             </>
           ) : (
             <>
-              <i className="material-icons left">clear</i> Disabled
+              <i className="material-icons left">clear</i>
             </>
           )}
         </a>

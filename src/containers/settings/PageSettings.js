@@ -133,7 +133,7 @@ class PageSettings extends Component {
             </div>
           </div>
           <div className="row">
-            <Button type="submit">Save</Button>
+            <Button type="submit" className="purple btn">Save</Button>
           </div>
         </form>
       </>

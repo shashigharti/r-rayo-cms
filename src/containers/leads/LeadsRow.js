@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { timeAgo } from '../../components/TimeAgo';
 
 class LeadsRow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       status: 1,
+      timezone: process.env.TIMEZONE,
     };
 
     this.handleStatusChange = this.handleStatusChange.bind(this);
@@ -48,6 +50,8 @@ class LeadsRow extends Component {
     const { status } = this.state;
     const { lead, statuses } = this.props;
     const { agent, metadata } = lead;
+    const last_login = lead.last_login ? timeAgo(lead.last_login) : '-';
+    const age = lead.created_at ? timeAgo(lead.created_at) : '-';
     return (
       <tr>
         <td>
@@ -95,14 +99,14 @@ class LeadsRow extends Component {
         </td>
         <td>
           <small>
-            <span>20 days ago</span>
+            <span>{last_login}</span>
           </small>
           <br />
           <small>{metadata ? metadata.login_count + ' times' : 'N/A'}</small>
           <br />
         </td>
         <td>
-          <small>1 Months Ago</small>
+          <small>{age}</small>
           <br />
           <small>-</small>
           <br />

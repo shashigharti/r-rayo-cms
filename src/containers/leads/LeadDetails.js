@@ -3,6 +3,8 @@ import axios from 'axios';
 import './fixed-bar.css';
 import { DetailSidebar } from './DetailSidebar';
 import Overview from './Overview';
+import { Communication } from './Communication';
+import { Notes } from './Notes';
 
 class LeadDetails extends Component {
   constructor(props) {
@@ -12,22 +14,28 @@ class LeadDetails extends Component {
       groups: [],
       loading: true,
     };
+
+    this.getLeads = this.getLeads.bind(this);
   }
 
   componentDidMount() {
-    const { params } = this.props.match;
     // Get Lead details
-    axios.get(`/api/lead/${params.id}`).then(response => {
-      this.setState({
-        loading: false,
-        lead: response.data.data,
-      });
-    });
+    this.getLeads();
 
     // Get groups
     axios.get('/api/groups/all').then(response => {
       this.setState({
         groups: response.data.data,
+      });
+    });
+  }
+
+  getLeads() {
+    const { params } = this.props.match;
+    axios.get(`/api/lead/${params.id}`).then(response => {
+      this.setState({
+        loading: false,
+        lead: response.data.data,
       });
     });
   }
@@ -62,7 +70,7 @@ class LeadDetails extends Component {
                         <a href="#communication">Communication</a>
                       </li>
                       <li className="tab">
-                        <a href="#">Notes</a>
+                        <a href="#notes">Notes</a>
                       </li>
                       <li className="tab">
                         <a href="#">Views/Favs</a>
@@ -94,7 +102,12 @@ class LeadDetails extends Component {
                     />
                   )}
                 </div>
-                <div id="communication" className="col s9"></div>
+                <div id="communication" className="col s9">
+                  {Object.keys(lead).length > 0 && <Communication emails={lead.emails} />}
+                </div>
+                <div id="notes" className="col s9">
+                  {Object.keys(lead).length > 0 && <Notes leadId={lead.id} notes={lead.notes} getLead={this.getLeads} />}
+                </div>
               </div>
             </div>
           </div>

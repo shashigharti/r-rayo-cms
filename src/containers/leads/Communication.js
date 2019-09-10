@@ -4,21 +4,18 @@ class Communication extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {
-      M.AutoInit();
-  }
 
-    render() {
+  render() {
     const { emails } = this.props;
     const emailRows = emails.map(email => {
       return (
         <li key={email.id}>
           <div className="collapsible-header">
-            <i className="material-icons">email</i>
+            <i className="material-icons">mail_outline</i>
             {email.subject}
           </div>
           <div className="collapsible-body">
-              <span className="content" dangerouslySetInnerHTML={{ __html: email.email }} />
+            <span className="content" dangerouslySetInnerHTML={{ __html: email.email }} />
           </div>
         </li>
       );
@@ -32,9 +29,11 @@ class Communication extends Component {
               <h5>Sent Emails</h5>
             </div>
             <div className="details">
-                <ul className="collapsible">
-                    {emailRows}
-                </ul>
+              {emailRows.length > 0 ? (
+                <ul className="collapsible">{emailRows}</ul>
+              ) : (
+                <p className="col s12">No communications available.</p>
+              )}
             </div>
           </div>
         </div>

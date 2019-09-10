@@ -5,6 +5,7 @@ import { DetailSidebar } from './DetailSidebar';
 import Overview from './Overview';
 import { Communication } from './Communication';
 import { Notes } from './Notes';
+import { Searches } from './Searches';
 
 class LeadDetails extends Component {
   constructor(props) {
@@ -30,6 +31,10 @@ class LeadDetails extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    M.AutoInit();
+  }
+
   getLeads() {
     const { params } = this.props.match;
     axios.get(`/api/lead/${params.id}`).then(response => {
@@ -42,15 +47,6 @@ class LeadDetails extends Component {
 
   render() {
     const { lead, groups } = this.state;
-    const groupOptions =
-      groups &&
-      groups.map(group => {
-        return (
-          <option key={group.id} value={group.id}>
-            group.name
-          </option>
-        );
-      });
     return (
       <div id="main">
         <div className="row">
@@ -72,27 +68,29 @@ class LeadDetails extends Component {
                       <li className="tab">
                         <a href="#notes">Notes</a>
                       </li>
+                      {/*<li className="tab">*/}
+                      {/*  <a href="#">Views/Favs</a>*/}
+                      {/*</li>*/}
                       <li className="tab">
-                        <a href="#">Views/Favs</a>
+                        <a href="#searches">Searches</a>
                       </li>
-                      <li className="tab">
-                        <a href="#">Searches</a>
-                      </li>
-                      <li className="tab">
-                        <a href="#">Bookmarks</a>
-                      </li>
-                      <li className="tab">
-                        <a href="#">Reports</a>
-                      </li>
-                      <li className="tab">
-                        <a href="#">Alerts</a>
-                      </li>
+                      {/*<li className="tab">*/}
+                      {/*  <a href="#">Bookmarks</a>*/}
+                      {/*</li>*/}
+                      {/*<li className="tab">*/}
+                      {/*  <a href="#">Reports</a>*/}
+                      {/*</li>*/}
+                      {/*<li className="tab">*/}
+                      {/*  <a href="#">Alerts</a>*/}
+                      {/*</li>*/}
                     </ul>
                   </div>
                 </div>
               </div>
               <div className="row mt-5">
-                <DetailSidebar lead={lead} groupOptions={groupOptions} />
+                {Object.keys(lead).length > 0 && (
+                  <DetailSidebar lead={lead} groups={groups} getLead={this.getLeads} />
+                )}
                 <div id="overview" className="col s9">
                   {Object.keys(lead).length > 0 && (
                     <Overview
@@ -106,7 +104,19 @@ class LeadDetails extends Component {
                   {Object.keys(lead).length > 0 && <Communication emails={lead.emails} />}
                 </div>
                 <div id="notes" className="col s9">
-                  {Object.keys(lead).length > 0 && <Notes leadId={lead.id} notes={lead.notes} getLead={this.getLeads} />}
+                  {Object.keys(lead).length > 0 && (
+                    <Notes leadId={lead.id} notes={lead.notes} getLead={this.getLeads} />
+                  )}
+                </div>
+                <div id="searches" className="col s9">
+                  {Object.keys(lead).length > 0 && (
+                    <Searches
+                      leadId={lead.id}
+                      leadName={lead.firstname + ' ' + lead.lastname}
+                      searches={lead.searches}
+                      getLead={this.getLeads}
+                    />
+                  )}
                 </div>
               </div>
             </div>

@@ -11,15 +11,13 @@ class Notes extends Component {
         lead_id: this.props.leadId,
         note_title: '',
         note: '',
+        mode: null,
       },
     };
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {
-    M.AutoInit();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -36,12 +34,23 @@ class Notes extends Component {
   }
 
   handleSubmit(e) {
-      e.preventDefault();
-      const { noteData } = this.state;
-      axios.put('/api/lead-note/update', noteData).then(response => {
-          M.toast({html: response.data.message});
-          this.props.getLead();
-      });
+    e.preventDefault();
+    const { noteData } = this.state;
+    let user = JSON.parse(localStorage.getItem('user'));
+    let config = {
+      headers: { Authorization: 'bearer ' + user.token },
+    };
+    let url = noteData.mode === 'add' ? '/api/lead-note/store' : '/api/lead-note/update';
+    let method = noteData.mode === 'add' ? 'post' : 'put';
+    axios.defaults.headers.common = { Authorization: `Bearer ${user.token}` };
+    axios({
+      method,
+      url,
+      data: noteData,
+    }).then(response => {
+      M.toast({ html: response.data.message });
+      this.props.getLead();
+    });
   }
 
   handleChange(e) {
@@ -75,6 +84,7 @@ class Notes extends Component {
                       note_id: note.id,
                       note_title: note.title,
                       note: note.note,
+                      mode: 'edit',
                     },
                   }));
                 }}
@@ -106,14 +116,30 @@ class Notes extends Component {
                 <h5>Notes</h5>
               </div>
               <div className="col s6 mt-2">
-                <button className="btn-floating btn-large waves-effect waves-light right">
+                <a
+                  href="#editModal"
+                  onClick={() => {
+                    this.setState(prevState => ({
+                      noteData: {
+                        ...prevState.noteData,
+                        note_id: null,
+                        note_title: '',
+                        note: '',
+                        mode: 'add',
+                      },
+                    }));
+                  }}
+                  className="btn-floating btn-sm waves-effect waves-light right modal-trigger"
+                >
                   <i className="material-icons">add</i>
-                </button>
+                </a>
               </div>
             </div>
 
             <div className="details">
-              <div className="row">{noteRows}</div>
+              <div className="row">
+                {noteRows.length > 0 ? noteRows : <p className="col s12">No notes available.</p>}
+              </div>
             </div>
           </div>
         </div>
@@ -121,7 +147,7 @@ class Notes extends Component {
         {/*  Edit Modal  */}
         <div id="editModal" className="modal">
           <div className="modal-content">
-            <h4>Edit Note</h4>
+            <h4>{noteData.mode === 'add' ? 'New Note' : 'Edit Note'}</h4>
             <form className="mt-4" onSubmit={this.handleSubmit}>
               <div className="input-field">
                 <i className="material-icons prefix">title</i>

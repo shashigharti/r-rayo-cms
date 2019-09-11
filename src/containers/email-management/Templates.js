@@ -38,7 +38,6 @@ class Templates extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEdit = this.handleEdit.bind(this);
     this.handleTemplateChange = this.handleTemplateChange.bind(this);
     this.getTemplates = this.getTemplates.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -46,13 +45,15 @@ class Templates extends Component {
 
   componentDidMount() {
     M.AutoInit();
+    M.updateTextFields();
 
     let modals = document.querySelectorAll('.modal');
-    M.Modal.init(modals, { dismissible: true });
+    M.Modal.init(modals);
     this.getTemplates();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    M.AutoInit();
     M.updateTextFields();
     // Init datepicker
     let pickers = document.querySelectorAll('.datepicker');
@@ -91,12 +92,6 @@ class Templates extends Component {
       .catch(e => {
         M.toast({ html: 'Failed. Try again.' });
       });
-  }
-
-  handleEdit(e) {
-    this.setState({
-      editTemplate: JSON.parse(e.target.dataset.json),
-    });
   }
 
   handleTemplateChange(event) {
@@ -154,22 +149,34 @@ class Templates extends Component {
             <td>{data.status}</td>
             <td>
               <Button
-                customClasses="modal-trigger cyan btn-small"
-                onClick={e => {
-                  this.handleEdit(e);
+                customClasses="modal-trigger btn-small"
+                onClick={() => {
+                  this.setState(
+                    {
+                      editTemplate: data,
+                    },
+                    () => {
+                      let inst = M.Modal.getInstance(document.getElementById('modal1'));
+                      inst.open();
+                    },
+                  );
                 }}
-                href="#modal1"
-                data-json={JSON.stringify(data)}
               >
                 <i className="material-icons center">edit</i>
               </Button>
               <Button
-                customClasses="amber modal-trigger btn-small"
+                customClasses="red darken-3 modal-trigger btn-small"
                 href="#deleteModal"
                 onClick={() => {
-                  this.setState({
-                    deleteId: data.id,
-                  });
+                  this.setState(
+                    {
+                      deleteId: data.id,
+                    },
+                    () => {
+                      let instance = M.Modal.getInstance(document.getElementById('deleteModal'));
+                      instance.open();
+                    },
+                  );
                 }}
               >
                 <i className="material-icons center">delete</i>
@@ -340,13 +347,13 @@ class Templates extends Component {
                 <div className="row">
                   <div className="input-field col s6">
                     <input
-                        type="text"
-                        name="starts_at"
-                        id="starts_at"
-                        className="datepicker"
-                        value={editTemplate.starts_at}
-                        onChange={this.handleTemplateChange}
-                        required
+                      type="text"
+                      name="starts_at"
+                      id="starts_at"
+                      className="datepicker"
+                      value={editTemplate.starts_at}
+                      onChange={this.handleTemplateChange}
+                      required
                     />
                     <label htmlFor="startDate" className="center-align">
                       Start Date
@@ -355,13 +362,13 @@ class Templates extends Component {
 
                   <div className="input-field col s6">
                     <input
-                        type="text"
-                        id="ends_at"
-                        name="end_at"
-                        className="datepicker"
-                        value={editTemplate.ends_at}
-                        onChange={this.handleTemplateChange}
-                        required
+                      type="text"
+                      id="ends_at"
+                      name="end_at"
+                      className="datepicker"
+                      value={editTemplate.ends_at}
+                      onChange={this.handleTemplateChange}
+                      required
                     />
                     <label htmlFor="endDate" className="center-align">
                       End Date
@@ -374,11 +381,11 @@ class Templates extends Component {
                       <label>
                         Disabled
                         <input
-                            type="checkbox"
-                            name="status"
-                            value={editTemplate.status}
-                            checked={editTemplate.status == '1'}
-                            onChange={this.handleTemplateChange}
+                          type="checkbox"
+                          name="status"
+                          value={editTemplate.status}
+                          checked={editTemplate.status == '1'}
+                          onChange={this.handleTemplateChange}
                         />
                         <span className="lever" />
                         Enabled

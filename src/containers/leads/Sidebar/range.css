@@ -1,0 +1,23 @@
+.noUi-horizontal .noUi-handle {
+  width: 20px;
+  height: 20px;
+  left: -17px;
+  top: -2px;
+}
+
+.noUi-handle {
+  border-radius: 25px;
+  background: #6b4994;
+  box-shadow: none;
+}
+
+.noUi-target {
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+}
+
+.noUi-handle::before,
+.noUi-handle::after {
+  background: none;
+}

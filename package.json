@@ -48,6 +48,9 @@
         "dexie": "^2.0.4",
         "extract-text-webpack-plugin": "^3.0.2",
         "moment": "^2.24.0",
+        "moment-timezone": "^0.5.26",
+        "nouislider": "^14.0.2",
+        "numeral": "^2.0.6",
         "randomcolor": "^0.5.4",
         "react-select": "^3.0.4"
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Price } from './Sidebar/Price';
 
 class DetailSidebar extends Component {
   constructor(props) {
@@ -14,15 +15,34 @@ class DetailSidebar extends Component {
         email: '',
         mode: 'add',
       },
+      phoneData: {
+        phone: '',
+        mode: 'add',
+        type: '',
+      },
+      addressData: {
+        address: '',
+        mode: 'add',
+      },
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleGroupChange = this.handleGroupChange.bind(this);
-    this.editLead = this.editLead.bind(this);
+
+    this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handleEmailSubmit = this.handleEmailSubmit.bind(this);
     this.handleEmailDelete = this.handleEmailDelete.bind(this);
+
+    this.handlePhoneChange = this.handlePhoneChange.bind(this);
+    this.handlePhoneSubmit = this.handlePhoneSubmit.bind(this);
+    this.handlePhoneDelete = this.handlePhoneDelete.bind(this);
+
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
+    this.handleAddressDelete = this.handleAddressDelete.bind(this);
+
+    this.handleGroupChange = this.handleGroupChange.bind(this);
+    this.editLead = this.editLead.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
@@ -51,6 +71,17 @@ class DetailSidebar extends Component {
     }));
   }
 
+  handleAddressChange(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    this.setState(prevState => ({
+      addressData: {
+        ...prevState.addressData,
+        [name]: value,
+      },
+    }));
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.editLead(this.state.nameData);
@@ -71,8 +102,68 @@ class DetailSidebar extends Component {
     }
   }
 
+  handleAddressSubmit(e) {
+    e.preventDefault();
+    const { addressData } = this.state;
+    const { lead } = this.props;
+
+    if (lead.address && addressData.mode === 'add') {
+      M.toast({ html: 'Lead already has an address!' });
+    } else {
+      let formData = { address: addressData.address };
+      this.editLead(formData);
+    }
+  }
+
+  handlePhoneSubmit(e) {
+    e.preventDefault();
+    const { phoneData } = this.state;
+    const { lead } = this.props;
+    let key = null;
+
+    if (lead.phone_number_2 && lead.phone_number_3 && phoneData.mode === 'add') {
+      M.toast({ html: 'Lead already has two phone numbers. Please remove one to continue' });
+      return false;
+    } else if (!lead.phone_number_2 && phoneData.mode === 'add') {
+      key = 'phone_number_2';
+    } else if (!lead.phone_number_3 && phoneData.mode === 'add') {
+      key = 'phone_number_3';
+    } else {
+      key =
+        phoneData.type === 'primary'
+          ? 'phone_number'
+          : phoneData.type === 'secondary'
+          ? 'phone_number_2'
+          : 'phone_number_3';
+    }
+
+    let formData = { [key]: phoneData.phone };
+    this.editLead(formData);
+  }
+
+  handlePhoneChange(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    this.setState(prevState => ({
+      phoneData: {
+        ...prevState.phoneData,
+        [name]: value,
+      },
+    }));
+  }
+
+  handlePhoneDelete(key) {
+    let formData = { [key]: null };
+    this.editLead(formData);
+  }
+
   handleEmailDelete() {
     let formData = { additional_email: null };
+    this.editLead(formData);
+  }
+
+  handleAddressDelete() {
+    let formData = { address: null };
     this.editLead(formData);
   }
 
@@ -112,7 +203,7 @@ class DetailSidebar extends Component {
   render() {
     const { lead, groups } = this.props;
     const { metadata, categories } = lead;
-    const { nameData, emailData } = this.state;
+    const { nameData, emailData, phoneData, addressData } = this.state;
     const groupOptions =
       groups &&
       groups.map(group => {
@@ -282,63 +373,145 @@ class DetailSidebar extends Component {
               <div className="col s12">
                 <h5>
                   Phone
-                  <a href="#add" className="modal-trigger">
+                  <a
+                    href="#phone-edit"
+                    onClick={() => {
+                      this.setState({
+                        phoneData: {
+                          phone: '',
+                          mode: 'add',
+                        },
+                      });
+                    }}
+                    className="modal-trigger"
+                  >
                     <i className="material-icons right">add</i>
                   </a>
                 </h5>
                 <div>
                   {lead.phone_number}
-                  <a href="#" className="right">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a href="#email-edit" className="right modal-trigger">
+                  <a
+                    href="#phone-edit"
+                    onClick={() => {
+                      this.setState({
+                        phoneData: {
+                          phone: lead.phone_number,
+                          type: 'primary',
+                          mode: 'edit',
+                        },
+                      });
+                    }}
+                    className="right modal-trigger"
+                  >
                     <i className="material-icons">edit</i>
                   </a>
                 </div>
+                {lead.phone_number_2 && (
+                  <div>
+                    {lead.phone_number_2}
+                    <a
+                      onClick={() => {
+                        this.handlePhoneDelete('phone_number_2');
+                      }}
+                      href="#"
+                      className="right"
+                    >
+                      <i className="material-icons">delete</i>
+                    </a>
+                    <a
+                      href="#phone-edit"
+                      onClick={() => {
+                        this.setState({
+                          phoneData: {
+                            phone: lead.phone_number_2,
+                            type: 'secondary',
+                            mode: 'edit',
+                          },
+                        });
+                      }}
+                      className="right modal-trigger"
+                    >
+                      <i className="material-icons">edit</i>
+                    </a>
+                  </div>
+                )}
+                {lead.phone_number_3 && (
+                  <div>
+                    {lead.phone_number_3}
+                    <a
+                      onClick={() => {
+                        this.handlePhoneDelete('phone_number_3');
+                      }}
+                      href="#"
+                      className="right"
+                    >
+                      <i className="material-icons">delete</i>
+                    </a>
+                    <a
+                      href="#phone-edit"
+                      onClick={() => {
+                        this.setState({
+                          phoneData: {
+                            phone: lead.phone_number_3,
+                            type: 'additional',
+                            mode: 'edit',
+                          },
+                        });
+                      }}
+                      className="right modal-trigger"
+                    >
+                      <i className="material-icons">edit</i>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
             <div className="row mt-5">
               <div className="col s12">
                 <h5>
                   Address
-                  <a href="#add" className="modal-trigger">
+                  <a
+                    href="#address-edit"
+                    onClick={() => {
+                      this.setState({
+                        addressData: {
+                          mode: 'add',
+                          address: '',
+                        },
+                      });
+                    }}
+                    className="modal-trigger"
+                  >
                     <i className="material-icons right">add</i>
                   </a>
                 </h5>
-                <div>
-                  {lead.address}
-                  <a href="#" className="right">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a href="#email-edit" className="right modal-trigger">
-                    <i className="material-icons">edit</i>
-                  </a>
-                </div>
+                {lead.address ? (
+                  <div>
+                    {lead.address}
+                    <a href="#" onClick={this.handleAddressDelete} className="right">
+                      <i className="material-icons">delete</i>
+                    </a>
+                    <a
+                      href="#address-edit"
+                      onClick={() => {
+                        this.setState({
+                          addressData: {
+                            mode: 'edit',
+                            address: lead.address,
+                          },
+                        });
+                      }}
+                      className="right modal-trigger"
+                    >
+                      <i className="material-icons">edit</i>
+                    </a>
+                  </div>
+                ) : (
+                  'N/A'
+                )}
               </div>
             </div>
-            <div className="row mt-5">
-              <div className="col s12">
-                <h5>
-                  Price
-                  <a href="#add" className="modal-trigger">
-                    <i className="material-icons right">add</i>
-                  </a>
-                </h5>
-                <div>
-                  908764322
-                  <a href="#" className="right">
-                    <i className="material-icons">delete</i>
-                  </a>
-                  <a href="#email-edit" className="right modal-trigger">
-                    <i className="material-icons">edit</i>
-                  </a>
-                </div>
-                <div className="mt-7">
-                  <p>MEDIAN PRICE: {metadata.median_price || 'N/A'}</p>
-                  <p>AVERAGE PRICE: {metadata.average_price || 'N/A'}</p>
-                </div>
-              </div>
-            </div>
+            <Price metadata={metadata} />
           </div>
         </div>
 
@@ -363,6 +536,72 @@ class DetailSidebar extends Component {
                       required
                     />
                     <label>Email</label>
+                  </div>
+                  <div className="col s12">
+                    <button type="submit" className="btn purple">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/*  Phone Edit Modal  */}
+        <div id="phone-edit" className="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+              <span>{phoneData.mode === 'add' ? 'New Phone' : 'Edit Phone'}</span>
+              <a href="#!" className="modal-action modal-close right ">
+                <i className="material-icons">clear</i>
+              </a>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={this.handlePhoneSubmit}>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input
+                      type="number"
+                      name="phone"
+                      onChange={this.handlePhoneChange}
+                      value={phoneData.phone}
+                      required
+                    />
+                    <label>Phone Number</label>
+                  </div>
+                  <div className="col s12">
+                    <button type="submit" className="btn purple">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        {/* Address Edit Modal */}
+        <div id="address-edit" className="modal">
+          <div className="modal-content">
+            <div className="modal-header">
+              <span>{addressData.mode === 'add' ? 'New Address' : 'Edit Address'}</span>
+              <a href="#!" className="modal-action modal-close right ">
+                <i className="material-icons">clear</i>
+              </a>
+            </div>
+            <div className="modal-body">
+              <form onSubmit={this.handleAddressSubmit}>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input
+                      type="text"
+                      name="address"
+                      onChange={this.handleAddressChange}
+                      value={addressData.address}
+                      required
+                    />
+                    <label>Address</label>
                   </div>
                   <div className="col s12">
                     <button type="submit" className="btn purple">

@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 import { Button } from '../../components/Button';
 import axios from 'axios';
 
-class PageSettings extends Component {
+class PriceSettings extends Component {
   constructor(props) {
     super(props);
-    // Get pageSettings from parent as props
-    let pageSettings = props.values.values;
     this.state = {
-      pageSettings,
+      priceSettings: {
+        rp_from: 0,
+        rp_to: 0,
+        lp_from: 0,
+        lp_to: 0,
+        vn_luxury: 0,
+        v_price: 0,
+        v_number: 0,
+      },
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,18 +22,27 @@ class PageSettings extends Component {
   }
 
   componentDidMount() {
-    console.log('mounted');
-
     // Fix text overlap with labels on pre-filled inputs
     M.updateTextFields();
+
+    axios
+      .get('/api/settings/price_setting')
+      .then(response => {
+        this.setState({
+          priceSettings: response.data.data.values,
+        });
+      })
+      .catch(e => {
+        console.log('Unavailable');
+      });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let formData = this.state.pageSettings;
+    let formData = this.state.priceSettings;
 
     axios
-      .put('/api/settings/update/page_setting', formData)
+      .put('/api/settings/update/price_setting', formData)
       .then(response => {
         if (response.status === 200) {
           M.toast({ html: 'Successfully saved!' });
@@ -41,16 +56,17 @@ class PageSettings extends Component {
   handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-    this.setState(prevProps => ({
-      pageSettings: {
-        ...prevProps.pageSettings,
+    this.setState(prevState => ({
+      priceSettings: {
+        ...prevState.priceSettings,
         [name]: value,
       },
     }));
+    console.log(this.state);
   }
 
   render() {
-    const { pageSettings } = this.state;
+    const { priceSettings } = this.state;
     return (
       <>
         <form onSubmit={this.handleSubmit}>
@@ -61,7 +77,7 @@ class PageSettings extends Component {
                 name="rp_from"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.rp_from}
+                value={priceSettings.rp_from}
               />
               <label htmlFor="rp_from">Regular Price From</label>
             </div>
@@ -71,7 +87,7 @@ class PageSettings extends Component {
                 name="rp_to"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.rp_to}
+                value={priceSettings.rp_to}
               />
               <label htmlFor="rp_to">Regular Price To</label>
             </div>
@@ -83,7 +99,7 @@ class PageSettings extends Component {
                 name="lp_from"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.lp_from}
+                value={priceSettings.lp_from}
               />
               <label htmlFor="lp_from">Luxury Price From</label>
             </div>
@@ -93,7 +109,7 @@ class PageSettings extends Component {
                 name="lp_to"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.lp_to}
+                value={priceSettings.lp_to}
               />
               <label htmlFor="lp_to">Luxury Price To</label>
             </div>
@@ -105,7 +121,7 @@ class PageSettings extends Component {
                 name="vn_luxury"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.vn_luxury}
+                value={priceSettings.vn_luxury}
               />
               <label htmlFor="vn_luxury">View Number Luxury</label>
             </div>
@@ -115,7 +131,7 @@ class PageSettings extends Component {
                 name="v_price"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.v_price}
+                value={priceSettings.v_price}
               />
               <label htmlFor="v_price">View Price</label>
             </div>
@@ -127,13 +143,15 @@ class PageSettings extends Component {
                 name="v_number"
                 type="number"
                 onChange={this.handleChange}
-                value={pageSettings.v_number}
+                value={priceSettings.v_number}
               />
               <label htmlFor="v_number">View Number</label>
             </div>
           </div>
           <div className="row">
-            <Button type="submit" className="purple btn">Save</Button>
+            <Button type="submit" className="purple btn">
+              Save
+            </Button>
           </div>
         </form>
       </>
@@ -141,4 +159,4 @@ class PageSettings extends Component {
   }
 }
 
-export { PageSettings };
+export { PriceSettings };

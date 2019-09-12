@@ -45,6 +45,7 @@
         "webpack-dev-server": "^3.7.2"
     },
     "dependencies": {
+        "choices.js": "^7.0.0",
         "dexie": "^2.0.4",
         "extract-text-webpack-plugin": "^3.0.2",
         "moment": "^2.24.0",

@@ -5,7 +5,7 @@ const timeAgo = date => {
   let current_date = moment()
     .tz(process.env.TIMEZONE)
     .format('llll');
-  let now = moment(current_date);
+  let now = moment(current_date, 'llll');
 
   // Difference conditions
   if (now.diff(date, 'days') === 0) {

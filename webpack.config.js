@@ -68,6 +68,7 @@ module.exports = () => {
         filename: './index.html',
       }),
       new webpack.DefinePlugin(envKeys),
+      new webpack.optimize.ModuleConcatenationPlugin(),
     ],
     devServer: {
       historyApiFallback: true,

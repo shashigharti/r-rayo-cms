@@ -1,0 +1,15 @@
+.single-search-item img {
+  width: 100%;
+}
+.single-search-item h5 {
+  font-size: 14px;
+}
+.single-search-item {
+  font-size: 12px;
+  border-top: 1px solid #eee;
+  margin: 10px;
+}
+.modal-content .s3 select.browser-default {
+  font-size: 12px;
+  height: 20px;
+}

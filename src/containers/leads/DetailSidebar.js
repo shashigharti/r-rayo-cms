@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Price } from './Sidebar/Price';
+import { Search } from './Sidebar/Search';
 
 class DetailSidebar extends Component {
   constructor(props) {
@@ -292,7 +293,7 @@ class DetailSidebar extends Component {
             <a href="#" className="btn btn-small cyan">
               <i className="material-icons">email</i>Send Email
             </a>
-            <a href="#" className="btn btn-small cyan">
+            <a href="#search-modal" className="btn btn-small cyan modal-trigger">
               <i className="material-icons">search</i>Add Search
             </a>
           </div>
@@ -611,6 +612,19 @@ class DetailSidebar extends Component {
                 </div>
               </form>
             </div>
+          </div>
+        </div>
+
+        {/* Search Edit Modal */}
+        <div id="search-modal" className="modal">
+          <div className="modal-content">
+            <h4>Add Search</h4>
+            <Search lead={lead} />
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className="modal-close waves-effect waves-green btn-flat">
+              Agree
+            </a>
           </div>
         </div>
       </div>

@@ -1,0 +1,12 @@
+.choices__list--multiple .choices__item {
+  font-size: 10px;
+  background-color: #36244a;
+  border: 1px solid #fff;
+  color: #fff;
+  word-break: break-all;
+}
+
+.choices[data-type*='select-multiple'] .choices__button,
+.choices[data-type*='text'] .choices__button {
+  border-left: 1px solid #fff;
+}

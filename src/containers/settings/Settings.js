@@ -44,7 +44,7 @@ const Settings = () => {
                     <div id="test1" className="col s12">
                       General Settings
                     </div>
-                    <div id="priceDiv" className="col s12">
+                    <div id="priceDiv" className="col s12 scale-transition">
                       <PriceSettings />
                     </div>
                     <div id="frontPageDiv" className="col s12">

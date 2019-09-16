@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
-
+import axios from 'axios';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 import { Button } from '../../../components/Button';
+import M from 'materialize-css';
 
 const camerasImage = '../../../assets/images/cards/cameras.png';
 
@@ -26,7 +26,81 @@ const crumbs = [
 
 // eslint-disable-next-line react/prefer-stateless-function
 class PageEdit extends Component {
+  constructor(props) {
+    super(props);
+    let id = null;
+    if (props.match.params.hasOwnProperty('id')) {
+      id = props.match.params.id;
+    }
+    this.state = {
+      submitted: false,
+      id: id,
+      page: {
+        name: '',
+        slug: '',
+        content: '',
+        excerpt: '',
+        category_id: '',
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: '',
+      },
+      loading: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
+    const { id } = this.state;
+    if (id !== null) {
+      this.getPage(id);
+    }
+  }
+
+  getPage(id) {
+    const url = `/api/page/edit/${id}`;
+    axios.get(url).then(response => {
+      const data = response.data.data;
+      this.setState({
+        page: data,
+      });
+    });
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    const { page } = this.state;
+    this.setState({
+      page: {
+        ...page,
+        [name]: value,
+      },
+    });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({ submitted: true });
+    const { page, id } = this.state;
+    if (id !== null) {
+      this.putRequest(page);
+    } else {
+      this.postRequest(page);
+    }
+  }
+  putRequest(page) {
+    const url = `/api/page/update/${this.state.id}`;
+    axios.put(url, page).then(response => {
+      M.toast({ html: 'Successfully Edited' });
+    });
+  }
+  postRequest(page) {
+    const url = '/api/page/store';
+    axios.post(url, page).then(response => {
+      M.toast({ html: 'Successfully Added' });
+    });
+  }
   render() {
+    const { page } = this.state;
     return (
       <>
         <div id="main">
@@ -64,20 +138,44 @@ class PageEdit extends Component {
                   <div className="col s12">
                     <div className="panel card tab--content">
                       <div id="pages" className="col s12">
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                           <div className="row">
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="name"
+                                value={page.name}
+                                onChange={this.handleChange}
+                              />
                               <label>Page Name</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="slug"
+                                value={page.slug}
+                                onChange={this.handleChange}
+                              />
                               <label>Slug</label>
                             </div>
                           </div>
                           <div className="row">
+                            <div className="input-field col s12">
+                              <textarea
+                                name="content"
+                                value={page.content}
+                                onChange={this.handleChange}
+                              />
+                              <label>Content</label>
+                            </div>
+                          </div>
+                          <div className="row">
                             <div className="input-field col s6">
-                              <select defaultValue="">
+                              <select
+                                value={`$(page.category_id.toString())`}
+                                name="category_id"
+                                onChange={this.handleChange}
+                              >
                                 <option value="" disabled>
                                   Choose your option
                                 </option>
@@ -88,10 +186,16 @@ class PageEdit extends Component {
                               <label>Category</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Slug</label>
+                              <input
+                                type="text"
+                                value={page.excerpt}
+                                name="excerpt"
+                                onChange={this.handleChange}
+                              />
+                              <label>Excerpt</label>
                             </div>
                           </div>
+
                           <div className="row">
                             <div className="col s12">
                               <label>Thumbnail</label>
@@ -160,23 +264,40 @@ class PageEdit extends Component {
                           </div>
                           <div className="row">
                             <div className="input-field col s12">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_title"
+                                value={page.meta_title !== null ? page.meta_title : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Title</label>
                             </div>
                           </div>
                           <div className="row">
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_description"
+                                value={page.meta_description !== null ? page.meta_description : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Descriptions</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_keywords"
+                                value={page.meta_keywords !== null ? page.meta_keywords : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Keywords</label>
                             </div>
                           </div>
                           <div className="row">
                             <div className="col s12">
-                              <Button>Save</Button>
+                              <div className="input-field">
+                                <button className="btn btn-primary">Submit</button>
+                              </div>
                             </div>
                           </div>
                         </form>

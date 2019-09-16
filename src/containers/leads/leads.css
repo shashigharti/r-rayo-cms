@@ -89,3 +89,7 @@ i.fa, i.fas {
 .info-unit {
   margin-right: 2px;
 }
+.leads-table select{
+  height: 2rem;
+  padding: 0px;
+}

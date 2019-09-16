@@ -241,7 +241,7 @@ class DetailSidebar extends Component {
         );
       });
     return (
-      <div className="col s3">
+      <div className="col clearfix s3">
         <div className="panel card fixed--bar">
           <h3 className="title">
             {lead.firstname + ' ' + lead.lastname}

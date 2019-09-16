@@ -86,7 +86,7 @@ class LeadsRow extends Component {
           <div>
             <a href="#">{agent && agent.first_name + ' ' + agent.last_name}</a>
           </div>
-          <div className="input-field theme--select">
+          <div>
             <select
               className="browser-default"
               name="status"

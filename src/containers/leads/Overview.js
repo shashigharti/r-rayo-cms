@@ -28,7 +28,7 @@ class Overview extends Component {
     return (
       <>
         <div className="row">
-          <div className="panel card col s5 mr-2">
+          <div className="panel card col s12">
             <div className="col s12">
               <h5>Login</h5>
             </div>
@@ -62,7 +62,7 @@ class Overview extends Component {
               </table>
             </div>
           </div>
-          <div className="panel card col s5">
+          <div className="panel card col s12 mt-5">
             <div className="col s12">
               <h5>Activity</h5>
             </div>

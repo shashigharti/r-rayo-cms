@@ -54,7 +54,7 @@ class LeadDetails extends Component {
           <div className="col s12">
             <div className="container">
               <div className="row filter--bar fixed">
-                <div className="col s12">
+                <div className="">
                   <div className="col left">
                     <ul className="tabs theme__tabs">
                       <li className="tab">

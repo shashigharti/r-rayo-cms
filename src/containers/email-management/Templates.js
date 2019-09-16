@@ -165,7 +165,7 @@ class Templates extends Component {
                 <i className="material-icons center">edit</i>
               </Button>
               <Button
-                customClasses="red darken-3 modal-trigger btn-small"
+                customClasses="amber modal-trigger btn-small"
                 href="#deleteModal"
                 onClick={() => {
                   this.setState(

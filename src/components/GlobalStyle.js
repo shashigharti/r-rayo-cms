@@ -20,7 +20,14 @@ export const GlobalStyle = createGlobalStyle`
     {
         background-color: ${props => props.theme.bodyBgColor};
     }
-          
+    .clearfix {
+      overflow: auto;
+    }  
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
     
     /*--------------------------------------------------------------
     Materialize file contain extended material ui based on theme

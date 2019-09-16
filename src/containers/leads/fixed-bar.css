@@ -2,8 +2,9 @@
   position: fixed;
   padding: 10px;
   height: 100vh;
-  width: 20%;
+  width:18%;
   z-index: 9;
+  margin-top: 18px;
 }
 .fixed--bar .title {
   font-size: 20px;

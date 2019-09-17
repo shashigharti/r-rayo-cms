@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 import { Button } from '../../../components/Button';
+import { Media } from '../../../components/Media';
 import M from 'materialize-css';
 
 const camerasImage = '../../../assets/images/cards/cameras.png';
@@ -41,6 +42,7 @@ class PageEdit extends Component {
         content: '',
         excerpt: '',
         category_id: '',
+        thumbnail: '',
         meta_title: '',
         meta_keywords: '',
         meta_description: '',
@@ -49,6 +51,7 @@ class PageEdit extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.callback = this.callback.bind(this);
   }
   componentDidMount() {
     const { id } = this.state;
@@ -97,6 +100,15 @@ class PageEdit extends Component {
     const url = '/api/page/store';
     axios.post(url, page).then(response => {
       M.toast({ html: 'Successfully Added' });
+    });
+  }
+  callback(id) {
+    const { page } = this.state;
+    this.setState({
+      page: {
+        ...page,
+        thumbnail: id,
+      },
     });
   }
   render() {
@@ -172,7 +184,7 @@ class PageEdit extends Component {
                           <div className="row">
                             <div className="input-field col s6">
                               <select
-                                value={`$(page.category_id.toString())`}
+                                value={page.category_id}
                                 name="category_id"
                                 onChange={this.handleChange}
                               >
@@ -195,73 +207,7 @@ class PageEdit extends Component {
                               <label>Excerpt</label>
                             </div>
                           </div>
-
-                          <div className="row">
-                            <div className="col s12">
-                              <label>Thumbnail</label>
-                              <a
-                                className="waves-effect gradient-45deg-purple-deep-orange waves-light btn modal-trigger"
-                                href="#modal1"
-                              >
-                                Add Image
-                              </a>
-                              <div id="modal1" className="modal modal-fixed-footer">
-                                <div className="modal-content">
-                                  <h5>Media Manager</h5>
-                                  <div className="col s12">
-                                    <ul className="tabs">
-                                      <li className="tab">
-                                        <a className="active" href="#upload">
-                                          Pages
-                                        </a>
-                                      </li>
-                                      <li className="tab">
-                                        <a href="#images">Downloads</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div id="upload" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <input
-                                        type="file"
-                                        id="input-file-now"
-                                        className="dropify"
-                                        data-default-file=""
-                                      />
-                                    </div>
-                                  </div>
-                                  <div id="images" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-red btn-flat "
-                                  >
-                                    Cancel
-                                  </a>
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-green btn-flat "
-                                  >
-                                    Apply
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          <Media id={this.callback} />
                           <div className="row">
                             <div className="input-field col s12">
                               <input

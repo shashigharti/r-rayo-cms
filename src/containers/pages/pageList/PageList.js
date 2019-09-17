@@ -9,7 +9,7 @@ class PageList extends Component {
     super(props);
     this.state = {
       pages: {},
-      loading: true,
+      loading: false,
       pagination: {
         links: {},
         meta: {},
@@ -39,12 +39,12 @@ class PageList extends Component {
   fetchRequest(url) {
     axios.get(url).then(response => {
       this.setState({
+        loading: false,
         pages: response.data.data,
         pagination: {
           links: response.data.links,
           meta: response.data.meta,
         },
-        loading: false,
       });
     });
   }
@@ -77,6 +77,11 @@ class PageList extends Component {
           <div className="row">
             <div className="col s12">
               <div className="container-fluid">
+                {loading && (
+                  <div className="progress purple">
+                    <div className="indeterminate purple lighten-5" />
+                  </div>
+                )}
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <ol className="breadcrumbs mb-0">
@@ -108,11 +113,6 @@ class PageList extends Component {
                       <i className="material-icons">file_download</i>
                     </a>
                   </div>
-                  {loading && (
-                    <div className="progress purple">
-                      <div className="indeterminate purple lighten-5" />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
@@ -165,11 +165,6 @@ class PageList extends Component {
                     </li>
                   </ul>
                   <button className="btn btn-sm disabled">Total Pages: {meta.total} </button>
-                  {loading && (
-                    <div className="progress purple">
-                      <div className="indeterminate purple lighten-5" />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

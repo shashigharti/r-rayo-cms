@@ -14,10 +14,12 @@ class Search extends Component {
       columnThree: [],
       columnFour: [],
       formData: {
-        price_min: '',
-        price_max: '',
-        baths_min: '',
-        baths_max: '',
+        price_min: 'default',
+        price_max: 'default',
+        baths_min: 'default',
+        baths_max: 'default',
+        beds_min: 'default',
+        beds_max: 'default',
         type: [],
         status: [],
       },
@@ -176,7 +178,7 @@ class Search extends Component {
                 onChange={this.handleChange}
                 value={formData.search_name}
               />
-              <label>Search Name:</label>
+              <label>Search Name</label>
             </div>
           </div>
           <div className="col s6">

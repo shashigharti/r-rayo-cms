@@ -10,3 +10,21 @@
 .choices[data-type*='text'] .choices__button {
   border-left: 1px solid #fff;
 }
+
+.choices__inner {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 7.5px 7.5px 3.75px;
+  border: 1px solid #000;
+  border-radius: 2.5px;
+  font-size: 10px;
+  min-height: 44px;
+  overflow: scroll;
+}
+
+.choices__inner input[type='text'] {
+  font-size: 10px;
+  height: 24px;
+}

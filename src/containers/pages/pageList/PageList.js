@@ -15,12 +15,13 @@ class PageList extends Component {
         meta: {},
       },
     };
+
+    this.deletePage = this.deletePage.bind(this);
   }
 
   componentDidMount() {
     M.AutoInit();
     this.getPages(null, null);
-    this.deletePage = this.deletePage.bind(this);
   }
 
   getPages(link, type) {

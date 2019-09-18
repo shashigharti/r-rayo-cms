@@ -13,14 +13,6 @@ const Row = props => (
       >
         <i className="material-icons left">edit</i>
       </Link>
-      {/* <a
-        className="waves-effect waves-light btn-small cyan"
-        onClick={() => {
-          props.onEdit(props.id);
-        }}
-      >
-        <i className="material-icons left">edit</i>
-      </a> */}
       <a className="waves-effect waves-light btn-small amber">
         <i
           className="material-icons left"

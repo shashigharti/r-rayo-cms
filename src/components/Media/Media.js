@@ -6,21 +6,30 @@ import './media.css';
 class Media extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       uploading: false,
       file: null,
       medias: {},
       loaded: false,
       selected: null,
+      thumbnail: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.uploadFile = this.uploadFile.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleApply = this.handleApply.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.getThumbnail = this.getThumbnail.bind(this);
   }
   componentDidMount() {
+    const thumbnail = this.props.thumbnail;
+    if (thumbnail !== null && thumbnail !== '') {
+      this.getThumbnail();
+    }
     this.getImages();
   }
+
   getImages() {
     const url = '/api/images/all';
     axios.get(url).then(response => {
@@ -28,6 +37,12 @@ class Media extends Component {
         medias: response.data,
         loaded: true,
       });
+    });
+  }
+  getThumbnail(id) {
+    const url = '/api/media/' + this.props.thumbnail;
+    axios.get(url).then(res => {
+      this.setState({ thumbnail: res.data });
     });
   }
   handleChange(event) {
@@ -38,6 +53,12 @@ class Media extends Component {
     });
   }
   handleApply() {
+    this.props.id(this.state.selected);
+  }
+  onCancel() {
+    this.setState({
+      selected: null,
+    });
     this.props.id(this.state.selected);
   }
   uploadFile() {
@@ -64,10 +85,8 @@ class Media extends Component {
     });
   }
   render() {
-    const overlay = {
-      border: '1px solid blue',
-    };
-    const { medias, selected } = this.state;
+    const url = 'http://localhost:8000';
+    const { medias, selected, thumbnail } = this.state;
     const showMedia =
       medias.length > 0 &&
       medias.map(media => {
@@ -77,7 +96,7 @@ class Media extends Component {
               <img
                 data-id={media.id}
                 onClick={this.handleClick}
-                src={`http://localhost:8000/uploads/${media.id}/${media.file}`}
+                src={`${url}/uploads/${media.id}/${media.file}`}
               ></img>
             </div>
           </div>
@@ -100,11 +119,11 @@ class Media extends Component {
                 <ul className="tabs">
                   <li className="tab">
                     <a className="active" href="#upload">
-                      Pages
+                      Uploads
                     </a>
                   </li>
                   <li className="tab">
-                    <a href="#images">Downloads</a>
+                    <a href="#images">Images</a>
                   </li>
                 </ul>
               </div>
@@ -128,7 +147,11 @@ class Media extends Component {
               </div>
             </div>
             <div className="modal-footer">
-              <a href="#!" className="modal-action modal-close waves-effect waves-red btn-flat ">
+              <a
+                href="#!"
+                className="modal-action modal-close waves-effect waves-red btn-flat "
+                onClick={this.onCancel}
+              >
                 Cancel
               </a>
               <a
@@ -140,6 +163,9 @@ class Media extends Component {
               </a>
             </div>
           </div>
+        </div>
+        <div className="col s4">
+          {thumbnail && <img src={`${url}/uploads/${thumbnail.id}/${thumbnail.file}`}></img>}
         </div>
       </div>
     );

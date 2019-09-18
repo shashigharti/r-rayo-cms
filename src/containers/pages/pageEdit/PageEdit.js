@@ -30,34 +30,37 @@ class PageEdit extends Component {
   constructor(props) {
     super(props);
     let id = null;
-    if (props.match.params.hasOwnProperty('id')) {
-      id = props.match.params.id;
+    let status = null;
+    if (this.props.match.params.hasOwnProperty('id')) {
+      id = this.props.match.params.id;
+    } else {
+      status = true;
     }
     this.state = {
-      submitted: false,
-      id: id,
       page: {
         name: '',
-        slug: '',
-        content: '',
         excerpt: '',
         category_id: '',
         thumbnail: '',
+        slug: '',
+        content: '',
         meta_title: '',
         meta_keywords: '',
         meta_description: '',
       },
-      loading: false,
+      id: id,
+      status: status,
     };
+    if (id !== null) {
+      this.getPage(id);
+    }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.callback = this.callback.bind(this);
   }
   componentDidMount() {
-    const { id } = this.state;
-    if (id !== null) {
-      this.getPage(id);
-    }
+    M.AutoInit();
+    M.updateTextFields();
   }
 
   getPage(id) {
@@ -66,6 +69,7 @@ class PageEdit extends Component {
       const data = response.data.data;
       this.setState({
         page: data,
+        status: true,
       });
     });
   }
@@ -112,7 +116,7 @@ class PageEdit extends Component {
     });
   }
   render() {
-    const { page } = this.state;
+    const { page, status } = this.state;
     return (
       <>
         <div id="main">
@@ -184,6 +188,7 @@ class PageEdit extends Component {
                           <div className="row">
                             <div className="input-field col s6">
                               <select
+                                className=""
                                 value={page.category_id}
                                 name="category_id"
                                 onChange={this.handleChange}
@@ -207,7 +212,7 @@ class PageEdit extends Component {
                               <label>Excerpt</label>
                             </div>
                           </div>
-                          <Media id={this.callback} />
+                          {status && <Media id={this.callback} thumbnail={page.thumbnail} />}
                           <div className="row">
                             <div className="input-field col s12">
                               <input

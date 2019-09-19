@@ -92,12 +92,12 @@ class Media extends Component {
       medias.map(media => {
         return (
           <div className="col s4" key={media.id}>
-            <div className={selected == media.id ? 'overlay media-image' : 'media-image'}>
+            <div className={selected === media.id ? 'overlay media-image' : 'media-image'}>
               <img
                 data-id={media.id}
                 onClick={this.handleClick}
                 src={`${url}/uploads/${media.id}/${media.file}`}
-              ></img>
+              />
             </div>
           </div>
         );
@@ -106,6 +106,7 @@ class Media extends Component {
       <div className="row">
         <div className="col s12">
           <label>Thumbnail</label>
+          <br/>
           <a
             className="waves-effect gradient-45deg-purple-deep-orange waves-light btn modal-trigger"
             href="#modal1"
@@ -129,13 +130,21 @@ class Media extends Component {
               </div>
               <div id="upload" className="clearfix tab--content">
                 <div className="col s12">
-                  <input
-                    type="file"
-                    onChange={this.handleChange}
-                    id="input-file-now"
-                    className="dropify"
-                    data-default-file=""
-                  />
+                  <div className="file-field input-field">
+                    <div className="btn">
+                      <span>File</span>
+                      <input
+                          type="file"
+                          onChange={this.handleChange}
+                          id="input-file-now"
+                          className="dropify"
+                          data-default-file=""
+                      />
+                    </div>
+                    <div className="file-path-wrapper">
+                      <input className="file-path validate" type="text" />
+                    </div>
+                  </div>
                 </div>
                 <div className="col s12">
                   <Button onClick={this.uploadFile} children="Upload" />

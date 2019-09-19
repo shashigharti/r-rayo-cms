@@ -125,10 +125,6 @@ class PageEdit extends Component {
               <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
-                    <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                      Pages
-                    </h5>
-
                     <BreadCrumbs rootPath="" crumbs={crumbs} />
                   </div>
                 </div>
@@ -180,6 +176,7 @@ class PageEdit extends Component {
                               <textarea
                                 name="content"
                                 value={page.content}
+                                className="materialize-textarea"
                                 onChange={this.handleChange}
                               />
                               <label>Content</label>

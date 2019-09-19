@@ -78,11 +78,6 @@ class PageList extends Component {
           <div className="row">
             <div className="col s12">
               <div className="container-fluid">
-                {loading && (
-                  <div className="progress purple">
-                    <div className="indeterminate purple lighten-5" />
-                  </div>
-                )}
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
                     <ol className="breadcrumbs mb-0">
@@ -124,6 +119,11 @@ class PageList extends Component {
               <div className="container-fluid">
                 <div className="card">
                   <div className="card-content">
+                    {loading && (
+                      <div className="progress purple">
+                        <div className="indeterminate purple lighten-5" />
+                      </div>
+                    )}
                     <table className="table data-table">
                       <thead>
                         <tr>

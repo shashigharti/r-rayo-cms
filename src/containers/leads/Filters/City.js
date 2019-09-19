@@ -7,6 +7,7 @@ class City extends Component {
     super(props);
     this.state = {
       cities: [],
+      id: 'cities' + props.mode,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,14 +20,14 @@ class City extends Component {
           cities: response.data.data,
         },
         () => {
-          let elem = document.getElementById('cities');
+          let elem = document.getElementById(this.state.id);
           let values = this.state.cities.map(city => ({
             value: city.name,
             label: city.name,
             disabled: false,
           }));
 
-          let choices = new Choices(elem, {
+          let choice = new Choices(elem, {
             choices: values,
             placeholder: true,
             placeholderValue: 'Select options',
@@ -35,7 +36,7 @@ class City extends Component {
           });
 
           this.setState({
-            choices,
+            choice,
           });
         },
       );
@@ -43,18 +44,25 @@ class City extends Component {
   }
 
   handleChange(e) {
-    const { choices } = this.state;
+    const { choice } = this.state;
     let name = e.target.name;
-    this.props.onChoiceChange(name, choices.getValue(true));
+    this.props.onChoiceChange(name, choice.getValue(true));
   }
 
   render() {
+    const { cities } = this.props.values;
+    const { choice } = this.state;
+    if (choice) {
+      choice.highlightAll();
+      choice.removeHighlightedItems();
+      choice && choice.setChoiceByValue(cities);
+    }
     return (
       <>
         <p>City</p>
         <div className="input-field">
           <select
-            id="cities"
+            id={this.state.id}
             className="browser-default"
             onChange={this.handleChange}
             name="cities"

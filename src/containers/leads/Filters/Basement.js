@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
 import Choices from 'choices.js';
 
-class Style extends Component {
+class Basement extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: [
-        'Chalet/A-Frame',
-        'Cabin',
-        'Multi-Level',
-        'Prow Front Split',
-        'Two-Story W/Bsmnt',
-        'Log',
-        'Ranch-Traditional',
-        'Two-Story Reverse',
-        'Split Entry',
-      ],
-      id: 'style' + props.mode,
+      basement: ['Unfinished', 'Finished', 'Partially Finished'],
       choice: null,
+      id: 'basement' + props.mode,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -38,7 +28,7 @@ class Style extends Component {
   }
 
   styleOptions = () => {
-    return this.state.style.map(i => (
+    return this.state.basement.map(i => (
       <option key={i} value={i}>
         {i}
       </option>
@@ -52,27 +42,27 @@ class Style extends Component {
   }
 
   render() {
-    const styleOptions = this.styleOptions();
-    const { style } = this.props.values;
+    const basementOptions = this.styleOptions();
+    const { basement } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(style);
+      choice && choice.setChoiceByValue(basement);
     }
     return (
       <>
-        <p>Style</p>
+        <p>Basement</p>
         <div className="input-field">
           <select
             id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
-            name="style"
-            value={style}
+            name="basement"
+            value={basement}
             multiple={true}
           >
-            {styleOptions}
+            {basementOptions}
           </select>
         </div>
       </>
@@ -80,4 +70,4 @@ class Style extends Component {
   }
 }
 
-export default Style;
+export default Basement;

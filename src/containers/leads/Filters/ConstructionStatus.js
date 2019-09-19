@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import Choices from 'choices.js';
 
-class Style extends Component {
+class ConstructionStatus extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: [
-        'Chalet/A-Frame',
-        'Cabin',
-        'Multi-Level',
-        'Prow Front Split',
-        'Two-Story W/Bsmnt',
-        'Log',
-        'Ranch-Traditional',
-        'Two-Story Reverse',
-        'Split Entry',
+      construction_status: [
+        'New - Construction Complete',
+        'New - To Be Built',
+        'New - Under Construction',
+        '',
       ],
-      id: 'style' + props.mode,
+      id: 'cStatus' + props.mode,
       choice: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +33,7 @@ class Style extends Component {
   }
 
   styleOptions = () => {
-    return this.state.style.map(i => (
+    return this.state.construction_status.map(i => (
       <option key={i} value={i}>
         {i}
       </option>
@@ -52,27 +47,27 @@ class Style extends Component {
   }
 
   render() {
-    const styleOptions = this.styleOptions();
-    const { style } = this.props.values;
+    const construction_statusOptions = this.styleOptions();
+    const { construction_status } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(style);
+      choice && choice.setChoiceByValue(construction_status);
     }
     return (
       <>
-        <p>Style</p>
+        <p>Construction Status</p>
         <div className="input-field">
           <select
             id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
-            name="style"
-            value={style}
+            name="construction_status"
+            value={construction_status}
             multiple={true}
           >
-            {styleOptions}
+            {construction_statusOptions}
           </select>
         </div>
       </>
@@ -80,4 +75,4 @@ class Style extends Component {
   }
 }
 
-export default Style;
+export default ConstructionStatus;

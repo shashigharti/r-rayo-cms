@@ -5,7 +5,7 @@ import '../leads-inner.css';
 import '../filter.css';
 import { Button } from '../../../components/Button';
 
-class Search extends Component {
+class AddSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,14 +14,16 @@ class Search extends Component {
       columnThree: [],
       columnFour: [],
       formData: {
+        search_name: '',
+        frequency: '',
         price_min: 'default',
         price_max: 'default',
         baths_min: 'default',
         baths_max: 'default',
         beds_min: 'default',
         beds_max: 'default',
-        type: [],
         status: [],
+        type: [],
       },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +32,7 @@ class Search extends Component {
     this.handleStatusClick = this.handleStatusClick.bind(this);
     this.handleChoiceChange = this.handleChoiceChange.bind(this);
     this.handlePicClick = this.handlePicClick.bind(this);
+    this.returnToDefaultState = this.returnToDefaultState.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +45,23 @@ class Search extends Component {
         columnThree,
         columnFour,
       });
+    });
+  }
+
+  returnToDefaultState() {
+    this.setState({
+      formData: {
+        search_name: '',
+        frequency: '',
+        price_min: 'default',
+        price_max: 'default',
+        baths_min: 'default',
+        baths_max: 'default',
+        beds_min: 'default',
+        beds_max: 'default',
+        type: [],
+        status: [],
+      },
     });
   }
 
@@ -62,6 +82,8 @@ class Search extends Component {
       .post('/api/lead-search/store', data)
       .then(response => {
         M.toast({ html: response.data.message });
+        this.props.getLead();
+        this.returnToDefaultState();
       })
       .catch(e => {
         console.log(e);
@@ -150,6 +172,7 @@ class Search extends Component {
       return (
         <Component
           key={key}
+          mode="add"
           onChoiceChange={this.handleChoiceChange}
           onChange={this.handleChange}
           values={this.state.formData}
@@ -177,13 +200,19 @@ class Search extends Component {
                 name="search_name"
                 onChange={this.handleChange}
                 value={formData.search_name}
+                required
               />
               <label>Search Name</label>
             </div>
           </div>
           <div className="col s6">
             <div className="input-field">
-              <select name="frequency" onChange={this.handleChange} value={formData.frequency}>
+              <select
+                name="frequency"
+                onChange={this.handleChange}
+                value={formData.frequency}
+                required
+              >
                 <option value="">Notifications</option>
                 <option value="Daily">Daily</option>
                 <option value="Monthly">Monthly</option>
@@ -208,4 +237,4 @@ class Search extends Component {
   }
 }
 
-export { Search };
+export { AddSearch };

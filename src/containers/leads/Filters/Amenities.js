@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
 import Choices from 'choices.js';
 
-class Style extends Component {
+class Amenities extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: [
-        'Chalet/A-Frame',
-        'Cabin',
-        'Multi-Level',
-        'Prow Front Split',
-        'Two-Story W/Bsmnt',
-        'Log',
-        'Ranch-Traditional',
-        'Two-Story Reverse',
-        'Split Entry',
+      amenities: [
+        'Airplane Access',
+        'Barn/Shop',
+        'Cable TV',
+        'Covenant/Restriction',
+        'Deck/Patio',
+        'Dock',
+        'DSL/Cable Available',
+        'Fire Service Area',
+        'Garage Door Opener',
+        'Generator',
+        'Handicap Accessible',
+        'Horse Property',
+        'Hot Tub',
+        'Landscaping',
+        'Motion Lighting,Private Yard',
+        'Road Service Area',
+        'RV Parking',
+        'Satellite Components',
+        'Satellite Dish',
+        'Shed',
+        'View',
+        'Waterfront',
+        'Waterfront Access',
       ],
-      id: 'style' + props.mode,
+      id: 'amenities' + props.mode,
       choice: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +52,7 @@ class Style extends Component {
   }
 
   styleOptions = () => {
-    return this.state.style.map(i => (
+    return this.state.amenities.map(i => (
       <option key={i} value={i}>
         {i}
       </option>
@@ -52,27 +66,27 @@ class Style extends Component {
   }
 
   render() {
-    const styleOptions = this.styleOptions();
-    const { style } = this.props.values;
+    const amenitiesOptions = this.styleOptions();
+    const { amenities } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(style);
+      choice && choice.setChoiceByValue(amenities);
     }
     return (
       <>
-        <p>Style</p>
+        <p>Amenities</p>
         <div className="input-field">
           <select
             id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
-            name="style"
-            value={style}
+            name="amenities"
+            value={amenities}
             multiple={true}
           >
-            {styleOptions}
+            {amenitiesOptions}
           </select>
         </div>
       </>
@@ -80,4 +94,4 @@ class Style extends Component {
   }
 }
 
-export default Style;
+export default Amenities;

@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
 import Choices from 'choices.js';
 
-class Style extends Component {
+class Exterior extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: [
-        'Chalet/A-Frame',
-        'Cabin',
-        'Multi-Level',
-        'Prow Front Split',
-        'Two-Story W/Bsmnt',
-        'Log',
-        'Ranch-Traditional',
-        'Two-Story Reverse',
-        'Split Entry',
+      exterior: [
+        'Airplane Access',
+        'Building Present',
+        'Driveway',
+        'Fire Service Area',
+        'Gravel Pad',
+        'Meter Loop',
+        'Service Area',
+        'Southern Exposure',
+        'Trees - Sparse',
+        'View',
+        'Wetlands',
+        'Mobile Home Ok',
+        'Multi-Family Ok',
+        'Outhouse',
+        'Road Service Area',
+        'Southern Exposure',
+        'Trailside',
+        'Trees - Cleared',
+        'Trees - Heavy',
+        'View',
       ],
-      id: 'style' + props.mode,
+      id: 'exterior' + props.mode,
       choice: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -38,8 +49,8 @@ class Style extends Component {
   }
 
   styleOptions = () => {
-    return this.state.style.map(i => (
-      <option key={i} value={i}>
+    return this.state.exterior.map((i, key) => (
+      <option key={key} value={i}>
         {i}
       </option>
     ));
@@ -52,27 +63,27 @@ class Style extends Component {
   }
 
   render() {
-    const styleOptions = this.styleOptions();
-    const { style } = this.props.values;
+    const exteriorOptions = this.styleOptions();
+    const { exterior } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(style);
+      choice && choice.setChoiceByValue(exterior);
     }
     return (
       <>
-        <p>Style</p>
+        <p>Exterior</p>
         <div className="input-field">
           <select
             id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
-            name="style"
-            value={style}
+            name="exterior"
+            value={exterior}
             multiple={true}
           >
-            {styleOptions}
+            {exteriorOptions}
           </select>
         </div>
       </>
@@ -80,4 +91,4 @@ class Style extends Component {
   }
 }
 
-export default Style;
+export default Exterior;

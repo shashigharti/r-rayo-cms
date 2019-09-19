@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Price } from './Sidebar/Price';
-import { Search } from './Sidebar/Search';
+import { AddSearch } from './Sidebar/AddSearch';
 
 class DetailSidebar extends Component {
   constructor(props) {
@@ -204,7 +204,7 @@ class DetailSidebar extends Component {
   render() {
     const { lead, groups } = this.props;
     const { metadata, categories } = lead;
-    const { nameData, emailData, phoneData, addressData } = this.state;
+    const { nameData, emailData, phoneData, addressData, searchFormData } = this.state;
     const groupOptions =
       groups &&
       groups.map(group => {
@@ -293,7 +293,7 @@ class DetailSidebar extends Component {
             <a href="#" className="btn btn-small cyan">
               <i className="material-icons">email</i>Send Email
             </a>
-            <a href="#search-modal" className="btn btn-small cyan modal-trigger">
+            <a href="#search-add-modal" className="btn btn-small cyan modal-trigger">
               <i className="material-icons">search</i>Add Search
             </a>
           </div>
@@ -614,17 +614,14 @@ class DetailSidebar extends Component {
             </div>
           </div>
         </div>
-
-        {/* Search Edit Modal */}
-        <div id="search-modal" className="modal">
+        {/* Search Add Modal */}
+        <div id="search-add-modal" className="modal">
           <div className="modal-content">
             <h4>Add Search</h4>
-            <Search lead={lead} />
-          </div>
-          <div className="modal-footer">
-            <a href="#!" className="modal-close waves-effect waves-green btn-flat">
-              Agree
-            </a>
+            <AddSearch
+              lead={lead}
+              getLead={this.props.getLead}
+            />
           </div>
         </div>
       </div>

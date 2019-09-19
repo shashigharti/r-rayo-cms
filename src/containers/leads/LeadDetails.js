@@ -46,7 +46,7 @@ class LeadDetails extends Component {
   }
 
   render() {
-    const { lead, groups } = this.state;
+    const { lead, groups, searchFormData } = this.state;
     return (
       <div id="main">
         <div className="row">
@@ -109,14 +109,7 @@ class LeadDetails extends Component {
                   )}
                 </div>
                 <div id="searches" className="col s9">
-                  {Object.keys(lead).length > 0 && (
-                    <Searches
-                      leadId={lead.id}
-                      leadName={lead.firstname + ' ' + lead.lastname}
-                      searches={lead.searches}
-                      getLead={this.getLeads}
-                    />
-                  )}
+                  {Object.keys(lead).length > 0 && <Searches setSearchFormData={this.setSearchFormData} lead={lead} getLead={this.getLeads} />}
                 </div>
               </div>
             </div>

@@ -7,13 +7,14 @@ class Garage extends Component {
     this.state = {
       garage: ['1', '2', '3', '4', '5', '6 or More'],
       choice: null,
+      id: 'garage' + props.mode
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     M.AutoInit();
-    let elem = document.getElementById('garage');
+    let elem = document.getElementById(this.state.id);
     let choice = new Choices(elem, {
       placeholder: true,
       placeholderValue: 'Select options',
@@ -32,7 +33,7 @@ class Garage extends Component {
   garageOptions = () => {
     return this.state.garage.map(i => (
       <option key={i} value={i}>
-        {i}
+        {i} cars
       </option>
     ));
   };
@@ -46,12 +47,18 @@ class Garage extends Component {
   render() {
     const garageOptions = this.garageOptions();
     const { garage } = this.props.values;
+    const { choice } = this.state;
+    if (choice) {
+      choice.highlightAll();
+      choice.removeHighlightedItems();
+      choice && choice.setChoiceByValue(garage);
+    }
     return (
       <>
         <p>Garage</p>
         <div className="input-field">
           <select
-            id="garage"
+            id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
             name="garage"

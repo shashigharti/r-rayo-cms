@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Choices from 'choices.js';
 
-class Zip extends Component {
+class Middle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      zips: [],
-      id: 'zips' + props.mode,
+      middleSchools: [],
+      id: 'middle' + props.mode,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/api/zips/all').then(response => {
+    axios.get('/api/elem-schools/all').then(response => {
       this.setState(
         {
-          zips: response.data.data,
+          middleSchools: response.data.data,
         },
         () => {
           let elem = document.getElementById(this.state.id);
-          let values = this.state.zips.map(zip => ({
-            value: zip.name,
-            label: zip.name,
+          let values = this.state.middleSchools.map(middle => ({
+            value: middle.name,
+            label: middle.name,
             disabled: false,
           }));
 
@@ -50,22 +50,23 @@ class Zip extends Component {
   }
 
   render() {
-    const { zips } = this.props.values;
+    const { middleSchools } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(zips);
+      choice && choice.setChoiceByValue(middleSchools);
     }
+
     return (
       <>
-        <p>Zip</p>
+        <p>Middle Schools</p>
         <div className="input-field">
           <select
             id={this.state.id}
             className="browser-default"
             onChange={this.handleChange}
-            name="zips"
+            name="middleSchools"
             multiple={true}
           />
         </div>
@@ -74,4 +75,4 @@ class Zip extends Component {
   }
 }
 
-export default Zip;
+export default Middle;

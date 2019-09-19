@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Choices from 'choices.js';
 
-class Zip extends Component {
+class Grid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      zips: [],
-      id: 'zips' + props.mode,
+      grids: [],
+      id: 'grids' + props.mode,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/api/zips/all').then(response => {
+    axios.get('/api/grids/all').then(response => {
       this.setState(
         {
-          zips: response.data.data,
+          grids: response.data.data,
         },
         () => {
           let elem = document.getElementById(this.state.id);
-          let values = this.state.zips.map(zip => ({
-            value: zip.name,
-            label: zip.name,
+          let values = this.state.grids.map(grid => ({
+            value: grid.name,
+            label: grid.name,
             disabled: false,
           }));
 
@@ -50,22 +50,22 @@ class Zip extends Component {
   }
 
   render() {
-    const { zips } = this.props.values;
+    const { grids } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(zips);
+      choice && choice.setChoiceByValue(grids);
     }
     return (
       <>
-        <p>Zip</p>
+        <p>Grids</p>
         <div className="input-field">
           <select
             id={this.state.id}
             className="browser-default"
             onChange={this.handleChange}
-            name="zips"
+            name="grids"
             multiple={true}
           />
         </div>
@@ -74,4 +74,4 @@ class Zip extends Component {
   }
 }
 
-export default Zip;
+export default Grid;

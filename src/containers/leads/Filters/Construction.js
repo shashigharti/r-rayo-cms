@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import Choices from 'choices.js';
 
-class Style extends Component {
+class Construction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      style: [
-        'Chalet/A-Frame',
-        'Cabin',
-        'Multi-Level',
-        'Prow Front Split',
-        'Two-Story W/Bsmnt',
+      construction: [
+        'Block',
+        'Concrete',
+        'Wood Frame',
+        'Wood Frame - 2x6',
+        'Unknown-BTV',
         'Log',
-        'Ranch-Traditional',
-        'Two-Story Reverse',
-        'Split Entry',
+        'Metal',
+        'Post & Beam',
+        'Other - See Remarks',
       ],
-      id: 'style' + props.mode,
+      id: 'construction' + props.mode,
       choice: null,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +38,7 @@ class Style extends Component {
   }
 
   styleOptions = () => {
-    return this.state.style.map(i => (
+    return this.state.construction.map(i => (
       <option key={i} value={i}>
         {i}
       </option>
@@ -52,27 +52,27 @@ class Style extends Component {
   }
 
   render() {
-    const styleOptions = this.styleOptions();
-    const { style } = this.props.values;
+    const constructionOptions = this.styleOptions();
+    const { construction } = this.props.values;
     const { choice } = this.state;
     if (choice) {
       choice.highlightAll();
       choice.removeHighlightedItems();
-      choice && choice.setChoiceByValue(style);
+      choice && choice.setChoiceByValue(construction);
     }
     return (
       <>
-        <p>Style</p>
+        <p>Construction</p>
         <div className="input-field">
           <select
             id={this.state.id}
             onChange={this.handleChange}
             className="browser-default"
-            name="style"
-            value={style}
+            name="construction"
+            value={construction}
             multiple={true}
           >
-            {styleOptions}
+            {constructionOptions}
           </select>
         </div>
       </>
@@ -80,4 +80,4 @@ class Style extends Component {
   }
 }
 
-export default Style;
+export default Construction;

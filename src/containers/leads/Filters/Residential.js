@@ -18,15 +18,24 @@ class Residential extends Component {
 
   render() {
     const { options } = this.state;
+    const { values } = this.props;
     const checkBoxes = options.map((option, key) => {
+      let checked = false;
+      if (values.type.length > 0) {
+        values.type.some(arr => {
+          checked = arr === option.value;
+          return arr === option.value;
+        });
+      }
       return (
         <div key={key}>
           <label>
             <input
               type="checkbox"
-              onClick={this.props.onClick}
+              onChange={this.props.onClick}
               name={option.name}
               value={option.value}
+              checked={checked}
             />
             <span>{option.text}</span>
           </label>

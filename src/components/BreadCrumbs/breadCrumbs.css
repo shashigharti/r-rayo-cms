@@ -21,6 +21,7 @@
 }
 #breadcrumbs-wrapper .breadcrumbs > li {
     display: inline-block;
+    font-size: 12px;
 }
 #breadcrumbs-wrapper .breadcrumbs > li + li::before {
     font-family: 'Material Icons', sans-serif;

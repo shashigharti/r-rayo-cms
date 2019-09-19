@@ -244,7 +244,7 @@ class PageEdit extends Component {
                           <div className="row">
                             <div className="col s12">
                               <div className="input-field">
-                                <button className="btn btn-primary">Submit</button>
+                                <button className="btn gradient-45deg-purple-deep-orange">Submit</button>
                               </div>
                             </div>
                           </div>

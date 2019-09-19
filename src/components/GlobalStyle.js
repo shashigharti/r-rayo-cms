@@ -8418,7 +8418,7 @@ export const GlobalStyle = createGlobalStyle`
                 -webkit-box-sizing: border-box;
                    -moz-box-sizing: border-box;
                         box-sizing: border-box;
-                min-height: 3rem;
+                min-height:130px;
                 /* prevents scroll bar flash */
                 padding: .8rem 0 .8rem 0;
                 /* prevents text jump on Enter keypress */
@@ -14045,7 +14045,9 @@ export const GlobalStyle = createGlobalStyle`
     {
         background-color: #ff9800 !important;
     }
-    
+    .pagination--top span{
+        font-size:12px;
+    }
   
 
 `;

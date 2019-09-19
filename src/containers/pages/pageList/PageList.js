@@ -15,7 +15,6 @@ class PageList extends Component {
         meta: {},
       },
     };
-
     this.deletePage = this.deletePage.bind(this);
   }
 
@@ -165,7 +164,7 @@ class PageList extends Component {
                       </a>
                     </li>
                   </ul>
-                  <button className="btn btn-sm disabled">Total Pages: {meta.total} </button>
+                  <span>Total Pages: {meta.total} </span>
                 </div>
               </div>
             </div>

@@ -23,13 +23,16 @@ class Media extends Component {
   }
   componentDidMount() {
     M.AutoInit();
+    M.updateTextFields();
     const thumbnail = this.props.thumbnail;
     if (thumbnail !== null && thumbnail !== '') {
-      this.getThumbnail();
+      this.getThumbnail(thumbnail);
     }
     this.getImages();
   }
-
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    M.updateTextFields();
+  }
   getImages() {
     const url = '/api/images/all';
     axios.get(url).then(response => {
@@ -40,7 +43,7 @@ class Media extends Component {
     });
   }
   getThumbnail(id) {
-    const url = '/api/media/' + this.props.thumbnail;
+    const url = '/api/media/' + id;
     axios.get(url).then(res => {
       this.setState({ thumbnail: res.data });
     });
@@ -54,6 +57,8 @@ class Media extends Component {
   }
   handleApply() {
     this.props.id(this.state.selected);
+    this.setState({ thumbnail: null });
+    this.getThumbnail(this.state.selected);
   }
   onCancel() {
     this.setState({
@@ -64,6 +69,7 @@ class Media extends Component {
   uploadFile() {
     const loaded = this.state.loaded;
     const input = document.getElementById('input-file-now');
+    const input_file = document.getElementById('input-file-text');
     if (loaded) {
       const data = new FormData();
       data.append('file', this.state.file);
@@ -75,6 +81,7 @@ class Media extends Component {
         });
         this.setState({ medias: medias, file: null, loaded: false });
         input.value = null;
+        input_file.value = null;
       });
     }
   }
@@ -92,7 +99,7 @@ class Media extends Component {
       medias.map(media => {
         return (
           <div className="col s4" key={media.id}>
-            <div className={selected === media.id ? 'overlay media-image' : 'media-image'}>
+            <div className={selected == media.id ? 'overlay media-image' : 'media-image'}>
               <img
                 data-id={media.id}
                 onClick={this.handleClick}
@@ -106,7 +113,7 @@ class Media extends Component {
       <div className="row">
         <div className="col s12">
           <label>Thumbnail</label>
-          <br/>
+          <br />
           <a
             className="waves-effect gradient-45deg-purple-deep-orange waves-light btn modal-trigger"
             href="#modal1"
@@ -134,15 +141,15 @@ class Media extends Component {
                     <div className="btn">
                       <span>File</span>
                       <input
-                          type="file"
-                          onChange={this.handleChange}
-                          id="input-file-now"
-                          className="dropify"
-                          data-default-file=""
+                        type="file"
+                        onChange={this.handleChange}
+                        id="input-file-now"
+                        className="dropify"
+                        data-default-file=""
                       />
                     </div>
                     <div className="file-path-wrapper">
-                      <input className="file-path validate" type="text" />
+                      <input className="file-path validate" id="input-file-text" type="text" />
                     </div>
                   </div>
                 </div>

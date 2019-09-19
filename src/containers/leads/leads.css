@@ -93,3 +93,6 @@ i.fa, i.fas {
   height: 2rem;
   padding: 0px;
 }
+.leads-table a,.leads-table small {
+    font-size: 11px !important;
+}

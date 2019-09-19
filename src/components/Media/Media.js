@@ -6,7 +6,6 @@ import './media.css';
 class Media extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       uploading: false,
       file: null,
@@ -23,6 +22,7 @@ class Media extends Component {
     this.getThumbnail = this.getThumbnail.bind(this);
   }
   componentDidMount() {
+    M.AutoInit();
     const thumbnail = this.props.thumbnail;
     if (thumbnail !== null && thumbnail !== '') {
       this.getThumbnail();

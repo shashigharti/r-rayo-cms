@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
-import { Button } from '../../../components/Button';
 import { Media } from '../../../components/Media';
 import M from 'materialize-css';
-
-const camerasImage = '../../../assets/images/cards/cameras.png';
 
 const crumbs = [
   {
@@ -16,7 +13,7 @@ const crumbs = [
   {
     name: 'Pages',
     subPath: 'pages',
-    path: 'page-list',
+    path: '/pages',
   },
   {
     name: 'Edit',
@@ -25,7 +22,6 @@ const crumbs = [
   },
 ];
 
-// eslint-disable-next-line react/prefer-stateless-function
 class PageEdit extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +55,10 @@ class PageEdit extends Component {
     this.callback = this.callback.bind(this);
   }
   componentDidMount() {
-    M.AutoInit();
+    M.updateTextFields();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
     M.updateTextFields();
   }
 
@@ -175,11 +174,12 @@ class PageEdit extends Component {
                             <div className="input-field col s12">
                               <textarea
                                 name="content"
+                                id="content"
                                 value={page.content}
                                 className="materialize-textarea"
                                 onChange={this.handleChange}
                               />
-                              <label>Content</label>
+                              <label htmlFor="content">Content</label>
                             </div>
                           </div>
                           <div className="row">

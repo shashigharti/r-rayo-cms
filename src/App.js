@@ -55,7 +55,8 @@ class App extends React.Component {
 
         <PrivateRoute exact path="/users" component={Users} />
         <PrivateRoute exact path="/add-user" component={AddUser} />
-        <PrivateRoute exact path="/page-edit" component={PageEdit} />
+        <PrivateRoute exact path="/page-add" component={PageEdit} />
+        <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
         <PrivateRoute exact path="/pages" component={PageList} />
         <PrivateRoute exact path="/page-category" component={PageCategory} />
         <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />

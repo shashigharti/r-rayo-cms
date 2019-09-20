@@ -1,14 +1,76 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
+import M from 'materialize-css';
 
 class PageList extends Component {
-  componentDidMount() {
-    M.AutoInit();
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: {},
+      loading: false,
+      pagination: {
+        links: {},
+        meta: {},
+      },
+    };
+    this.deletePage = this.deletePage.bind(this);
   }
 
+  componentDidMount() {
+    M.AutoInit();
+    this.getPages(null, null);
+  }
+
+  getPages(link, type) {
+    this.setState({
+      loading: true,
+    });
+    let url = '';
+    if (link) {
+      url = link;
+    } else {
+      url = '/api/page/all';
+    }
+    this.fetchRequest(url);
+  }
+
+  fetchRequest(url) {
+    axios.get(url).then(response => {
+      this.setState({
+        loading: false,
+        pages: response.data.data,
+        pagination: {
+          links: response.data.links,
+          meta: response.data.meta,
+        },
+      });
+    });
+  }
+
+  deletePage(id) {
+    const url = `/api/page/delete/${id}`;
+    axios.delete(url).then(response => {
+      M.toast({ html: 'Successfully Deleted' });
+      this.getPages();
+    });
+  }
   render() {
+    const { pages, loading } = this.state;
+    const { links, meta } = this.state.pagination;
+    const pageRow =
+      pages.length > 0 &&
+      pages.map(page => (
+        <Row
+          sn={page.id}
+          key={page.id}
+          id={page.id}
+          name={page.name}
+          slug={page.slug}
+          onDelete={this.deletePage}
+        />
+      ));
     return (
       <>
         <div id="main">
@@ -16,7 +78,7 @@ class PageList extends Component {
             <div className="col s12">
               <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
-                  <div className="col s10 m6 l6 breadcrumbs-left">                   
+                  <div className="col s10 m6 l6 breadcrumbs-left">
                     <ol className="breadcrumbs mb-0">
                       <li className="breadcrumb-item">
                         <Link to="/">Home</Link>
@@ -29,7 +91,7 @@ class PageList extends Component {
                   <div className="col s2 m6 l6 right--button">
                     <Link
                       className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
-                      to="/page-edit"
+                      to="/page-add"
                     >
                       <i className="material-icons">add</i>
                     </Link>
@@ -56,6 +118,11 @@ class PageList extends Component {
               <div className="container-fluid">
                 <div className="card">
                   <div className="card-content">
+                    {loading && (
+                      <div className="progress purple">
+                        <div className="indeterminate purple lighten-5" />
+                      </div>
+                    )}
                     <table className="table data-table">
                       <thead>
                         <tr>
@@ -65,12 +132,39 @@ class PageList extends Component {
                           <th className="text-nowrap center-align">Action</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <Row sn={1} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                        <Row sn={2} name="Vision" excerpt="Lorem ipsum dolor sit" />
-                      </tbody>
+                      <tbody>{pageRow}</tbody>
                     </table>
                   </div>
+                </div>
+                <div className="right-align pagination--top">
+                  <ul className="pagination theme--pagination right">
+                    <li>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          this.getPages(links.prev);
+                        }}
+                        aria-label="Previous"
+                      >
+                        <span aria-hidden="true">«</span>
+                      </a>
+                    </li>
+                    <li className="active">
+                      <a href="#">{meta.current_page}</a>
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        onClick={() => {
+                          this.getPages(links.next);
+                        }}
+                        aria-label="Next"
+                      >
+                        <span aria-hidden="true">»</span>
+                      </a>
+                    </li>
+                  </ul>
+                  <span>Total Pages: {meta.total} </span>
                 </div>
               </div>
             </div>

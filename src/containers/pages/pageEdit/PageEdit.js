@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-
-
+import axios from 'axios';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
-import { Button } from '../../../components/Button';
-
-const camerasImage = '../../../assets/images/cards/cameras.png';
+import { Media } from '../../../components/Media';
+import M from 'materialize-css';
 
 const crumbs = [
   {
@@ -15,7 +13,7 @@ const crumbs = [
   {
     name: 'Pages',
     subPath: 'pages',
-    path: 'page-list',
+    path: '/pages',
   },
   {
     name: 'Edit',
@@ -24,9 +22,100 @@ const crumbs = [
   },
 ];
 
-// eslint-disable-next-line react/prefer-stateless-function
 class PageEdit extends Component {
+  constructor(props) {
+    super(props);
+    let id = null;
+    let status = null;
+    if (this.props.match.params.hasOwnProperty('id')) {
+      id = this.props.match.params.id;
+    } else {
+      status = true;
+    }
+    this.state = {
+      page: {
+        name: '',
+        excerpt: '',
+        category_id: '',
+        thumbnail: '',
+        slug: '',
+        content: '',
+        meta_title: '',
+        meta_keywords: '',
+        meta_description: '',
+      },
+      id: id,
+      status: status,
+    };
+    if (id !== null) {
+      this.getPage(id);
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.callback = this.callback.bind(this);
+  }
+  componentDidMount() {
+    M.updateTextFields();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    M.updateTextFields();
+  }
+
+  getPage(id) {
+    const url = `/api/page/edit/${id}`;
+    axios.get(url).then(response => {
+      const data = response.data.data;
+      this.setState({
+        page: data,
+        status: true,
+      });
+    });
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    const { page } = this.state;
+    this.setState({
+      page: {
+        ...page,
+        [name]: value,
+      },
+    });
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({ submitted: true });
+    const { page, id } = this.state;
+    if (id !== null) {
+      this.putRequest(page);
+    } else {
+      this.postRequest(page);
+    }
+  }
+  putRequest(page) {
+    const url = `/api/page/update/${this.state.id}`;
+    axios.put(url, page).then(response => {
+      M.toast({ html: 'Successfully Edited' });
+    });
+  }
+  postRequest(page) {
+    const url = '/api/page/store';
+    axios.post(url, page).then(response => {
+      M.toast({ html: 'Successfully Added' });
+    });
+  }
+  callback(id) {
+    const { page } = this.state;
+    this.setState({
+      page: {
+        ...page,
+        thumbnail: id,
+      },
+    });
+  }
   render() {
+    const { page, status } = this.state;
     return (
       <>
         <div id="main">
@@ -35,10 +124,6 @@ class PageEdit extends Component {
               <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
-                    <h5 className="breadcrumbs-title mt-0 mb-0 display-inline hide-on-small-and-down">
-                      Pages
-                    </h5>
-
                     <BreadCrumbs rootPath="" crumbs={crumbs} />
                   </div>
                 </div>
@@ -64,20 +149,47 @@ class PageEdit extends Component {
                   <div className="col s12">
                     <div className="panel card tab--content">
                       <div id="pages" className="col s12">
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                           <div className="row">
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="name"
+                                value={page.name}
+                                onChange={this.handleChange}
+                              />
                               <label>Page Name</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="slug"
+                                value={page.slug}
+                                onChange={this.handleChange}
+                              />
                               <label>Slug</label>
                             </div>
                           </div>
                           <div className="row">
+                            <div className="input-field col s12">
+                              <textarea
+                                name="content"
+                                id="content"
+                                value={page.content}
+                                className="materialize-textarea"
+                                onChange={this.handleChange}
+                              />
+                              <label htmlFor="content">Content</label>
+                            </div>
+                          </div>
+                          <div className="row">
                             <div className="input-field col s6">
-                              <select defaultValue="">
+                              <select
+                                className=""
+                                value={page.category_id}
+                                name="category_id"
+                                onChange={this.handleChange}
+                              >
                                 <option value="" disabled>
                                   Choose your option
                                 </option>
@@ -88,95 +200,52 @@ class PageEdit extends Component {
                               <label>Category</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
-                              <label>Slug</label>
+                              <input
+                                type="text"
+                                value={page.excerpt}
+                                name="excerpt"
+                                onChange={this.handleChange}
+                              />
+                              <label>Excerpt</label>
                             </div>
                           </div>
-                          <div className="row">
-                            <div className="col s12">
-                              <label>Thumbnail</label>
-                              <a
-                                className="waves-effect gradient-45deg-purple-deep-orange waves-light btn modal-trigger"
-                                href="#modal1"
-                              >
-                                Add Image
-                              </a>
-                              <div id="modal1" className="modal modal-fixed-footer">
-                                <div className="modal-content">
-                                  <h5>Media Manager</h5>
-                                  <div className="col s12">
-                                    <ul className="tabs">
-                                      <li className="tab">
-                                        <a className="active" href="#upload">
-                                          Pages
-                                        </a>
-                                      </li>
-                                      <li className="tab">
-                                        <a href="#images">Downloads</a>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                  <div id="upload" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <input
-                                        type="file"
-                                        id="input-file-now"
-                                        className="dropify"
-                                        data-default-file=""
-                                      />
-                                    </div>
-                                  </div>
-                                  <div id="images" className="clearfix tab--content">
-                                    <div className="col s12">
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                      <div className="col s2">
-                                        <div className="media-image">
-                                          <img alt="cameras" src={camerasImage} />
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="modal-footer">
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-red btn-flat "
-                                  >
-                                    Cancel
-                                  </a>
-                                  <a
-                                    href="#!"
-                                    className="modal-action modal-close waves-effect waves-green btn-flat "
-                                  >
-                                    Apply
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          {status && <Media id={this.callback} thumbnail={page.thumbnail} />}
                           <div className="row">
                             <div className="input-field col s12">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_title"
+                                value={page.meta_title !== null ? page.meta_title : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Title</label>
                             </div>
                           </div>
                           <div className="row">
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_description"
+                                value={page.meta_description !== null ? page.meta_description : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Descriptions</label>
                             </div>
                             <div className="input-field col s6">
-                              <input type="text" />
+                              <input
+                                type="text"
+                                name="meta_keywords"
+                                value={page.meta_keywords !== null ? page.meta_keywords : ''}
+                                onChange={this.handleChange}
+                              />
                               <label>Meta Keywords</label>
                             </div>
                           </div>
                           <div className="row">
                             <div className="col s12">
-                              <Button>Save</Button>
+                              <div className="input-field">
+                                <button className="btn gradient-45deg-purple-deep-orange">Submit</button>
+                              </div>
                             </div>
                           </div>
                         </form>

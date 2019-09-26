@@ -12,19 +12,27 @@
 }
 
 .choices__inner {
-  display: inline-block;
-  vertical-align: top;
-  width: 100%;
-  background-color: #f9f9f9;
-  padding: 7.5px 7.5px 3.75px;
-  border: 1px solid #000;
-  border-radius: 2.5px;
-  font-size: 10px;
-  min-height: 44px;
-  overflow: scroll;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 0.5px 7.5px 2.75px;
+    border: none;
+    border-radius: 2.5px;
+    font-size: 10px;
+    min-height: 32px;
+    overflow: auto;
 }
 
 .choices__inner input[type='text'] {
   font-size: 10px;
   height: 24px;
+}
+@media (min-width: 640px){
+  .choices__list--dropdown .choices__item--selectable {
+      padding-right: 4px;
+      color: #111;
+      font-size: 12px;
+      padding: 4px;
+  }
 }

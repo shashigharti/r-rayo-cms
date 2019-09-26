@@ -129,7 +129,7 @@ class Notes extends Component {
                       },
                     }));
                   }}
-                  className="btn-floating btn-sm waves-effect waves-light right modal-trigger"
+                  className="btn-floating btn-sm gradient-45deg-purple-deep-orange waves-effect waves-light right modal-trigger"
                 >
                   <i className="material-icons">add</i>
                 </a>

@@ -192,7 +192,7 @@ class AddSearch extends Component {
     let columnFourFilter = columnFour.length > 0 && this.renderFilter(columnFour);
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="row mt-5">
+        <div className="row">
           <div className="col s6">
             <div className="input-field">
               <input
@@ -229,7 +229,7 @@ class AddSearch extends Component {
         </div>
         <div className="row">
           <div className="col s12">
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="purple btn">Submit</Button>
           </div>
         </div>
       </form>

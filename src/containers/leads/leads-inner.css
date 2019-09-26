@@ -11,5 +11,33 @@
 }
 .modal-content .s3 select.browser-default {
   font-size: 12px;
-  height: 20px;
+  height: 25px;
+}
+.modal [type='checkbox'] + span:not(.lever){
+   font-size:12px;
+   color:#111;
+}
+.searches-block.card .card-content .card-title{
+	line-height: 26px;
+	color:#111;
+	font-size: 14px;
+	margin-bottom: 18px;
+} 
+.searches-block .chip{
+	font-size: 11px;
+    line-height: 25px;
+    height: 25px;
+    padding: 0 8px;
+    color:#fff;
+    background-color: #8c8787;
+}
+.searches-block a{
+	color:#8e24aa !important;
+}
+.searches-block.card{
+	box-shadow: none;
+}
+.searches-block.card .card-content {
+    padding: 0px 0px 20px;
+    border-radius: 0 0 2px 2px;
 }

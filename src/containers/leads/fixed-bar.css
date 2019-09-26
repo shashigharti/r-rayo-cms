@@ -1,10 +1,14 @@
 .fixed--bar {
-  position: fixed;
-  padding: 10px;
-  height: 100vh;
-  width:18%;
-  z-index: 9;
-  margin-top: 18px;
+    position: fixed;
+    padding:20px 4px 20px;
+    height: 78vh;
+    width: 18%;
+    z-index: 9;
+    margin-top: 18px;
+    overflow-y: auto;
+}
+.filter--bar .theme--select{
+  margin-top: 8px;
 }
 .fixed--bar .title {
   font-size: 20px;
@@ -20,16 +24,16 @@
   vertical-align: bottom;
 }
 .tags .chip-custom {
-  color: #fff !important;
-  font-size: 11px;
-  height: 25px;
-  line-height: 24px;
-  margin: 10px 10px 0px 0px;
-  font-weight: 500;
-  display: inline-block;
-  padding: 0px 12px;
-  color: rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
+    color: #fff !important;
+    font-size: 9px;
+    height: 23px;
+    line-height: 23px;
+    margin: 10px 3px 0px 0px;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0px 7px;
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
 }
 .tags .chip-custom:last-child {
   margin-bottom: 5px;
@@ -84,6 +88,21 @@ i.grey.material-icons {
 }
 .filter--bar .select-wrapper input.select-dropdown{
     font-size: 12px;
-    line-height: 1rem;
-    height: 2rem;
+    line-height: 10px;
+    height: 20px
   }
+.fixed--bar .select-wrapper input.select-dropdown{
+  font-size: 12px;
+  line-height: 24px;
+  height: 24px;
+}
+.fixed--bar .form-element h5 {
+  font-size: 12px;
+  padding-bottom:6px;
+}
+.fixed--bar .form-element{
+  font-size:12px;
+}
+.fixed--bar .form-element i{
+  font-size: 12px;
+}

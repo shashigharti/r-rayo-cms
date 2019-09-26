@@ -3,7 +3,7 @@
 .table thead th {
   vertical-align: middle;
   border-bottom: 1px solid #d5d6d7 !important;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 3px;
 }
 .col-sub-heading {
   display: inline-block;
@@ -11,6 +11,9 @@
 }
 .sortable-icon {
   color: #bababa;
+}
+.info-unit a{
+  font-size: 9px !important;
 }
 .sortMenu {
   position: absolute;
@@ -30,7 +33,7 @@
   display: block;
 }
 .name-col {
-  width: 20%;
+  width: 10%;
 }
 .v-line {
   border-left: 1px solid #ccc;

@@ -39,7 +39,7 @@ class Searches extends Component {
     const searchRows = searches.map(search => {
       return (
         <div key={search.id} className="col s12">
-          <div className="card">
+          <div className="card searches-block">
             <div className="card-content">
               <span className="card-title">
                 {leadName} saved a search {search.name} at {moment(search.created_at).format('llll')} with the following
@@ -53,7 +53,7 @@ class Searches extends Component {
                 );
               })}
             </div>
-            <div className="card-action">
+            <div className="card-action right-align">
               <a
                 href="#"
                 onClick={() => {

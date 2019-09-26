@@ -51,7 +51,7 @@ class Overview extends Component {
               </div>
             </div>
             <div className="col s12">
-              <table className="table mt-5 mb-5">
+              <table className="table mt-3 mb-5">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -62,7 +62,7 @@ class Overview extends Component {
               </table>
             </div>
           </div>
-          <div className="panel card col s12 mt-5">
+          <div className="panel card col s12 mt-3">
             <div className="col s12">
               <h5>Activity</h5>
             </div>

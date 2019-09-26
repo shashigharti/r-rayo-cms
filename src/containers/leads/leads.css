@@ -96,3 +96,6 @@ i.fa, i.fas {
 .leads-table a,.leads-table small {
     font-size: 11px !important;
 }
+th.info-col {
+    width: 8%;
+}

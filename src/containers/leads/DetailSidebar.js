@@ -370,7 +370,7 @@ class DetailSidebar extends Component {
                 )}
               </div>
             </div>
-            <div className="row mt-5">
+            <div className="row mt-2">
               <div className="col s12">
                 <h5>
                   Phone
@@ -467,7 +467,7 @@ class DetailSidebar extends Component {
                 )}
               </div>
             </div>
-            <div className="row mt-5">
+            <div className="row mt-2">
               <div className="col s12">
                 <h5>
                   Address

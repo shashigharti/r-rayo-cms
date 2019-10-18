@@ -78,7 +78,7 @@ module.exports = () => {
     },
     devtool: 'cheap-module-eval-source-map',
     externals: {
-      // global app config object
+      // global app config object. Can be removed now
       config: JSON.stringify({
         apiUrl: '',
       }),

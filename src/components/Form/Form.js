@@ -1,5 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//Example code for styled components
+// import styled from 'styled-components';
+
+// export const Form = styled.form`
+//     margin-bottom: 1em;
+// `;
 
 import './form.css';
 

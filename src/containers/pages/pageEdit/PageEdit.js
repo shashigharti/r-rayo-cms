@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 import { Media } from '../../../components/Media';
 import M from 'materialize-css';
+import { pageAction } from '../../../actions';
+import { connect } from 'react-redux';
 
 const crumbs = [
   {
@@ -32,24 +34,7 @@ class PageEdit extends Component {
     } else {
       status = true;
     }
-    this.state = {
-      page: {
-        name: '',
-        excerpt: '',
-        category_id: '',
-        thumbnail: '',
-        slug: '',
-        content: '',
-        meta_title: '',
-        meta_keywords: '',
-        meta_description: '',
-      },
-      id: id,
-      status: status,
-    };
-    if (id !== null) {
-      this.getPage(id);
-    }
+    this.getPage(id);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.callback = this.callback.bind(this);
@@ -63,14 +48,12 @@ class PageEdit extends Component {
   }
 
   getPage(id) {
-    const url = `/api/page/edit/${id}`;
-    axios.get(url).then(response => {
-      const data = response.data.data;
-      this.setState({
-        page: data,
-        status: true,
-      });
-    });
+    console.log(id);
+    if (id == null) {
+      this.props.dispatch(pageAction.add());
+    } else {
+      this.props.dispatch(pageAction.edit(id));
+    }
   }
 
   handleChange(event) {
@@ -115,7 +98,7 @@ class PageEdit extends Component {
     });
   }
   render() {
-    const { page, status } = this.state;
+    const { page } = this.props;
     return (
       <>
         <div id="main">
@@ -244,7 +227,9 @@ class PageEdit extends Component {
                           <div className="row">
                             <div className="col s12">
                               <div className="input-field">
-                                <button className="btn gradient-45deg-purple-deep-orange">Submit</button>
+                                <button className="btn gradient-45deg-purple-deep-orange">
+                                  Submit
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -265,4 +250,11 @@ class PageEdit extends Component {
   }
 }
 
-export { PageEdit };
+function mapStateToProps(state) {
+  const { pages } = state;
+  const { page, loading } = pages;
+  return { page, loading };
+}
+
+const connectedEditPage = connect(mapStateToProps)(PageEdit);
+export { connectedEditPage as PageEdit };

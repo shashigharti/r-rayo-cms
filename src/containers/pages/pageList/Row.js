@@ -13,15 +13,13 @@ const Row = props => (
       >
         <i className="material-icons left">edit</i>
       </Link>
-      <a className="waves-effect waves-light btn-small amber">
-        <i
-          className="material-icons left"
-          onClick={() => {
-            props.onDelete(props.id);
-          }}
-        >
-          delete
-        </i>
+      <a
+        className="waves-effect waves-light btn-small amber"
+        onClick={() => {
+          props.onDelete(props.id);
+        }}
+      >
+        <i className="material-icons left">delete</i>
       </a>
       <a className="waves-effect waves-light btn-small purple">
         <i className="material-icons left">check</i>

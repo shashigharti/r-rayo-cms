@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Row } from './Row';
 import { Link } from 'react-router-dom';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 
@@ -16,11 +18,72 @@ const crumbs = [
 ];
 
 class Users extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: {},
+      loading: false,
+      pagination: {
+        links: {},
+        meta: {},
+      },
+    };
+    this.getUsers = this.getUsers.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+  }
+  getUsers(link, type) {
+    this.setState({
+      loading: true,
+    });
+    let url = '';
+    if (link) {
+      url = link;
+    } else {
+      url = '/api/users';
+    }
+    this.fetchRequest(url);
+  }
+  deleteUser(id) {
+    const url = `/api/user/${id}`;
+    axios.delete(url).then(response => {
+      M.toast({ html: 'Successfully Deleted' });
+      this.getAgents();
+    });
+  }
+  fetchRequest(url) {
+    axios.get(url).then(response => {
+      console.log(response);
+      this.setState({
+        loading: false,
+        users: response.data.data,
+        pagination: {
+          links: response.data.links,
+          meta: response.data.meta,
+        },
+      });
+    });
+  }
   componentDidMount() {
     M.AutoInit();
+    this.getUsers(null, null);
   }
 
   render() {
+    const { users } = this.state;
+    const { links, meta } = this.state.pagination;
+    const usersRow =
+      users.length > 0 &&
+      users.map(user => (
+        <Row
+          sn={user.id}
+          key={user.id}
+          id={user.id}
+          firstname={user.first_name}
+          lastname={user.last_name}
+          email={user.email}
+          onDelete={this.deleteAgent}
+        />
+      ));
     return (
       <>
         <div id="main">
@@ -53,70 +116,48 @@ class Users extends Component {
                       <thead>
                         <tr>
                           <th>SN</th>
-                          <th>Name</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
                           <th>Email</th>
-                          <th>Roles</th>
                           <th className="text-nowrap center-align">Action</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Vision</td>
-                          <td>info@robustitconcepts.com</td>
-                          <td>Super Admin</td>
-                          <td className="text right-align">
-                            <Link
-                              className="waves-effect waves-light btn-small cyan"
-                              to="/add-user"
-                            >
-                              <i className="material-icons left">edit</i>
-                            </Link>
-                            <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Vision</td>
-                          <td>info1@robustitconcepts.com</td>
-                          <td>Admin</td>
-                          <td className="text right-align">
-                            <Link
-                              className="waves-effect waves-light btn-small cyan"
-                              to="/add-user"
-                            >
-                              <i className="material-icons left">edit</i>
-                            </Link>
-                            <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>
-                            </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Alex</td>
-                          <td>info2@robustitconcepts.com</td>
-                          <td>Client</td>
-                          <td className="text right-align">
-                            <Link
-                              className="waves-effect waves-light btn-small cyan"
-                              to="/add-user"
-                            >
-                              <i className="material-icons left">edit</i>
-                            </Link>
-                            <a className="waves-effect waves-light btn-small amber">
-                              <i className="material-icons left">delete</i>
-                            </a>
-                          </td>
-                        </tr>
-                      </tbody>
+                      <tbody>{usersRow}</tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="right-align pagination--top">
+            <ul className="pagination theme--pagination right">
+              <li>
+                <a
+                  href="#"
+                  onClick={() => {
+                    this.getUsers(links.prev);
+                  }}
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li>
+              <li className="active">
+                <a href="#">{meta.current_page}</a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onClick={() => {
+                    this.getUsers(links.next);
+                  }}
+                  aria-label="Next"
+                >
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li>
+            </ul>
+            <span>Total Users: {meta.total} </span>
           </div>
         </div>
       </>

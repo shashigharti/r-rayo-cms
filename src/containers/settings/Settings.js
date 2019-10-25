@@ -3,6 +3,8 @@ import { PriceSettings } from './PriceSettings';
 import { FrontPageSettings } from './FrontPageSettings';
 import { LinkSettings } from './LinkSettings';
 import { SearchSettings } from './SearchSettings';
+import { GeneralSettings } from './GeneralSettings';
+import { SiteSettings } from './SiteSettings';
 
 const Settings = () => {
   return (
@@ -18,6 +20,9 @@ const Settings = () => {
                       <ul className="tabs">
                         <li className="tab col s2">
                           <a href="#test1">General</a>
+                        </li>
+                        <li className="tab col s2">
+                          <a href="#site">Site</a>
                         </li>
                         <li className="tab col s2">
                           <a href="#priceDiv">Price</a>
@@ -42,7 +47,10 @@ const Settings = () => {
                       </ul>
                     </div>
                     <div id="test1" className="col s12">
-                      General Settings
+                      <GeneralSettings />
+                    </div>
+                    <div id="site" className="col s12">
+                      <SiteSettings />
                     </div>
                     <div id="priceDiv" className="col s12 scale-transition">
                       <PriceSettings />

@@ -241,6 +241,36 @@ class Header extends Component {
               <a className="collapsible-header waves-effect waves-cyan " href="#">
                 <i className="material-icons">people_outline</i>
                 <span className="menu-title" data-i18n="">
+                  Land Marks
+                </span>
+              </a>
+              <div className="collapsible-body">
+                <ul className="collapsible collapsible-sub" data-collapsible="accordion">
+                  <li>
+                    <NavLink exact className="collapsible-body" to="/cities" data-i18n="">
+                      <i className="material-icons">radio_button_unchecked</i>
+                      <span>Cities</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact className="collapsible-body" to="/zips" data-i18n="">
+                      <i className="material-icons">radio_button_unchecked</i>
+                      <span>Zips</span>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink exact className="collapsible-body" to="/counties" data-i18n="">
+                      <i className="material-icons">radio_button_unchecked</i>
+                      <span>Counties</span>
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="bold">
+              <a className="collapsible-header waves-effect waves-cyan " href="#">
+                <i className="material-icons">people_outline</i>
+                <span className="menu-title" data-i18n="">
                   User Management
                 </span>
               </a>

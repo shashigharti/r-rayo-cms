@@ -14,7 +14,7 @@ class City extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/city/all').then(response => {
+    axios.get('/api/cities/all').then(response => {
       this.setState(
         {
           cities: response.data.data,

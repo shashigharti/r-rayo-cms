@@ -10,8 +10,10 @@ import { Settings } from './containers/settings/Settings';
 import { Roles } from './containers/user-management/Roles/Roles';
 import { Users } from './containers/user-management/Users/Users';
 import { PageEdit } from './containers/pages/pageEdit';
+import { AgentEdit } from './containers/agents/agentEdit';
 import { PageCategory } from './containers/pages/pageCategory/PageCategory';
 import { PageList } from './containers/pages/pageList';
+import { AgentList } from './containers/agents/agentList';
 import { AddRole } from './containers/user-management/Roles/AddRole';
 import { AddUser } from './containers/user-management/Users/AddUser';
 import { Menus } from './containers/menus/Menus';
@@ -22,12 +24,17 @@ import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory
 import { Leads } from './containers/leads/Leads';
 import Header from './containers/generic/Header';
 import { LeadDetails } from './containers/leads/LeadDetails';
-
+import { CityList } from './containers/landmarks/CityList';
+import { CityEdit } from './containers/landmarks/CityEdit';
+import { ZipList } from './containers/landmarks/ZipList';
+import { ZipEdit } from './containers/landmarks/ZipEdit';
+import { CountyList } from './containers/landmarks/CountyList';
 import M from 'materialize-css';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { PrivateRoute } from './components';
+import { CountyEdit } from './containers/landmarks/CountyEdit';
 
 class App extends React.Component {
   constructor(props) {
@@ -52,12 +59,14 @@ class App extends React.Component {
 
         <PrivateRoute exact path="/roles" component={Roles} />
         <PrivateRoute exact path="/roles-add" component={AddRole} />
+        <PrivateRoute exact path="/role-edit/:id/" component={AddRole} />
 
         <PrivateRoute exact path="/users" component={Users} />
         <PrivateRoute exact path="/add-user" component={AddUser} />
+        <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
         <PrivateRoute exact path="/page-add" component={PageEdit} />
-        <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
         <PrivateRoute exact path="/pages" component={PageList} />
+        <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
         <PrivateRoute exact path="/page-category" component={PageCategory} />
         <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
 
@@ -71,6 +80,16 @@ class App extends React.Component {
         <PrivateRoute exact path="/leads" component={Leads} />
         <PrivateRoute exact path="/leads/:id" component={LeadDetails} />
 
+        <PrivateRoute exact path="/cities" component={CityList} />
+        <PrivateRoute exact path="/zips" component={ZipList} />
+        <PrivateRoute exact path="/zip-edit/:id" component={ZipEdit} />
+        <PrivateRoute exact path="/zip-add" component={ZipEdit} />
+        <PrivateRoute exact path="/city-edit/:id" component={CityEdit} />
+        <PrivateRoute exact path="/city-add" component={CityEdit} />
+
+        <PrivateRoute exact path="/counties" component={CountyList} />
+        <PrivateRoute exact path="/county-edit/:id" component={CountyEdit} />
+        <PrivateRoute exact path="/county-add" component={CountyEdit} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
       </Router>

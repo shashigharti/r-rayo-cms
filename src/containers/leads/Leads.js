@@ -27,10 +27,13 @@ class Leads extends Component {
     this.getLeads(null, null);
 
     // Get Agents
-    axios.get('/api/agents/all').then(response => {
-      this.setState({
-        agents: response.data.data,
-      });
+    axios.get('/api/agents').then(response => {
+      console.log(response.data);
+      if (response.length > 0) {
+        this.setState({
+          agents: response.data.data,
+        });
+      }
     });
 
     // Get status

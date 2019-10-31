@@ -2,6 +2,7 @@
 ## Getting Started
 npm install
 npm run build
+create a .env file
 
 ## Conventions for React
 https://github.com/airbnb/javascript/tree/master/react#naming

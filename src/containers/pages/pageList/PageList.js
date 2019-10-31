@@ -21,6 +21,7 @@ class PageList extends Component {
   componentDidMount() {
     M.AutoInit();
     this.getPages(null, null);
+    console.log(this.state);
   }
 
   getPages(link, type) {
@@ -150,7 +151,7 @@ class PageList extends Component {
                       </a>
                     </li>
                     <li className="active">
-                      <a href="#">{meta.current_page}</a>
+                      <a href="#">{meta ? meta.current_page : ''}</a>
                     </li>
                     <li>
                       <a
@@ -164,7 +165,7 @@ class PageList extends Component {
                       </a>
                     </li>
                   </ul>
-                  <span>Total Pages: {meta.total} </span>
+                  <span>Total Pages: {meta ? meta.total : 0} </span>
                 </div>
               </div>
             </div>

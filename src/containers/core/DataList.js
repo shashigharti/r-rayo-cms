@@ -61,7 +61,7 @@ const DataList = (props) => {
                                             <th className="text-nowrap center-align">Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>{pageRow}</tbody>
+                                    <tbody></tbody>
                                 </table>
                             </div>
                         </div>
@@ -70,9 +70,6 @@ const DataList = (props) => {
                                 <li>
                                     <a
                                         href="#"
-                                        onClick={() => {
-                                            this.getPages(links.prev);
-                                        }}
                                         aria-label="Previous"
                                     >
                                         <span aria-hidden="true">«</span>

@@ -10,6 +10,8 @@ https://github.com/airbnb/javascript/tree/master/react#naming
 # Tools
 eslint
 prettier
+Simple React Snippets
+
 
 # Coding Convention: 
 ## Features

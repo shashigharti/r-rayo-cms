@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Row } from './Row';
-import { Link } from 'react-router-dom';
 import M from 'materialize-css';
 import Resource from '../../core/Resource';
+import DataList from '../../core/DataList';
+import PageRow from '../../core/PageRow';
 
 class PageList extends Component {
   constructor(props) {
@@ -25,9 +24,7 @@ class PageList extends Component {
     return <Resource path='/api/page/all' render={data => {
       if (data.loading) return <p> Loading pages ... </p>
       if (data.payload.data != undefined) {
-        return data.payload.data.map(page =>
-          <div key={page.id}>{page.name}</div>
-        )
+        return <DataList data={data.payload.data} component={PageRow} />
       }
       return <div>No Data Found</div>;
     }} />

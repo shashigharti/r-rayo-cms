@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const NavBar = (props) => {
+const NavBar = () => {
     return (
         <div className="row">
             <div className="col s12">
@@ -42,5 +43,4 @@ const NavBar = (props) => {
         </div>
     );
 }
-
-export default DataList;
+export default NavBar;

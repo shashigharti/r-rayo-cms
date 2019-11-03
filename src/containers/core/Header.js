@@ -56,21 +56,7 @@ class Header extends Component {
                     <Navbar className="navbar navbar-fixed">
                         <nav className="navbar-main navbar-color nav-collapsible sideNav-lock navbar--theme gradient-shadow">
                             <div className="nav-wrapper">
-                                <div className="header-search-wrapper hide-on-med-and-down">
-                                    <i className="material-icons">search</i>
-                                    <input
-                                        className="header-search-input z-depth-2"
-                                        type="text"
-                                        name="Search"
-                                        placeholder="Search"
-                                    />
-                                </div>
                                 <ul className="navbar-list right">
-                                    <li className="hide-on-large-only">
-                                        <a className="waves-effect waves-block waves-light search-button" href="#">
-                                            <i className="material-icons">search</i>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a
                                             className="waves-effect waves-block waves-light notification-button"
@@ -101,19 +87,6 @@ class Header extends Component {
                                 <Profile />
                                 <Notification />
                             </div>
-                            <nav className="display-none search-sm">
-                                <div className="nav-wrapper">
-                                    <form>
-                                        <div className="input-field">
-                                            <input className="search-box-sm" type="search" required="" />
-                                            <label className="label-icon" htmlFor="search">
-                                                <i className="material-icons search-sm-icon">search</i>
-                                            </label>
-                                            <i className="material-icons search-sm-close">close</i>
-                                        </div>
-                                    </form>
-                                </div>
-                            </nav>
                         </nav>
                     </Navbar>
                 </header>

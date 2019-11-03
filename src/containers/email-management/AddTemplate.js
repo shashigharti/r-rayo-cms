@@ -48,7 +48,7 @@ class AddTemplate extends Component {
   componentDidMount() {
     M.AutoInit();
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {}
+  componentDidUpdate(prevProps, prevState, snapshot) { }
 
   handleTemplateChange(event) {
     let name = event.target.name;
@@ -58,12 +58,6 @@ class AddTemplate extends Component {
     if (name === 'status') {
       value = value === '1' ? '0' : '1';
     }
-
-    // // For date format - materialize datepicker doesn't recognize onChange
-    // if (name === 'starts_at' || name === 'ends_at') {
-    //     console.log(name, value);
-    //     value = moment(value).format('YYYY-MM-DD h:m:s');
-    // }
 
     this.setState(prevState => ({
       template: {

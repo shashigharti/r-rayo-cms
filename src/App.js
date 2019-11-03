@@ -20,7 +20,7 @@ import { Groups } from './containers/groups/Groups';
 import { AddGroup } from './containers/groups/AddGroup';
 import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 import { Leads } from './containers/leads/Leads';
-import Header from './containers/generic/Header';
+import Header from './containers/core/Header';
 import { LeadDetails } from './containers/leads/LeadDetails';
 
 import M from 'materialize-css';

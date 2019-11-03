@@ -4,7 +4,7 @@ import { authReducer } from '../reducers/authReducer';
 export const authContext = createContext();
 
 export const AuthContextProvider = (props) => {
-    const [user, dispatch] = useReducer(authReducer, [], () => {
+    const [auth, dispatch] = useReducer(authReducer, [], () => {
         const localData = localStorage.getItem('user');
         return localData ? JSON.parse(localData) : [];
     });

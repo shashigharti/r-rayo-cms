@@ -1,8 +1,3 @@
-const initialState = {
-    isAuthenticated: false,
-    user: null,
-    token: null,
-};
 const authReducer = (state, action) => {
     switch (action.type) {
         case "LOGIN":
@@ -24,6 +19,5 @@ const authReducer = (state, action) => {
 }
 
 export {
-    initialState,
     authReducer
 }

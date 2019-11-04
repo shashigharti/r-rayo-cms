@@ -5,13 +5,20 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export const LoginPage = () => {
   const { dispatch } = useContext(AuthContext);
-  const [user, setUser] = useState('');
-  const [token, setToken] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch({ type: 'LOGIN', user: { user, token } });
+
+    // api call for login
+    axios.post('/api/login', { email, password }).then(response => {
+      dispatch({ type: 'LOGIN_SUCCESS', credentials: { email, password } });
+    }).catch(e => {
+      dispatch({ type: 'LOGIN_ERROR', credentials: { email, password } });
+    });
   }
+
   return (
     <LoginBg
       className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page"
@@ -34,11 +41,13 @@ export const LoginPage = () => {
                     <div className="input-field col s12">
                       <i className="material-icons prefix pt-2">
                         person_outline
-                        </i>
-                      <input id="email" name="email" type="text" />
+                      </i>
+                      <input type="text" placeholder="email" value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required />
                       <label htmlFor="email" className="center-align">
                         Email
-                        </label>
+                      </label>
                     </div>
                   </div>
                   <div className="row margin">
@@ -46,7 +55,10 @@ export const LoginPage = () => {
                       <i className="material-icons prefix pt-2">
                         lock_outline
                         </i>
-                      <input id="password" type="password" name="password" />
+                      <input type="password" value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
                       <label htmlFor="password">Password</label>
                     </div>
                   </div>

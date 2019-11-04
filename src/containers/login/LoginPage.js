@@ -4,7 +4,6 @@ import { LoginBg } from "../../components/LoginBg";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from 'axios';
 
-
 export const LoginPage = (props) => {
   const { dispatch } = useContext(AuthContext);
   const [email, setEmail] = useState('');

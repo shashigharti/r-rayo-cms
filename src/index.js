@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store } from './helpers';
-import { App } from './App';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './components/GlobalStyle';
+import App from './App';
 
 const theme = {
   font: 'Muli',
@@ -15,7 +15,6 @@ const theme = {
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <>
-      {/*Apply Global Styles to all components*/}
       <GlobalStyle />
       <Provider store={store}>
         <App />

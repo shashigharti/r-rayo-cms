@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { LoginDiv } from "../../components/LoginDiv";
 import { LoginBg } from "../../components/LoginBg";
 import { AuthContext } from "../../contexts/AuthContext";
+import axios from 'axios';
 
-export const LoginPage = () => {
+
+export const LoginPage = (props) => {
   const { dispatch } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -12,11 +14,14 @@ export const LoginPage = () => {
     e.preventDefault();
 
     // api call for login
-    axios.post('/api/login', { email, password }).then(response => {
-      dispatch({ type: 'LOGIN_SUCCESS', credentials: { email, password } });
-    }).catch(e => {
-      dispatch({ type: 'LOGIN_ERROR', credentials: { email, password } });
-    });
+    axios.post('/api/login', { email, password })
+      .then(response => {
+        dispatch({ type: 'LOGIN_SUCCESS', user: response.data.user, status: response.data.success });
+        props.history.push('/');
+      }).catch(e => {
+        dispatch({ type: 'LOGIN_ERROR', status: response.data.success });
+        M.toast({ html: "Please enter valid email / password" });
+      });
   }
 
   return (

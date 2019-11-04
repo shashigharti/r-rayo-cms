@@ -1,17 +1,15 @@
-import axios from 'axios';
-
 const authReducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_SUCCESS":
             return {
                 ...state,
-                isAuthenticated: true,
-                user: response.data.user
+                isAuthenticated: action.status,
+                user: action.user
             };
         case "LOGIN_ERROR":
             return {
                 ...state,
-                isAuthenticated: false,
+                isAuthenticated: action.status,
                 user: null
             };
         case "LOGOUT":

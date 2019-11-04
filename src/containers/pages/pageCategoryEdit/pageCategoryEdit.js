@@ -11,9 +11,9 @@ const crumbs = [
     path: '',
   },
   {
-    name: 'Pages',
-    subPath: 'pages',
-    path: '/pages',
+    name: 'Page Categories',
+    subPath: 'pages-categories',
+    path: '/pages-categories',
   },
   {
     name: 'Edit',
@@ -22,7 +22,7 @@ const crumbs = [
   },
 ];
 
-class PageEdit extends Component {
+class PageCategoryEdit extends Component {
   constructor(props) {
     super(props);
     let id = null;
@@ -33,22 +33,16 @@ class PageEdit extends Component {
       status = true;
     }
     this.state = {
-      page: {
+      category: {
         name: '',
-        excerpt: '',
-        category_id: '',
-        thumbnail: '',
         slug: '',
-        content: '',
-        meta_title: '',
-        meta_keywords: '',
-        meta_description: '',
+        description: '',
       },
       id: id,
       status: status,
     };
     if (id !== null) {
-      this.getPage(id);
+      this.getPageCategory(id);
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -62,12 +56,12 @@ class PageEdit extends Component {
     M.updateTextFields();
   }
 
-  getPage(id) {
-    const url = `/api/pages/${id}`;
+  getPageCategory(id) {
+    const url = `/api/page-categories/${id}`;
     axios.get(url).then(response => {
       const data = response.data.data;
       this.setState({
-        page: data,
+        category: data,
         status: true,
       });
     });
@@ -75,10 +69,10 @@ class PageEdit extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    const { page } = this.state;
+    const { category } = this.state;
     this.setState({
-      page: {
-        ...page,
+      category: {
+        ...category,
         [name]: value,
       },
     });
@@ -86,36 +80,36 @@ class PageEdit extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({ submitted: true });
-    const { page, id } = this.state;
+    const { category, id } = this.state;
     if (id !== null) {
-      this.putRequest(page);
+      this.putRequest(category);
     } else {
-      this.postRequest(page);
+      this.postRequest(category);
     }
   }
-  putRequest(page) {
-    const url = `/api/pages/${this.state.id}`;
-    axios.put(url, page).then(response => {
+  putRequest(category) {
+    const url = `/api/page-categories/${this.state.id}`;
+    axios.put(url, category).then(response => {
       M.toast({ html: 'Successfully Edited' });
     });
   }
-  postRequest(page) {
-    const url = '/api/pages';
-    axios.post(url, page).then(response => {
+  postRequest(category) {
+    const url = '/api/page-categories';
+    axios.post(url, category).then(response => {
       M.toast({ html: 'Successfully Added' });
     });
   }
   callback(id) {
-    const { page } = this.state;
+    const { category } = this.state;
     this.setState({
-      page: {
-        ...page,
+      category: {
+        ...category,
         thumbnail: id,
       },
     });
   }
   render() {
-    const { page, status } = this.state;
+    const { category } = this.state;
     return (
       <>
         <div id="main">
@@ -138,7 +132,7 @@ class PageEdit extends Component {
                     <ul className="tabs">
                       <li className="tab">
                         <a className="active" href="#pages">
-                          Pages
+                          Page Category
                         </a>
                       </li>
                       <li className="tab">
@@ -155,16 +149,16 @@ class PageEdit extends Component {
                               <input
                                 type="text"
                                 name="name"
-                                value={page.name}
+                                value={category.name}
                                 onChange={this.handleChange}
                               />
-                              <label>Page Name</label>
+                              <label>Category Name</label>
                             </div>
                             <div className="input-field col s6">
                               <input
                                 type="text"
                                 name="slug"
-                                value={page.slug}
+                                value={category.slug}
                                 onChange={this.handleChange}
                               />
                               <label>Slug</label>
@@ -173,72 +167,9 @@ class PageEdit extends Component {
                           <div className="row">
                             <div className="input-field col s12">
                               <textarea
-                                name="content"
-                                id="content"
-                                value={page.content}
-                                className="materialize-textarea"
+                                value={category.description}
                                 onChange={this.handleChange}
-                              />
-                              <label htmlFor="content">Content</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="input-field col s6">
-                              <select
-                                className=""
-                                value={page.category_id}
-                                name="category_id"
-                                onChange={this.handleChange}
-                              >
-                                <option value="" disabled>
-                                  Choose your option
-                                </option>
-                                <option value="1">News And Events</option>
-                                <option value="2">Publications</option>
-                                <option value="3">About Us</option>
-                              </select>
-                              <label>Category</label>
-                            </div>
-                            <div className="input-field col s6">
-                              <input
-                                type="text"
-                                value={page.excerpt}
-                                name="excerpt"
-                                onChange={this.handleChange}
-                              />
-                              <label>Excerpt</label>
-                            </div>
-                          </div>
-                          {status && <Media id={this.callback} thumbnail={page.thumbnail} />}
-                          <div className="row">
-                            <div className="input-field col s12">
-                              <input
-                                type="text"
-                                name="meta_title"
-                                value={page.meta_title !== null ? page.meta_title : ''}
-                                onChange={this.handleChange}
-                              />
-                              <label>Meta Title</label>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="input-field col s6">
-                              <input
-                                type="text"
-                                name="meta_description"
-                                value={page.meta_description !== null ? page.meta_description : ''}
-                                onChange={this.handleChange}
-                              />
-                              <label>Meta Descriptions</label>
-                            </div>
-                            <div className="input-field col s6">
-                              <input
-                                type="text"
-                                name="meta_keywords"
-                                value={page.meta_keywords !== null ? page.meta_keywords : ''}
-                                onChange={this.handleChange}
-                              />
-                              <label>Meta Keywords</label>
+                              ></textarea>
                             </div>
                           </div>
                           <div className="row">
@@ -267,4 +198,4 @@ class PageEdit extends Component {
   }
 }
 
-export { PageEdit };
+export { PageCategoryEdit };

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import M from 'materialize-css';
 import Resource from '../../core/Resource';
 import DataList from '../../core/DataList';
-import PageRow from '../../core/PageRow';
+import PageCategoryRow from '../../core/PageCategoryRow';
 
-class PageList extends Component {
+class PageCategoryList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pages: {},
+      pagesCategories: {},
       loading: false,
       pagination: {
         links: {},
@@ -23,11 +23,11 @@ class PageList extends Component {
   render() {
     return (
       <Resource
-        path="/api/pages"
+        path="api/page-categories"
         render={data => {
-          if (data.loading) return <p> Loading pages ... </p>;
+          if (data.loading) return <p> Loading page categories ... </p>;
           if (data.payload.data != undefined) {
-            return <DataList data={data.payload.data} component={PageRow} />;
+            return <DataList data={data.payload.data} component={PageCategoryRow} />;
           }
           return <div>No Data Found</div>;
         }}
@@ -36,4 +36,4 @@ class PageList extends Component {
   }
 }
 
-export { PageList };
+export { PageCategoryList };

@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PageRow = ({ row, onDelete }) => (
+const PageCategoryRow = ({ row }) => (
   <tr key={row.id}>
     <td>{row.id}</td>
     <td>{row.name}</td>
     <td className="text right-align">
       <Link
         className="waves-effect waves-light btn-small cyan"
-        to={{ pathname: `/page-edit/${row.id}`, query: { id: row.id } }}
+        to={{ pathname: `/page-category/edit/${row.id}`, query: { id: row.id } }}
       >
         <i className="material-icons left">edit</i>
       </Link>
@@ -16,7 +16,7 @@ const PageRow = ({ row, onDelete }) => (
         <i
           className="material-icons left"
           onClick={() => {
-            onDelete(row.id);
+            props.onDelete(row.id);
           }}
         >
           delete
@@ -29,4 +29,4 @@ const PageRow = ({ row, onDelete }) => (
   </tr>
 );
 
-export default PageRow;
+export default PageCategoryRow;

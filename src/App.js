@@ -11,7 +11,6 @@ import { Roles } from './containers/user-management/Roles/Roles';
 import { Users } from './containers/user-management/Users/Users';
 import { PageEdit } from './containers/pages/pageEdit';
 import { AgentEdit } from './containers/agents/agentEdit';
-import { PageCategory } from './containers/pages/pageCategory/PageCategory';
 import { PageList } from './containers/pages/pageList';
 import { AgentList } from './containers/agents/agentList';
 import { AddRole } from './containers/user-management/Roles/AddRole';
@@ -35,6 +34,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import { PrivateRoute } from './components';
 import { CountyEdit } from './containers/landmarks/CountyEdit';
+import { PageCategoryList } from './containers/pages/pageCategoryList/pageCategoryList';
+import { PageCategoryEdit } from './containers/pages/pageCategoryEdit/pageCategoryEdit';
 
 class App extends React.Component {
   constructor(props) {
@@ -67,8 +68,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/page-add" component={PageEdit} />
         <PrivateRoute exact path="/pages" component={PageList} />
         <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
-        <PrivateRoute exact path="/page-category" component={PageCategory} />
-        <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
+        <PrivateRoute exact path="/page-category" component={PageCategoryList} />
+        <PrivateRoute exact path="/page-category/edit/:id" component={PageCategoryEdit} />
 
         <PrivateRoute exact path="/menus" component={Menus} />
         <PrivateRoute exact path="/add-menu" component={AddMenu} />

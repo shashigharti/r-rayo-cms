@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { HomePage } from './containers/home/Dashboard';
 import { LoginPage } from './containers/login/LoginPage';
 import { RegisterPage } from './containers/register/RegisterPage';
@@ -22,88 +21,69 @@ import { Groups } from './containers/groups/Groups';
 import { AddGroup } from './containers/groups/AddGroup';
 import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 import { Leads } from './containers/leads/Leads';
-import Header from './containers/generic/Header';
 import { LeadDetails } from './containers/leads/LeadDetails';
 import { CityList } from './containers/landmarks/CityList';
 import { CityEdit } from './containers/landmarks/CityEdit';
 import { ZipList } from './containers/landmarks/ZipList';
 import { ZipEdit } from './containers/landmarks/ZipEdit';
 import { CountyList } from './containers/landmarks/CountyList';
-import M from 'materialize-css';
-
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import { PrivateRoute } from './components';
 import { CountyEdit } from './containers/landmarks/CountyEdit';
+import AuthContextProvider from './contexts/AuthContext';
+import { Header } from './containers/core/Header';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    const { dispatch } = this.props;
-  }
+import M from 'materialize-css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-  componentDidMount() {
-    M.AutoInit();
-  }
-
-  render() {
-    const { authentication } = this.props;
-    const loggedIn = authentication.loggedIn;
-    return (
+const App = () => {
+  return (
+    <>
       <Router>
-        {loggedIn && <Header />}
-        <PrivateRoute exact path="/" component={HomePage} />
-        <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-        <PrivateRoute exact path="/templates" component={Templates} />
-        <PrivateRoute exact path="/settings" component={Settings} />
+        <AuthContextProvider>
+          <Header />
+          <PrivateRoute exact path="/" component={HomePage} />
+          <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
+          <PrivateRoute exact path="/templates" component={Templates} />
+          <PrivateRoute exact path="/settings" component={Settings} />
 
-        <PrivateRoute exact path="/roles" component={Roles} />
-        <PrivateRoute exact path="/roles-add" component={AddRole} />
-        <PrivateRoute exact path="/role-edit/:id/" component={AddRole} />
+          <PrivateRoute exact path="/roles" component={Roles} />
+          <PrivateRoute exact path="/roles-add" component={AddRole} />
 
-        <PrivateRoute exact path="/users" component={Users} />
-        <PrivateRoute exact path="/add-user" component={AddUser} />
-        <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
-        <PrivateRoute exact path="/page-add" component={PageEdit} />
-        <PrivateRoute exact path="/pages" component={PageList} />
-        <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
-        <PrivateRoute exact path="/page-category" component={PageCategory} />
-        <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
+          <PrivateRoute exact path="/users" component={Users} />
+          <PrivateRoute exact path="/add-user" component={AddUser} />
+          <PrivateRoute exact path="/page-add" component={PageEdit} />
+          <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
+          <PrivateRoute exact path="/pages" component={PageList} />
+          <PrivateRoute exact path="/page-category" component={PageCategory} />
+          <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
 
-        <PrivateRoute exact path="/menus" component={Menus} />
-        <PrivateRoute exact path="/add-menu" component={AddMenu} />
+          <PrivateRoute exact path="/menus" component={Menus} />
+          <PrivateRoute exact path="/add-menu" component={AddMenu} />
 
-        <PrivateRoute exact path="/groups" component={Groups} />
-        <PrivateRoute exact path="/add-group" component={AddGroup} />
-        <PrivateRoute exact path="/edit-group" component={AddGroup} />
+          <PrivateRoute exact path="/groups" component={Groups} />
+          <PrivateRoute exact path="/add-group" component={AddGroup} />
+          <PrivateRoute exact path="/edit-group" component={AddGroup} />
 
-        <PrivateRoute exact path="/leads" component={Leads} />
-        <PrivateRoute exact path="/leads/:id" component={LeadDetails} />
+          <PrivateRoute exact path="/cities" component={CityList} />
+          <PrivateRoute exact path="/city-edit/:id" component={CityEdit} />
+          <PrivateRoute exact path="/city-add" component={CityEdit} />
 
-        <PrivateRoute exact path="/cities" component={CityList} />
-        <PrivateRoute exact path="/zips" component={ZipList} />
-        <PrivateRoute exact path="/zip-edit/:id" component={ZipEdit} />
-        <PrivateRoute exact path="/zip-add" component={ZipEdit} />
-        <PrivateRoute exact path="/city-edit/:id" component={CityEdit} />
-        <PrivateRoute exact path="/city-add" component={CityEdit} />
+          <PrivateRoute exact path="/zips" component={ZipList} />
+          <PrivateRoute exact path="/zip-edit/:id" component={ZipEdit} />
+          <PrivateRoute exact path="/zip-add" component={ZipEdit} />
 
-        <PrivateRoute exact path="/counties" component={CountyList} />
-        <PrivateRoute exact path="/county-edit/:id" component={CountyEdit} />
-        <PrivateRoute exact path="/county-add" component={CountyEdit} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
+          <PrivateRoute exact path="/counties" component={CountyList} />
+          <PrivateRoute exact path="/county-edit/:id" component={CountyEdit} />
+          <PrivateRoute exact path="/county-add" component={CountyEdit} />
+
+          <PrivateRoute exact path="/leads" component={Leads} />
+          <PrivateRoute exact path="/leads/:id" component={LeadDetails} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
+        </AuthContextProvider>
       </Router>
-    );
-  }
-}
+    </>
+  );
+};
 
-function mapStateToProps(state) {
-  const { alert, authentication } = state;
-  return {
-    alert,
-    authentication,
-  };
-}
-
-const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App };
+export default App;

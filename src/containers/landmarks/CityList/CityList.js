@@ -32,13 +32,13 @@ class CityList extends Component {
     if (link) {
       url = link;
     } else {
-      url = '/api/city';
+      url = '/api/cities';
     }
     CrudTrait.getAllApi(url, 'cities', self);
   }
 
   deleteCity(id) {
-    const url = '/api/city/' + id;
+    const url = '/api/cities/' + id;
     CrudTrait.deleteApi(url).then(response => {
       this.getCities();
     });

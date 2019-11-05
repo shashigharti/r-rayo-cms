@@ -68,7 +68,7 @@ class CityEdit extends Component {
 
   getCity(id) {
     const self = this;
-    const url = `/api/city/${id}`;
+    const url = `/api/cities/${id}`;
     CrudTrait.getApi(url, 'city', self);
   }
 
@@ -81,10 +81,10 @@ class CityEdit extends Component {
     this.setState({ submitted: true });
     const { city, id } = this.state;
     if (id !== null) {
-      const url = `/api/city/${this.state.id}`;
+      const url = `/api/cities/${this.state.id}`;
       CrudTrait.putApi(url, city);
     } else {
-      const url = '/api/city';
+      const url = '/api/cities';
       CrudTrait.postApi(url, city);
     }
   }

@@ -9,7 +9,7 @@ const Row = props => (
     <td className="text right-align">
       <Link
         className="waves-effect waves-light btn-small cyan"
-        to={{ pathname: `/role-edit/${props.id}`, query: { id: props.id } }}
+        to={{ pathname: `/roles-edit/${props.id}`, query: { id: props.id } }}
       >
         <i className="material-icons left">edit</i>
       </Link>

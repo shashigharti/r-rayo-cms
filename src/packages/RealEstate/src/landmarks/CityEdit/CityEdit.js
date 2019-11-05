@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
-import { Media } from '../../../components/Media';
+import { BreadCrumbs } from '../../../../Core';
 import M from 'materialize-css';
 //import CrudTrait from '../../../helpers/Crud/CrudTrait';
 

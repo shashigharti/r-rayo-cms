@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { ImageSpan } from '../../../components/Styled';
-import { Navbar } from '../../../components/Navbar';
-import { Notification } from './Notification.js.js.js.js'
+import { ImageSpan } from '../../../Core/Components/Styled';
+import { Navbar } from '../../../Core/Components/Navbar';
+import { Notification } from './Notification.js.js.js'
 import { Profile } from './Profile';
 import { SideMenu } from './SideMenu';
-import { AuthContext } from '../../../contexts/AuthContext';
+import { AuthContext } from '../../../Core/contexts/AuthContext';
 
 export const Header = () => {
     const { auth } = useContext(AuthContext);

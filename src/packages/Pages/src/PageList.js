@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
-import Resource from '../../Core/libraries/Resource';
-import DataList from '../../Core/partials/DataList';
+import Resource from '../../Core/Components/Resource';
+import DataList from '../../Core/Components/DataList';
 import PageRow from './PageRow';
 
 

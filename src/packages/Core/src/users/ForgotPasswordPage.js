@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Form } from '../../../../components/Form';
-import { Button } from '../../../../components/Button';
-import { InputField } from '../../../../components/InputField';
+import { Form } from '../../Components/Form';
+import { Button } from '../../Components/Button';
+import { InputField } from '../../Components/InputField';
 
 class ForgotPasswordPage extends React.Component {
   state = {

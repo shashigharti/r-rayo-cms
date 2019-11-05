@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
-import { BreadCrumbs } from '../../Components/BreadCrumbs';
+import { BreadCrumbs } from '../../../../Core/Components/BreadCrumbs';
 
 const crumbs = [
   {
@@ -165,4 +165,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export { Users };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PageRow from '../PageRow';
-import Resource from '../../../Core/libraries/Resource';
-import DataList from '../../../Core/partials/DataList';
+import Resource from '../../../Core/Components/Resource';
+import DataList from '../../../Core/Components/DataList';
 
 const PageCategoryList = () => {
   return <Resource path='/api/page/all' render={data => {

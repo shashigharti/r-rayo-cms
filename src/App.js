@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { PageList, PageEdit, PageCategoryList, AddPageCategory } from '/packages/Pages';
+import { PageList, PageEdit, PageCategoryList, AddPageCategory } from './packages/Pages';
 import {
   AddTemplate,
   Templates,
@@ -12,7 +12,8 @@ import {
   Dashboard,
   Roles,
   Users,
-} from '/packages/Core';
+  Header
+} from './packages/Core';
 
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
@@ -25,9 +26,8 @@ import {
 // import { CountyList } from '/packages/landmarks/CountyList';
 // import { PrivateRoute } from './components';
 // import { CountyEdit } from '/packages/landmarks/CountyEdit';
-import { Header } from '/packages/core/Header';
 
-import AuthContextProvider from './contexts/AuthContext';
+import AuthContextProvider from './packages/Core/contexts/AuthContext';
 
 const App = () => {
   return (

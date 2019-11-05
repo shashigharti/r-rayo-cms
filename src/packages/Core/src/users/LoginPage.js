@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { LoginDiv } from "../../components/LoginDiv";
-import { LoginBg } from "../../components/LoginBg";
+import { LoginDiv } from "../../Components/LoginDiv";
+import { LoginBg } from "../../Components/LoginBg";
 import { AuthContext } from "../../contexts/AuthContext";
 import axios from 'axios';
 
-export const LoginPage = (props) => {
+const LoginPage = (props) => {
   const { dispatch } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

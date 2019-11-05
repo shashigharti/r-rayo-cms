@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { timeAgo } from '../../../../components/TimeAgo';
+import { timeAgo } from '../../../Core/Components/TimeAgo';
 
 class Overview extends Component {
   constructor(props) {

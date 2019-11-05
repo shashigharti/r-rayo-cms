@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
+import { BreadCrumbs } from '../../Components/BreadCrumbs';
 
 const crumbs = [
   {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
-import { Media } from '../../../components/Media';
+import { BreadCrumbs } from '../../Core/Components/BreadCrumbs';
+import { Media } from '../../Core/Components/Media';
 import M from 'materialize-css';
 
 const crumbs = [

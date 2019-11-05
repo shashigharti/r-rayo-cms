@@ -2,7 +2,7 @@
 import Dashboard from './src/dashboard/Dashboard';
 
 import AddTemplate from './src/email-management/AddTemplate';
-import Template from './src/email-management/Template';
+import Templates from './src/email-management/Templates';
 
 import AddRole from './src/roles/AddRole';
 import Roles from './src/roles/RolePageList';
@@ -16,21 +16,22 @@ import SearchSettings from './src/settings/SearchSettings';
 import Settings from './src/settings/Settings';
 import SiteSettings from './src/settings/SiteSettings';
 
+// users
 import AddUser from './src/users/AddUser';
 import Users from './src/users/Users';
-import URow from './src/user/Row';
+import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
 import ForgotPasswordPage from './src/users/ForgotPasswordPage';
 import LoginPage from './src/users/LoginPage'
 
-
-
+// partials
+import Header from './Components/Header'
 
 export {
     Dashboard,
 
     AddTemplate,
-    Template,
+    Templates,
 
     AddRole,
     Roles,
@@ -49,5 +50,8 @@ export {
     RRow,
     RegisterPage,
     ForgotPasswordPage,
-    LoginPage
+    LoginPage,
+
+    Header,
+
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { timeAgo } from '../../../../components/TimeAgo';
+import { timeAgo } from '../../../Core/Components/TimeAgo';
 
 class LeadsRow extends Component {
   constructor(props) {

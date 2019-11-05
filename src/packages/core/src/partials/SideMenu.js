@@ -1,5 +1,5 @@
 import React from 'react';
-import { SideNav } from '../../../components/SideNav';
+import { SideNav } from '../../../Core/Components/SideNav';
 import { Link, NavLink } from 'react-router-dom';
 
 export const SideMenu = () => {

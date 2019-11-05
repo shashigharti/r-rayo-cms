@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
+import { BreadCrumbs } from '../../../../components/BreadCrumbs';
 
 const crumbs = [
   {
@@ -11,32 +11,27 @@ const crumbs = [
     path: '',
   },
   {
-    name: 'Roles',
+    name: 'Users',
     subPath: 'pages',
-    path: 'roles',
+    path: 'users',
   },
 ];
 
-class Role extends Component {
+class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      roles: {},
+      users: {},
       loading: false,
       pagination: {
         links: {},
         meta: {},
       },
     };
-    this.getRoles = this.getRoles.bind(this);
-    this.deleteRole = this.deleteRole.bind(this);
+    this.getUsers = this.getUsers.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
   }
-  componentDidMount() {
-    M.AutoInit();
-    this.getRoles(null, null);
-  }
-
-  getRoles(link, type) {
+  getUsers(link, type) {
     this.setState({
       loading: true,
     });
@@ -44,16 +39,23 @@ class Role extends Component {
     if (link) {
       url = link;
     } else {
-      url = '/api/role';
+      url = '/api/users';
     }
     this.fetchRequest(url);
+  }
+  deleteUser(id) {
+    const url = `/api/user/${id}`;
+    axios.delete(url).then(response => {
+      M.toast({ html: 'Successfully Deleted' });
+      this.getAgents();
+    });
   }
   fetchRequest(url) {
     axios.get(url).then(response => {
       console.log(response);
       this.setState({
         loading: false,
-        roles: response.data.data,
+        users: response.data.data,
         pagination: {
           links: response.data.links,
           meta: response.data.meta,
@@ -61,27 +63,25 @@ class Role extends Component {
       });
     });
   }
-  deleteRole(id) {
-    const url = `/api/role/${id}`;
-    axios.delete(url).then(response => {
-      M.toast({ html: 'Successfully Deleted' });
-      this.getRoles();
-    });
+  componentDidMount() {
+    M.AutoInit();
+    this.getUsers(null, null);
   }
 
   render() {
-    const { roles } = this.state;
+    const { users } = this.state;
     const { links, meta } = this.state.pagination;
-    const rolesRow =
-      roles.length > 0 &&
-      roles.map(role => (
+    const usersRow =
+      users.length > 0 &&
+      users.map(user => (
         <Row
-          sn={role.id}
-          key={role.id}
-          id={role.id}
-          name={role.name}
-          description={role.description}
-          onDelete={this.deleteRole}
+          sn={user.id}
+          key={user.id}
+          id={user.id}
+          firstname={user.first_name}
+          lastname={user.last_name}
+          email={user.email}
+          onDelete={this.deleteAgent}
         />
       ));
     return (
@@ -92,13 +92,13 @@ class Role extends Component {
               <div className="container-fluid">
                 <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
                   <div className="col s10 m6 l6 breadcrumbs-left">
-                    <BreadCrumbs title="Roles" rootPath="" crumbs={crumbs} />
+                    <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
                   </div>
                   <div className="col s2 m6 l6 right--button">
                     <Link
                       className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
                       title="add"
-                      to="/roles-add"
+                      to="/add-user"
                     >
                       <i className="material-icons">add</i>
                     </Link>
@@ -116,12 +116,13 @@ class Role extends Component {
                       <thead>
                         <tr>
                           <th>SN</th>
-                          <th>Name</th>
-                          <th>Description</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Email</th>
                           <th className="text-nowrap center-align">Action</th>
                         </tr>
                       </thead>
-                      <tbody>{rolesRow}</tbody>
+                      <tbody>{usersRow}</tbody>
                     </table>
                   </div>
                 </div>
@@ -134,7 +135,7 @@ class Role extends Component {
                 <a
                   href="#"
                   onClick={() => {
-                    this.getRoles(links.prev);
+                    this.getUsers(links.prev);
                   }}
                   aria-label="Previous"
                 >
@@ -148,7 +149,7 @@ class Role extends Component {
                 <a
                   href="#"
                   onClick={() => {
-                    this.getRoles(links.next);
+                    this.getUsers(links.next);
                   }}
                   aria-label="Next"
                 >
@@ -156,7 +157,7 @@ class Role extends Component {
                 </a>
               </li>
             </ul>
-            <span>Total Roles: {meta.total} </span>
+            <span>Total Users: {meta.total} </span>
           </div>
         </div>
       </>
@@ -164,4 +165,4 @@ class Role extends Component {
   }
 }
 
-export default Role;
+export default Users;

@@ -35,14 +35,4 @@ class Dashboard extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { users, authentication } = state;
-  const { user } = authentication;
-  return {
-    user,
-    users,
-  };
-}
-
-const connectedHomePage = connect(mapStateToProps)(Dashboard);
-export { connectedHomePage as HomePage };
+export default Dashboard;

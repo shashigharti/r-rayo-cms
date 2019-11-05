@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BreadCrumbs } from '../../../components/BreadCrumbs';
 import { Media } from '../../../components/Media';
 import M from 'materialize-css';
-import CrudTrait from '../../../helpers/Crud/CrudTrait';
+//import CrudTrait from '../../../helpers/Crud/CrudTrait';
 
 const crumbs = [
   {

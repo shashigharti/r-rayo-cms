@@ -132,4 +132,4 @@ class SearchSettings extends Component {
   }
 }
 
-export { SearchSettings };
+export default SearchSettings;

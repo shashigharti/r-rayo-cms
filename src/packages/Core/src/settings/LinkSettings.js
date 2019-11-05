@@ -208,4 +208,4 @@ class LinkSettings extends Component {
   }
 }
 
-export { LinkSettings };
+export default LinkSettings;

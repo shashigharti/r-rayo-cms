@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row } from './Row';
 import { Link } from 'react-router-dom';
 import M from 'materialize-css';
-import CrudTrait from '../../../helpers/Crud/CrudTrait';
+//import CrudTrait from '../../../helpers/Crud/CrudTrait';
 
 class CityList extends Component {
   constructor(props) {

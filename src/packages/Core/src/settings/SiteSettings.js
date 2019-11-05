@@ -162,4 +162,4 @@ class SiteSettings extends Component {
   }
 }
 
-export { SiteSettings };
+export default SiteSettings;

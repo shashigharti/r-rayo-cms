@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Filters from '../Filters';
+import Filters from '../filters';
 import '../leads-inner.css';
 import '../filter.css';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../../components/Button';
 
 class AddSearch extends Component {
   constructor(props) {

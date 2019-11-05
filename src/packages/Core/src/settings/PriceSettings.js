@@ -159,4 +159,4 @@ class PriceSettings extends Component {
   }
 }
 
-export { PriceSettings };
+export default PriceSettings;

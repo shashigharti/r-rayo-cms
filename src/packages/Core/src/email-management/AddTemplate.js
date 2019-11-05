@@ -281,4 +281,5 @@ class AddTemplate extends Component {
   }
 }
 
-export { AddTemplate };
+export default AddTemplate;
+

@@ -31,8 +31,8 @@ class GeneralSettings extends Component {
       console.log(response);
     });
   }
-  handleSubmit() {}
-  handleChange() {}
+  handleSubmit() { }
+  handleChange() { }
   render() {
     const { general } = this.state;
     return (
@@ -43,4 +43,4 @@ class GeneralSettings extends Component {
   }
 }
 
-export { GeneralSettings };
+export default GeneralSettings;

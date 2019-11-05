@@ -33,7 +33,7 @@ class FrontPageSettings extends Component {
     }
   }
 
-  handleSubmit() {}
+  handleSubmit() { }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     M.AutoInit();
@@ -145,4 +145,4 @@ class FrontPageSettings extends Component {
   }
 }
 
-export { FrontPageSettings };
+export default FrontPageSettings;

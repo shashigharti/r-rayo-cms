@@ -25,6 +25,8 @@ import { PrivateRoute } from './components';
 import { CountyEdit } from './containers/landmarks/CountyEdit';
 import { Header } from './containers/core/Header';
 import { PageList, PageEdit, PageCategoryList, AddPageCategory } from './containers/Pages';
+import AuthContextProvider from './contexts/AuthContext';
+
 const App = () => {
   return (
     <>

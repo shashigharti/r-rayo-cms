@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const ToolBar = () => {
     return (
         <div className="row">
             <div className="col s12">
@@ -43,4 +43,4 @@ const NavBar = () => {
         </div>
     );
 }
-export default NavBar;
+export default ToolBar;

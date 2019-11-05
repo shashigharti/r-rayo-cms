@@ -95,3 +95,4 @@ const LoginPage = (props) => {
     </LoginBg>
   );
 }
+export default LoginPage;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Header from '../../generic/Header';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
+import { BreadCrumbs } from '../../Components/BreadCrumbs';
 
 const crumbs = [
   {

@@ -24,9 +24,8 @@ import {
 // import { ZipList } from '/packages/landmarks/ZipList';
 // import { ZipEdit } from '/packages/landmarks/ZipEdit';
 // import { CountyList } from '/packages/landmarks/CountyList';
-// import { PrivateRoute } from './components';
 // import { CountyEdit } from '/packages/landmarks/CountyEdit';
-
+import { PrivateRoute } from './packages/Core/Components/PrivateRoute';
 import AuthContextProvider from './packages/Core/contexts/AuthContext';
 
 const App = () => {

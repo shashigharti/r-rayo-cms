@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import M from 'materialize-css';
-import { Button } from '../../components/Button/Button';
+import { Button } from '../../Components/Button';
 import moment from 'moment';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { BreadCrumbs } from '../../Components/BreadCrumbs';
 import { Link } from 'react-router-dom';
 
 const crumbs = [

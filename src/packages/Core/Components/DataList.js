@@ -1,11 +1,11 @@
 import React, { useState, lazy } from 'react';
 import Pagination from './Pagination';
-import NavBar from './NavBar';
+import ToolBar from './ToolBar';
 
 const DataList = ({ data, component: Component }) => {
   return (
     <div id="main">
-      <NavBar />
+      <ToolBar />
       <div className="row">
         <div className="col s12">
           <div className="container-fluid">

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ImageSpan } from './Styled';
 import { Navbar } from './Navbar';
-import { Notification } from './Notification.js.js.js.js'
+import { Notification } from './Notification.js'
 import { Profile } from './Profile';
 import { SideMenu } from './SideMenu';
 import { AuthContext } from '../contexts/AuthContext';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Row } from './Row';
+import Row from '../users/Row';
 import { Link } from 'react-router-dom';
 import { BreadCrumbs } from '../../Components/BreadCrumbs';
 
@@ -85,82 +85,80 @@ class Users extends Component {
         />
       ));
     return (
-      <>
-        <div id="main">
-          <div className="row">
-            <div className="col s12">
-              <div className="container-fluid">
-                <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
-                  <div className="col s10 m6 l6 breadcrumbs-left">
-                    <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
-                  </div>
-                  <div className="col s2 m6 l6 right--button">
-                    <Link
-                      className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
-                      title="add"
-                      to="/add-user"
-                    >
-                      <i className="material-icons">add</i>
-                    </Link>
-                  </div>
+      <div id="main">
+        <div className="row">
+          <div className="col s12">
+            <div className="container-fluid">
+              <div className="row breadcrumbs-inline" id="breadcrumbs-wrapper">
+                <div className="col s10 m6 l6 breadcrumbs-left">
+                  <BreadCrumbs title="Users" rootPath="" crumbs={crumbs} />
+                </div>
+                <div className="col s2 m6 l6 right--button">
+                  <Link
+                    className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
+                    title="add"
+                    to="/add-user"
+                  >
+                    <i className="material-icons">add</i>
+                  </Link>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col s12">
-              <div className="container-fluid">
-                <div className="card">
-                  <div className="card-content">
-                    <table className="table data-table">
-                      <thead>
-                        <tr>
-                          <th>SN</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Email</th>
-                          <th className="text-nowrap center-align">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>{usersRow}</tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="right-align pagination--top">
-            <ul className="pagination theme--pagination right">
-              <li>
-                <a
-                  href="#"
-                  onClick={() => {
-                    this.getUsers(links.prev);
-                  }}
-                  aria-label="Previous"
-                >
-                  <span aria-hidden="true">«</span>
-                </a>
-              </li>
-              <li className="active">
-                <a href="#">{meta.current_page}</a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={() => {
-                    this.getUsers(links.next);
-                  }}
-                  aria-label="Next"
-                >
-                  <span aria-hidden="true">»</span>
-                </a>
-              </li>
-            </ul>
-            <span>Total Users: {meta.total} </span>
           </div>
         </div>
-      </>
+        <div className="row">
+          <div className="col s12">
+            <div className="container-fluid">
+              <div className="card">
+                <div className="card-content">
+                  <table className="table data-table">
+                    <thead>
+                      <tr>
+                        <th>SN</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th className="text-nowrap center-align">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>{usersRow}</tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="right-align pagination--top">
+          <ul className="pagination theme--pagination right">
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  this.getUsers(links.prev);
+                }}
+                aria-label="Previous"
+              >
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <li className="active">
+              <a href="#">{meta.current_page}</a>
+            </li>
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  this.getUsers(links.next);
+                }}
+                aria-label="Next"
+              >
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          </ul>
+          <span>Total Users: {meta.total} </span>
+        </div>
+      </div>
     );
   }
 }

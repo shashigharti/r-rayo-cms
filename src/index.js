@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './components/GlobalStyle';
+import { GlobalStyle } from './packages/Core/Components/GlobalStyle';
 import App from './App';
 
 const theme = {
@@ -15,9 +15,7 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     <>
       <GlobalStyle />
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </>
   </ThemeProvider>,
   document.getElementById('root'),

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
-import { Media } from '../../../components/Media';
+import { BreadCrumbs } from '../../Components/BreadCrumbs';
+import { Media } from '../../Components/Media';
 
 const crumbs = [
   {

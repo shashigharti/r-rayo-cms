@@ -69,4 +69,4 @@ class ForgotPasswordPage extends React.Component {
   }
 }
 
-export { ForgotPasswordPage };
+export default ForgotPasswordPage;

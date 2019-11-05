@@ -8,22 +8,22 @@ import { Templates } from './containers/email-management/Templates';
 import { Settings } from './containers/settings/Settings';
 import { Roles } from './containers/user-management/Roles/Roles';
 import { Users } from './containers/user-management/Users/Users';
-import { PageEdit } from './containers/pages/pageEdit';
-import { PageCategory } from './containers/pages/pageCategory/PageCategory';
-import { PageList } from './containers/pages/pageList';
 import { AddRole } from './containers/user-management/Roles/AddRole';
 import { AddUser } from './containers/user-management/Users/AddUser';
 import { Menus } from './containers/menus/Menus';
 import { AddMenu } from './containers/menus/AddMenu';
 import { Groups } from './containers/groups/Groups';
 import { AddGroup } from './containers/groups/AddGroup';
-import { AddPageCategory } from './containers/pages/pageCategory/AddPageCategory';
 import { Leads } from './containers/leads/Leads';
 import { LeadDetails } from './containers/leads/LeadDetails';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { PrivateRoute } from './components';
 import AuthContextProvider from './contexts/AuthContext';
 import { Header } from './containers/core/Header';
+import { PageList } from './containers/pages/src/PageList';
+import { PageEdit } from './containers/pages/src/PageEdit';
+import { PageCategoryList } from './containers/pages/src/categories/PageCategoryList';
+import { AddPageCategory } from './containers/pages/src/categories/AddPageCategory';
 
 const App = () => {
   return (
@@ -42,9 +42,9 @@ const App = () => {
           <PrivateRoute exact path="/users" component={Users} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/page-add" component={PageEdit} />
-          <PrivateRoute exact path="/page-edit/:id/" component={PageEdit} />
+          <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
           <PrivateRoute exact path="/pages" component={PageList} />
-          <PrivateRoute exact path="/page-category" component={PageCategory} />
+          <PrivateRoute exact path="/pages" component={PageCategoryList} />
           <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
 
           <PrivateRoute exact path="/menus" component={Menus} />

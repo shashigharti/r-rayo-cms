@@ -3,6 +3,7 @@ import Resource from '../../core/Resource';
 import DataList from '../../core/DataList';
 import PageRow from './PageRow';
 
+
 const PageList = () => {
   return <Resource path='/api/page/all' render={data => {
     if (data.loading) return <p> Loading pages ... </p>

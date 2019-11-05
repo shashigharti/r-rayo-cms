@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BreadCrumbs } from '../../../components/BreadCrumbs';
+import { BreadCrumbs } from '../../../../components/BreadCrumbs';
 
 const crumbs = [
   {

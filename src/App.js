@@ -20,10 +20,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { PrivateRoute } from './components';
 import AuthContextProvider from './contexts/AuthContext';
 import { Header } from './containers/core/Header';
-import { PageList } from './containers/pages/src/PageList';
-import { PageEdit } from './containers/pages/src/PageEdit';
-import { PageCategoryList } from './containers/pages/src/categories/PageCategoryList';
-import { AddPageCategory } from './containers/pages/src/categories/AddPageCategory';
+import { PageList, PageEdit, PageCategoryList, AddPageCategory } from './containers/Pages';
 
 const App = () => {
   return (
@@ -35,10 +32,8 @@ const App = () => {
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
           <PrivateRoute exact path="/templates" component={Templates} />
           <PrivateRoute exact path="/settings" component={Settings} />
-
           <PrivateRoute exact path="/roles" component={Roles} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
-
           <PrivateRoute exact path="/users" component={Users} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/page-add" component={PageEdit} />
@@ -46,17 +41,13 @@ const App = () => {
           <PrivateRoute exact path="/pages" component={PageList} />
           <PrivateRoute exact path="/pages" component={PageCategoryList} />
           <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
-
           <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />
-
           <PrivateRoute exact path="/groups" component={Groups} />
           <PrivateRoute exact path="/add-group" component={AddGroup} />
           <PrivateRoute exact path="/edit-group" component={AddGroup} />
-
           <PrivateRoute exact path="/leads" component={Leads} />
           <PrivateRoute exact path="/leads/:id" component={LeadDetails} />
-
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
         </AuthContextProvider>

@@ -1,0 +1,1 @@
+export const PAGE_URI = "api/page/all"

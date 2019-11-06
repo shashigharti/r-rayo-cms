@@ -1,5 +1,5 @@
 import config from 'config';
-import { authHeader } from '../helpers';
+//import { authHeader } from '../helpers';
 import axios from 'axios';
 
 export const userService = {
@@ -16,11 +16,11 @@ function login(email, password) {
     const credentials = {
         email, password
     };
-   return axios.post('/api/login', credentials).then(response => {
+    return axios.post('/api/login', credentials).then(response => {
         return Promise.resolve(response.data.user);
-   }).catch(e => {
+    }).catch(e => {
         return Promise.reject(e);
-   })
+    })
 }
 
 function logout() {

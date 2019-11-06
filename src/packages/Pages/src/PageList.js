@@ -4,7 +4,6 @@ import DataList from '../../Core/Components/DataList';
 import PageRow from './PageRow';
 import * as Constants from './../constants';
 
-
 const PageList = () => {
   return (
     <Resource

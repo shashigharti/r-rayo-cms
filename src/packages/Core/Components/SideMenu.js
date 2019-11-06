@@ -45,7 +45,7 @@ export const SideMenu = () => {
           <div className="collapsible-body">
             <ul className="collapsible collapsible-sub" data-collapsible="accordion">
               <li>
-                <NavLink exact className="collapsible-body" to="/page-category" data-i18n="">
+                <NavLink exact className="collapsible-body" to="/pages/categories" data-i18n="">
                   <i className="material-icons">radio_button_unchecked</i>
                   <span>Page Categories</span>
                 </NavLink>

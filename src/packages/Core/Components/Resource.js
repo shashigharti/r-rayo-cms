@@ -12,7 +12,7 @@ class Resource extends Component {
     }
     componentDidMount() {
         this.setState({ loading: true });
-        const path = process.env.API_ENDPOINT + this.props.path
+        const path = process.env.API_ENDPOINT + '/' + this.props.path
         Axios.get(path).then(res => {
             this.setState({
                 payload: res.data,

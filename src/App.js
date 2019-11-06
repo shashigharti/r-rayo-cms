@@ -18,7 +18,8 @@ import {
   Dashboard,
   Roles,
   Users,
-  Header
+  Header,
+  AuthContextProvider
 } from './packages/Core';
 
 // import { Groups } from '/packages/groups/Groups';
@@ -32,7 +33,6 @@ import {
 // import { CountyList } from '/packages/landmarks/CountyList';
 // import { CountyEdit } from '/packages/landmarks/CountyEdit';
 import { PrivateRoute } from './packages/Core/Components/PrivateRoute';
-import AuthContextProvider from './packages/Core/contexts/AuthContext';
 
 const App = () => {
   return (

@@ -75,12 +75,12 @@ module.exports = () => {
       new webpack.DefinePlugin(envKeys),
       new webpack.optimize.ModuleConcatenationPlugin(),
     ],
-    devServer: {
-      historyApiFallback: true,
-      proxy: {
-        '/api': env.API_ENDPOINT,
-      },
-    },
+    // devServer: {
+    //   historyApiFallback: true,
+    //   proxy: {
+    //     '/api': env.API_ENDPOINT,
+    //   },
+    // },
     devtool: 'cheap-module-eval-source-map',
     externals: {
       // global app config object. Can be removed now

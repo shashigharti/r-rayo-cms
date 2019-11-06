@@ -1,14 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as Constants from './../../constants';
 
-const PageRow = ({ row, onDelete }) => (
+const PageCategoryRow = ({ row, onDelete }) => (
     <tr key={row.id}>
         <td>{row.id}</td>
         <td>{row.name}</td>
         <td className="text right-align">
             <Link
                 className="waves-effect waves-light btn-small cyan"
-                to={{ pathname: `/page-edit/${row.id}`, query: { id: row.id } }}
+                to={{ pathname: `${Constants.PAGE_CATEGORY_EDIT_URI}${row.id}/edit`, query: { id: row.id } }}
             >
                 <i className="material-icons left">edit</i>
             </Link>
@@ -20,7 +21,7 @@ const PageRow = ({ row, onDelete }) => (
                     }}
                 >
                     delete
-                </i>
+        </i>
             </a>
             <a className="waves-effect waves-light btn-small purple">
                 <i className="material-icons left">check</i>
@@ -29,4 +30,4 @@ const PageRow = ({ row, onDelete }) => (
     </tr>
 );
 
-export default PageRow;
+export default PageCategoryRow;

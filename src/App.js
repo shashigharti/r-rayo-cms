@@ -47,7 +47,7 @@ const App = () => {
           <PrivateRoute exact path="/page-add" component={PageEdit} />
           <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
           <PrivateRoute exact path="/pages" component={PageList} />
-          <PrivateRoute exact path="/pages" component={PageCategoryList} />
+          <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
           <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />

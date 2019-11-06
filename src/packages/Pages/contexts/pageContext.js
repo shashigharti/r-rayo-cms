@@ -3,22 +3,21 @@ import { pageReducer } from '../reducers/pageReducer';
 
 export const PageContext = createContext();
 const initialState = {
-    isAuthenticated: false,
-    user: null
+    pages: []
 };
 const PageContextProvider = (props) => {
-    const [auth, dispatch] = useReducer(pageReducer, initialState, () => {
+    const [pages, dispatch] = useReducer(pageReducer, initialState, () => {
         const localData = localStorage.getItem('pages');
         return localData ? JSON.parse(localData) : [];
     });
     useEffect(() => {
-        localStorage.setItem('pages', JSON.stringify(auth));
-    }, [auth]);
+        localStorage.setItem('pages', JSON.stringify(pages));
+    }, [pages]);
     return (
-        <AuthContext.Provider value={{ auth, dispatch }}>
+        <PageContext.Provider value={{ pages, dispatch }}>
             {props.children}
-        </AuthContext.Provider>
+        </PageContext.Provider>
     );
 }
 
-export default AuthContextProvider
+export default PageContextProvider

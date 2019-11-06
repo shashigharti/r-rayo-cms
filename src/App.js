@@ -1,6 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { PageList, PageEdit, PageCategoryList, AddPageCategory } from './packages/Pages';
+import {
+  PageList,
+  PageEdit,
+  PageCategoryList,
+  EditPageCategory,
+  PageContextProvider
+} from './packages/Pages';
 import {
   AddTemplate,
   Templates,
@@ -44,11 +50,14 @@ const App = () => {
           <PrivateRoute exact path="/users" component={Users} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
-          <PrivateRoute exact path="/page-add" component={PageEdit} />
-          <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
-          <PrivateRoute exact path="/pages" component={PageList} />
-          <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
-          <PrivateRoute exact path="/add-page-category" component={AddPageCategory} />
+
+          <PageContextProvider>
+            <PrivateRoute exact path="/page-add" component={PageEdit} />
+            <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
+            <PrivateRoute exact path="/pages" component={PageList} />
+            <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
+            <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
+          </PageContextProvider>
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />
           <PrivateRoute exact path="/groups" component={Groups} />

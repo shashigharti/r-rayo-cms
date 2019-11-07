@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
   PageList,
-  PageEdit,
+  PageAddEdit,
   PageCategoryList,
   EditPageCategory,
   PageContextProvider
@@ -52,8 +52,8 @@ const App = () => {
           <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 
           <PageContextProvider>
-            <PrivateRoute exact path="/page-add" component={PageEdit} />
-            <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
+            <PrivateRoute exact path="/pages/create" component={PageAddEdit} />
+            <PrivateRoute exact path="/pages/edit/:id" component={PageAddEdit} />
             <PrivateRoute exact path="/pages" component={PageList} />
             <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
             <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />

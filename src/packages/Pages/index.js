@@ -1,4 +1,6 @@
-import PageEdit from './src/PageEdit';
+import PageAddEdit from './src/PageAddEdit';
+import NewPageForm from './src/NewPageForm';
+import EditPageForm from './src/EditPageForm';
 import PageList from './src/PageList';
 import PageRow from './src/PageRow';
 import EditPageCategory from './src/categories/EditPageCategory';
@@ -8,7 +10,9 @@ import PageContextProvider, { PageContext } from './contexts/pageContext';
 import { pageReducer } from './reducers/pageReducer';
 
 export {
-    PageEdit,
+    PageAddEdit,
+    NewPageForm,
+    EditPageForm,
     PageList,
     PageRow,
     EditPageCategory,

@@ -1,22 +1,24 @@
 import React, { createContext, useReducer, useEffect } from 'react';
+import { GlobalReducer } from '../reducers/GlobalReducer';
 
-export const globalContext = createContext();
+export const GlobalContext = createContext();
 const initialState = {
-    breadcrumb: false
+    breadcrumbs: [{
+        name: 'Home',
+        subPath: '',
+        path: '',
+    }]
 };
 const GlobalContextProvider = (props) => {
-
-    const [globalReducer, dispatch] = useReducer(globalReducer, initialState, () => {
-        const localData = localStorage.getItem('app');
+    const [g_app, dispatch] = useReducer(GlobalReducer, initialState, () => {
+        const localData = localStorage.getItem('g_app');
         return localData ? JSON.parse(localData) : [];
     });
-
     useEffect(() => {
-        localStorage.setItem('app', JSON.stringify(globalReducer));
-    }, [globalReducer]);
-
+        localStorage.setItem('g_app', JSON.stringify(g_app));
+    }, [GlobalReducer]);
     return (
-        <GlobalContext.Provider value={{ globalReducer, dispatch }}>
+        <GlobalContext.Provider value={{ g_app, dispatch }}>
             {props.children}
         </GlobalContext.Provider>
     );

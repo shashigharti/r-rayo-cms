@@ -19,7 +19,8 @@ import {
   Roles,
   Users,
   Header,
-  AuthContextProvider
+  AuthContextProvider,
+  GlobalContextProvider,
 } from './packages/Core';
 
 // import { Groups } from '/packages/groups/Groups';
@@ -39,25 +40,28 @@ const App = () => {
     <>
       <Router>
         <AuthContextProvider>
-          <Header />
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={Templates} />
-          <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={Roles} />
-          <PrivateRoute exact path="/roles-add" component={AddRole} />
-          <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={Users} />
-          <PrivateRoute exact path="/add-user" component={AddUser} />
-          <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
+          <GlobalContextProvider>
+            <Header />
+            <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
+            <PrivateRoute exact path="/templates" component={Templates} />
+            <PrivateRoute exact path="/settings" component={Settings} />
+            <PrivateRoute exact path="/roles" component={Roles} />
+            <PrivateRoute exact path="/roles-add" component={AddRole} />
+            <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
+            <PrivateRoute exact path="/users" component={Users} />
+            <PrivateRoute exact path="/add-user" component={AddUser} />
+            <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 
-          <PageContextProvider>
-            <PrivateRoute exact path="/page-add" component={PageEdit} />
-            <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
-            <PrivateRoute exact path="/pages" component={PageList} />
-            <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
-            <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
-          </PageContextProvider>
+            <PageContextProvider>
+              <PrivateRoute exact path="/page-add" component={PageEdit} />
+              <PrivateRoute exact path="/pages/:id/edit" component={PageEdit} />
+              <PrivateRoute exact path="/pages" component={PageList} />
+              <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
+              <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
+            </PageContextProvider>
+
+          </GlobalContextProvider>
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />
           <PrivateRoute exact path="/groups" component={Groups} />

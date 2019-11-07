@@ -1,4 +1,4 @@
-const pageReducer = (state, action) => {
+const PageReducer = (state, action) => {
     switch (action.type) {
         case "ADD":
             return {
@@ -21,5 +21,5 @@ const pageReducer = (state, action) => {
 }
 
 export {
-    pageReducer
+    PageReducer
 }

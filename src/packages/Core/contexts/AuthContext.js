@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { authReducer } from '../reducers/authReducer';
+import { AuthReducer } from '../reducers/AuthReducer';
 
 export const AuthContext = createContext();
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
     user: null
 };
 const AuthContextProvider = (props) => {
-    const [auth, dispatch] = useReducer(authReducer, initialState, () => {
+    const [auth, dispatch] = useReducer(AuthReducer, initialState, () => {
         const localData = localStorage.getItem('auth');
         return localData ? JSON.parse(localData) : [];
     });

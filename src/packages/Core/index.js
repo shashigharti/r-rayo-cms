@@ -27,10 +27,12 @@ import LoginPage from './src/users/LoginPage'
 // partials
 import Header from './Components/Header'
 
-
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
-import { authReducer } from './reducers/authReducer';
+import { AuthReducer } from './reducers/AuthReducer';
+
+import GlobalContextProvider, { GlobalContext } from './contexts/GlobalContext';
+import { GlobalReducer } from './reducers/GlobalReducer';
 
 export {
     Dashboard,
@@ -60,5 +62,9 @@ export {
     Header,
     AuthContextProvider,
     AuthContext,
-    authReducer
+    AuthReducer,
+
+    GlobalContextProvider,
+    GlobalContext,
+    GlobalReducer
 }

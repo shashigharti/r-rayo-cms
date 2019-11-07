@@ -1,7 +1,24 @@
-import React from 'react';
-//import { userActions } from './../../actions';
+import React, { useContext, useEffect } from 'react';
+import { GlobalContext, AuthContext } from '../..';
 
 const Dashboard = () => {
+  const { gState, gDispatch } = useContext(GlobalContext);
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      console.log(gState);
+      // gDispatch({
+      //     type: 'ADD_BREADCRUMB', breadcrumb: {
+      //         name: 'Home',
+      //         subPath: '',
+      //         path: '',
+      //     }
+      // });
+    }
+  });
+
+
   return (
     <div id="main">
       <div className="row">

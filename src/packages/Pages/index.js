@@ -4,8 +4,8 @@ import PageRow from './src/PageRow';
 import EditPageCategory from './src/categories/EditPageCategory';
 import PageCategoryList from './src/categories/PageCategoryList';
 
-import PageContextProvider, { PageContext } from './contexts/pageContext';
-import { pageReducer } from './reducers/pageReducer';
+import PageContextProvider, { PageContext } from './contexts/PageContext';
+import { PageReducer } from './reducers/PageReducer';
 
 export {
     PageEdit,
@@ -15,5 +15,5 @@ export {
     PageCategoryList,
     PageContext,
     PageContextProvider,
-    pageReducer
+    PageReducer
 }

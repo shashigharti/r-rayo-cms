@@ -107,6 +107,14 @@ export const SideMenu = () => {
           </NavLink>
         </li>
         <li className="bold">
+          <NavLink exact className="waves-effect waves-cyan " to="/agents">
+            <i className="material-icons">supervised_user_circle</i>
+            <span className="menu-title" data-i18n="">
+              Agents
+            </span>
+          </NavLink>
+        </li>
+        <li className="bold">
           <a className="collapsible-header waves-effect waves-cyan " href="#">
             <i className="material-icons">people_outline</i>
             <span className="menu-title" data-i18n="">

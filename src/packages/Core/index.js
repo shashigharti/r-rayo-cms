@@ -1,7 +1,10 @@
 import Dashboard from './src/dashboard/Dashboard';
 
+//should remove
 import AddTemplate from './src/email-management/AddTemplate';
 import Templates from './src/email-management/Templates';
+//
+import TemplateList from './src/email-management/src/TemplateList';
 
 import AddRole from './src/roles/AddRole';
 import Roles from './src/roles/RolePageList';
@@ -41,6 +44,7 @@ export {
   //
   AddTemplate,
   Templates,
+  TemplateList,
   //
   AddRole,
   Roles,

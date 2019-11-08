@@ -9,7 +9,8 @@ import {
 } from './packages/Pages';
 import {
   AddTemplate,
-  Templates,
+  // Templates,
+  TemplateList,
   AddRole,
   Settings,
   AddUser,
@@ -44,7 +45,7 @@ const App = () => {
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={Templates} />
+          <PrivateRoute exact path="/templates" component={TemplateList} />
           <PrivateRoute exact path="/settings" component={Settings} />
           <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />

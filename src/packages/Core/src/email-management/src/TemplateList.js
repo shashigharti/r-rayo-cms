@@ -3,9 +3,9 @@ import Resource from '../../../Components/Resource';
 import DataList from '../../../Components/DataList';
 import * as Constants from './../constants';
 import ToolBar from '../../../Components/ToolBar';
-import RoleRow from './RoleRow';
+import TemplateRow from './TemplateRow';
 
-const RoleList = () => {
+const TemplateList = () => {
   const [breadcrumbs, setBreadcrumbs] = useState([
     {
       name: 'Home',
@@ -13,20 +13,20 @@ const RoleList = () => {
       path: '',
     },
     {
-      name: 'Roles',
-      subPath: 'roles',
-      path: '/roles',
+      name: 'Email templates',
+      subPath: 'templates',
+      path: '/templates',
     },
   ]);
   return (
     <div id="main">
       <ToolBar breadcrumbs={breadcrumbs} />
       <Resource
-        path={Constants.ROLES_URI}
+        path={Constants.TEMPLATES_URI}
         render={data => {
-          if (data.loading) return <p> Loading roles ... </p>;
+          if (data.loading) return <p> Loading templates ... </p>;
           if (data.payload.data != undefined) {
-            return <DataList data={data.payload.data} component={RoleRow} />;
+            return <DataList data={data.payload.data} component={TemplateRow} />;
           }
           return <div>No Data Found</div>;
         }}
@@ -35,4 +35,4 @@ const RoleList = () => {
   );
 };
 
-export default RoleList;
+export default TemplateList;

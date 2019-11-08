@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import Resource from '../../../../Core/Components/Resource';
-import DataList from '../../../../Core/Components/DataList';
+import DataList from './DataList';
 import LeadRow from './LeadRow';
 import * as Constants from './../constants';
 import ToolBar from '../../../../Core/Components/ToolBar';

@@ -5,11 +5,12 @@ import {
   PageAddEdit,
   PageCategoryList,
   EditPageCategory,
-  PageContextProvider
+  PageContextProvider,
 } from './packages/Pages';
 import {
   AddTemplate,
-  Templates,
+  // Templates,
+  TemplateList,
   AddRole,
   Settings,
   AddUser,
@@ -19,7 +20,9 @@ import {
   Roles,
   Users,
   Header,
-  AuthContextProvider
+  AuthContextProvider,
+  UserList,
+  RoleList,
 } from './packages/Core';
 
 // import { Groups } from '/packages/groups/Groups';
@@ -42,12 +45,12 @@ const App = () => {
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={Templates} />
+          <PrivateRoute exact path="/templates" component={TemplateList} />
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={Roles} />
+          <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
           <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={Users} />
+          <PrivateRoute exact path="/users" component={UserList} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 

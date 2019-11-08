@@ -5,12 +5,11 @@ import {
   PageAddEdit,
   PageCategoryList,
   EditPageCategory,
-  PageContextProvider,
+  PageContextProvider
 } from './packages/Pages';
 import {
   AddTemplate,
-  // Templates,
-  TemplateList,
+  Templates,
   AddRole,
   Settings,
   AddUser,
@@ -20,14 +19,9 @@ import {
   Roles,
   Users,
   Header,
-  AuthContextProvider,
-  UserList,
-  RoleList,
+  AuthContextProvider
 } from './packages/Core';
 
-import { BannerList } from './packages/banners';
-
-import { AgentList, LeadList } from './packages/RealEstate';
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
 // import { Leads } from '/packages/leads/Leads';
@@ -48,15 +42,12 @@ const App = () => {
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={TemplateList} />
-          <PrivateRoute exact path="/banners" component={BannerList} />
-          <PrivateRoute exact path="/agents" component={AgentList} />
-          <PrivateRoute exact path="/leads" component={LeadList} />
+          <PrivateRoute exact path="/templates" component={Templates} />
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={RoleList} />
+          <PrivateRoute exact path="/roles" component={Roles} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
           <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={UserList} />
+          <PrivateRoute exact path="/users" component={Users} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 
@@ -92,3 +83,4 @@ const App = () => {
 };
 
 export default App;
+

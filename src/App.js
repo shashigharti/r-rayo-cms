@@ -21,6 +21,7 @@ import {
   Header,
   AuthContextProvider,
   UserList,
+  RoleList,
 } from './packages/Core';
 
 // import { Groups } from '/packages/groups/Groups';
@@ -45,7 +46,7 @@ const App = () => {
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
           <PrivateRoute exact path="/templates" component={Templates} />
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={Roles} />
+          <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
           <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
           <PrivateRoute exact path="/users" component={UserList} />

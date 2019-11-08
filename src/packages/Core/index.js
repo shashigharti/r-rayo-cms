@@ -6,6 +6,8 @@ import Templates from './src/email-management/Templates';
 import AddRole from './src/roles/AddRole';
 import Roles from './src/roles/RolePageList';
 import RRow from './src/roles/Row';
+// roles
+import RoleList from './src/roles/src/RoleList';
 
 import FrontPageSettings from './src/settings/FrontPageSettings';
 import GeneralSettings from './src/settings/GeneralSettings';
@@ -21,6 +23,7 @@ import AddUser from './src/users/AddUser';
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
 //
+
 import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
 import ForgotPasswordPage from './src/users/ForgotPasswordPage';
@@ -42,6 +45,7 @@ export {
   AddRole,
   Roles,
   URow,
+  RoleList,
   //
   FrontPageSettings,
   GeneralSettings,

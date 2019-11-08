@@ -1,6 +1,7 @@
 import React from 'react';
 import { SideNav } from './SideNav';
 import { Link, NavLink } from 'react-router-dom';
+import M from 'materialize-css';
 
 export const SideMenu = () => {
   return (
@@ -94,6 +95,14 @@ export const SideMenu = () => {
             <i className="material-icons">email</i>
             <span className="menu-title" data-i18n="">
               Email Management
+            </span>
+          </NavLink>
+        </li>
+        <li className="bold">
+          <NavLink exact className="waves-effect waves-cyan " to="/banners">
+            <i className="material-icons">perm_media</i>
+            <span className="menu-title" data-i18n="">
+              Banners
             </span>
           </NavLink>
         </li>

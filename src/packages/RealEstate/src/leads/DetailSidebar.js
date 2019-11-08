@@ -618,10 +618,7 @@ class DetailSidebar extends Component {
         <div id="search-add-modal" className="modal">
           <div className="modal-content">
             <h4>Add Search</h4>
-            <AddSearch
-              lead={lead}
-              getLead={this.props.getLead}
-            />
+            <AddSearch lead={lead} getLead={this.props.getLead} />
           </div>
         </div>
       </div>

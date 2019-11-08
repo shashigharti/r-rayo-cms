@@ -26,6 +26,8 @@ import {
 } from './packages/Core';
 
 import { BannerList } from './packages/banners';
+
+import { AgentList } from './packages/RealEstate';
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
 // import { Leads } from '/packages/leads/Leads';
@@ -48,6 +50,7 @@ const App = () => {
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
           <PrivateRoute exact path="/templates" component={TemplateList} />
           <PrivateRoute exact path="/banners" component={BannerList} />
+          <PrivateRoute exact path="/agents" component={AgentList} />
           <PrivateRoute exact path="/settings" component={Settings} />
           <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />

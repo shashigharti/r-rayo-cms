@@ -1,4 +1,3 @@
-
 import Dashboard from './src/dashboard/Dashboard';
 
 import AddTemplate from './src/email-management/AddTemplate';
@@ -18,47 +17,50 @@ import SiteSettings from './src/settings/SiteSettings';
 
 // users
 import AddUser from './src/users/AddUser';
+//should remove previous users component
 import Users from './src/users/Users';
+import UserList from './src/users/src/UserList';
+//
 import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
 import ForgotPasswordPage from './src/users/ForgotPasswordPage';
-import LoginPage from './src/users/LoginPage'
+import LoginPage from './src/users/LoginPage';
 
 // partials
-import Header from './Components/Header'
-
+import Header from './Components/Header';
 
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
 import { authReducer } from './reducers/authReducer';
 
 export {
-    Dashboard,
-
-    AddTemplate,
-    Templates,
-
-    AddRole,
-    Roles,
-    URow,
-
-    FrontPageSettings,
-    GeneralSettings,
-    LinkSettings,
-    PriceSettings,
-    SearchSettings,
-    Settings,
-    SiteSettings,
-
-    AddUser,
-    Users,
-    RRow,
-    RegisterPage,
-    ForgotPasswordPage,
-    LoginPage,
-
-    Header,
-    AuthContextProvider,
-    AuthContext,
-    authReducer
-}
+  Dashboard,
+  //
+  AddTemplate,
+  Templates,
+  //
+  AddRole,
+  Roles,
+  URow,
+  //
+  FrontPageSettings,
+  GeneralSettings,
+  LinkSettings,
+  PriceSettings,
+  SearchSettings,
+  Settings,
+  SiteSettings,
+  //
+  AddUser,
+  Users,
+  RRow,
+  RegisterPage,
+  ForgotPasswordPage,
+  LoginPage,
+  UserList,
+  //
+  Header,
+  AuthContextProvider,
+  AuthContext,
+  authReducer,
+};

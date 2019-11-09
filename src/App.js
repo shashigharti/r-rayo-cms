@@ -29,7 +29,14 @@ import {
 
 import { BannerList, BannerContextProvider } from './packages/banners';
 
-import { AgentList, LeadList, CityList, CityContextProvider } from './packages/RealEstate';
+import {
+  AgentList,
+  LeadList,
+  CityList,
+  CityContextProvider,
+  ZipList,
+  ZipContextProvider,
+} from './packages/RealEstate';
 
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
@@ -80,6 +87,9 @@ const App = () => {
           <CityContextProvider>
             <PrivateRoute exact path="/cities" component={CityList} />
           </CityContextProvider>
+          <ZipContextProvider>
+            <PrivateRoute exact path="/zips" component={ZipList} />
+          </ZipContextProvider>
 
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />

@@ -3,7 +3,7 @@ import { zipReducer } from '../reducers/zipReducer';
 
 export const ZipContext = createContext();
 const initialState = {
-  cities: [],
+  zips: [],
 };
 const ZipContextProvider = props => {
   const [zips, dispatch] = useReducer(zipReducer, initialState, () => {

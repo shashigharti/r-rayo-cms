@@ -1,11 +1,11 @@
 import React, { Component, useState, useEffect } from 'react';
 import Resource from '../../../../../Core/Components/Resource';
 import DataList from '../../../../../Core/Components/DataList';
-import ZipRow from './ZipRow';
+import CountyRow from './CountyRow';
 import * as Constants from './../constants';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 
-const ZipList = () => {
+const CountyList = () => {
   const [breadcrumbs, setBreadcrumbs] = useState([
     {
       name: 'Home',
@@ -13,9 +13,9 @@ const ZipList = () => {
       path: '',
     },
     {
-      name: 'Zips',
-      subPath: 'zips',
-      path: '/zips',
+      name: 'Counties',
+      subPath: 'counties',
+      path: '/counties',
     },
   ]);
 
@@ -23,11 +23,11 @@ const ZipList = () => {
     <div id="main">
       <ToolBar breadcrumbs={breadcrumbs} />
       <Resource
-        path={Constants.ZIPS_URI}
+        path={Constants.COUNTIES_URI}
         render={data => {
-          if (data.loading) return <p> Loading zips ... </p>;
+          if (data.loading) return <p> Loading counties ... </p>;
           if (data.payload.data != undefined) {
-            return <DataList data={data.payload.data} component={ZipRow} />;
+            return <DataList data={data.payload.data} component={CountyRow} />;
           }
           return <div>No Data Found</div>;
         }}
@@ -36,4 +36,4 @@ const ZipList = () => {
   );
 };
 
-export default ZipList;
+export default CountyList;

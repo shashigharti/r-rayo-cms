@@ -7,8 +7,9 @@ import {
   PageAddEdit,
   PageCategoryList,
   EditPageCategory,
-  PageContextProvider
+  PageContextProvider,
 } from './packages/Pages';
+
 import {
   AddTemplate,
   Templates,
@@ -21,8 +22,14 @@ import {
   Roles,
   Users,
   Header,
-  AuthContextProvider
+  AuthContextProvider,
+  UserList,
+  RoleList,
 } from './packages/Core';
+
+import { BannerList, BannerContextProvider } from './packages/banners';
+
+import { AgentList, LeadList } from './packages/RealEstate';
 
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
@@ -39,7 +46,7 @@ import { PrivateRoute } from './packages/Core/Components/PrivateRoute';
 const App = () => {
   useEffect(() => {
     M.AutoInit();
-  }, [])
+  }, []);
   return (
     <>
       <Router>
@@ -49,10 +56,10 @@ const App = () => {
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
           <PrivateRoute exact path="/templates" component={Templates} />
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={Roles} />
+          <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
           <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={Users} />
+          <PrivateRoute exact path="/users" component={UserList} />
           <PrivateRoute exact path="/add-user" component={AddUser} />
           <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 
@@ -63,6 +70,14 @@ const App = () => {
             <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
             <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
           </PageContextProvider>
+
+          <BannerContextProvider>
+            <PrivateRoute exact path="/banners" component={BannerList} />
+          </BannerContextProvider>
+
+          <PrivateRoute exact path="/agents" component={AgentList} />
+          <PrivateRoute exact path="/leads" component={LeadList} />
+
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />
           <PrivateRoute exact path="/groups" component={Groups} />
@@ -88,4 +103,3 @@ const App = () => {
 };
 
 export default App;
-

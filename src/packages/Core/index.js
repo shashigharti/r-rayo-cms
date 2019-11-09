@@ -5,12 +5,14 @@ import AddTemplate from './src/email-management/AddTemplate';
 import Templates from './src/email-management/Templates';
 //
 import TemplateList from './src/email-management/src/TemplateList';
+import TemplateContextProvider from './src/email-management/contexts/templateContext';
 
 import AddRole from './src/roles/AddRole';
 import Roles from './src/roles/RolePageList';
 import RRow from './src/roles/Row';
 // roles
 import RoleList from './src/roles/src/RoleList';
+import RoleContextProvider from './src/roles/contexts/roleContext';
 
 import FrontPageSettings from './src/settings/FrontPageSettings';
 import GeneralSettings from './src/settings/GeneralSettings';
@@ -25,6 +27,7 @@ import AddUser from './src/users/AddUser';
 //should remove previous users component
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
+import UserContextProvider from './src/users/contexts/userContext';
 //
 
 import URow from './src/users/Row';
@@ -45,11 +48,13 @@ export {
   AddTemplate,
   Templates,
   TemplateList,
+  TemplateContextProvider,
   //
   AddRole,
   Roles,
   URow,
   RoleList,
+  RoleContextProvider,
   //
   FrontPageSettings,
   GeneralSettings,
@@ -66,6 +71,7 @@ export {
   ForgotPasswordPage,
   LoginPage,
   UserList,
+  UserContextProvider,
   //
   Header,
   AuthContextProvider,

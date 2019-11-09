@@ -13,6 +13,7 @@ import {
 import {
   AddTemplate,
   Templates,
+  TemplateContextProvider,
   AddRole,
   Settings,
   AddUser,
@@ -24,12 +25,26 @@ import {
   Header,
   AuthContextProvider,
   UserList,
+  UserContextProvider,
   RoleList,
+  RoleContextProvider,
+  TemplateList,
 } from './packages/Core';
 
 import { BannerList, BannerContextProvider } from './packages/banners';
 
-import { AgentList, LeadList } from './packages/RealEstate';
+import {
+  AgentList,
+  AgentContextProvider,
+  LeadList,
+  LeadContextProvider,
+  CityList,
+  CityContextProvider,
+  ZipList,
+  ZipContextProvider,
+  CountyList,
+  CountyContextProvider,
+} from './packages/RealEstate';
 
 // import { Groups } from '/packages/groups/Groups';
 // import { AddGroup } from '/packages/groups/AddGroup';
@@ -54,14 +69,24 @@ const App = () => {
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={Templates} />
+
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={RoleList} />
-          <PrivateRoute exact path="/roles-add" component={AddRole} />
-          <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={UserList} />
-          <PrivateRoute exact path="/add-user" component={AddUser} />
-          <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
+
+          <TemplateContextProvider>
+            <PrivateRoute exact path="/templates" component={TemplateList} />
+          </TemplateContextProvider>
+
+          <RoleContextProvider>
+            <PrivateRoute exact path="/roles" component={RoleList} />
+            <PrivateRoute exact path="/roles-add" component={AddRole} />
+            <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
+          </RoleContextProvider>
+
+          <UserContextProvider>
+            <PrivateRoute exact path="/users" component={UserList} />
+            <PrivateRoute exact path="/add-user" component={AddUser} />
+            <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
+          </UserContextProvider>
 
           <PageContextProvider>
             <PrivateRoute exact path="/pages/create" component={PageAddEdit} />
@@ -75,8 +100,25 @@ const App = () => {
             <PrivateRoute exact path="/banners" component={BannerList} />
           </BannerContextProvider>
 
-          <PrivateRoute exact path="/agents" component={AgentList} />
-          <PrivateRoute exact path="/leads" component={LeadList} />
+          <AgentContextProvider>
+            <PrivateRoute exact path="/agents" component={AgentList} />
+          </AgentContextProvider>
+
+          <LeadContextProvider>
+            <PrivateRoute exact path="/leads" component={LeadList} />
+          </LeadContextProvider>
+
+          <CityContextProvider>
+            <PrivateRoute exact path="/cities" component={CityList} />
+          </CityContextProvider>
+
+          <ZipContextProvider>
+            <PrivateRoute exact path="/zips" component={ZipList} />
+          </ZipContextProvider>
+
+          <CountyContextProvider>
+            <PrivateRoute exact path="/counties" component={CountyList} />
+          </CountyContextProvider>
 
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />

@@ -31,7 +31,9 @@ import { BannerList, BannerContextProvider } from './packages/banners';
 
 import {
   AgentList,
+  AgentContextProvider,
   LeadList,
+  LeadContextProvider,
   CityList,
   CityContextProvider,
   ZipList,
@@ -84,14 +86,22 @@ const App = () => {
             <PrivateRoute exact path="/banners" component={BannerList} />
           </BannerContextProvider>
 
-          <PrivateRoute exact path="/agents" component={AgentList} />
-          <PrivateRoute exact path="/leads" component={LeadList} />
+          <AgentContextProvider>
+            <PrivateRoute exact path="/agents" component={AgentList} />
+          </AgentContextProvider>
+
+          <LeadContextProvider>
+            <PrivateRoute exact path="/leads" component={LeadList} />
+          </LeadContextProvider>
+
           <CityContextProvider>
             <PrivateRoute exact path="/cities" component={CityList} />
           </CityContextProvider>
+
           <ZipContextProvider>
             <PrivateRoute exact path="/zips" component={ZipList} />
           </ZipContextProvider>
+
           <CountyContextProvider>
             <PrivateRoute exact path="/counties" component={CountyList} />
           </CountyContextProvider>

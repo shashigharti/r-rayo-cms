@@ -22,7 +22,7 @@ const PageAddEdit = (props) => {
         }
     ]);
 
-    console.log(props.match.params.length);
+
     return (
         <div id="main">
             <ToolBar breadcrumbs={breadcrumbs} />

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import M from 'materialize-css';
+
 import {
   PageList,
   PageAddEdit,
@@ -35,6 +37,9 @@ import {
 import { PrivateRoute } from './packages/Core/Components/PrivateRoute';
 
 const App = () => {
+  useEffect(() => {
+    M.AutoInit();
+  }, [])
   return (
     <>
       <Router>

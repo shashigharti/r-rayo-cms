@@ -26,6 +26,7 @@ import {
   UserList,
   UserContextProvider,
   RoleList,
+  RoleContextProvider,
 } from './packages/Core';
 
 import { BannerList, BannerContextProvider } from './packages/banners';
@@ -68,15 +69,19 @@ const App = () => {
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
           <PrivateRoute exact path="/templates" component={Templates} />
           <PrivateRoute exact path="/settings" component={Settings} />
-          <PrivateRoute exact path="/roles" component={RoleList} />
-          <PrivateRoute exact path="/roles-add" component={AddRole} />
-          <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
+
+          <RoleContextProvider>
+            <PrivateRoute exact path="/roles" component={RoleList} />
+            <PrivateRoute exact path="/roles-add" component={AddRole} />
+            <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
+          </RoleContextProvider>
 
           <UserContextProvider>
             <PrivateRoute exact path="/users" component={UserList} />
             <PrivateRoute exact path="/add-user" component={AddUser} />
             <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
           </UserContextProvider>
+
           <PageContextProvider>
             <PrivateRoute exact path="/pages/create" component={PageAddEdit} />
             <PrivateRoute exact path="/pages/edit/:id" component={PageAddEdit} />

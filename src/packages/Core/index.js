@@ -11,6 +11,7 @@ import Roles from './src/roles/RolePageList';
 import RRow from './src/roles/Row';
 // roles
 import RoleList from './src/roles/src/RoleList';
+import RoleContextProvider from './src/roles/contexts/roleContext';
 
 import FrontPageSettings from './src/settings/FrontPageSettings';
 import GeneralSettings from './src/settings/GeneralSettings';
@@ -51,6 +52,7 @@ export {
   Roles,
   URow,
   RoleList,
+  RoleContextProvider,
   //
   FrontPageSettings,
   GeneralSettings,

@@ -145,7 +145,7 @@ const NewPageForm = () => {
                         <div className="input-field">
                           <button className="btn gradient-45deg-purple-deep-orange">
                             Submit
-                            </button>
+                          </button>
                         </div>
                       </div>
                     </div>

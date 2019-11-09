@@ -5,6 +5,7 @@ import AddTemplate from './src/email-management/AddTemplate';
 import Templates from './src/email-management/Templates';
 //
 import TemplateList from './src/email-management/src/TemplateList';
+import TemplateContextProvider from './src/email-management/contexts/templateContext';
 
 import AddRole from './src/roles/AddRole';
 import Roles from './src/roles/RolePageList';
@@ -47,6 +48,7 @@ export {
   AddTemplate,
   Templates,
   TemplateList,
+  TemplateContextProvider,
   //
   AddRole,
   Roles,

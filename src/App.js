@@ -13,6 +13,7 @@ import {
 import {
   AddTemplate,
   Templates,
+  TemplateContextProvider,
   AddRole,
   Settings,
   AddUser,
@@ -27,6 +28,7 @@ import {
   UserContextProvider,
   RoleList,
   RoleContextProvider,
+  TemplateList,
 } from './packages/Core';
 
 import { BannerList, BannerContextProvider } from './packages/banners';
@@ -67,8 +69,12 @@ const App = () => {
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
-          <PrivateRoute exact path="/templates" component={Templates} />
+
           <PrivateRoute exact path="/settings" component={Settings} />
+
+          <TemplateContextProvider>
+            <PrivateRoute exact path="/templates" component={TemplateList} />
+          </TemplateContextProvider>
 
           <RoleContextProvider>
             <PrivateRoute exact path="/roles" component={RoleList} />

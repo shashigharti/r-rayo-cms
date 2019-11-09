@@ -24,6 +24,7 @@ import {
   Header,
   AuthContextProvider,
   UserList,
+  UserContextProvider,
   RoleList,
 } from './packages/Core';
 
@@ -70,10 +71,12 @@ const App = () => {
           <PrivateRoute exact path="/roles" component={RoleList} />
           <PrivateRoute exact path="/roles-add" component={AddRole} />
           <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
-          <PrivateRoute exact path="/users" component={UserList} />
-          <PrivateRoute exact path="/add-user" component={AddUser} />
-          <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
 
+          <UserContextProvider>
+            <PrivateRoute exact path="/users" component={UserList} />
+            <PrivateRoute exact path="/add-user" component={AddUser} />
+            <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
+          </UserContextProvider>
           <PageContextProvider>
             <PrivateRoute exact path="/pages/create" component={PageAddEdit} />
             <PrivateRoute exact path="/pages/edit/:id" component={PageAddEdit} />

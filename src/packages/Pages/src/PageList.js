@@ -23,7 +23,7 @@ const PageList = () => {
     <div id="main">
       <ToolBar breadcrumbs={breadcrumbs} />
       <Resource
-        path={Constants.PAGE_URI}
+        path={Constants.API_PAGE}
         render={data => {
           if (data.loading) return <p> Loading pages ... </p>;
           if (data.payload.data != undefined) {

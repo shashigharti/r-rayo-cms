@@ -9,7 +9,7 @@ const PageCategoryRow = ({ row, onDelete }) => (
         <td className="text right-align">
             <Link
                 className="waves-effect waves-light btn-small cyan"
-                to={{ pathname: `${Constants.PAGE_CATEGORY_EDIT_URI}${row.id}/edit`, query: { id: row.id } }}
+                to={{ pathname: `${Constants.PAGE_CATEGORY_EDIT}${row.id}/edit`, query: { id: row.id } }}
             >
                 <i className="material-icons left">edit</i>
             </Link>

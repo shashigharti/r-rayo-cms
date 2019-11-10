@@ -22,7 +22,7 @@ const PageCategoryList = () => {
     <div id="main">
       <ToolBar breadcrumbs={breadcrumbs} />
       <Resource
-        path={Constants.PAGE_CATEGORY_URI}
+        path={Constants.API_PAGE_CATEGORY}
         render={data => {
           if (data.loading) return <p>Loading Page categories...</p>;
           if (data.payload.data != undefined) {

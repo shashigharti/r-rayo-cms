@@ -21,7 +21,6 @@ class Resource extends Component {
     componentDidMount() {
         this.setState({ loading: true });
         const path = process.env.API_ENDPOINT + '/' + this.props.path
-        console.log(apiService);
         let getData = apiService.get(path);
         getData.then(response => {
             this.setState({

@@ -13,17 +13,21 @@ prettier
 Simple React Snippets
 
 
-# Coding Convention: 
-## Features
+# Coding Conventions: 
+## Branching
+### Features
 If new feature is being added then use this convention:
 features/{task-id}/{name-of-the-task}
 
-## Enhancements
+### Enhancements
 If its a enhancement of existing feature the branch name should follow this convention:
 enhancements/{task-id}/{name-of-the-task}
 
-## Bugs
+### Bugs
 If it is a bug use this convention:
 bugs/{task-id}/{name-of-the-task}
+
+### JSDoc
+https://en.wikipedia.org/wiki/JSDoc
 
 

@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { apiService } from '..';
+import PropTypes from 'prop-types';
 
-// Ref: The React Cookbook: Advanced Recipes to Level Up Your Next App
-
+/**
+ * General component description in JSDoc format. Markdown is *supported*.
+ * 
+ * Ref: The React Cookbook: Advanced Recipes to Level Up Your Next App
+ */
 class Resource extends Component {
+    static propTypes = {
+        /** API call state */
+        loading: PropTypes.bool,
+        /** Response from the API call */
+        payload: PropTypes.array
+    }
     state = {
         loading: false,
         payload: []
@@ -25,7 +35,6 @@ class Resource extends Component {
 
     }
     render() {
-        // render is a function that is being called; we pass state information
         return this.props.render(this.state);
     }
 

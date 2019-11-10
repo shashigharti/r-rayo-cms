@@ -2,28 +2,15 @@ import React, { Component, useState, useEffect } from 'react';
 import Resource from '../../Core/Components/Resource';
 import DataList from '../../Core/Components/DataList';
 import PageRow from './PageRow';
-import * as Constants from './../constants';
+import * as constants from './../constants';
 import ToolBar from '../../Core/Components/ToolBar';
 
 const PageList = () => {
-  const [breadcrumbs, setBreadcrumbs] = useState([
-    {
-      name: 'Home',
-      subPath: '',
-      path: '',
-    },
-    {
-      name: 'Pages',
-      subPath: 'pages',
-      path: '/pages',
-    }
-  ]);
-
   return (
     <div id="main">
-      <ToolBar breadcrumbs={breadcrumbs} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_PAGE} toolbar={constants.TOOLBAR} />
       <Resource
-        path={Constants.API_PAGE}
+        path={constants.API_PAGE}
         render={data => {
           if (data.loading) return <p> Loading pages ... </p>;
           if (data.payload.data != undefined) {

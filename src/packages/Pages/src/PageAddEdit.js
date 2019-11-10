@@ -1,33 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import ToolBar from '../../Core/Components/ToolBar';
-import * as Constants from '../constants';
+import * as constants from '../constants';
 import NewPageForm from './NewPageForm';
 import EditPageForm from './EditPageForm';
 
 const PageAddEdit = (props) => {
-    const [breadcrumbs, setBreadcrumbs] = useState([
-        {
-            name: 'Home',
-            subPath: '',
-            path: '',
-        },
-        {
-            name: 'Pages',
-            subPath: 'pages',
-            path: '/pages',
-        },
-        {
-            name: 'Edit',
-            subPath: 'edit',
-            path: '/edit',
-        }
-    ]);
     useEffect(() => {
         M.AutoInit();
     }, []);
     return (
         <div id="main">
-            <ToolBar breadcrumbs={breadcrumbs} />
+            <ToolBar breadcrumbs={constants.BREADCRUMB_PAGE_EDIT} />
             {props.match.params != undefined ? (
                 <NewPageForm />
             ) : (

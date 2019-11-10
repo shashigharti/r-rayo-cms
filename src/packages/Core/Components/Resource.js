@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import Axios from "axios";
+import { apiService } from '..';
 
-// Reference 
-// The React Cookbook: Advanced Recipes to Level Up Your Next App
-
+// Ref: The React Cookbook: Advanced Recipes to Level Up Your Next App
 
 class Resource extends Component {
     state = {
@@ -13,15 +11,21 @@ class Resource extends Component {
     componentDidMount() {
         this.setState({ loading: true });
         const path = process.env.API_ENDPOINT + '/' + this.props.path
-        Axios.get(path).then(res => {
+        console.log(apiService);
+        let getData = apiService.get(path);
+        getData.then(response => {
             this.setState({
-                payload: res.data,
+                payload: response.data,
                 loading: false
             })
         });
+        getData.catch(err => {
+            console.log(err);
+        })
+
     }
     render() {
-        //render is a function that is being called; we pass state information
+        // render is a function that is being called; we pass state information
         return this.props.render(this.state);
     }
 

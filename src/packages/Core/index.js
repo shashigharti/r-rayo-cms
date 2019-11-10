@@ -24,11 +24,10 @@ import SiteSettings from './src/settings/SiteSettings';
 
 // users
 import AddUser from './src/users/AddUser';
-//should remove previous users component
+// should remove previous users component
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
 import UserContextProvider from './src/users/contexts/userContext';
-//
 
 import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
@@ -41,6 +40,8 @@ import Header from './Components/Header';
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
 import { authReducer } from './reducers/authReducer';
+
+import { apiService } from './services/ApiService';
 
 export {
   Dashboard,
@@ -77,4 +78,6 @@ export {
   AuthContextProvider,
   AuthContext,
   authReducer,
+
+  apiService
 };

@@ -22,6 +22,12 @@ export const TOOLBAR = [
     { name: 'Upload', url: '', classname: 'file_download' }
 ];
 
+// Columns: Page
+export const COLUMNS = [
+    { key: 'id', display: 'ID' },
+    { key: 'name', display: 'Name' }
+];
+
 // Breadcrumb: Page
 export const BREADCRUMB_PAGE = [{
     name: 'Home',

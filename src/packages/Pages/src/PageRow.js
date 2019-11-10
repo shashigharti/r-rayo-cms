@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PageRow = ({ row, onDelete }) => (
+const PageRow = ({ row }) => (
     <tr key={row.id}>
         <td>{row.id}</td>
         <td>{row.name}</td>

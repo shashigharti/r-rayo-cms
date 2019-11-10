@@ -3,7 +3,7 @@ import { apiService } from '..';
 import PropTypes from 'prop-types';
 
 /**
- * General component description in JSDoc format. Markdown is *supported*.
+ * Resource class 
  * 
  * Ref: The React Cookbook: Advanced Recipes to Level Up Your Next App
  */

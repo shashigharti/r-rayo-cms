@@ -30,7 +30,7 @@ const PageAdd = () => {
 
     const handleSubmit = (e) => {
         event.preventDefault();
-        let response = apiService.post(constants.API_PAGE_STORE, state);
+        let response = apiService.store(constants.API_PAGE_STORE, state);
         response.then(response => {
             console.log('success', response);
         });

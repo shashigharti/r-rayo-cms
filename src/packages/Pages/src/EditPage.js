@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 //import { Media } from '../../Core/Components/Media';
 
-
 const PageEdit = (props) => {
     useEffect(() => {
         M.AutoInit();

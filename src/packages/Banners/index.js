@@ -1,4 +1,5 @@
 import BannerList from './src/BannerList';
-import BannerContextProvider from './contexts/bannerContext';
+import AddBanner from './src/AddBanner';
+import BannerContextProvider, { BannerContext } from './contexts/BannerContext';
 
-export { BannerList, BannerContextProvider };
+export { BannerList, BannerContextProvider, BannerContext, AddBanner };

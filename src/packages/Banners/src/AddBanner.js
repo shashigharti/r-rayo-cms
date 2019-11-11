@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ToolBar from '../../../Core/Components/ToolBar';
-import * as constants from './../../constants';
-import { PageCategoryContext } from '../../';
-import { apiService } from '../../../Core';
+import ToolBar from '../../Core/Components/ToolBar';
+import * as constants from '../constants';
+import { BannerContext } from '..';
+import { apiService } from '../../Core';
 
-const PageCategoryAdd = () => {
-  const { dispatch: pdispatch } = useContext(PageCategoryContext);
+const BannerAdd = () => {
+  const { dispatch: pdispatch } = useContext(BannerContext);
   const [state, setState] = useState({
     name: '',
     slug: '',
-    description: '',
   });
 
   useEffect(() => {
@@ -25,8 +24,7 @@ const PageCategoryAdd = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    console.log(constants);
-    let response = apiService.store(constants.API_PAGE_CATEGORIES_STORE, state);
+    let response = apiService.store(constants.API_BANNER_STORE, state);
     response.then(response => {
       console.log('success', response);
     });
@@ -45,10 +43,7 @@ const PageCategoryAdd = () => {
 
   return (
     <div id="main">
-      <ToolBar
-        breadcrumbs={constants.BREADCRUMB_PAGE_CATEGORIES_EDIT}
-        toolbar={constants.CATEGORIES_TOOLBAR}
-      />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_BANNER_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col s12">
@@ -58,7 +53,7 @@ const PageCategoryAdd = () => {
                   <ul className="tabs">
                     <li className="tab">
                       <a className="active" href="#pages">
-                        Page Category
+                        Pages
                       </a>
                     </li>
                   </ul>
@@ -68,7 +63,7 @@ const PageCategoryAdd = () => {
                     <div id="pages" className="col s12">
                       <div className="row">
                         <div className="input-field col s6">
-                          <label>Category Name</label>
+                          <label>Name</label>
                           <input
                             type="text"
                             name="name"
@@ -86,18 +81,6 @@ const PageCategoryAdd = () => {
                             required
                           />
                           <label>Slug</label>
-                        </div>
-                      </div>
-
-                      <div className="row">
-                        <div className="input-field col s12">
-                          <input
-                            type="text"
-                            name="description"
-                            value={state.meta_title}
-                            onChange={e => setFieldValue('description', e.target.value)}
-                          />
-                          <label>Description</label>
                         </div>
                       </div>
                       <div className="row">
@@ -121,4 +104,4 @@ const PageCategoryAdd = () => {
   );
 };
 
-export default PageCategoryAdd;
+export default BannerAdd;

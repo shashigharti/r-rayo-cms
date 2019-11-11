@@ -5,8 +5,7 @@ import BannerRow from './BannerRow';
 import * as constants from '../constants';
 import ToolBar from '../../Core/Components/ToolBar';
 
-const PageList = () => {
-  console.log(constants);
+const BannerList = () => {
   return (
     <div id="main">
       <ToolBar breadcrumbs={constants.BREADCRUMB_BANNER} toolbar={constants.TOOLBAR} />
@@ -31,4 +30,4 @@ const PageList = () => {
   );
 };
 
-export default PageList;
+export default BannerList;

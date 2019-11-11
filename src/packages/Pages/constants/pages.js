@@ -1,6 +1,6 @@
 // API: Page
 export const API_PAGE = 'api/pages';
-export const API_PAGE_STORE = 'api/pages/:id';
+export const API_PAGE_STORE = 'api/pages';
 export const API_PAGE_UPDATE = 'api/pages/:id';
 export const API_PAGE_DELETE = 'api/pages/destroy';
 

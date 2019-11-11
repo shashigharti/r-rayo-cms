@@ -1,4 +1,5 @@
 import axios from "axios";
+import { generatePath } from 'react-router';
 
 /** @class ApiService is a parent class responsible for all the rest api calls. */
 class ApiService {
@@ -12,15 +13,17 @@ class ApiService {
         return axios.get(path);
     }
 
-    post(path, data) {
+    store(path, data) {
         return axios.post(path, data);
     }
 
-    delete(path) {
-        return axios.delete(path, data);
+    delete(id, path) {
+        path = generatePath(path, { id });
+        return axios.delete(path);
     }
 
-    put(path, data) {
+    update(id, path, data) {
+        path = generatePath(path, { id });
         return axios.put(path, data);
     }
 }

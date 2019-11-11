@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { PageContext } from '..';
+import { apiService } from '../../Core';
 
 const PageAdd = () => {
-    const { pages, dispatch } = useContext(PageContext);
+    const { dispatch: pdispatch } = useContext(PageContext);
     const [state, setState] = useState({
         name: '',
         slug: '',
@@ -18,7 +19,7 @@ const PageAdd = () => {
 
     useEffect(() => {
         M.AutoInit();
-        dispatch({
+        pdispatch({
             type: 'INIT',
             default: {
                 all: [],
@@ -28,7 +29,14 @@ const PageAdd = () => {
     }, []);
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        event.preventDefault();
+        let response = apiService.post(constants.API_PAGE_STORE, state);
+        response.then(response => {
+            console.log('success', response);
+        });
+        response.catch(err => {
+            console.log('error', err);
+        })
     }
 
     const setFieldValue = (field, value) => {
@@ -36,8 +44,7 @@ const PageAdd = () => {
             ...state,
             [field]: value
         });
-        dispatch({ type: 'SET_FIELD', current_page: { field, value } })
-        console.log(pages.current_page);
+        pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
     }
 
     return (

@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
 import Resource from '../../../Components/Resource';
 import DataList from '../../../Components/DataList';
-import UserRow from './UserRow';
-import * as Constants from './../constants';
+import * as constants from './../constants';
 import ToolBar from '../../../Components/ToolBar';
 
 const UserList = () => {
-  const [breadcrumbs, setBreadcrumbs] = useState([
-    {
-      name: 'Home',
-      subPath: '',
-      path: '',
-    },
-    {
-      name: 'Users',
-      subPath: 'users',
-      path: '/users',
-    },
-  ]);
   return (
     <div id="main">
-      <ToolBar breadcrumbs={breadcrumbs} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_USER} toolbar={constants.TOOLBAR} />
       <Resource
-        path={Constants.USERS_URI}
+        path={constants.API_USER}
         render={data => {
           if (data.loading) return <p> Loading users ... </p>;
           if (data.payload.data != undefined) {
-            return <DataList data={data.payload.data} component={UserRow} />;
+            return (
+              <DataList
+                data={data.payload.data}
+                actions={constants.ACTIONS}
+                columns={constants.COLUMNS}
+              />
+            );
           }
           return <div>No Data Found</div>;
         }}

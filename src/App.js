@@ -19,7 +19,6 @@ import {
   TemplateContextProvider,
   AddRole,
   Settings,
-  AddUser,
   RegisterPage,
   LoginPage,
   Dashboard,
@@ -28,6 +27,7 @@ import {
   Header,
   AuthContextProvider,
   UserList,
+  AddUser,
   UserContextProvider,
   RoleList,
   RoleContextProvider,
@@ -87,7 +87,7 @@ const App = () => {
 
           <UserContextProvider>
             <PrivateRoute exact path="/users" component={UserList} />
-            <PrivateRoute exact path="/add-user" component={AddUser} />
+            <PrivateRoute exact path="/users/create" component={AddUser} />
             <PrivateRoute exact path="/user-edit/:id/" component={AddUser} />
           </UserContextProvider>
 

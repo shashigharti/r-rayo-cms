@@ -23,10 +23,10 @@ import Settings from './src/settings/Settings';
 import SiteSettings from './src/settings/SiteSettings';
 
 // users
-import AddUser from './src/users/AddUser';
+import AddUser from './src/users/src/AddUser';
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
-import UserContextProvider from './src/users/contexts/userContext';
+import UserContextProvider, { UserContext } from './src/users/contexts/UserContext';
 
 import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
@@ -72,11 +72,11 @@ export {
   LoginPage,
   UserList,
   UserContextProvider,
+  UserContext,
   //
   Header,
   AuthContextProvider,
   AuthContext,
   authReducer,
-
-  apiService
+  apiService,
 };

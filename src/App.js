@@ -78,8 +78,8 @@ const App = () => {
 
           <RoleContextProvider>
             <PrivateRoute exact path="/roles" component={RoleList} />
-            <PrivateRoute exact path="/roles-add" component={AddRole} />
-            <PrivateRoute exact path="/roles-edit/:id" component={AddRole} />
+            <PrivateRoute exact path="/roles/create" component={AddRole} />
+            <PrivateRoute exact path="/roles/edit/:id" component={AddRole} />
           </RoleContextProvider>
 
           <UserContextProvider>

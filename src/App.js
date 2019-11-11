@@ -31,7 +31,7 @@ import {
   TemplateList,
 } from './packages/Core';
 
-import { BannerList, BannerContextProvider } from './packages/banners';
+import { BannerList, BannerContextProvider } from './packages/Banners';
 
 import {
   AgentList,

@@ -7,6 +7,8 @@ import {
   AddPage,
   EditPage,
   PageCategoryList,
+  AddPageCategory,
+  CategoryContextProvider,
   EditPageCategory,
   PageContextProvider,
 } from './packages/Pages';
@@ -95,8 +97,10 @@ const App = () => {
             <PrivateRoute exact path="/pages/edit/:id" component={EditPage} />
           </PageContextProvider>
 
-          <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
-          <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
+          <CategoryContextProvider>
+            <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
+            <PrivateRoute exact path="/pages/categories/create" component={AddPageCategory} />
+          </CategoryContextProvider>
 
           <BannerContextProvider>
             <PrivateRoute exact path="/banners" component={BannerList} />

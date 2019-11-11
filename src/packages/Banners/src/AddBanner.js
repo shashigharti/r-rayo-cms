@@ -53,7 +53,7 @@ const BannerAdd = () => {
                   <ul className="tabs">
                     <li className="tab">
                       <a className="active" href="#pages">
-                        Pages
+                        Banner
                       </a>
                     </li>
                   </ul>

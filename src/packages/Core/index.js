@@ -27,7 +27,7 @@ import AddUser from './src/users/AddUser';
 // should remove previous users component
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
-import UserContextProvider from './src/users/contexts/userContext';
+import UserContextProvider, { UserContext } from './src/users/contexts/UserContext';
 
 import URow from './src/users/Row';
 import RegisterPage from './src/users/RegisterPage';
@@ -67,6 +67,7 @@ export {
   //
   AddUser,
   Users,
+  UserContext,
   RRow,
   RegisterPage,
   ForgotPasswordPage,
@@ -78,6 +79,5 @@ export {
   AuthContextProvider,
   AuthContext,
   authReducer,
-
-  apiService
+  apiService,
 };

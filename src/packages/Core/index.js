@@ -24,7 +24,6 @@ import SiteSettings from './src/settings/SiteSettings';
 
 // users
 import AddUser from './src/users/AddUser';
-// should remove previous users component
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
 import UserContextProvider from './src/users/contexts/userContext';

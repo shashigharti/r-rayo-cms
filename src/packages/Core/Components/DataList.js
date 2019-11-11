@@ -1,6 +1,6 @@
 import React, { useState, lazy } from 'react';
 import Pagination from './Pagination';
-import { Link } from 'react-router-dom';
+import { LinkAction, AnchorAction } from './ActionItems';
 
 const DataList = ({ data, component: Component, actions, columns }) => {
   return (
@@ -32,20 +32,18 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                       <td className="text right-align">
                         {actions.map(function (action, index) {
                           {
-                            return !action.callback ? <Link
-                              key={index}
-                              className="waves-effect waves-light btn-small cyan"
-                              to={{ pathname: action.url, query: { id: row.id } }}
-                            >
-                              <i className="material-icons left">{action.classname}</i>
-                            </Link> : <a className="waves-effect waves-light btn-small amber">
-                                <i
-                                  className="material-icons left"
-                                  onClick={action.callback}
-                                >
-                                  {action.classname}
-                                </i>
-                              </a>
+                            return !action.callback ?
+                              <LinkAction
+                                key={index}
+                                url={action.url}
+                                params={{ id: row.id }}
+                                classname={action.classname}
+                              /> :
+                              <AnchorAction
+                                key={index}
+                                callback={action.callback}
+                                classname={action.classname}
+                              />
                           }
                         })}
                       </td>

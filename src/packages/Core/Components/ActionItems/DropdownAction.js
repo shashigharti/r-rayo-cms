@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const DropdownAction = (props) => {
-    const [state] = useState(props);
     return (
         <>
             <a className="dropdown-trigger waves-effect waves-light btn-small amber"
                 href='#'
                 data-target='dropdown1'
             >
-                <i
-                    className="material-icons left"
-                >
+                <i className="material-icons left" >
                     remove_red_eye
                 </i>
             </a>
@@ -20,3 +17,6 @@ const DropdownAction = (props) => {
         </>
     )
 }
+
+
+export default DropdownAction;

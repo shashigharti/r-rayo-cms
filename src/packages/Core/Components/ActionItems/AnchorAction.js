@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import Link from 'react-router-dom';
 
 const AnchorAction = (props) => {
-    const [state] = useState(props);
+    const { callback, classname } = props;
     return (
         <>
             {<a className="waves-effect waves-light btn-small amber">
                 <i
                     className="material-icons left"
-                    onClick={callback}
+                    onClick={() => callback}
                 >
                     {classname}
                 </i>
@@ -16,3 +15,5 @@ const AnchorAction = (props) => {
         </>
     )
 }
+
+export default AnchorAction;

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const LinkAction = (props) => {
-    const [state] = useState(props);
+    const { params, url, classname } = props;
     return (
         <>
             {<Link
-                key={index}
                 className="waves-effect waves-light btn-small cyan"
                 to={{ pathname: url, query: params }}
             >
@@ -15,3 +14,5 @@ const LinkAction = (props) => {
         </>
     )
 }
+
+export default LinkAction;

@@ -16,7 +16,7 @@ const ToolBar = ({ breadcrumbs, toolbar }) => {
                                 return <Link
                                     key={index}
                                     className="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right"
-                                    to="{tool.url}"
+                                    to={tool.url}
                                 >
                                     <i className="material-icons">{tool.classname}</i>
                                 </Link>;

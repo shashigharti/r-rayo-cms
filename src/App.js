@@ -4,7 +4,8 @@ import M from 'materialize-css';
 
 import {
   PageList,
-  PageAddEdit,
+  PageAdd,
+  PageEdit,
   PageCategoryList,
   EditPageCategory,
   PageContextProvider,
@@ -89,12 +90,13 @@ const App = () => {
           </UserContextProvider>
 
           <PageContextProvider>
-            <PrivateRoute exact path="/pages/create" component={PageAddEdit} />
-            <PrivateRoute exact path="/pages/edit/:id" component={PageAddEdit} />
             <PrivateRoute exact path="/pages" component={PageList} />
-            <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
-            <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
+            <PrivateRoute exact path="/pages/create" component={PageAdd} />
+            <PrivateRoute exact path="/pages/edit/:id" component={PageEdit} />
           </PageContextProvider>
+
+          <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
+          <PrivateRoute exact path="/pages/categories/:id/edit" component={EditPageCategory} />
 
           <BannerContextProvider>
             <PrivateRoute exact path="/banners" component={BannerList} />

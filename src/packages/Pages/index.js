@@ -1,23 +1,21 @@
-import PageAddEdit from './src/PageAddEdit';
-import NewPageForm from './src/NewPageForm';
-import EditPageForm from './src/EditPageForm';
+import PageAdd from './src/PageAdd';
+import PageEdit from './src/PageEdit';
 import PageList from './src/PageList';
 import PageRow from './src/PageRow';
 import EditPageCategory from './src/categories/EditPageCategory';
 import PageCategoryList from './src/categories/PageCategoryList';
 
-import PageContextProvider, { PageContext } from './contexts/pageContext';
-import { pageReducer } from './reducers/pageReducer';
+import PageContextProvider, { PageContext } from './contexts/PageContext';
+import { PageReducer } from './reducers/PageReducer';
 
 export {
-    PageAddEdit,
-    NewPageForm,
-    EditPageForm,
+    PageAdd,
+    PageEdit,
     PageList,
     PageRow,
     EditPageCategory,
     PageCategoryList,
     PageContext,
     PageContextProvider,
-    pageReducer
+    PageReducer
 }

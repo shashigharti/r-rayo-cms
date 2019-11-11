@@ -1,31 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { PageContext } from '..';
 
 const NewPageForm = () => {
-  const { dispatch } = useContext(PageContext);
-  const [name, setName] = useState('');
-  const [slug, setSlug] = useState('');
-  const [content, setContent] = useState('');
-  const [category_id, setCategoryId] = useState('');
-  const [excerpt, setExcerpt] = useState('');
-  const [meta_title, setMetaTitle] = useState('');
-  const [meta_description, setMetaDescription] = useState('');
-  const [meta_keywords, setMetaKeywords] = useState('');
+  const { pages, dispatch } = useContext(PageContext);
+  useEffect(() => {
+    console.log(pages)
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({
-      type: 'ADD_PAGE', page: {
-        name,
-        slug,
-        content,
-        category_id,
-        excerpt,
-        meta_title,
-        meta_description,
-        meta_keywords
-      }
+      type: 'ADD', page: state.current_page
     });
+  }
+
+  const setFieldValue = (field, value) => {
+    dispatch({ type: 'SET_FIELD', current_page: { field, value } })
   }
 
   return (
@@ -52,8 +42,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
+                          value={state.pages.current_page.name}
+                          onChange={(e) => setFieldValue('name', e.target.value)}
                           required
                         />
                       </div>
@@ -61,8 +51,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="name"
-                          value={slug}
-                          onChange={(e) => setSlug(e.target.value)}
+                          value={state.pages.current_page.slug}
+                          onChange={(e) => setFieldValue('slug', e.target.value)}
                           required
                         />
                         <label>Slug</label>
@@ -73,8 +63,8 @@ const NewPageForm = () => {
                         <textarea
                           name="content"
                           className="materialize-textarea"
-                          value={content}
-                          onChange={(e) => setContent(e.target.value)}
+                          value={state.pages.current_page.content}
+                          onChange={(e) => setFieldValue('content', e.target.value)}
                           required
                         />
                         <label htmlFor="content">Content</label>
@@ -85,8 +75,8 @@ const NewPageForm = () => {
                         <select
                           className=""
                           name="category_id"
-                          value={category_id}
-                          onChange={(e) => setCategoryId(e.target.value)}
+                          value={state.pages.current_page.category_id}
+                          onChange={(e) => setFieldValue('category_id', e.target.value)}
                           required
                         >
                           <option value="" disabled>
@@ -102,8 +92,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="excerpt"
-                          value={excerpt}
-                          onChange={(e) => setExcerpt(e.target.value)}
+                          value={state.pages.current_page.excerpt}
+                          onChange={(e) => setFieldValue('excerpt', e.target.value)}
                         />
                         <label>Excerpt</label>
                       </div>
@@ -114,8 +104,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="meta_title"
-                          value={meta_title}
-                          onChange={(e) => setMetaTitle(e.target.value)}
+                          value={state.pages.current_page.meta_title}
+                          onChange={(e) => setFieldValue('meta_title', e.target.value)}
                         />
                         <label>Meta Title</label>
                       </div>
@@ -125,8 +115,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="meta_description"
-                          value={meta_description}
-                          onChange={(e) => setMetaDescription(e.target.value)}
+                          value={state.pages.current_page.meta_description}
+                          onChange={(e) => setFieldValue('meta_description', e.target.value)}
                         />
                         <label>Meta Descriptions</label>
                       </div>
@@ -134,8 +124,8 @@ const NewPageForm = () => {
                         <input
                           type="text"
                           name="meta_keywords"
-                          value={meta_keywords}
-                          onChange={(e) => setMetaKeywords(e.target.value)}
+                          value={state.pages.current_page.meta_keywords}
+                          onChange={(e) => setFieldValue('meta_keywords', e.target.value)}
                         />
                         <label>Meta Keywords</label>
                       </div>
@@ -143,7 +133,7 @@ const NewPageForm = () => {
                     <div className="row">
                       <div className="col s12">
                         <div className="input-field">
-                          <button className="btn gradient-45deg-purple-deep-orange">
+                          <button type="submit" className="btn gradient-45deg-purple-deep-orange">
                             Submit
                           </button>
                         </div>

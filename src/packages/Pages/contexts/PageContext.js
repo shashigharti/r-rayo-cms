@@ -1,12 +1,13 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { pageReducer } from '../reducers/pageReducer';
+import { PageReducer } from '../reducers/PageReducer';
 
 export const PageContext = createContext();
 const initialState = {
-    pages: []
+    all: [],
+    current_page: null
 };
 const PageContextProvider = (props) => {
-    const [pages, dispatch] = useReducer(pageReducer, initialState, () => {
+    const [pages, dispatch] = useReducer(PageReducer, initialState, () => {
         const localData = localStorage.getItem('pages');
         return localData ? JSON.parse(localData) : [];
     });

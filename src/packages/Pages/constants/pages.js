@@ -11,63 +11,64 @@ export const PAGE_CREATE = 'pages/create';
 
 // Actions: Page
 export const ACTIONS = [
-    { name: 'Edit', url: 'pages/edit/:id/', classname: '' },
-    { name: 'Delete', callback: 'handleDelete', classname: '' }
+  { name: 'Edit', url: 'pages/edit/:id/', classname: '' },
+  { name: 'Delete', callback: 'handleDelete', classname: '' },
 ];
 
 // Toolbar: Page
 export const TOOLBAR = [
-    { name: 'Add', url: 'pages/create', classname: 'add' },
-    { name: 'Download', url: '', classname: 'file_upload' },
-    { name: 'Upload', url: '', classname: 'file_download' }
+  { name: 'Add', url: 'pages/create', classname: 'add' },
+  { name: 'Download', url: '', classname: 'file_upload' },
+  { name: 'Upload', url: '', classname: 'file_download' },
 ];
 
 // Columns: Page
-export const COLUMNS = [
-    { key: 'id', display: 'ID' },
-    { key: 'name', display: 'Name' }
-];
+export const COLUMNS = [{ key: 'id', display: 'ID' }, { key: 'name', display: 'Name' }];
 
 // Breadcrumb: Page
-export const BREADCRUMB_PAGE = [{
+export const BREADCRUMB_PAGE = [
+  {
     name: 'Home',
     subPath: '',
     path: '',
-},
-{
+  },
+  {
     name: 'Page',
     subPath: 'pages',
     path: '/pages',
-}];
-export const BREADCRUMB_PAGE_EDIT = [{
+  },
+];
+export const BREADCRUMB_PAGE_EDIT = [
+  {
     name: 'Home',
     subPath: '',
     path: '',
-},
-{
+  },
+  {
     name: 'Page',
     subPath: 'pages',
     path: '/pages',
-},
-{
+  },
+  {
     name: 'Edit',
     subPath: 'edit',
     path: '/pages/edit',
-}
+  },
 ];
-export const BREADCRUMB_PAGE_CREATE = [{
+export const BREADCRUMB_PAGE_CREATE = [
+  {
     name: 'Home',
     subPath: '',
     path: '',
-},
-{
+  },
+  {
     name: 'Page',
     subPath: 'pages',
     path: '/pages',
-},
-{
+  },
+  {
     name: 'Create',
     subPath: 'create',
     path: '/pages/create',
-}
+  },
 ];

@@ -4,18 +4,23 @@ import PageList from './src/PageList';
 import PageRow from './src/PageRow';
 import EditPageCategory from './src/categories/EditPageCategory';
 import PageCategoryList from './src/categories/PageCategoryList';
+import AddPageCategory from './src/categories/AddPageCategory';
 
 import PageContextProvider, { PageContext } from './contexts/PageContext';
+import PageCategoryContextProvider, { PageCategoryContext } from './contexts/PageCategoryContext';
 import { PageReducer } from './reducers/PageReducer';
 
 export {
-    AddPage,
-    EditPage,
-    PageList,
-    PageRow,
-    EditPageCategory,
-    PageCategoryList,
-    PageContext,
-    PageContextProvider,
-    PageReducer
-}
+  AddPage,
+  EditPage,
+  PageList,
+  PageRow,
+  EditPageCategory,
+  PageCategoryList,
+  AddPageCategory,
+  PageCategoryContext,
+  PageContext,
+  PageCategoryContextProvider,
+  PageContextProvider,
+  PageReducer,
+};

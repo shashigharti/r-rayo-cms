@@ -3,7 +3,6 @@ import Pagination from './Pagination';
 import { Link } from 'react-router-dom';
 
 const DataList = ({ data, component: Component, actions, columns }) => {
-
   return (
     <div className="row">
       <div className="col s12">
@@ -21,14 +20,14 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                 </thead>
                 <tbody>
                   {Component ? data.map(function (row, index) {
-                    <Component
+                    return <Component
                       key={index}
                       row={row}
                       actions={actions} />
                   }) : data.map(function (row, index) {
                     return <tr key={index}>
-                      {Object.keys(row).map(function (column, colindex) {
-                        return <td key={colindex}>{row[column]}</td>
+                      {columns.map(function (column, colindex) {
+                        return <td key={colindex}>{row[column.key]}</td>
                       })}
                       <td className="text right-align">
                         <Link

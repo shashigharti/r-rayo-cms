@@ -2,18 +2,60 @@ import React, { useEffect } from 'react';
 //import { Media } from '../../Core/Components/Media';
 
 const PageEdit = (props) => {
+    const { dispatch: pdispatch } = useContext(PageContext);
+    const [state, setState] = useState({
+        page: {
+            name: '',
+            slug: '',
+            content: '',
+            category_id: '',
+            excerpt: '',
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: ''
+        },
+        params: {}
+    });
+    const setFieldValue = (field, value) => {
+        setState({
+            ...state,
+            [field]: value
+        });
+        pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
+    }
+    const handleSubmit = (e) => {
+        event.preventDefault();
+        let response = apiService.update(constants.API_PAGE_UPDATE, state);
+        response.then(response => {
+            console.log('success', response);
+        });
+        response.catch(err => {
+            console.log('error', err);
+        })
+    }
+
     useEffect(() => {
         M.AutoInit();
+        setState({ params: { mode: 'Edit', id: props.match.params.id } });
+        pdispatch({
+            type: 'INIT',
+            default: {
+                all: [],
+                current_page: state
+            }
+        });
     }, []);
 
     return (
         <div id="main">
             <ToolBar breadcrumbs={constants.BREADCRUMB_PAGE_EDIT} toolbar={constants.TOOLBAR} />
             <Resource
-                path='pages/1/edit'//{Constants.PAGE_EDIT_URI}
+                path={Constants.API_PAGE_EDIT}
+                params={state.params}
                 render={data => {
                     if (data.loading) return <p> Loading pages ... </p>;
                     if (data.payload.data != undefined) {
+                        console.log(data);
                         return <div className="row">
                             <div className="col s12">
                                 <div className="container-fluid">
@@ -33,14 +75,14 @@ const PageEdit = (props) => {
                                         <div className="col s12">
                                             <div className="panel card tab--content">
                                                 <div id="pages" className="col s12">
-                                                    <form onSubmit={this.handleSubmit}>
+                                                    <form onSubmit={handleSubmit}>
                                                         <div className="row">
                                                             <div className="input-field col s6">
                                                                 <input
                                                                     type="text"
                                                                     name="name"
-                                                                    value={page.name}
-                                                                    onChange={this.handleChange}
+                                                                    value={state.page.name}
+                                                                    onChange={(e) => setFieldValue('name', e.target.value)}
                                                                 />
                                                                 <label>Page Name</label>
                                                             </div>
@@ -48,8 +90,8 @@ const PageEdit = (props) => {
                                                                 <input
                                                                     type="text"
                                                                     name="slug"
-                                                                    value={page.slug}
-                                                                    onChange={this.handleChange}
+                                                                    value={state.page.slug}
+                                                                    onChange={(e) => setFieldValue('slug', e.target.value)}
                                                                 />
                                                                 <label>Slug</label>
                                                             </div>
@@ -58,10 +100,9 @@ const PageEdit = (props) => {
                                                             <div className="input-field col s12">
                                                                 <textarea
                                                                     name="content"
-                                                                    id="content"
-                                                                    value={page.content}
+                                                                    value={state.page.content}
                                                                     className="materialize-textarea"
-                                                                    onChange={this.handleChange}
+                                                                    onChange={(e) => setFieldValue('content', e.target.value)}
                                                                 />
                                                                 <label htmlFor="content">Content</label>
                                                             </div>
@@ -69,10 +110,8 @@ const PageEdit = (props) => {
                                                         <div className="row">
                                                             <div className="input-field col s6">
                                                                 <select
-                                                                    className=""
-                                                                    value={page.category_id}
                                                                     name="category_id"
-                                                                    onChange={this.handleChange}
+                                                                    onChange={(e) => setFieldValue('category_id', e.target.value)}
                                                                 >
                                                                     <option value="" disabled>
                                                                         Choose your option
@@ -86,9 +125,9 @@ const PageEdit = (props) => {
                                                             <div className="input-field col s6">
                                                                 <input
                                                                     type="text"
-                                                                    value={page.excerpt}
+                                                                    value={state.page.excerpt}
                                                                     name="excerpt"
-                                                                    onChange={this.handleChange}
+                                                                    onChange={(e) => setFieldValue('excerpt', e.target.value)}
                                                                 />
                                                                 <label>Excerpt</label>
                                                             </div>
@@ -99,8 +138,8 @@ const PageEdit = (props) => {
                                                                 <input
                                                                     type="text"
                                                                     name="meta_title"
-                                                                    value={page.meta_title !== null ? page.meta_title : ''}
-                                                                    onChange={this.handleChange}
+                                                                    value={state.page.meta_title}
+                                                                    onChange={(e) => setFieldValue('meta_title', e.target.value)}
                                                                 />
                                                                 <label>Meta Title</label>
                                                             </div>
@@ -110,8 +149,8 @@ const PageEdit = (props) => {
                                                                 <input
                                                                     type="text"
                                                                     name="meta_description"
-                                                                    value={page.meta_description !== null ? page.meta_description : ''}
-                                                                    onChange={this.handleChange}
+                                                                    value={state.page.meta_description}
+                                                                    onChange={(e) => setFieldValue('meta_description', e.target.value)}
                                                                 />
                                                                 <label>Meta Descriptions</label>
                                                             </div>
@@ -119,8 +158,8 @@ const PageEdit = (props) => {
                                                                 <input
                                                                     type="text"
                                                                     name="meta_keywords"
-                                                                    value={page.meta_keywords !== null ? page.meta_keywords : ''}
-                                                                    onChange={this.handleChange}
+                                                                    value={state.page.meta_keywords}
+                                                                    onChange={(e) => setFieldValue('meta_keywords', e.target.value)}
                                                                 />
                                                                 <label>Meta Keywords</label>
                                                             </div>
@@ -128,7 +167,7 @@ const PageEdit = (props) => {
                                                         <div className="row">
                                                             <div className="col s12">
                                                                 <div className="input-field">
-                                                                    <button className="btn gradient-45deg-purple-deep-orange">
+                                                                    <button type="submit" className="btn gradient-45deg-purple-deep-orange">
                                                                         Submit
                                                                     </button>
                                                                 </div>

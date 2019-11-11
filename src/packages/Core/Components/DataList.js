@@ -30,25 +30,24 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                         return <td key={colindex}>{row[column.key]}</td>
                       })}
                       <td className="text right-align">
-                        <Link
-                          className="waves-effect waves-light btn-small cyan"
-                          to={{ pathname: `/page-edit/${row.id}`, query: { id: row.id } }}
-                        >
-                          <i className="material-icons left">edit</i>
-                        </Link>
-                        <a className="waves-effect waves-light btn-small amber">
-                          <i
-                            className="material-icons left"
-                            onClick={() => {
-                              //onDelete(row.id);
-                            }}
-                          >
-                            delete
-                          </i>
-                        </a>
-                        <a className="waves-effect waves-light btn-small purple">
-                          <i className="material-icons left">check</i>
-                        </a>
+                        {actions.map(function (action, index) {
+                          {
+                            return !action.callback ? <Link
+                              key={index}
+                              className="waves-effect waves-light btn-small cyan"
+                              to={{ pathname: action.url, query: { id: row.id } }}
+                            >
+                              <i className="material-icons left">{action.classname}</i>
+                            </Link> : <a className="waves-effect waves-light btn-small amber">
+                                <i
+                                  className="material-icons left"
+                                  onClick={action.callback}
+                                >
+                                  {action.classname}
+                                </i>
+                              </a>
+                          }
+                        })}
                       </td>
                     </tr>
                   })}

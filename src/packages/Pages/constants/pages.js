@@ -12,8 +12,8 @@ export const PAGE_CREATE = 'pages/create';
 
 // Actions: Page
 export const ACTIONS = [
-    { name: 'Edit', url: 'pages/edit/:id/', classname: '' },
-    { name: 'Delete', callback: 'handleDelete', classname: '' }
+    { name: 'Edit', url: 'pages/edit/:id/', classname: 'edit' },
+    { name: 'Delete', callback: 'handleDelete', classname: 'delete' }
 ];
 
 // Toolbar: Page

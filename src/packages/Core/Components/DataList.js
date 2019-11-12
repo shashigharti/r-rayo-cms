@@ -36,7 +36,7 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                             return !action.callback ?
                               <LinkAction
                                 key={index}
-                                //TODO: temporary fix; generatePath function will be removed later
+                                // TODO: temporary fix; generatePath function will be removed later
                                 url={generatePath(action.url, { id: row.id })}
                                 params={{ id: row.id }}
                                 classname={action.classname}

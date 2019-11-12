@@ -24,7 +24,6 @@ const PageEdit = (props) => {
             ...state,
             [field]: value
         });
-        console.log("after", state);
         pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
     }
     const handleSubmit = (e) => {

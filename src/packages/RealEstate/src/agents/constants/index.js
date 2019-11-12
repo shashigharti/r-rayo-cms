@@ -1,1 +1,1 @@
-export const AGENTS_URI = 'api/leads/agents';
+export * from './agent';

@@ -1,4 +1,5 @@
 import AgentList from './src/agents/src/AgentList';
+import AddAgent from './src/agents/src/AddAgent';
 
 import LeadList from './src/leads/src/LeadList';
 import CityList from './src/landmarks/cities/src/CityList';
@@ -12,12 +13,14 @@ import ZipContextProvider, { ZipContext } from './src/landmarks/zips/contexts/Zi
 import CountyContextProvider, {
   CountyContext,
 } from './src/landmarks/counties/contexts/CountyContext';
-import AgentContextProvider from './src/agents/contexts/agentContext';
+import AgentContextProvider, { AgentContext } from './src/agents/contexts/AgentContext';
 import LeadContextProvider from './src/leads/contexts/leadContext';
 
 export {
   AgentList,
+  AddAgent,
   AgentContextProvider,
+  AgentContext,
   LeadList,
   LeadContextProvider,
   CityList,

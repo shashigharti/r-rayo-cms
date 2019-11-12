@@ -38,6 +38,7 @@ import { BannerList, BannerContextProvider } from './packages/Banners';
 
 import {
   AgentList,
+  AddAgent,
   AgentContextProvider,
   LeadList,
   LeadContextProvider,
@@ -112,6 +113,7 @@ const App = () => {
 
           <AgentContextProvider>
             <PrivateRoute exact path="/agents" component={AgentList} />
+            <PrivateRoute exact path="/agents/create" component={AddAgent} />
           </AgentContextProvider>
 
           <LeadContextProvider>

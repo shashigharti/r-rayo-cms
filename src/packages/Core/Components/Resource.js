@@ -19,23 +19,18 @@ class Resource extends Component {
         payload: []
     }
     componentDidMount() {
-        console.log('resource', this.props.params);
         this.setState({ loading: true });
         const path = this.props.path;
-        const params = (this.props.params) ? this.props.params : null;
 
-        let getData = null;
-        getData = (params != null && params.mode == 'Edit') ? apiService.getById(params.id, path) : apiService.getAll(path);
-
-        getData.then(response => {
-            this.setState({
-                payload: response.data,
-                loading: false
+        apiService.getAll(path)
+            .then(response => {
+                this.setState({
+                    payload: response.data,
+                    loading: false
+                })
+            }).catch(err => {
+                console.log(err);
             })
-        });
-        getData.catch(err => {
-            console.log(err);
-        })
 
     }
     render() {

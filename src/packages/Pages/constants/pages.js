@@ -7,7 +7,7 @@ export const API_PAGE_DELETE = 'api/pages/:id';
 
 // Route: Page
 export const PAGE = 'pages';
-export const PAGE_EDIT = 'pages/edit/:id/';
+export const PAGE_EDIT = 'pages/edit/:id';
 export const PAGE_CREATE = 'pages/create';
 
 // Actions: Page

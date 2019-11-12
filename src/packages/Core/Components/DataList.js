@@ -1,4 +1,4 @@
-import React, { useState, lazy } from 'react';
+import React from 'react';
 import Pagination from './Pagination';
 import { LinkAction, AnchorAction } from './ActionItems';
 import { generatePath } from 'react-router';

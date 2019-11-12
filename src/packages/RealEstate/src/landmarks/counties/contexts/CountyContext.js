@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { countyReducer } from '../reducers/countyReducer';
+import { CountyReducer } from '../reducers/CountyReducer';
 
 export const CountyContext = createContext();
 const initialState = {
   counties: [],
 };
 const CountyContextProvider = props => {
-  const [counties, dispatch] = useReducer(countyReducer, initialState, () => {
+  const [counties, dispatch] = useReducer(CountyReducer, initialState, () => {
     const localData = localStorage.getItem('counties');
     return localData ? JSON.parse(localData) : [];
   });

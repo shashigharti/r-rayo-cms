@@ -1,1 +1,1 @@
-export const COUNTIES_URI = 'api/counties';
+export * from './county';

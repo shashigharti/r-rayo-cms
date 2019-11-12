@@ -16,6 +16,10 @@ import CountyContextProvider, {
 import AgentContextProvider, { AgentContext } from './src/agents/contexts/AgentContext';
 import LeadContextProvider from './src/leads/contexts/leadContext';
 
+import GroupList from './src/groups/src/GroupList';
+import AddGroup from './src/groups/src/AddGroup';
+import GroupContextProvider, { GroupContext } from './src/groups/contexts/GroupContext';
+
 export {
   AgentList,
   AddAgent,
@@ -35,4 +39,8 @@ export {
   AddCounty,
   CountyContextProvider,
   CountyContext,
+  GroupList,
+  AddGroup,
+  GroupContextProvider,
+  GroupContext,
 };

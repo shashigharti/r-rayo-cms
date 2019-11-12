@@ -4,14 +4,14 @@ import DataList from '../../../../Core/Components/DataList';
 import * as constants from './../constants';
 import ToolBar from '../../../../Core/Components/ToolBar';
 
-const AgentList = () => {
+const GroupList = () => {
   return (
     <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_AGENT} toolbar={constants.TOOLBAR} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_GROUP} toolbar={constants.TOOLBAR} />
       <Resource
-        path={constants.API_AGENT}
+        path={constants.API_GROUP}
         render={data => {
-          if (data.loading) return <p> Loading agents ... </p>;
+          if (data.loading) return <p> Loading groups ... </p>;
           if (data.payload.data != undefined) {
             return (
               <DataList
@@ -28,4 +28,4 @@ const AgentList = () => {
   );
 };
 
-export default AgentList;
+export default GroupList;

@@ -51,6 +51,9 @@ import {
   CountyList,
   AddCounty,
   CountyContextProvider,
+  GroupList,
+  AddGroup,
+  GroupContextProvider,
 } from './packages/RealEstate';
 
 // import { Groups } from '/packages/groups/Groups';
@@ -134,6 +137,11 @@ const App = () => {
             <PrivateRoute exact path="/counties" component={CountyList} />
             <PrivateRoute exact path="/counties/create" component={AddCounty} />
           </CountyContextProvider>
+
+          <GroupContextProvider>
+            <PrivateRoute exact path="/groups" component={GroupList} />
+            <PrivateRoute exact path="/groups/create" component={AddGroup} />
+          </GroupContextProvider>
 
           {/* <PrivateRoute exact path="/menus" component={Menus} />
           <PrivateRoute exact path="/add-menu" component={AddMenu} />

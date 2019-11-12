@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { bannerReducer } from '../reducers/bannerReducer';
+import { BannerReducer } from '../reducers/BannerReducer';
 
 export const BannerContext = createContext();
 const initialState = {
   banners: [],
 };
 const BannerContextProvider = props => {
-  const [banners, dispatch] = useReducer(bannerReducer, initialState, () => {
+  const [banners, dispatch] = useReducer(BannerReducer, initialState, () => {
     const localData = localStorage.getItem('banners');
     return localData ? JSON.parse(localData) : [];
   });

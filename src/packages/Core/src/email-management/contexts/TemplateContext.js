@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { templateReducer } from '../reducers/templateReducer';
+import { TemplateReducer } from '../reducers/TemplateReducer';
 
 export const TemplateContext = createContext();
 const initialState = {
   templates: [],
 };
 const TemplateContextProvider = props => {
-  const [templates, dispatch] = useReducer(templateReducer, initialState, () => {
+  const [templates, dispatch] = useReducer(TemplateReducer, initialState, () => {
     const localData = localStorage.getItem('templates');
     return localData ? JSON.parse(localData) : [];
   });

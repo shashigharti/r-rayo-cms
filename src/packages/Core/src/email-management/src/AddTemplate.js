@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../Components/ToolBar';
 import * as constants from './../constants';
-import { UserContext } from '../../../';
+import { TemplateContext } from '../../../';
 import { apiService } from '../../../../Core';
 
-const AddUser = () => {
-  const { dispatch: pdispatch } = useContext(UserContext);
+const AddTemplate = () => {
+  const { dispatch: pdispatch } = useContext(TemplateContext);
   const [state, setState] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    contact: '',
-    address: '',
-    role: '',
+    title: '',
+    group: '',
+    template: '',
+    status: '',
+    subject: '',
+    frequency: '',
+    starts_at: '',
+    ends_at: '',
   });
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const AddUser = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_USER_STORE, state);
+    let response = apiService.store(constants.API_TEMPLATES_STORE, state);
     response.then(response => {
       console.log('success', response);
     });
@@ -47,7 +49,7 @@ const AddUser = () => {
 
   return (
     <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_USER_CREATE} toolbar={constants.TOOLBAR} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_TEMPLATES_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col s12">
@@ -57,7 +59,7 @@ const AddUser = () => {
                   <ul className="tabs">
                     <li className="tab">
                       <a className="active" href="#pages">
-                        Add User
+                        Add Template
                       </a>
                     </li>
                   </ul>
@@ -67,76 +69,83 @@ const AddUser = () => {
                     <div id="users" className="col s12">
                       <div className="row">
                         <div className="input-field col s6">
-                          <label>First Name</label>
+                          <label>Title</label>
                           <input
                             type="text"
-                            name="first_name"
-                            value={state.first_name}
-                            onChange={e => setFieldValue('first_name', e.target.value)}
+                            name="title"
+                            value={state.title}
+                            onChange={e => setFieldValue('title', e.target.value)}
                             required
                           />
                         </div>
                         <div className="input-field col s6">
+                          <label>Group</label>
                           <input
                             type="text"
-                            name="last_name"
-                            value={state.last_name}
-                            onChange={e => setFieldValue('last_name', e.target.value)}
+                            name="group"
+                            value={state.group}
+                            onChange={e => setFieldValue('group', e.target.value)}
                             required
                           />
-                          <label>Last Name</label>
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field col s12">
+                          <textarea
+                            className="materialize-textarea"
+                            name="template"
+                            value={state.template}
+                            onChange={e => setFieldValue('template', e.target.value)}
+                            required
+                          />
+                          <label htmlFor="template">Template</label>
                         </div>
                       </div>
                       <div className="row">
                         <div className="input-field col s6">
-                          <label>Email</label>
+                          <label>Frequency</label>
                           <input
                             type="text"
-                            name="email"
-                            value={state.email}
-                            onChange={e => setFieldValue('email', e.target.value)}
+                            name="frequency"
+                            value={state.frequency}
+                            onChange={e => setFieldValue('frequency', e.target.value)}
                             required
                           />
                         </div>
                         <div className="input-field col s6">
+                          <label>Subject</label>
                           <input
                             type="text"
-                            name="contact"
-                            value={state.contact}
-                            onChange={e => setFieldValue('contact', e.target.value)}
+                            name="subject"
+                            value={state.subject}
+                            onChange={e => setFieldValue('subject', e.target.value)}
                             required
                           />
-                          <label>Contact</label>
                         </div>
                       </div>
                       <div className="row">
                         <div className="input-field col s6">
-                          <label>Address</label>
+                          <label>Start At</label>
                           <input
                             type="text"
-                            name="address"
-                            value={state.address}
-                            onChange={e => setFieldValue('address', e.target.value)}
+                            name="starts_at"
+                            value={state.starts_at}
+                            onChange={e => setFieldValue('starts_at', e.target.value)}
                             required
                           />
                         </div>
-                        <div className="input-field col s6">
-                          <select
-                            name="role"
-                            onChange={e => setFieldValue('role', e.target.value)}
-                            required
-                          >
-                            <option value="" disabled>
-                              Choose your option
-                            </option>
-                            <option value="1">Super Admin</option>
-                            <option value="2">Admin</option>
-                            <option value="3">Agent</option>
-                          </select>
-                          <label>Role</label>
-                        </div>
-                      </div>
 
+                        <div className="input-field col s6">
+                          <label>Ends At</label>
+                          <input
+                            type="text"
+                            name="ends_at"
+                            value={state.ends_at}
+                            onChange={e => setFieldValue('ends_at', e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
                       <div className="row">
                         <div className="col s12">
                           <div className="input-field">
@@ -158,4 +167,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddTemplate;

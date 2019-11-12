@@ -77,6 +77,7 @@ const App = () => {
 
           <TemplateContextProvider>
             <PrivateRoute exact path="/templates" component={TemplateList} />
+            <PrivateRoute exact path="/templates/create" component={AddTemplate} />
           </TemplateContextProvider>
 
           <RoleContextProvider>

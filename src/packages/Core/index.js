@@ -1,11 +1,14 @@
 import Dashboard from './src/dashboard/Dashboard';
 
 //should remove
-import AddTemplate from './src/email-management/AddTemplate';
+
 import Templates from './src/email-management/Templates';
 //
 import TemplateList from './src/email-management/src/TemplateList';
-import TemplateContextProvider from './src/email-management/contexts/templateContext';
+import AddTemplate from './src/email-management/src/AddTemplate';
+import TemplateContextProvider, {
+  TemplateContext,
+} from './src/email-management/contexts/TemplateContext';
 
 import AddRole from './src/roles/src/AddRole';
 import Roles from './src/roles/RolePageList';
@@ -49,6 +52,7 @@ export {
   Templates,
   TemplateList,
   TemplateContextProvider,
+  TemplateContext,
   //
   AddRole,
   Roles,

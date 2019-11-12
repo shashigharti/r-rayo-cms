@@ -9,10 +9,13 @@ const AddAgent = () => {
   const [state, setState] = useState({
     first_name: '',
     last_name: '',
+    user_name: '',
     email: '',
     contact: '',
     address: '',
     role: '',
+    password: '',
+    password_confirmation: ''
   });
 
   useEffect(() => {
@@ -66,7 +69,7 @@ const AddAgent = () => {
                   <div className="panel card tab--content">
                     <div id="users" className="col s12">
                       <div className="row">
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                           <label>First Name</label>
                           <input
                             type="text"
@@ -76,7 +79,7 @@ const AddAgent = () => {
                             required
                           />
                         </div>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                           <input
                             type="text"
                             name="last_name"
@@ -85,6 +88,16 @@ const AddAgent = () => {
                             required
                           />
                           <label>Last Name</label>
+                        </div>
+                        <div className="input-field col s4">
+                          <input
+                            type="text"
+                            name="user_name"
+                            value={state.user_name}
+                            onChange={e => setFieldValue('user_name', e.target.value)}
+                            required
+                          />
+                          <label>User name</label>
                         </div>
                       </div>
                       <div className="row">
@@ -136,7 +149,28 @@ const AddAgent = () => {
                           <label>Role</label>
                         </div>
                       </div>
-
+                      <div className="row">
+                        <div className="input-field col s6">
+                          <label>Password</label>
+                          <input
+                            type="password"
+                            name="password"
+                            value={state.password}
+                            onChange={e => setFieldValue('password', e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="input-field col s6">
+                          <input
+                            type="password"
+                            name="password_confirmation"
+                            value={state.password_confirmation}
+                            onChange={e => setFieldValue('password_confirmation', e.target.value)}
+                            required
+                          />
+                          <label>Password Confirmation</label>
+                        </div>
+                      </div>
                       <div className="row">
                         <div className="col s12">
                           <div className="input-field">

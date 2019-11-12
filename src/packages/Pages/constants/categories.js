@@ -1,7 +1,7 @@
 // API: PAGE_CATEGORIES
 export const API_PAGE_CATEGORIES = 'api/pages/categories';
 export const API_PAGE_CATEGORIES_EDIT = 'pages/edit/categories/:id/';
-export const API_PAGE_CATEGORIES_STORE = 'api/pages/categories';
+export const API_PAGE_CATEGORIES_STORE = '/api/pages/categories';
 export const API_PAGE_CATEGORIES_UPDATE = 'api/pages/categories/:id';
 export const API_PAGE_CATEGOREIS_DELETE = 'api/pages/categories/destroy';
 

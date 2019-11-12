@@ -9,6 +9,7 @@ const AddTemplate = () => {
   const [state, setState] = useState({
     title: '',
     group: '',
+    status: '',
     template: '',
     status: '',
     subject: '',
@@ -19,6 +20,7 @@ const AddTemplate = () => {
 
   useEffect(() => {
     M.AutoInit();
+    M.updateTextFields();
     pdispatch({
       type: 'INIT',
       default: {
@@ -33,9 +35,11 @@ const AddTemplate = () => {
     let response = apiService.store(constants.API_TEMPLATES_STORE, state);
     response.then(response => {
       console.log('success', response);
+      M.toast({ 'html': 'Successfully Added' });
     });
     response.catch(err => {
       console.log('error', err);
+      M.toast({ 'html': 'Something went wrong !' });
     });
   };
 
@@ -79,33 +83,39 @@ const AddTemplate = () => {
                           />
                         </div>
                         <div className="input-field col s6">
-                          <label>Group</label>
-                          <input
-                            type="text"
+                          <select
                             name="group"
-                            value={state.group}
                             onChange={e => setFieldValue('group', e.target.value)}
                             required
-                          />
+                          >
+                            <option value="" disabled selected>
+                              Choose your option
+                            </option>
+                            <option value="1">Group 1</option>
+                            <option value="2">Group 2</option>
+                          </select>
+                          <label>Group</label>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="input-field col s12">
-                          <textarea
-                            className="materialize-textarea"
-                            name="template"
-                            value={state.template}
-                            onChange={e => setFieldValue('template', e.target.value)}
-                            required
-                          />
-                          <label htmlFor="template">Template</label>
-                        </div>
+                        <select
+                          name="template"
+                          onChange={e => setFieldValue('template', e.target.value)}
+                          required
+                        >
+                          <option value="" disabled selected>
+                            Choose your option
+                            </option>
+                          <option value="1">Template 1</option>
+                          <option value="2">Template 2</option>
+                        </select>
+                        <label>Group</label>
                       </div>
                       <div className="row">
                         <div className="input-field col s6">
                           <label>Frequency</label>
                           <input
-                            type="text"
+                            type="number"
                             name="frequency"
                             value={state.frequency}
                             onChange={e => setFieldValue('frequency', e.target.value)}
@@ -127,7 +137,7 @@ const AddTemplate = () => {
                         <div className="input-field col s6">
                           <label>Start At</label>
                           <input
-                            type="text"
+                            type="date"
                             name="starts_at"
                             value={state.starts_at}
                             onChange={e => setFieldValue('starts_at', e.target.value)}
@@ -138,12 +148,28 @@ const AddTemplate = () => {
                         <div className="input-field col s6">
                           <label>Ends At</label>
                           <input
-                            type="text"
+                            type="date"
                             name="ends_at"
                             value={state.ends_at}
                             onChange={e => setFieldValue('ends_at', e.target.value)}
                             required
                           />
+                        </div>
+                      </div>
+                      <div className="row">
+                        <div className="input-field col s6">
+                          <select
+                            name="status"
+                            onChange={e => setFieldValue('status', e.target.value)}
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Choose your option
+                            </option>
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                          </select>
+                          <label>Status</label>
                         </div>
                       </div>
                       <div className="row">

@@ -1,7 +1,7 @@
 // API: TEMPLATE
 export const API_TEMPLATES = 'api/emails/templates';
 export const API_TEMPLATES_EDIT = 'emails/templates/edit/:id/';
-export const API_TEMPLATES_STORE = 'api/emails/templates';
+export const API_TEMPLATES_STORE = '/api/emails/templates';
 export const API_TEMPLATES_UPDATE = 'api/emails/templates/:id';
 export const API_TEMPLATES_DELETE = 'api/emails/templates/destroy';
 

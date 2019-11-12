@@ -1,7 +1,7 @@
 // API: USER
 export const API_USER = 'api/users';
 export const API_USER_EDIT = 'users/edit/:id/';
-export const API_USER_STORE = 'api/users';
+export const API_USER_STORE = '/api/users';
 export const API_USER_UPDATE = 'api/users/:id';
 export const API_USER_DELETE = 'api/users/destroy';
 

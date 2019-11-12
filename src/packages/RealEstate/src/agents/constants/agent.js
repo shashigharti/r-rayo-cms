@@ -1,7 +1,7 @@
 // API: AGENT
 export const API_AGENT = 'api/leads/agents';
 export const API_AGENT_EDIT = 'leads/agents/edit/:id/';
-export const API_AGENT_STORE = 'api/leads/agents';
+export const API_AGENT_STORE = '/api/leads/agents';
 export const API_AGENT_UPDATE = 'api/leads/agents/:id';
 export const API_AGENT_DELETE = 'api/leads/agents/destroy';
 

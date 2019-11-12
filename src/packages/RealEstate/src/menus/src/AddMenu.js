@@ -89,7 +89,7 @@ const AddMenu = () => {
                         <div className="input-field col s6">
                           <label>Menu Limit</label>
                           <input
-                            type="text"
+                            type="number"
                             name="menu_limit"
                             value={state.menu_limit}
                             onChange={e => setFieldValue('menu_limit', e.target.value)}

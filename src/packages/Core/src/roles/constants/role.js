@@ -1,7 +1,7 @@
 // API: ROLE
 export const API_ROLE = 'api/roles';
 export const API_ROLE_EDIT = 'roles/edit/:id/';
-export const API_ROLE_STORE = 'api/roles';
+export const API_ROLE_STORE = '/api/roles';
 export const API_ROLE_UPDATE = 'api/roles/:id';
 export const API_ROLE_DELETE = 'api/roles/destroy';
 

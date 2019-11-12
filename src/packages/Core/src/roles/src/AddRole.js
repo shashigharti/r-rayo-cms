@@ -4,7 +4,8 @@ import * as constants from './../constants';
 import { RoleContext } from '../../../';
 import { apiService } from '../../../../Core';
 
-const AddUser = () => {
+const AddRole = () => {
+  //permission management remaining
   const { dispatch: pdispatch } = useContext(RoleContext);
   const [state, setState] = useState({
     name: '',
@@ -85,7 +86,6 @@ const AddUser = () => {
                           <label htmlFor="description">Description</label>
                         </div>
                       </div>
-
                       <div className="row">
                         <div className="col s12">
                           <div className="input-field">
@@ -107,4 +107,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddRole;

@@ -9,6 +9,7 @@ const AddGroup = () => {
   const [state, setState] = useState({
     name: '',
     color: '',
+    status: ''
   });
 
   useEffect(() => {
@@ -83,7 +84,22 @@ const AddGroup = () => {
                           <label>Color</label>
                         </div>
                       </div>
-
+                      <div className="row">
+                        <div className="input-field col s6">
+                          <select
+                            name="status"
+                            onChange={e => setFieldValue('status', e.target.value)}
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Choose your option
+                            </option>
+                            <option value="1">Active</option>
+                            <option value="2">InActive</option>
+                          </select>
+                          <label>Status</label>
+                        </div>
+                      </div>
                       <div className="row">
                         <div className="col s12">
                           <div className="input-field">

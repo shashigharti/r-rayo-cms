@@ -33,9 +33,11 @@ const PageAdd = () => {
     let response = apiService.store(constants.API_PAGE_STORE, state);
     response.then(response => {
       console.log('success', response);
+      M.toast({ 'html': 'SuccessFully Added' })
     });
     response.catch(err => {
       console.log('error', err);
+      M.toast({ 'html': 'Something went wrong...' })
     });
   };
 

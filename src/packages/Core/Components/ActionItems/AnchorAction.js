@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const AnchorAction = (props) => {
-    const { callback, classname } = props;
+const AnchorAction = ({ callback, classname, url, params }) => {
     return (
         <>
-            {<a className="waves-effect waves-light btn-small amber" href="#" onClick={() => callback}>
+            {<a className="waves-effect waves-light btn-small amber"
+                href="#"
+                onClick={(e) => callback(e, { ...params, url })}
+            >
                 <i className="material-icons left">
                     {classname}
                 </i>

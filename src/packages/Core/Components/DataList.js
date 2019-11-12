@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Pagination from './Pagination';
 import { LinkAction, AnchorAction } from './ActionItems';
 import { generatePath } from 'react-router';
+import { apiService } from '../../Core';
 
-const DataList = ({ data, component: Component, actions, columns }) => {
+const DataList = (props) => {
+  const { data, component: Component, actions, columns } = props;
+  const handleDelete = (e, params) => {
+    apiService.delete(params.url, params.id);
+  }
   return (
     <div className="row">
       <div className="col s12">
@@ -13,7 +18,7 @@ const DataList = ({ data, component: Component, actions, columns }) => {
               <table className="table data-table">
                 <thead>
                   <tr>
-                    {columns.map(function(column, index) {
+                    {columns.map(function (column, index) {
                       return <th key={index}>{column.display}</th>;
                     })}
                     <th className="text-nowrap center-align">Actions</th>
@@ -21,39 +26,40 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                 </thead>
                 <tbody>
                   {Component
-                    ? data.map(function(row, index) {
-                        return <Component key={index} row={row} actions={actions} />;
-                      })
-                    : data.map(function(row, index) {
-                        return (
-                          <tr key={index}>
-                            {columns.map(function(column, colindex) {
-                              return <td key={colindex}>{row[column.key]}</td>;
-                            })}
-                            <td className="text right-align">
-                              {actions.map(function(action, index) {
-                                {
-                                  return !action.callback ? (
-                                    <LinkAction
-                                      key={index}
-                                      // TODO: temporary fix; generatePath function will be removed later
-                                      url={generatePath(action.url, { id: row.id })}
-                                      params={{ id: row.id }}
-                                      classname={action.classname}
-                                    />
-                                  ) : (
+                    ? data.map(function (row, index) {
+                      return <Component key={index} row={row} actions={actions} />;
+                    })
+                    : data.map(function (row, index) {
+                      return (
+                        <tr key={index}>
+                          {columns.map(function (column, colindex) {
+                            return <td key={colindex}>{row[column.key]}</td>;
+                          })}
+                          <td className="text right-align">
+                            {actions.map(function (action, index) {
+                              {
+                                return !action.callback ? (
+                                  <LinkAction
+                                    key={index}
+                                    // TODO: temporary fix; generatePath function will be removed later
+                                    url={generatePath(action.url, { id: row.id })}
+                                    params={{ id: row.id }}
+                                    classname={action.classname}
+                                  />
+                                ) : (
                                     <AnchorAction
                                       key={index}
-                                      callback={action.callback}
+                                      url={action.url}
+                                      callback={handleDelete}
                                       classname={action.classname}
                                     />
                                   );
-                                }
-                              })}
-                            </td>
-                          </tr>
-                        );
-                      })}
+                              }
+                            })}
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </div>

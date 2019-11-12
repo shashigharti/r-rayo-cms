@@ -3,7 +3,7 @@ export const API_PAGE = 'api/pages';
 export const API_PAGE_EDIT = 'api/pages/:id/edit';
 export const API_PAGE_STORE = 'api/pages';
 export const API_PAGE_UPDATE = 'api/pages/:id';
-export const API_PAGE_DELETE = 'api/pages/destroy';
+export const API_PAGE_DELETE = 'api/pages/:id';
 
 // Route: Page
 export const PAGE = 'pages';
@@ -12,8 +12,8 @@ export const PAGE_CREATE = 'pages/create';
 
 // Actions: Page
 export const ACTIONS = [
-    { name: 'Edit', url: 'pages/edit/:id/', classname: 'edit', type: 'LinkAction' },
-    { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' }
+    { name: 'Edit', url: 'pages/edit/:id', classname: 'edit', type: 'LinkAction' },
+    { name: 'Delete', url: 'api/pages/:id', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' }
 ];
 
 // Toolbar: Page

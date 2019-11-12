@@ -1,8 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Resource from '../../Core/Components/Resource';
 import DataList from '../../Core/Components/DataList';
-import PageRow from './PageRow';
-import * as constants from './../constants';
+import * as constants from '../constants';
 import ToolBar from '../../Core/Components/ToolBar';
 
 const PageList = () => {

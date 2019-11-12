@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { zipReducer } from '../reducers/zipReducer';
+import { ZipReducer } from '../reducers/ZipReducer';
 
 export const ZipContext = createContext();
 const initialState = {
   zips: [],
 };
 const ZipContextProvider = props => {
-  const [zips, dispatch] = useReducer(zipReducer, initialState, () => {
+  const [zips, dispatch] = useReducer(ZipReducer, initialState, () => {
     const localData = localStorage.getItem('zips');
     return localData ? JSON.parse(localData) : [];
   });

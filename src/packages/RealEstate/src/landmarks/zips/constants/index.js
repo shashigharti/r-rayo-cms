@@ -1,1 +1,1 @@
-export const ZIPS_URI = 'api/zips';
+export * from './zip';

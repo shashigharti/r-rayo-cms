@@ -4,7 +4,7 @@ import * as constants from '../constants';
 import { CityContext } from '../../../../';
 import { apiService } from '../../../../../Core';
 
-const PageAdd = () => {
+const AddCity = () => {
   const { dispatch: pdispatch } = useContext(CityContext);
   const [state, setState] = useState({
     name: '',
@@ -218,4 +218,4 @@ const PageAdd = () => {
   );
 };
 
-export default PageAdd;
+export default AddCity;

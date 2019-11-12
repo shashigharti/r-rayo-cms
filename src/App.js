@@ -45,6 +45,7 @@ import {
   AddCity,
   CityContextProvider,
   ZipList,
+  AddZip,
   ZipContextProvider,
   CountyList,
   AddCounty,
@@ -124,6 +125,7 @@ const App = () => {
 
           <ZipContextProvider>
             <PrivateRoute exact path="/zips" component={ZipList} />
+            <PrivateRoute exact path="/zips/create" component={AddZip} />
           </ZipContextProvider>
 
           <CountyContextProvider>

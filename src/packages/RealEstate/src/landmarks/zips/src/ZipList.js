@@ -1,33 +1,25 @@
 import React, { Component, useState, useEffect } from 'react';
 import Resource from '../../../../../Core/Components/Resource';
 import DataList from '../../../../../Core/Components/DataList';
-import ZipRow from './ZipRow';
-import * as Constants from './../constants';
+import * as constants from './../constants';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 
 const ZipList = () => {
-  const [breadcrumbs, setBreadcrumbs] = useState([
-    {
-      name: 'Home',
-      subPath: '',
-      path: '',
-    },
-    {
-      name: 'Zips',
-      subPath: 'zips',
-      path: '/zips',
-    },
-  ]);
-
   return (
     <div id="main">
-      <ToolBar breadcrumbs={breadcrumbs} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_ZIP} toolbar={constants.TOOLBAR} />
       <Resource
-        path={Constants.ZIPS_URI}
+        path={constants.API_ZIP}
         render={data => {
           if (data.loading) return <p> Loading zips ... </p>;
           if (data.payload.data != undefined) {
-            return <DataList data={data.payload.data} component={ZipRow} />;
+            return (
+              <DataList
+                data={data.payload.data}
+                actions={constants.ACTIONS}
+                columns={constants.COLUMNS}
+              />
+            );
           }
           return <div>No Data Found</div>;
         }}

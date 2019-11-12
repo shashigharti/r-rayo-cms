@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
-import { CountyContext } from '../../../../';
+import { ZipContext } from '../../../../';
 import { apiService } from '../../../../../Core';
 
-const AddCounty = () => {
-  const { dispatch: pdispatch } = useContext(CountyContext);
+const PageAdd = () => {
+  const { dispatch: pdispatch } = useContext(ZipContext);
   const [state, setState] = useState({
     name: '',
     slug: '',
-    frontpage: '',
     dropdown: '',
     frontpage_order: '',
     menu_order: '',
@@ -29,7 +28,7 @@ const AddCounty = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_COUNTY_STORE, state);
+    let response = apiService.store(constants.API_ZIP_STORE, state);
     response.then(response => {
       console.log('success', response);
     });
@@ -48,7 +47,7 @@ const AddCounty = () => {
 
   return (
     <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_COUNTY_CREATE} toolbar={constants.TOOLBAR} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_ZIP_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col s12">
@@ -89,20 +88,6 @@ const AddCounty = () => {
                         </div>
                       </div>
                       <div className="row">
-                        <div className="input-field col s6">
-                          <select
-                            name="frontpage"
-                            onChange={e => setFieldValue('frontpage', e.target.value)}
-                            required
-                          >
-                            <option value="" disabled>
-                              Choose your option
-                            </option>
-                            <option value="0">Show</option>
-                            <option value="1">Hide</option>
-                          </select>
-                          <label>Frontpage</label>
-                        </div>
                         <div className="input-field col s6">
                           <input
                             type="text"
@@ -160,4 +145,4 @@ const AddCounty = () => {
   );
 };
 
-export default AddCounty;
+export default PageAdd;

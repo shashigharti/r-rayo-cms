@@ -16,7 +16,7 @@ const LeadList = () => {
             return (
               <DataList
                 data={data.payload.data}
-                action={constants.ACTIONS}
+                actions={constants.ACTIONS}
                 columns={constants.COLUMNS}
               />
             );

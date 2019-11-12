@@ -13,7 +13,7 @@ const PageEdit = (props) => {
         name: '',
         slug: '',
         content: '',
-        category_id: '',
+        category_id: 0,
         excerpt: '',
         meta_title: '',
         meta_description: '',
@@ -22,27 +22,26 @@ const PageEdit = (props) => {
     const setFieldValue = (field, value) => {
         setState({
             ...state,
-            field: value
+            [field]: value
         });
+        console.log("after", state);
         pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
     }
     const handleSubmit = (e) => {
         event.preventDefault();
-        let response = apiService.update(constants.API_PAGE_UPDATE, state);
-        response.then(response => {
-            console.log('success', response);
-        });
-        response.catch(err => {
-            console.log('error', err);
-        })
+        console.log(state);
     }
+
+    useEffect(() => {
+        M.AutoInit();
+        M.updateTextFields();
+    }, []);
 
     // Updated when the props change
     useEffect(() => {
         M.AutoInit();
         M.updateTextFields();
         setState({
-            ...state,
             id: props.payload.id,
             name: props.payload.name,
             slug: props.payload.slug,
@@ -113,10 +112,11 @@ const PageEdit = (props) => {
                                             <div className="row">
                                                 <div className="input-field col s6">
                                                     <select
+                                                        value={state.category_id}
                                                         name="category_id"
                                                         onChange={(e) => setFieldValue('category_id', e.target.value)}
                                                     >
-                                                        <option value="" disabled>
+                                                        <option value="0" disabled>
                                                             Choose your option
                                                                     </option>
                                                         <option value="1">News And Events</option>

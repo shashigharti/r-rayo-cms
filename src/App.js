@@ -42,6 +42,7 @@ import {
   LeadList,
   LeadContextProvider,
   CityList,
+  AddCity,
   CityContextProvider,
   ZipList,
   ZipContextProvider,
@@ -117,6 +118,7 @@ const App = () => {
 
           <CityContextProvider>
             <PrivateRoute exact path="/cities" component={CityList} />
+            <PrivateRoute exact path="/cities/create" component={AddCity} />
           </CityContextProvider>
 
           <ZipContextProvider>

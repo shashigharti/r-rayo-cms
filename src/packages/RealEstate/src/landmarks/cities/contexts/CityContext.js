@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { cityReducer } from '../reducers/cityReducer';
+import { CityReducer } from '../reducers/CityReducer';
 
 export const CityContext = createContext();
 const initialState = {
   cities: [],
 };
 const CityContextProvider = props => {
-  const [cities, dispatch] = useReducer(cityReducer, initialState, () => {
+  const [cities, dispatch] = useReducer(CityReducer, initialState, () => {
     const localData = localStorage.getItem('cities');
     return localData ? JSON.parse(localData) : [];
   });

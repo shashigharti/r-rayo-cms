@@ -1,1 +1,1 @@
-export const CITIES_URI = 'api/cities';
+export * from './city';

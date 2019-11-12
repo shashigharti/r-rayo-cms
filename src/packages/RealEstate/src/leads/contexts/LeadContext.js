@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { leadReducer } from '../reducers/leadReducer';
+import { LeadReducer } from '../reducers/LeadReducer';
 
 export const LeadContext = createContext();
 const initialState = {
   leads: [],
 };
 const LeadContextProvider = props => {
-  const [leads, dispatch] = useReducer(leadReducer, initialState, () => {
+  const [leads, dispatch] = useReducer(LeadReducer, initialState, () => {
     const localData = localStorage.getItem('leads');
     return localData ? JSON.parse(localData) : [];
   });

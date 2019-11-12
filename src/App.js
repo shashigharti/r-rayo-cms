@@ -41,6 +41,7 @@ import {
   AddAgent,
   AgentContextProvider,
   LeadList,
+  AddLead,
   LeadContextProvider,
   CityList,
   AddCity,
@@ -125,6 +126,7 @@ const App = () => {
 
           <LeadContextProvider>
             <PrivateRoute exact path="/leads" component={LeadList} />
+            <PrivateRoute exact path="/leads/create" component={AddLead} />
           </LeadContextProvider>
 
           <CityContextProvider>

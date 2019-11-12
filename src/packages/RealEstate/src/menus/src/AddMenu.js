@@ -1,18 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ToolBar from '../../../../../Core/Components/ToolBar';
+import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
-import { ZipContext } from '../../../../';
-import { apiService } from '../../../../../Core';
+import { MenuContext } from '../../../';
+import { apiService } from '../../../../Core';
 
-const PageAdd = () => {
-  const { dispatch: pdispatch } = useContext(ZipContext);
+const AddMenu = () => {
+  const { dispatch: pdispatch } = useContext(MenuContext);
   const [state, setState] = useState({
     name: '',
-    slug: '',
-    dropdown: '',
-    frontpage_order: '',
-    menu_order: '',
-    footer_order: '',
+    items: '',
+    menu_limit: '',
+    type: '',
   });
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const PageAdd = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_ZIP_STORE, state);
+    let response = apiService.store(constants.API_MENU_STORE, state);
     response.then(response => {
       console.log('success', response);
     });
@@ -47,7 +45,7 @@ const PageAdd = () => {
 
   return (
     <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_ZIP_CREATE} toolbar={constants.TOOLBAR} />
+      <ToolBar breadcrumbs={constants.BREADCRUMB_MENU_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col s12">
@@ -57,17 +55,17 @@ const PageAdd = () => {
                   <ul className="tabs">
                     <li className="tab">
                       <a className="active" href="#pages">
-                        Add Zip
+                        Add Group
                       </a>
                     </li>
                   </ul>
                 </div>
                 <div className="col s12">
                   <div className="panel card tab--content">
-                    <div id="pages" className="col s12">
+                    <div id="menus" className="col s12">
                       <div className="row">
                         <div className="input-field col s6">
-                          <label>Zip Name</label>
+                          <label>Name</label>
                           <input
                             type="text"
                             name="name"
@@ -79,48 +77,34 @@ const PageAdd = () => {
                         <div className="input-field col s6">
                           <input
                             type="text"
-                            name="slug"
-                            value={state.slug}
-                            onChange={e => setFieldValue('slug', e.target.value)}
+                            name="items"
+                            value={state.items}
+                            onChange={e => setFieldValue('items', e.target.value)}
                             required
                           />
-                          <label>Slug</label>
+                          <label>Items</label>
                         </div>
                       </div>
                       <div className="row">
                         <div className="input-field col s6">
+                          <label>Menu Limit</label>
                           <input
                             type="text"
-                            name="frontpage_order"
-                            value={state.frontpage_order}
-                            onChange={e => setFieldValue('frontpage_order', e.target.value)}
-                          />
-                          <label>Frontpage order</label>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="input-field col s6">
-                          <select
-                            name="dropdown"
-                            onChange={e => setFieldValue('dropdown', e.target.value)}
+                            name="menu_limit"
+                            value={state.menu_limit}
+                            onChange={e => setFieldValue('menu_limit', e.target.value)}
                             required
-                          >
-                            <option value="" disabled>
-                              Choose your option
-                            </option>
-                            <option value="0">Show</option>
-                            <option value="1">Hide</option>
-                          </select>
-                          <label>Dropdown</label>
+                          />
                         </div>
                         <div className="input-field col s6">
                           <input
                             type="text"
-                            name="menu_order"
-                            value={state.menu_order}
-                            onChange={e => setFieldValue('menu_order', e.target.value)}
+                            name="type"
+                            value={state.type}
+                            onChange={e => setFieldValue('type', e.target.value)}
+                            required
                           />
-                          <label>Dropdown order</label>
+                          <label>Type</label>
                         </div>
                       </div>
 
@@ -145,4 +129,4 @@ const PageAdd = () => {
   );
 };
 
-export default PageAdd;
+export default AddMenu;

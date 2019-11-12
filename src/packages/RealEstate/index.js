@@ -20,6 +20,9 @@ import GroupList from './src/groups/src/GroupList';
 import AddGroup from './src/groups/src/AddGroup';
 import GroupContextProvider, { GroupContext } from './src/groups/contexts/GroupContext';
 
+import MenuList from './src/menus/src/MenuList';
+import AddMenu from './src/menus/src/AddMenu';
+import MenuContextProvider, { MenuContext } from './src/menus/contexts/MenuContext';
 export {
   AgentList,
   AddAgent,
@@ -43,4 +46,8 @@ export {
   AddGroup,
   GroupContextProvider,
   GroupContext,
+  MenuList,
+  AddMenu,
+  MenuContextProvider,
+  MenuContext,
 };

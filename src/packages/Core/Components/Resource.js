@@ -19,6 +19,7 @@ class Resource extends Component {
         payload: []
     }
     componentDidMount() {
+        console.log('resource', this.props.params);
         this.setState({ loading: true });
         const path = this.props.path;
         const params = (this.props.params) ? this.props.params : null;

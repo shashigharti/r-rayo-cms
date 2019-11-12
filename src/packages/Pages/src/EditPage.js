@@ -117,7 +117,7 @@ const PageEdit = (props) => {
                                                                 >
                                                                     <option value="" disabled>
                                                                         Choose your option
-                                                                            </option>
+                                                                    </option>
                                                                     <option value="1">News And Events</option>
                                                                     <option value="2">Publications</option>
                                                                     <option value="3">About Us</option>

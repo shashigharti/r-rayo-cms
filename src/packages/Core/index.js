@@ -44,6 +44,7 @@ import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
 import { authReducer } from './reducers/authReducer';
 
 import { apiService } from './services/ApiService';
+import { alertService } from './services/AlertService';
 
 export {
   Dashboard,
@@ -84,4 +85,5 @@ export {
   AuthContext,
   authReducer,
   apiService,
+  alertService
 };

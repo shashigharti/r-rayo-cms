@@ -1,12 +1,12 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import { roleReducer } from '../reducers/roleReducer';
+import { RoleReducer } from '../reducers/RoleReducer';
 
 export const RoleContext = createContext();
 const initialState = {
   roles: [],
 };
 const RoleContextProvider = props => {
-  const [roles, dispatch] = useReducer(roleReducer, initialState, () => {
+  const [roles, dispatch] = useReducer(RoleReducer, initialState, () => {
     const localData = localStorage.getItem('roles');
     return localData ? JSON.parse(localData) : [];
   });

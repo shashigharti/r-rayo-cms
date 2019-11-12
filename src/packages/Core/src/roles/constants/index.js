@@ -1,1 +1,1 @@
-export const ROLES_URI = 'api/roles';
+export * from './role';

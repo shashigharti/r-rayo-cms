@@ -7,12 +7,12 @@ import Templates from './src/email-management/Templates';
 import TemplateList from './src/email-management/src/TemplateList';
 import TemplateContextProvider from './src/email-management/contexts/templateContext';
 
-import AddRole from './src/roles/AddRole';
+import AddRole from './src/roles/src/AddRole';
 import Roles from './src/roles/RolePageList';
 import RRow from './src/roles/Row';
 // roles
 import RoleList from './src/roles/src/RoleList';
-import RoleContextProvider from './src/roles/contexts/roleContext';
+import RoleContextProvider, { RoleContext } from './src/roles/contexts/RoleContext';
 
 import FrontPageSettings from './src/settings/FrontPageSettings';
 import GeneralSettings from './src/settings/GeneralSettings';
@@ -55,6 +55,7 @@ export {
   URow,
   RoleList,
   RoleContextProvider,
+  RoleContext,
   //
   FrontPageSettings,
   GeneralSettings,

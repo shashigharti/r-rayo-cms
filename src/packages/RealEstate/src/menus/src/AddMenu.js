@@ -29,9 +29,11 @@ const AddMenu = () => {
     let response = apiService.store(constants.API_MENU_STORE, state);
     response.then(response => {
       console.log('success', response);
+      M.toast({ 'html': 'Successfully Added' });
     });
     response.catch(err => {
       console.log('error', err);
+      M.toast({ 'html': 'Something went wrong !' });
     });
   };
 

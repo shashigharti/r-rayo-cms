@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 //import { Media } from '../../Core/Components/Media';
+import { PageContext } from '..';
+import ToolBar from '../../Core/Components/ToolBar';
+import * as constants from '../constants';
+import Resource from '../../Core/Components/Resource';
 
 const PageEdit = (props) => {
     const { dispatch: pdispatch } = useContext(PageContext);
@@ -14,7 +18,7 @@ const PageEdit = (props) => {
             meta_description: '',
             meta_keywords: ''
         },
-        params: {}
+        params: { mode: 'Edit', id: props.match.params.id }
     });
     const setFieldValue = (field, value) => {
         setState({
@@ -36,7 +40,6 @@ const PageEdit = (props) => {
 
     useEffect(() => {
         M.AutoInit();
-        setState({ params: { mode: 'Edit', id: props.match.params.id } });
         pdispatch({
             type: 'INIT',
             default: {
@@ -45,12 +48,11 @@ const PageEdit = (props) => {
             }
         });
     }, []);
-
     return (
         <div id="main">
             <ToolBar breadcrumbs={constants.BREADCRUMB_PAGE_EDIT} toolbar={constants.TOOLBAR} />
             <Resource
-                path={Constants.API_PAGE_EDIT}
+                path={constants.API_PAGE_EDIT}
                 params={state.params}
                 render={data => {
                     if (data.loading) return <p> Loading pages ... </p>;

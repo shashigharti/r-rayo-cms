@@ -1,6 +1,7 @@
 import React, { useState, lazy } from 'react';
 import Pagination from './Pagination';
 import { LinkAction, AnchorAction } from './ActionItems';
+import { generatePath } from 'react-router';
 
 const DataList = ({ data, component: Component, actions, columns }) => {
   return (
@@ -35,7 +36,8 @@ const DataList = ({ data, component: Component, actions, columns }) => {
                             return !action.callback ?
                               <LinkAction
                                 key={index}
-                                url={action.url}
+                                //TODO: temporary fix; generatePath function will be removed later
+                                url={generatePath(action.url, { id: row.id })}
                                 params={{ id: row.id }}
                                 classname={action.classname}
                               /> :

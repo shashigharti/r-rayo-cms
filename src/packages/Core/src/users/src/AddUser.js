@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../Components/ToolBar';
 import * as constants from './../constants';
 import { UserContext } from '../../../';
-import { apiService } from '../../../../Core';
+import { apiService, alertService } from '../../../../Core';
 
 const AddUser = () => {
   const { dispatch: pdispatch } = useContext(UserContext);
@@ -32,14 +32,7 @@ const AddUser = () => {
   const handleSubmit = e => {
     event.preventDefault();
     let response = apiService.store(constants.API_USER_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -78,7 +71,7 @@ const AddUser = () => {
                             name="first_name"
                             value={state.first_name}
                             onChange={e => setFieldValue('first_name', e.target.value)}
-                            required
+
                           />
                         </div>
                         <div className="input-field col s4">
@@ -87,7 +80,7 @@ const AddUser = () => {
                             name="last_name"
                             value={state.last_name}
                             onChange={e => setFieldValue('last_name', e.target.value)}
-                            required
+
                           />
                           <label>Last Name</label>
                         </div>

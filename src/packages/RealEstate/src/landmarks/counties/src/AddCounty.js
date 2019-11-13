@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { CountyContext } from '../../../../';
-import { apiService } from '../../../../../Core';
+import { apiService, alertService } from '../../../../../Core';
 
 const AddCounty = () => {
   const { dispatch: pdispatch } = useContext(CountyContext);
@@ -30,14 +30,7 @@ const AddCounty = () => {
   const handleSubmit = e => {
     event.preventDefault();
     let response = apiService.store(constants.API_COUNTY_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {

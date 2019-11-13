@@ -31,8 +31,8 @@ const AddUser = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_USER_STORE, state);
-    alertService.store(response);
+    const response = apiService.store(constants.API_USER_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {

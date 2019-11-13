@@ -1,8 +1,8 @@
 // API: LEAD
 export const API_LEAD = 'api/leads';
-export const API_LEAD_EDIT = 'leads/edit/:id/';
+export const API_LEAD_EDIT = 'api/leads/:id/edit';
 export const API_LEAD_STORE = '/api/leads';
-export const API_LEAD_UPDATE = 'api/leads/:id';
+export const API_LEAD_UPDATE = '/api/leads/';
 export const API_LEAD_DELETE = 'api/leads/destroy';
 
 // Route: LEAD

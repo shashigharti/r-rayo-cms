@@ -1,8 +1,8 @@
 // API: CITY
 export const API_CITY = 'api/cities';
-export const API_CITY_EDIT = 'cities/edit/:id/';
+export const API_CITY_EDIT = 'api/cities/:id/edit';
 export const API_CITY_STORE = '/api/cities';
-export const API_CITY_UPDATE = 'api/cities/:id';
+export const API_CITY_UPDATE = '/api/cities/';
 export const API_CITY_DELETE = 'api/cities/destroy';
 
 // Route: CITY

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { BannerContext } from '..';
-import { apiService } from '../../Core';
+import { apiService, alertService } from '../../Core';
 
-const PageAdd = () => {
+const BannerAdd = () => {
   const { dispatch: pdispatch } = useContext(BannerContext);
   const [state, setState] = useState({
     name: '',
@@ -24,15 +24,8 @@ const PageAdd = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_BANNER_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_BANNER_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -80,7 +73,6 @@ const PageAdd = () => {
                             name="slug"
                             value={state.slug}
                             onChange={e => setFieldValue('slug', e.target.value)}
-                            required
                           />
                           <label>Slug</label>
                         </div>
@@ -106,4 +98,4 @@ const PageAdd = () => {
   );
 };
 
-export default PageAdd;
+export default BannerAdd;

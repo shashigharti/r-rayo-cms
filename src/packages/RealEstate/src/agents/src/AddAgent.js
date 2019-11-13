@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { AgentContext } from '../../../';
-import { apiService } from '../../../../Core';
+import { apiService, alertService } from '../../../../Core';
 
 const AddAgent = () => {
   const { dispatch: pdispatch } = useContext(AgentContext);
@@ -31,15 +31,8 @@ const AddAgent = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_AGENT_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_AGENT_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -97,7 +90,6 @@ const AddAgent = () => {
                             name="user_name"
                             value={state.user_name}
                             onChange={e => setFieldValue('user_name', e.target.value)}
-                            required
                           />
                           <label>User name</label>
                         </div>

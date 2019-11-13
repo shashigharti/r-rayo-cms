@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { MenuContext } from '../../../';
-import { apiService } from '../../../../Core';
+import { apiService, alertService } from '../../../../Core';
 
 const AddMenu = () => {
   const { dispatch: pdispatch } = useContext(MenuContext);
@@ -26,15 +26,8 @@ const AddMenu = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_MENU_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_MENU_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -57,7 +50,7 @@ const AddMenu = () => {
                   <ul className="tabs">
                     <li className="tab">
                       <a className="active" href="#pages">
-                        Add Group
+                        Add Banner
                       </a>
                     </li>
                   </ul>
@@ -82,7 +75,6 @@ const AddMenu = () => {
                             name="items"
                             value={state.items}
                             onChange={e => setFieldValue('items', e.target.value)}
-                            required
                           />
                           <label>Items</label>
                         </div>
@@ -95,7 +87,6 @@ const AddMenu = () => {
                             name="menu_limit"
                             value={state.menu_limit}
                             onChange={e => setFieldValue('menu_limit', e.target.value)}
-                            required
                           />
                         </div>
                         <div className="input-field col s6">

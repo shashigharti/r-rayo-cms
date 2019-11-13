@@ -1,7 +1,8 @@
 // API: Banner
 export const API_BANNER = 'api/banners';
 export const API_BANNER_STORE = '/api/banners';
-export const API_BANNER_UPDATE = 'api/banners/:id';
+export const API_BANNER_EDIT = '/api/banners/:id/edit';
+export const API_BANNER_UPDATE = '/api/banners/';
 export const API_BANNER_DELETE = 'api/banners/destroy';
 
 // Route: Banner

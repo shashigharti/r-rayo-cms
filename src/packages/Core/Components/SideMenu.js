@@ -45,12 +45,12 @@ export const SideMenu = () => {
           </a>
           <div className="collapsible-body">
             <ul className="collapsible collapsible-sub" data-collapsible="accordion">
-              <li>
+              {/* <li>
                 <NavLink exact className="collapsible-body" to="/pages/categories" data-i18n="">
                   <i className="material-icons">radio_button_unchecked</i>
                   <span>Page Categories</span>
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink exact className="collapsible-body" to="/pages" data-i18n="">
                   <i className="material-icons">radio_button_unchecked</i>
@@ -123,12 +123,12 @@ export const SideMenu = () => {
           </a>
           <div className="collapsible-body">
             <ul className="collapsible collapsible-sub" data-collapsible="accordion">
-              <li>
+              {/* <li>
                 <NavLink exact className="collapsible-body" to="/roles" data-i18n="">
                   <i className="material-icons">radio_button_unchecked</i>
                   <span>Roles</span>
                 </NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink exact className="collapsible-body" to="/users" data-i18n="">
                   <i className="material-icons">radio_button_unchecked</i>

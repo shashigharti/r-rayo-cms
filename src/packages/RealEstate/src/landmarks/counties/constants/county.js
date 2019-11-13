@@ -1,8 +1,8 @@
 // API: COUNTY
 export const API_COUNTY = 'api/counties';
-export const API_COUNTY_EDIT = 'counties/edit/:id/';
+export const API_COUNTY_EDIT = 'api/counties/:id/edit';
 export const API_COUNTY_STORE = '/api/counties';
-export const API_COUNTY_UPDATE = 'api/counties/:id';
+export const API_COUNTY_UPDATE = '/api/counties/';
 export const API_COUNTY_DELETE = 'api/counties/destroy';
 
 // Route: COUNTY

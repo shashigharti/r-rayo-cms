@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { PageContext } from '..';
-import { apiService } from '../../Core';
+import { apiService, alertService } from '../../Core';
 
 const PageAdd = () => {
   const { dispatch: pdispatch } = useContext(PageContext);
@@ -30,15 +30,11 @@ const PageAdd = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_PAGE_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'SuccessFully Added' })
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong...' })
-    });
+    const response = apiService.store(constants.API_PAGE_STORE, state);
+    const status = alertService.store(response);
+    if (status) {
+      //do something like clear input fields
+    }
   };
 
   const setFieldValue = (field, value) => {

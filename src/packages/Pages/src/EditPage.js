@@ -4,6 +4,7 @@ import { PageContext } from '..';
 import ToolBar from '../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { EditResource } from '../../Core/Components/CRUD';
+import { apiService, alertService } from '../../Core';
 
 
 const PageEdit = (props) => {
@@ -28,7 +29,12 @@ const PageEdit = (props) => {
     }
     const handleSubmit = (e) => {
         event.preventDefault();
-        console.log(state);
+        const { id } = state;
+        const response = apiService.update(constants.API_PAGE_UPDATE + id, state);
+        const status = alertService.update(response);
+        if (status) {
+            //do something like redirect back 
+        }
     }
 
     useEffect(() => {

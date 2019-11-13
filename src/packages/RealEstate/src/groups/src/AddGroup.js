@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { GroupContext } from '../../../';
-import { apiService } from '../../../../Core';
+import { apiService, alertService } from '../../../../Core';
 
 const AddGroup = () => {
   const { dispatch: pdispatch } = useContext(GroupContext);
@@ -25,15 +25,8 @@ const AddGroup = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_GROUP_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_GROUP_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -90,10 +83,11 @@ const AddGroup = () => {
                         <div className="input-field col s6">
                           <select
                             name="status"
+                            value={state.value}
                             onChange={e => setFieldValue('status', e.target.value)}
                             required
                           >
-                            <option value="" disabled selected>
+                            <option value="" disabled>
                               Choose your option
                             </option>
                             <option value="1">Active</option>

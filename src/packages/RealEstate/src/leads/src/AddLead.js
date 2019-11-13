@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { LeadContext } from '../../../';
-import { apiService } from '../../../../Core';
+import { apiService, alertService } from '../../../../Core';
 
 const AddLead = () => {
   const { dispatch: pdispatch } = useContext(LeadContext);
@@ -26,15 +26,8 @@ const AddLead = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_LEAD_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_LEAD_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {
@@ -95,7 +88,6 @@ const AddLead = () => {
                             name="email"
                             value={state.email}
                             onChange={e => setFieldValue('email', e.target.value)}
-                            required
                           />
                         </div>
                         <div className="input-field col s6">

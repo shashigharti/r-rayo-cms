@@ -18,7 +18,6 @@ const PageList = () => {
             return (
               <DataList
                 data={data.payload.data}
-                component={BannerRow}
                 actions={constants.ACTIONS}
                 columns={constants.COLUMNS}
               />

@@ -28,9 +28,8 @@ class ApiService {
     return axios.delete(process.env.API_ENDPOINT + '/' + path);
   }
 
-  update(id, path, data) {
-    path = generatePath(path, { id });
-    return axios.put(process.env.API_ENDPOINT + '/' + path, data);
+  update(path, data) {
+    return axios.put(path, data);
   }
 }
 

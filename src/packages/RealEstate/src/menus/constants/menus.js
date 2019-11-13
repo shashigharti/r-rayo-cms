@@ -1,8 +1,8 @@
 // API: MENU
 export const API_MENU = 'api/menus';
-export const API_MENU_GEDIT = 'menus/edit/:id/';
+export const API_MENU_EDIT = '/api/menus/:id/edit/';
 export const API_MENU_STORE = '/api/menus';
-export const API_MENU_UPDATE = 'api/menus/:id';
+export const API_MENU_UPDATE = '/api/menus/';
 export const API_MENU_DELETE = 'api/menus/destroy';
 
 // Route: MENU

@@ -27,6 +27,7 @@ import SiteSettings from './src/settings/SiteSettings';
 
 // users
 import AddUser from './src/users/src/AddUser';
+import EditUser from './src/users/src/EditUser';
 import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
 import UserContextProvider, { UserContext } from './src/users/contexts/UserContext';
@@ -71,6 +72,7 @@ export {
   SiteSettings,
   //
   AddUser,
+  EditUser,
   Users,
   RRow,
   RegisterPage,

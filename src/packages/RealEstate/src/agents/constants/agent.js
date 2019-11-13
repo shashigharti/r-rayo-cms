@@ -1,13 +1,13 @@
 // API: AGENT
 export const API_AGENT = 'api/leads/agents';
-export const API_AGENT_EDIT = 'leads/agents/edit/:id/';
+export const API_AGENT_EDIT = 'api/leads/agents/:id/edit';
 export const API_AGENT_STORE = '/api/leads/agents';
-export const API_AGENT_UPDATE = 'api/leads/agents/:id';
+export const API_AGENT_UPDATE = '/api/leads/agents/';
 export const API_AGENT_DELETE = 'api/leads/agents/destroy';
 
 // Route: AGENT
 export const AGENT = 'leads/agents';
-export const AGENT_EDIT = 'leads/agents/edit/:id/';
+export const AGENT_EDIT = '/agents/edit/:id/';
 export const AGENT_CREATE = 'leads/agents/create';
 
 // Actions: AGENT

@@ -1,8 +1,8 @@
 // API: ZIP
 export const API_ZIP = 'api/zips';
-export const API_ZIP_EDIT = 'zips/edit/:id/';
+export const API_ZIP_EDIT = 'api/zips/:id/edit';
 export const API_ZIP_STORE = '/api/zips';
-export const API_ZIP_UPDATE = 'api/zips/:id';
+export const API_ZIP_UPDATE = '/api/zips/';
 export const API_ZIP_DELETE = 'api/zips/destroy';
 
 // Route: ZIP

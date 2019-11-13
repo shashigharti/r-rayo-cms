@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { CityContext } from '../../../../';
-import { apiService } from '../../../../../Core';
+import { apiService, alertService } from '../../../../../Core';
 
 const AddCity = () => {
   const { dispatch: pdispatch } = useContext(CityContext);
@@ -32,15 +32,8 @@ const AddCity = () => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    let response = apiService.store(constants.API_CITY_STORE, state);
-    response.then(response => {
-      console.log('success', response);
-      M.toast({ 'html': 'Successfully Added' });
-    });
-    response.catch(err => {
-      console.log('error', err);
-      M.toast({ 'html': 'Something went wrong !' });
-    });
+    const response = apiService.store(constants.API_CITY_STORE, state);
+    const status = alertService.store(response);
   };
 
   const setFieldValue = (field, value) => {

@@ -15,13 +15,17 @@ const EditBanner = (props) => {
 
     useEffect(() => {
         M.AutoInit();
+        M.updateTextFields();
+    }, [state]);
+
+    useEffect(() => {
         setState({
             id: props.payload.id,
             name: props.payload.name,
             slug: props.payload.slug
         });
-        M.updateTextFields();
     }, [props]);
+
 
     const handleSubmit = e => {
         event.preventDefault();
@@ -51,7 +55,7 @@ const EditBanner = (props) => {
                                         <li className="tab">
                                             <a className="active" href="#pages">
                                                 Banners
-                      </a>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -84,7 +88,7 @@ const EditBanner = (props) => {
                                                     <div className="input-field">
                                                         <button type="submit" className="btn gradient-45deg-purple-deep-orange">
                                                             Submit
-                            </button>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

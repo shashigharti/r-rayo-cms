@@ -84,7 +84,7 @@ const EditBanner = (props) => {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                              <div className="input-field col s6">
+                                              <div className="input-field col s12">
                                                     <label>Templates</label>
                                                     <select
                                                         value={state.template}
@@ -99,6 +99,8 @@ const EditBanner = (props) => {
                                                         <option value="slider">Slider</option>
                                                     </select>
                                                 </div>
+                                            </div>
+                                            <div className="row">
                                                 <div className="input-field col s6">
                                                     <label>Status</label>
                                                     <input

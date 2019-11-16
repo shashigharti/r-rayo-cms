@@ -8,6 +8,7 @@ export default Slider = () => {
                         value={state.area_type}
                         name="area_types"
                         onChange={(e) => setFieldValue('area_types', e.target.value)}
+                        multiple
                         >
                         <option value="" disabled>
                             Choose your option
@@ -15,7 +16,7 @@ export default Slider = () => {
                         <option value="cities">Cities</option>
                         <option value="counties">Counties</option>
                         <option value="school">High School</option>                                                        
-                    </select>   
+                    </select> 
                 </div>
             </div>
             <div className="row">

@@ -100,22 +100,12 @@ const EditBanner = (props) => {
                                                     </select>
                                                 </div>
                                                 <div className="input-field col s6">
-                                                    <label>Block</label>
+                                                    <label>Status</label>
                                                     <input
                                                         type="text"
-                                                        name="name"
-                                                        value={state.name}
-                                                        onChange={e => setFieldValue('name', e.target.value)}
-                                                        required
-                                                    />
-                                                </div>
-                                                <div className="input-field col s6">
-                                                    <label>Template</label>
-                                                    <input
-                                                        type="text"
-                                                        name="name"
-                                                        value={state.name}
-                                                        onChange={e => setFieldValue('name', e.target.value)}
+                                                        name="status"
+                                                        value={state.status}
+                                                        onChange={e => setFieldValue('status', e.target.value)}
                                                         required
                                                     />
                                                 </div>

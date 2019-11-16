@@ -74,13 +74,50 @@ const EditBanner = (props) => {
                                                     />
                                                 </div>
                                                 <div className="input-field col s6">
+                                                    <label>Slug</label>
                                                     <input
                                                         type="text"
                                                         name="slug"
                                                         value={state.slug}
                                                         onChange={e => setFieldValue('slug', e.target.value)}
+                                                    />                                                    
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                              <div className="input-field col s6">
+                                                    <label>Templates</label>
+                                                    <select
+                                                        value={state.template}
+                                                        name="template"
+                                                        onChange={(e) => setFieldValue('template', e.target.value)}
+                                                    >
+                                                        <option value="" disabled>
+                                                            Choose your option
+                                                        </option>
+                                                        <option value="two-col-ad">Two Column Ad</option>
+                                                        <option value="full-screen-ad">Full Screen Ad</option>
+                                                        <option value="slider">Slider</option>
+                                                    </select>
+                                                </div>
+                                                <div className="input-field col s6">
+                                                    <label>Block</label>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        value={state.name}
+                                                        onChange={e => setFieldValue('name', e.target.value)}
+                                                        required
                                                     />
-                                                    <label>Slug</label>
+                                                </div>
+                                                <div className="input-field col s6">
+                                                    <label>Template</label>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        value={state.name}
+                                                        onChange={e => setFieldValue('name', e.target.value)}
+                                                        required
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="row">

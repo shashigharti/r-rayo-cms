@@ -13,6 +13,10 @@ const LeadEdit = (props) => {
         lastname: '',
         email: '',
         phone_number: '',
+        username: '',
+        deal_type: '',
+        password: '',
+        activation_status: ''
     });
 
 
@@ -24,6 +28,10 @@ const LeadEdit = (props) => {
             lastname: props.payload.lastname,
             email: props.payload.email,
             phone_number: props.payload.phone_number,
+            username: props.payload.username,
+            deal_type: props.payload.deal_type,
+            password: props.payload.password,
+            activation_status: props.payload.activation_status,
         });
         M.updateTextFields();
     }, [props]);
@@ -55,7 +63,7 @@ const LeadEdit = (props) => {
                                     <ul className="tabs">
                                         <li className="tab">
                                             <a className="active" href="#pages">
-                                                Edit Lead
+                                                Add Lead
                       </a>
                                         </li>
                                     </ul>
@@ -64,29 +72,36 @@ const LeadEdit = (props) => {
                                     <div className="panel card tab--content">
                                         <div id="users" className="col s12">
                                             <div className="row">
-                                                <div className="input-field col s6">
+                                                <div className="input-field col s4">
                                                     <label>First Name</label>
                                                     <input
                                                         type="text"
                                                         name="firstname"
                                                         value={state.firstname}
                                                         onChange={e => setFieldValue('firstname', e.target.value)}
-                                                        required
                                                     />
                                                 </div>
-                                                <div className="input-field col s6">
+                                                <div className="input-field col s4">
                                                     <input
                                                         type="text"
                                                         name="lastname"
                                                         value={state.lastname}
                                                         onChange={e => setFieldValue('lastname', e.target.value)}
-                                                        required
                                                     />
                                                     <label>Last Name</label>
                                                 </div>
+                                                <div className="input-field col s4">
+                                                    <label>Username</label>
+                                                    <input
+                                                        type="text"
+                                                        name="username"
+                                                        value={state.username}
+                                                        onChange={e => setFieldValue('username', e.target.value)}
+                                                    />
+                                                </div>
                                             </div>
                                             <div className="row">
-                                                <div className="input-field col s6">
+                                                <div className="input-field col s4">
                                                     <label>Email</label>
                                                     <input
                                                         type="text"
@@ -95,7 +110,7 @@ const LeadEdit = (props) => {
                                                         onChange={e => setFieldValue('email', e.target.value)}
                                                     />
                                                 </div>
-                                                <div className="input-field col s6">
+                                                <div className="input-field col s4">
                                                     <input
                                                         type="text"
                                                         name="phone_number"
@@ -104,6 +119,41 @@ const LeadEdit = (props) => {
                                                         required
                                                     />
                                                     <label>Phone Number</label>
+                                                </div>
+                                                <div className="input-field col s6">
+                                                    <label>Deal Type</label>
+                                                    <input
+                                                        type="text"
+                                                        name="deal_type"
+                                                        value={state.deal_type}
+                                                        onChange={e => setFieldValue('deal_type', e.target.value)}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="input-field col s6">
+                                                    <label>Password</label>
+                                                    <input
+                                                        type="password"
+                                                        name="password"
+                                                        value={state.password}
+                                                        onChange={e => setFieldValue('password', e.target.value)}
+                                                    />
+                                                </div>
+
+                                                <div className="input-field col s6">
+                                                    <select
+                                                        name="activation_status"
+                                                        onChange={e => setFieldValue('activation_status', e.target.value)}
+                                                        required
+                                                    >
+                                                        <option value="" disabled>
+                                                            Choose your option
+                            </option>
+                                                        <option value="0">Active</option>
+                                                        <option value="1">Inactive</option>
+                                                    </select>
+                                                    <label>Activation Status</label>
                                                 </div>
                                             </div>
 

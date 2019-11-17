@@ -1,38 +1,40 @@
 import React from 'react';
+import { apiService } from '..';
 
 const SelectDropDown = (props) => {
-    const options = useState((props.options)?props.options:[]);
+    const [options, setOptions] = useState((props.options) ? props.options : []);
+    const { multiple } = props;
 
-    
     useEffect(() => {
-        if(options.length <= 0){
-            console.log('No data');
-
+        if (options.length <= 0) {
             // Make an ajax call
+            apiService.getAll('').then(response => {
+                this.setOptions(response.data);
+            }).catch(err => {
+                console.log(err)
+            })
         }
-       
     }, [])
 
-    
-    const  afterChangeAction = () => {
-        console.log((props.dest)?props.dest:'');
+    const afterChangeAction = () => {
 
     }
 
     return (
         <>
-            <select               
-                name={props.name}
-                onChange={(e) => props.setFieldValue(props.name, e.target.value); afterChangeAction()}
-                {(props.multiple)?'multiple':''}                
+            <select
+                name={name}
+                onChange={(e) => setFieldValue('slug', e.target.value)}
+                {...multiple}
             >
-                {props.options.map((option, index)=>{
+                {props.options.map((option, index) => {
                     return (
                         <option key={index} value={option.value}>{option.title}</option>
                     );
-                })}                                               
-            </select> 
+                })}
+            </select>
         </>
     );
 }
+
 export default SelectDropDown;

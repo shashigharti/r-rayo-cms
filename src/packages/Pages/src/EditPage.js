@@ -65,7 +65,7 @@ const PageEdit = (props) => {
             <ToolBar breadcrumbs={constants.BREADCRUMB_PAGE_EDIT} toolbar={constants.TOOLBAR} />
             <div className="row">
                 <div className="col s12">
-                    <div className="container-fluid">
+                    <div className="container-fluid edit--page">
                         <div className="row">
                             <div className="col s12">
                                 <ul className="tabs">
@@ -91,7 +91,7 @@ const PageEdit = (props) => {
                                                         value={state.name}
                                                         onChange={(e) => setFieldValue('name', e.target.value)}
                                                     />
-                                                    <label>Page Name</label>
+                                                    <label className="active">Page Name</label>
                                                 </div>
                                                 <div className="input-field col s6">
                                                     <input
@@ -100,7 +100,7 @@ const PageEdit = (props) => {
                                                         value={state.slug}
                                                         onChange={(e) => setFieldValue('slug', e.target.value)}
                                                     />
-                                                    <label>Slug</label>
+                                                    <label className="active">Slug</label>
                                                 </div>
                                             </div>
                                             <div className="row">
@@ -111,7 +111,7 @@ const PageEdit = (props) => {
                                                         className="materialize-textarea"
                                                         onChange={(e) => setFieldValue('content', e.target.value)}
                                                     />
-                                                    <label htmlFor="content">Content</label>
+                                                    <label htmlFor="content" className="active">Content</label>
                                                 </div>
                                             </div>
                                             <div className="row">
@@ -128,7 +128,7 @@ const PageEdit = (props) => {
                                                         <option value="2">Publications</option>
                                                         <option value="3">About Us</option>
                                                     </select>
-                                                    <label>Category</label>
+                                                    <label className="active">Category</label>
                                                 </div>
                                                 <div className="input-field col s6">
                                                     <input
@@ -137,7 +137,7 @@ const PageEdit = (props) => {
                                                         name="excerpt"
                                                         onChange={(e) => setFieldValue('excerpt', e.target.value)}
                                                     />
-                                                    <label>Excerpt</label>
+                                                    <label className="active">Excerpt</label>
                                                 </div>
                                             </div>
                                             {status && <Media id={this.callback} thumbnail={page.thumbnail} />}
@@ -149,7 +149,7 @@ const PageEdit = (props) => {
                                                         value={state.meta_title}
                                                         onChange={(e) => setFieldValue('meta_title', e.target.value)}
                                                     />
-                                                    <label>Meta Title</label>
+                                                    <label className="active">Meta Title</label>
                                                 </div>
                                             </div>
                                             <div className="row">
@@ -169,7 +169,7 @@ const PageEdit = (props) => {
                                                         value={state.meta_keywords}
                                                         onChange={(e) => setFieldValue('meta_keywords', e.target.value)}
                                                     />
-                                                    <label>Meta Keywords</label>
+                                                    <label className="active">Meta Keywords</label>
                                                 </div>
                                             </div>
                                             <div className="row">

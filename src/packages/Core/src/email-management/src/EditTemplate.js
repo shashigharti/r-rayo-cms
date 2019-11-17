@@ -59,7 +59,7 @@ const EditTemplate = (props) => {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col s12">
-                        <div className="container-fluid">
+                        <div className="container-fluid edit--page">
                             <div className="row">
                                 <div className="col s12">
                                     <ul className="tabs">
@@ -92,7 +92,7 @@ const EditTemplate = (props) => {
                                                     >
                                                         <option value="" disabled selected>
                                                             Choose your option
-                            </option>
+                                                        </option>
                                                         <option value="1">Group 1</option>
                                                         <option value="2">Group 2</option>
                                                     </select>
@@ -100,18 +100,19 @@ const EditTemplate = (props) => {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <select
-                                                    name="template"
-                                                    onChange={e => setFieldValue('template', e.target.value)}
+                                               <div className="col s12">
+                                                    <select
+                                                        name="template"
+                                                        onChange={e => setFieldValue('template', e.target.value)}
 
-                                                >
-                                                    <option value="" disabled selected>
-                                                        Choose your option
-                            </option>
-                                                    <option value="1">Template 1</option>
-                                                    <option value="2">Template 2</option>
-                                                </select>
-                                                <label>Group</label>
+                                                    >
+                                                        <option value="" disabled selected>
+                                                            Choose your option
+                                                 </option>
+                                                        <option value="1">Template 1</option>
+                                                        <option value="2">Template 2</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s6">

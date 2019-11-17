@@ -152,9 +152,11 @@ class SiteSettings extends Component {
             </div>
           </div>
           <div className="row">
-            <Button type="submit" className="purple btn">
-              Save
-            </Button>
+            <div className="col s12">
+              <Button type="submit" className="purple btn">
+                Save
+              </Button>
+            </div>
           </div>
         </form>
       </>

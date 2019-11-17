@@ -57,7 +57,7 @@ const LeadEdit = (props) => {
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col s12">
-                        <div className="container-fluid">
+                        <div className="container-fluid edit--page">
                             <div className="row">
                                 <div className="col s12">
                                     <ul className="tabs">
@@ -120,7 +120,7 @@ const LeadEdit = (props) => {
                                                     />
                                                     <label>Phone Number</label>
                                                 </div>
-                                                <div className="input-field col s6">
+                                                <div className="input-field col s4">
                                                     <label>Deal Type</label>
                                                     <input
                                                         type="text"

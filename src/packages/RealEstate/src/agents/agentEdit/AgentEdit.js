@@ -122,7 +122,7 @@ class AgentEdit extends Component {
           </div>
           <div className="row">
             <div className="col s12">
-              <div className="container-fluid">
+              <div className="container-fluid edit--page">
                 <div className="row">
                   <div className="col s12">
                     <ul className="tabs">

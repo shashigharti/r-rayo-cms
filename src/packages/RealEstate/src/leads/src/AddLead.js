@@ -111,7 +111,7 @@ const AddLead = () => {
                           />
                           <label>Phone Number</label>
                         </div>
-                        <div className="input-field col s6">
+                        <div className="input-field col s4">
                           <label>Deal Type</label>
                           <input
                             type="text"

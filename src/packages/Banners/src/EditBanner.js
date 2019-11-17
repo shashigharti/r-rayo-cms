@@ -23,7 +23,6 @@ const EditBanner = (props) => {
     });
 
     useEffect(() => {
-        console.log(state);
         M.AutoInit();
         M.updateTextFields();
     }, [state]);

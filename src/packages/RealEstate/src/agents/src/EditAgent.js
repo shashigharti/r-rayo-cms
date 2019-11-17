@@ -64,7 +64,7 @@ const AgentEdit = (props) => {
                                     <ul className="tabs">
                                         <li className="tab">
                                             <a className="active" href="#pages">
-                                                Add User
+                                                Edit Agent
                       </a>
                                         </li>
                                     </ul>
@@ -80,7 +80,7 @@ const AgentEdit = (props) => {
                                                         name="first_name"
                                                         value={state.first_name}
                                                         onChange={e => setFieldValue('first_name', e.target.value)}
-                                                        required
+
                                                     />
                                                 </div>
                                                 <div className="input-field col s4">
@@ -89,7 +89,7 @@ const AgentEdit = (props) => {
                                                         name="last_name"
                                                         value={state.last_name}
                                                         onChange={e => setFieldValue('last_name', e.target.value)}
-                                                        required
+
                                                     />
                                                     <label>Last Name</label>
                                                 </div>
@@ -111,7 +111,7 @@ const AgentEdit = (props) => {
                                                         name="email"
                                                         value={state.email}
                                                         onChange={e => setFieldValue('email', e.target.value)}
-                                                        required
+
                                                     />
                                                 </div>
                                                 <div className="input-field col s6">
@@ -120,7 +120,7 @@ const AgentEdit = (props) => {
                                                         name="contact"
                                                         value={state.contact}
                                                         onChange={e => setFieldValue('contact', e.target.value)}
-                                                        required
+
                                                     />
                                                     <label>Contact</label>
                                                 </div>
@@ -133,14 +133,14 @@ const AgentEdit = (props) => {
                                                         name="address"
                                                         value={state.address}
                                                         onChange={e => setFieldValue('address', e.target.value)}
-                                                        required
+
                                                     />
                                                 </div>
                                                 <div className="input-field col s6">
                                                     <select
                                                         name="role"
                                                         onChange={e => setFieldValue('role', e.target.value)}
-                                                        required
+
                                                     >
                                                         <option value="" disabled>
                                                             Choose your option
@@ -160,7 +160,7 @@ const AgentEdit = (props) => {
                                                         name="password"
                                                         value={state.password}
                                                         onChange={e => setFieldValue('password', e.target.value)}
-                                                        required
+
                                                     />
                                                 </div>
                                                 <div className="input-field col s6">
@@ -169,7 +169,7 @@ const AgentEdit = (props) => {
                                                         name="password_confirmation"
                                                         value={state.password_confirmation}
                                                         onChange={e => setFieldValue('password_confirmation', e.target.value)}
-                                                        required
+
                                                     />
                                                     <label>Password Confirmation</label>
                                                 </div>

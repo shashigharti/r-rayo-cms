@@ -16,6 +16,7 @@ import {
 import {
   AddTemplate,
   Templates,
+  EditTemplate,
   TemplateContextProvider,
   AddRole,
   Settings,
@@ -97,6 +98,7 @@ const App = () => {
           <TemplateContextProvider>
             <PrivateRoute exact path="/templates" component={TemplateList} />
             <PrivateRoute exact path="/templates/create" component={AddTemplate} />
+            <PrivateRoute exact path="/templates/edit/:id" component={EditTemplate} />
           </TemplateContextProvider>
 
           <RoleContextProvider>

@@ -1,8 +1,8 @@
 // API: TEMPLATE
 export const API_TEMPLATES = 'api/emails/templates';
-export const API_TEMPLATES_EDIT = 'emails/templates/edit/:id/';
+export const API_TEMPLATES_EDIT = 'api/emails/templates/:id/edit';
 export const API_TEMPLATES_STORE = '/api/emails/templates';
-export const API_TEMPLATES_UPDATE = 'api/emails/templates/:id';
+export const API_TEMPLATES_UPDATE = '/api/emails/templates/';
 export const API_TEMPLATES_DELETE = 'api/emails/templates/destroy';
 
 // Route: TEMPLATE
@@ -12,7 +12,7 @@ export const TEMPLATES_CREATE = 'emails/templates/create';
 
 // Actions: TEMPLATE
 export const ACTIONS = [
-  { name: 'Edit', url: 'emails/templates/edit/:id/', classname: 'edit', type: 'LinkAction' },
+  { name: 'Edit', url: '/templates/edit/:id/', classname: 'edit', type: 'LinkAction' },
   { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 

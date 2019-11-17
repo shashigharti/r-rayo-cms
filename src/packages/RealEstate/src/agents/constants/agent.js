@@ -12,7 +12,7 @@ export const AGENT_CREATE = 'leads/agents/create';
 
 // Actions: AGENT
 export const ACTIONS = [
-  { name: 'Edit', url: 'leads/agents/edit/:id/', classname: 'edit', type: 'LinkAction' },
+  { name: 'Edit', url: '/agents/edit/:id/', classname: 'edit', type: 'LinkAction' },
   { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 

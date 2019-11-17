@@ -6,6 +6,8 @@ import Templates from './src/email-management/Templates';
 //
 import TemplateList from './src/email-management/src/TemplateList';
 import AddTemplate from './src/email-management/src/AddTemplate';
+import EditTemplate from './src/email-management/src/EditTemplate';
+
 import TemplateContextProvider, {
   TemplateContext,
 } from './src/email-management/contexts/TemplateContext';
@@ -53,6 +55,7 @@ export {
   AddTemplate,
   Templates,
   TemplateList,
+  EditTemplate,
   TemplateContextProvider,
   TemplateContext,
   //

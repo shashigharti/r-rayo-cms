@@ -13,7 +13,7 @@ export const COUNTY_CREATE = 'counties/create';
 // Actions: COUNTY
 export const ACTIONS = [
   { name: 'Edit', url: 'counties/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/counties/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: COUNTY

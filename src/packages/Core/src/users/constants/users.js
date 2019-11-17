@@ -13,7 +13,7 @@ export const USER_CREATE = 'users/create';
 // Actions: USER
 export const ACTIONS = [
   { name: 'Edit', url: 'users/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/users/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: USER

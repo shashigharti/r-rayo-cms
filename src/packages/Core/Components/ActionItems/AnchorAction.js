@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 
-const AnchorAction = ({ callback, classname, url, params }) => {
+const AnchorAction = ({ callback, classname, url, id, params }) => {
     return (
         <>
             {<a className="waves-effect waves-light btn-small amber"
                 href="#"
-                onClick={(e) => callback(e, { ...params, url })}
+                onClick={(e) => callback(e, { ...params, url, id })}
             >
                 <i className="material-icons left">
                     {classname}

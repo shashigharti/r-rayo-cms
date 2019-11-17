@@ -13,7 +13,7 @@ export const CITY_CREATE = 'cities/create';
 // Actions: CITY
 export const ACTIONS = [
   { name: 'Edit', url: 'cities/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/cities/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: CITY

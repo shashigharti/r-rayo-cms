@@ -13,7 +13,7 @@ export const PAGE_CREATE = 'pages/create';
 // Actions: Page
 export const ACTIONS = [
     { name: 'Edit', url: 'pages/edit/:id', classname: 'edit', type: 'LinkAction' },
-    { name: 'Delete', url: 'api/pages/:id', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' }
+    { name: 'Delete', url: '/api/pages/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' }
 ];
 
 // Toolbar: Page

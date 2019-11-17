@@ -41,6 +41,16 @@ class AlertService {
             return false;
         });
     }
+    delete(response) {
+        response.then(response => {
+            console.log('success', response);
+            M.toast({ 'html': 'Successfully Deleted' });
+            return true;
+        }).catch(err => {
+            console.log(err.response);
+            M.toast({ 'html': 'Something went wrong !' });
+        })
+    }
 }
 
 export const alertService = new AlertService();

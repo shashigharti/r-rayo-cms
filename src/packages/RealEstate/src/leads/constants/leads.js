@@ -3,7 +3,7 @@ export const API_LEAD = 'api/leads';
 export const API_LEAD_EDIT = 'api/leads/:id/edit';
 export const API_LEAD_STORE = '/api/leads';
 export const API_LEAD_UPDATE = '/api/leads/';
-export const API_LEAD_DELETE = 'api/leads/destroy';
+export const API_LEAD_DELETE = '/api/leads/';
 
 // Route: LEAD
 export const LEAD = 'leads';
@@ -13,7 +13,7 @@ export const LEAD_CREATE = 'leads/create';
 // Actions: LEAD
 export const ACTIONS = [
   { name: 'Edit', url: 'leads/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/leads/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: LEAD

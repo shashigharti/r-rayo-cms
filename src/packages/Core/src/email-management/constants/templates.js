@@ -13,7 +13,7 @@ export const TEMPLATES_CREATE = 'emails/templates/create';
 // Actions: TEMPLATE
 export const ACTIONS = [
   { name: 'Edit', url: '/templates/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/emails/templates/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: TEMPLATE

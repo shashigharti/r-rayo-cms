@@ -13,7 +13,7 @@ export const MENU_CREATE = 'menus/create';
 // Actions: MENU
 export const ACTIONS = [
   { name: 'Edit', url: 'menus/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  { name: 'Delete', url: '/api/menus/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
 ];
 
 // Toolbar: MENU

@@ -9,11 +9,14 @@ const AddGroup = () => {
   const [state, setState] = useState({
     name: '',
     color: '',
-    status: ''
+    status: '',
   });
 
   useEffect(() => {
     M.AutoInit();
+  });
+
+  useEffect(() => {
     pdispatch({
       type: 'INIT',
       default: {
@@ -22,6 +25,10 @@ const AddGroup = () => {
       },
     });
   }, []);
+
+  useEffect(() => {
+    M.updateTextFields();
+  });
 
   const handleSubmit = e => {
     event.preventDefault();
@@ -38,68 +45,66 @@ const AddGroup = () => {
   };
 
   return (
-    <div id="main">
+    <div id='main'>
       <ToolBar breadcrumbs={constants.BREADCRUMB_GROUP_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col s12">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col s12">
-                  <ul className="tabs">
-                    <li className="tab">
-                      <a className="active" href="#pages">
+        <div className='row'>
+          <div className='col s12'>
+            <div className='container-fluid'>
+              <div className='row'>
+                <div className='col s12'>
+                  <ul className='tabs'>
+                    <li className='tab'>
+                      <a className='active' href='#pages'>
                         Add Group
                       </a>
                     </li>
                   </ul>
                 </div>
-                <div className="col s12">
-                  <div className="panel card tab--content">
-                    <div id="users" className="col s12">
-                      <div className="row">
-                        <div className="input-field col s6">
+                <div className='col s12'>
+                  <div className='panel card tab--content'>
+                    <div id='users' className='col s12'>
+                      <div className='row'>
+                        <div className='input-field col s6'>
                           <label>Name</label>
                           <input
-                            type="text"
-                            name="name"
+                            type='text'
+                            name='name'
                             value={state.name}
                             onChange={e => setFieldValue('name', e.target.value)}
-                            required
                           />
                         </div>
-                        <div className="input-field col s6">
+                        <div className='input-field col s6'>
                           <input
-                            type="text"
-                            name="color"
+                            type='text'
+                            name='color'
                             value={state.color}
                             onChange={e => setFieldValue('color', e.target.value)}
-                            required
                           />
                           <label>Color</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="input-field col s6">
+                      <div className='row'>
+                        <div className='input-field col s6'>
                           <select
-                            name="status"
+                            name='status'
+                            defaultValue=''
                             value={state.value}
                             onChange={e => setFieldValue('status', e.target.value)}
-                            required
                           >
-                            <option value="" disabled>
+                            <option value='' disabled>
                               Choose your option
                             </option>
-                            <option value="1">Active</option>
-                            <option value="2">InActive</option>
+                            <option value='1'>Active</option>
+                            <option value='2'>InActive</option>
                           </select>
                           <label>Status</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="col s12">
-                          <div className="input-field">
-                            <button type="submit" className="btn gradient-45deg-purple-deep-orange">
+                      <div className='row'>
+                        <div className='col s12'>
+                          <div className='input-field'>
+                            <button type='submit' className='btn gradient-45deg-purple-deep-orange'>
                               Submit
                             </button>
                           </div>

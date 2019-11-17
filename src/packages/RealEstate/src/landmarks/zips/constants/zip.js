@@ -13,7 +13,13 @@ export const ZIP_CREATE = 'zips/create';
 // Actions: ZIP
 export const ACTIONS = [
   { name: 'Edit', url: 'zips/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/zips/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/zips/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: ZIP

@@ -17,6 +17,9 @@ const MenuEdit = (props) => {
 
     useEffect(() => {
         M.AutoInit();
+    });
+
+    useEffect(() => {
         setState({
             id: props.payload.id,
             name: props.payload.name,
@@ -24,8 +27,11 @@ const MenuEdit = (props) => {
             menu_limit: props.payload.menu_limit,
             type: props.payload.type,
         });
-        M.updateTextFields();
     }, [props]);
+
+    useEffect(() => {
+        M.updateTextFields();
+    });
 
     const handleSubmit = e => {
         event.preventDefault();
@@ -54,7 +60,7 @@ const MenuEdit = (props) => {
                                     <ul className="tabs">
                                         <li className="tab">
                                             <a className="active" href="#pages">
-                                                Edit Banner
+                                                Edit Menu
                       </a>
                                         </li>
                                     </ul>

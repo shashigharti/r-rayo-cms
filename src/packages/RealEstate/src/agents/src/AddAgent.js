@@ -15,11 +15,14 @@ const AddAgent = () => {
     address: '',
     role: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   });
 
   useEffect(() => {
     M.AutoInit();
+  });
+
+  useEffect(() => {
     pdispatch({
       type: 'INIT',
       default: {
@@ -28,6 +31,10 @@ const AddAgent = () => {
       },
     });
   }, []);
+
+  useEffect(() => {
+    M.updateTextFields();
+  });
 
   const handleSubmit = e => {
     event.preventDefault();
@@ -44,131 +51,124 @@ const AddAgent = () => {
   };
 
   return (
-    <div id="main">
+    <div id='main'>
       <ToolBar breadcrumbs={constants.BREADCRUMB_AGENT_CREATE} toolbar={constants.TOOLBAR} />
       <form onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col s12">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="col s12">
-                  <ul className="tabs">
-                    <li className="tab">
-                      <a className="active" href="#pages">
+        <div className='row'>
+          <div className='col s12'>
+            <div className='container-fluid'>
+              <div className='row'>
+                <div className='col s12'>
+                  <ul className='tabs'>
+                    <li className='tab'>
+                      <a className='active' href='#pages'>
                         Add User
                       </a>
                     </li>
                   </ul>
                 </div>
-                <div className="col s12">
-                  <div className="panel card tab--content">
-                    <div id="users" className="col s12">
-                      <div className="row">
-                        <div className="input-field col s4">
+                <div className='col s12'>
+                  <div className='panel card tab--content'>
+                    <div id='users' className='col s12'>
+                      <div className='row'>
+                        <div className='input-field col s4'>
                           <label>First Name</label>
                           <input
-                            type="text"
-                            name="first_name"
+                            type='text'
+                            name='first_name'
                             value={state.first_name}
                             onChange={e => setFieldValue('first_name', e.target.value)}
-                            required
                           />
                         </div>
-                        <div className="input-field col s4">
+                        <div className='input-field col s4'>
                           <input
-                            type="text"
-                            name="last_name"
+                            type='text'
+                            name='last_name'
                             value={state.last_name}
                             onChange={e => setFieldValue('last_name', e.target.value)}
-                            required
                           />
                           <label>Last Name</label>
                         </div>
-                        <div className="input-field col s4">
+                        <div className='input-field col s4'>
                           <input
-                            type="text"
-                            name="user_name"
+                            type='text'
+                            name='user_name'
                             value={state.user_name}
                             onChange={e => setFieldValue('user_name', e.target.value)}
                           />
                           <label>User name</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="input-field col s6">
+                      <div className='row'>
+                        <div className='input-field col s6'>
                           <label>Email</label>
                           <input
-                            type="text"
-                            name="email"
+                            type='text'
+                            name='email'
                             value={state.email}
                             onChange={e => setFieldValue('email', e.target.value)}
-                            required
                           />
                         </div>
-                        <div className="input-field col s6">
+                        <div className='input-field col s6'>
                           <input
-                            type="text"
-                            name="contact"
+                            type='text'
+                            name='contact'
                             value={state.contact}
                             onChange={e => setFieldValue('contact', e.target.value)}
-                            required
                           />
                           <label>Contact</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="input-field col s6">
+                      <div className='row'>
+                        <div className='input-field col s6'>
                           <label>Address</label>
                           <input
-                            type="text"
-                            name="address"
+                            type='text'
+                            name='address'
                             value={state.address}
                             onChange={e => setFieldValue('address', e.target.value)}
-                            required
                           />
                         </div>
-                        <div className="input-field col s6">
+                        <div className='input-field col s6'>
                           <select
-                            name="role"
+                            name='role'
+                            defaultValue=''
                             onChange={e => setFieldValue('role', e.target.value)}
-                            required
                           >
-                            <option value="" disabled>
+                            <option value='' disabled>
                               Choose your option
                             </option>
-                            <option value="1">Super Admin</option>
-                            <option value="2">Admin</option>
-                            <option value="3">Agent</option>
+                            <option value='1'>Super Admin</option>
+                            <option value='2'>Admin</option>
+                            <option value='3'>Agent</option>
                           </select>
                           <label>Role</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="input-field col s6">
+                      <div className='row'>
+                        <div className='input-field col s6'>
                           <label>Password</label>
                           <input
-                            type="password"
-                            name="password"
+                            type='password'
+                            name='password'
                             value={state.password}
                             onChange={e => setFieldValue('password', e.target.value)}
-                            required
                           />
                         </div>
-                        <div className="input-field col s6">
+                        <div className='input-field col s6'>
                           <input
-                            type="password"
-                            name="password_confirmation"
+                            type='password'
+                            name='password_confirmation'
                             value={state.password_confirmation}
                             onChange={e => setFieldValue('password_confirmation', e.target.value)}
-                            required
                           />
                           <label>Password Confirmation</label>
                         </div>
                       </div>
-                      <div className="row">
-                        <div className="col s12">
-                          <div className="input-field">
-                            <button type="submit" className="btn gradient-45deg-purple-deep-orange">
+                      <div className='row'>
+                        <div className='col s12'>
+                          <div className='input-field'>
+                            <button type='submit' className='btn gradient-45deg-purple-deep-orange'>
                               Submit
                             </button>
                           </div>

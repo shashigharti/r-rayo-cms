@@ -1,9 +1,11 @@
 import React from 'react';
 import { apiService } from '..';
+import { BannerContext } from '../../Banners';
 
 const SelectDropDown = (props) => {
-    const [options, setOptions] = useState((props.options) ? props.options : []);
-    const { multiple } = props;
+    const { banners, dispatch: bdispatch } = useContext(BannerContext);
+    const [setOptions] = useState((props.options) ? props.options : []);
+    const { options, dest, ...elemProp } = props;
 
     useEffect(() => {
         if (options.length <= 0) {
@@ -17,15 +19,16 @@ const SelectDropDown = (props) => {
     }, [])
 
     const afterChangeAction = () => {
+        if (dest != null) {
+            // Set Context Dest Variable
 
+        }
     }
 
     return (
         <>
             <select
-                name={name}
-                onChange={(e) => setFieldValue('slug', e.target.value)}
-                {...multiple}
+                {...elemProp}
             >
                 {props.options.map((option, index) => {
                     return (

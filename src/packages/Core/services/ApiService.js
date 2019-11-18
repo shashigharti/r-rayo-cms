@@ -19,6 +19,10 @@ class ApiService {
     return axios.get(process.env.API_ENDPOINT + '/' + path);
   }
 
+  getByUrl(path) {
+    return axios.get(path);
+  }
+
   store(path, data) {
     return axios.post(path, data);
   }

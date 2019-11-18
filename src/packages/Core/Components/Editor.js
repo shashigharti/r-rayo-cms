@@ -1,12 +1,70 @@
-import React, { useContext, useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+// import ReactQuill from 'react-quill';
+
+// import 'react-quill/dist/quill.snow.css';
+// import 'react-quill/dist/quill.bubble.css';
+
+// const Editor = props => {
+//   return
+//   const [state, setState] = useState({
+//     modules: {
+//       toolbar: [
+//         [{ font: [] }],
+//         [{ size: ['small', false, 'large', 'huge'] }],
+//         ['bold', 'italic', 'underline'],
+//         [{ list: 'ordered' }, { list: 'bullet' }],
+//         [{ align: [] }],
+//         [{ color: [] }, { background: [] }],
+//         ['clean'],
+//       ],
+//     },
+//     formats: [
+//       'font',
+//       'size',
+//       'bold',
+//       'italic',
+//       'underline',
+//       'list',
+//       'bullet',
+//       'align',
+//       'color',
+//       'background',
+//     ],
+//   });
+//   useEffect(() => {
+//     M.AutoInit();
+//   });
+
+//   useEffect(() => {
+//     M.updateTextFields();
+//   });
+
+//   return (
+//     <div>
+//       <ReactQuill
+//         theme='snow'
+//         modules={state.modules}
+//         formats={state.formats}
+//         onChange={props.onChange}
+//         value={props.value || ''}
+//       />
+//     </div>
+//   );
+// };
+
+// export default Editor;
+
+import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 
-const Editor = props => {
-  const [state, setState] = useState({
-    modules: {
+class RichTextEditor extends Component {
+  constructor(props) {
+    super(props);
+
+    this.modules = {
       toolbar: [
         [{ font: [] }],
         [{ size: ['small', false, 'large', 'huge'] }],
@@ -16,8 +74,9 @@ const Editor = props => {
         [{ color: [] }, { background: [] }],
         ['clean'],
       ],
-    },
-    formats: [
+    };
+
+    this.formats = [
       'font',
       'size',
       'bold',
@@ -28,27 +87,35 @@ const Editor = props => {
       'align',
       'color',
       'background',
-    ],
-  });
-  useEffect(() => {
-    M.AutoInit();
-  });
+    ];
 
-  useEffect(() => {
-    M.updateTextFields();
-  });
+    this.state = {
+      comments: '',
+    };
 
-  return (
-    <div>
-      <ReactQuill
-        theme={'snow'}
-        modules={state.modules}
-        formats={state.formats}
-        onChange={props.onChange}
-        value={props.value || ''}
-      />
-    </div>
-  );
-};
+    this.rteChange = this.rteChange.bind(this);
+  }
 
-export default Editor;
+  rteChange = (content, delta, source, editor) => {
+    console.log(editor.getHTML()); // rich text
+    console.log(editor.getText()); // plain text
+    console.log(editor.getLength()); // number of characters
+  };
+
+  render() {
+    return (
+      <div>
+        <ReactQuill
+          theme='snow'
+          modules={this.modules}
+          formats={this.formats}
+          onChange={this.rteChange}
+          value={this.props.value}
+          className='browser-default'
+        />
+      </div>
+    );
+  }
+}
+
+export default RichTextEditor;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import * as constants from './../constants';
-import Editor from './../../../../Core/Components/Editor';
-import { apiService, alertService } from './../../../../Core';
-import { SettingResource } from './../../../../Core/Components/CRUD';
+import * as constants from '../constants';
+import Editor from '../../../Components/Editor';
+import { apiService, alertService } from '../../..';
+import { SettingResource } from '../../../Components/CRUD';
 
-const Site = props => {
+const FrontPage = props => {
   const [state, setState] = useState({
     name: '',
     phone: '',
@@ -22,15 +22,15 @@ const Site = props => {
 
   useEffect(() => {
     setState({
-      name: props.payload.name ? props.payload.name : '',
-      phone: props.payload.phone ? props.payload.phone : '',
-      action: props.payload.action ? props.payload.action : '',
-      footer_upper: props.payload.footer_upper ? props.payload.footer_upper : '',
-      realtor_info: props.payload.realtor_info ? props.payload.realtor_info : '',
-      footer_left: props.payload.footer_left ? props.payload.footer_left : '',
-      footer_right: props.payload.footer_right ? props.payload.footer_right : '',
-      terms_condition: props.payload.terms_condition ? props.payload.terms_condition : '',
-      footer_eula: props.payload.footer_eula ? props.payload.footer_eula : '',
+      name: props.payload.name,
+      phone: props.payload.phone,
+      action: props.payload.action,
+      footer_upper: props.payload.footer_upper,
+      realtor_info: props.payload.realtor_info,
+      footer_left: props.payload.footer_left,
+      footer_right: props.payload.footer_right,
+      terms_condition: props.payload.terms_condition,
+      footer_eula: props.payload.footer_eula,
     });
   }, [props]);
 
@@ -47,8 +47,8 @@ const Site = props => {
 
   const handleSubmit = e => {
     event.preventDefault();
-    const response = apiService.update(constants.API_SETTING_UPDATE + 'site', state);
-    const status = alertService.update(response);
+    const response = apiService.store(constants.API_SETTING_UPDATE + 'site', state);
+    const status = alertService.store(response);
   };
 
   return (
@@ -85,9 +85,7 @@ const Site = props => {
         </div>
       </div>
       <div className='row'>
-        <div className='input-field col s12'>
-          <label>Realtor Info</label>
-          <br></br>
+        <div className='col s12'>
           <Editor onChange={setFieldValue} value={state.realtor_info || ''} />
         </div>
       </div>
@@ -133,4 +131,4 @@ const Site = props => {
   );
 };
 
-export default SettingResource(Site, constants.API_SETTING + 'site');
+export default SettingResource(FrontPage, constants.API_SETTING + 'site');

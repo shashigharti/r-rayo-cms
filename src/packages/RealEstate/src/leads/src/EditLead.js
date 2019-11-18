@@ -68,7 +68,7 @@ const LeadEdit = props => {
                   <ul className='tabs'>
                     <li className='tab'>
                       <a className='active' href='#pages'>
-                        Add Lead
+                        Edit Lead
                       </a>
                     </li>
                   </ul>

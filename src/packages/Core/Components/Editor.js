@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 
-class Editor extends Component {
-  constructor(props) {
-    super(props);
-    this.modules = {
+const Editor = props => {
+  const [state, setState] = useState({
+    modules: {
       toolbar: [
         [{ font: [] }],
         [{ size: ['small', false, 'large', 'huge'] }],
@@ -17,9 +16,8 @@ class Editor extends Component {
         [{ color: [] }, { background: [] }],
         ['clean'],
       ],
-    };
-
-    this.formats = [
+    },
+    formats: [
       'font',
       'size',
       'bold',
@@ -30,21 +28,27 @@ class Editor extends Component {
       'align',
       'color',
       'background',
-    ];
-  }
-  render() {
-    return (
-      <div>
-        <ReactQuill
-          theme={'snow'}
-          modules={this.modules}
-          formats={this.formats}
-          onChange={this.props.onChange}
-          value={this.props.value || ''}
-        />
-      </div>
-    );
-  }
-}
+    ],
+  });
+  useEffect(() => {
+    M.AutoInit();
+  });
+
+  useEffect(() => {
+    M.updateTextFields();
+  });
+
+  return (
+    <div>
+      <ReactQuill
+        theme={'snow'}
+        modules={state.modules}
+        formats={state.formats}
+        onChange={props.onChange}
+        value={props.value || ''}
+      />
+    </div>
+  );
+};
 
 export default Editor;

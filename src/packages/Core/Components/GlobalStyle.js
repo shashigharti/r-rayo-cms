@@ -14071,5 +14071,17 @@ export const GlobalStyle = createGlobalStyle`
     h5{
         margin-bottom:30px;
     }
+    #notifications-dropdown.dropdown-content{
+        width: 310px !important;
+        right: 58px !important;
+        left: auto !important;
+        top: 64px !important;
+    }
+    #profile-dropdown.dropdown-content{
+        width: 160px !important;
+        right: 13px !important;
+        left: auto !important;
+        top: 64px !important;
+    }
 
 `;

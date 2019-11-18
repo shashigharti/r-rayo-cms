@@ -5,6 +5,7 @@ import FrontPageSettings from './FrontPageSettings';
 import SearchSettings from './SearchSettings';
 import GeneralSettings from './GeneralSettings';
 import Site from './src/Site';
+import Seo from './src/Seo';
 
 const Settings = () => {
   useEffect(() => {
@@ -31,6 +32,9 @@ const Settings = () => {
                         <a href='#site'>Site</a>
                       </li>
                       <li className='tab col s2'>
+                        <a href='#seo'>Seo</a>
+                      </li>
+                      <li className='tab col s2'>
                         <a href='#priceDiv'>Price</a>
                       </li>
                       <li className='tab col s2'>
@@ -51,6 +55,9 @@ const Settings = () => {
                         <a href='#test4'>Users</a>
                       </li>
                     </ul>
+                  </div>
+                  <div id='seo' className='col s12'>
+                    <Seo />
                   </div>
                   <div id='test1' className='col s12'>
                     <GeneralSettings />

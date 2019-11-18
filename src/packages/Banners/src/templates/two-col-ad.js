@@ -1,15 +1,16 @@
-export default TwoColumnAd = () => {
+import React from 'react';
+const TwoColumnAd = () => {
     return (
         <>
             <div className="row">
                 <div className="input-field col s12">
                     <label>Header</label>
-                    <input type="text" 
-                        name="header" 
-                        value={state.header} 
-                        onChange={e=> setFieldValue('header', e.target.value)} 
-                    required 
-                    />                    
+                    <input type="text"
+                        name="header"
+                        value={state.header}
+                        onChange={e => setFieldValue('header', e.target.value)}
+                        required
+                    />
                 </div>
             </div>
             <div className="row">
@@ -26,23 +27,24 @@ export default TwoColumnAd = () => {
             <div className="row">
                 <div className="input-field col s6">
                     <label>Button Text</label>
-                    <input type="text" 
-                        name="button_text" 
-                        value={state.button_text} 
-                        onChange={e=> setFieldValue('button_text', e.target.value)} 
-                    required 
+                    <input type="text"
+                        name="button_text"
+                        value={state.button_text}
+                        onChange={e => setFieldValue('button_text', e.target.value)}
+                        required
                     />
                 </div>
                 <div className="input-field col s6">
                     <label>Button Url</label>
-                    <input type="text" 
-                        name="button_url" 
-                        value={state.button_url} 
-                        onChange={e=> setFieldValue('button_url', e.target.value)} 
-                    required 
-                    />                    
+                    <input type="text"
+                        name="button_url"
+                        value={state.button_url}
+                        onChange={e => setFieldValue('button_url', e.target.value)}
+                        required
+                    />
                 </div>
             </div>
         </>
     );
 }
+export default TwoColumnAd;

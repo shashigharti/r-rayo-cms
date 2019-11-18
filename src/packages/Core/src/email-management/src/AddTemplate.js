@@ -99,6 +99,7 @@ const AddTemplate = () => {
                         </div>
                       </div>
                       <div className='row'>
+                        <div className="input-field col s12">
                         <select
                           name='template'
                           onChange={e => setFieldValue('template', e.target.value)}
@@ -110,6 +111,7 @@ const AddTemplate = () => {
                           <option value='2'>Template 2</option>
                         </select>
                         <label>Group</label>
+                        </div>
                       </div>
                       <div className='row'>
                         <div className='input-field col s6'>

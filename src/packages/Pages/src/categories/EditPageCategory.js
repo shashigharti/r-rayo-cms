@@ -63,7 +63,7 @@ import { BreadCrumbs } from '../../../Core/Components/BreadCrumbs';
 
 //           <div className="row">
 //             <div className="col s12">
-//               <div className="container-fluid">
+//               <div className="container-fluid edit--page">
 //                 <div className="panel card panel--box">
 //                   <div>
 //                     <form onSubmit={this.handleSubmit}>

@@ -14055,6 +14055,21 @@ export const GlobalStyle = createGlobalStyle`
     .pagination--top span{
         font-size:12px;
     }
-  
+   .edit--page .input-field.col label {
+        transform: translateY(-14px) scale(.8);
+    }
+    .edit--page .select-wrapper + label {
+        position: absolute;
+        top: -2px;
+    }
+    .date-field p{
+        margin-bottom:0px;
+    }
+    textarea.auto--height.materialize-textarea{
+        min-height:auto;
+    }
+    h5{
+        margin-bottom:30px;
+    }
 
 `;

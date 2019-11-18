@@ -194,7 +194,7 @@ class LinkSettings extends Component {
             </div>
             <div className="col s2">
               <Button onClick={this.handleAdd} customClasses="btn-small mr-4">
-                <i className="material-icons center">add</i>
+                Add
               </Button>
               <Button type="submit" customClasses="btn-small purple">
                 Save

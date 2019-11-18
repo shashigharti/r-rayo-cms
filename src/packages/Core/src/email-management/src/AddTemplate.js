@@ -132,8 +132,8 @@ const AddTemplate = () => {
                         </div>
                       </div>
                       <div className='row'>
-                        <div className='input-field col s6'>
-                          <label>Start At</label>
+                        <div className='input-field date-field col s6'>
+                          <p>Start At</p>
                           <input
                             type='date'
                             name='starts_at'
@@ -142,8 +142,8 @@ const AddTemplate = () => {
                           />
                         </div>
 
-                        <div className='input-field col s6'>
-                          <label>Ends At</label>
+                        <div className='input-field date-field col s6'>
+                          <p>Ends At</p>
                           <input
                             type='date'
                             name='ends_at'

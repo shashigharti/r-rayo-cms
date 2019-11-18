@@ -46,7 +46,7 @@ const LoginPage = (props) => {
                       <i className="material-icons prefix pt-2">
                         person_outline
                       </i>
-                      <input type="text" placeholder="email" value={email}
+                      <input type="text" value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required />
                       <label htmlFor="email" className="center-align">

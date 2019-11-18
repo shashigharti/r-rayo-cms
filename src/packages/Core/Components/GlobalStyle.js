@@ -14071,6 +14071,12 @@ export const GlobalStyle = createGlobalStyle`
     h5{
         margin-bottom:30px;
     }
+    ul.pagination.theme--pagination.right {
+        margin-left: 6px;
+        margin-top: -6px !important;
+        vertical-align: middle;
+        margin-bottom: 0px !important;
+    }
     #notifications-dropdown.dropdown-content{
         width: 310px !important;
         right: 58px !important;
@@ -14082,6 +14088,9 @@ export const GlobalStyle = createGlobalStyle`
         right: 13px !important;
         left: auto !important;
         top: 64px !important;
+    }
+    .edit--page .input-field > label{
+        font-size:1rem;
     }
 
 `;

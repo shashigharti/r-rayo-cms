@@ -12,6 +12,8 @@ const LeadReducer = (state, action) => {
       };
     case 'INIT':
       return action.default;
+    case 'RESET':
+      return [];
     case 'DELETE':
       return state;
     default:

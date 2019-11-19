@@ -12,6 +12,7 @@ const Header = () => {
   });
 
   const { auth } = useContext(AuthContext);
+
   return auth.isAuthenticated ? (
     <div
       className='vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns  '

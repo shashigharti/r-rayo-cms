@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { SideNav } from './SideNav';
 import { Link, NavLink } from 'react-router-dom';
 import { MenuResource } from '../../CRUD';
 import * as constants from './../constants';
 import NavList from './NavList';
+import { AuthContext } from '../../../contexts/AuthContext';
 
 const SideMenu = props => {
   const [state, setState] = useState({
@@ -14,17 +15,17 @@ const SideMenu = props => {
       menus: props.payload,
     });
   }, [props]);
-  const menus = state.menus;
-  const List = () => {
-    console.log(menus);
-    if (menus.length != 0) {
-      return menus.map(menu => {
-        return;
-      });
-    }
-    return <p>Loading menus...</p>;
-  };
 
+  const { auth } = useContext(AuthContext);
+  const roles = auth.isAuthenticated ? auth.user.roles : [];
+
+  const permissions = roles.map(role => {
+    const userPermissions = role.permissions;
+    return userPermissions.map(permission => {
+      return permission.name;
+    });
+  });
+  const menus = state.menus;
   return (
     <SideNav className='nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded'>
       <div className='brand-sidebar'>
@@ -42,7 +43,7 @@ const SideMenu = props => {
       >
         {menus.length != 0
           ? menus.map(menu => {
-              return (
+              return permissions[0].includes(menu.permission) ? (
                 <NavList
                   key={menu.id}
                   url={menu.url}
@@ -50,7 +51,7 @@ const SideMenu = props => {
                   icon={menu.icon}
                   childrens={menu.children}
                 />
-              );
+              ) : null;
             })
           : null}
       </ul>

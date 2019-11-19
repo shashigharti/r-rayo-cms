@@ -38,6 +38,11 @@ import LoginPage from './src/users/LoginPage';
 // partials
 import Header from './Components/Header';
 
+import SideMenu from './Components/SideMenu/src/SideMenu';
+import SideMenuContextProvider, {
+  SideMenuContext,
+} from './Components/SideMenu/contexts/SideMenuContext';
+
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
 import { authReducer } from './reducers/authReducer';
@@ -86,4 +91,7 @@ export {
   authReducer,
   apiService,
   alertService,
+  SideMenu,
+  SideMenuContext,
+  SideMenuContextProvider,
 };

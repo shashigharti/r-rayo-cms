@@ -3,7 +3,7 @@ import { ImageSpan } from './Styled';
 import { Navbar } from './Navbar';
 import { Notification } from './Notification.js';
 import { Profile } from './Profile';
-import { SideMenu } from './SideMenu';
+import { SideMenu, SideMenuContextProvider, SideMenuContext } from './../';
 import { AuthContext } from '../contexts/AuthContext';
 
 const Header = () => {
@@ -57,7 +57,9 @@ const Header = () => {
           </nav>
         </Navbar>
       </header>
-      <SideMenu />
+      <SideMenuContextProvider>
+        <SideMenu />
+      </SideMenuContextProvider>
     </div>
   ) : (
     ''

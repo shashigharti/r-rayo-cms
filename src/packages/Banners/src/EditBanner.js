@@ -40,7 +40,7 @@ const EditBanner = (props) => {
     };
 
     const renderSelectedTemplate = selectedTemplate => {
-        const BannerTemplate = BannerTemplates['FullScreenAd'];
+        const BannerTemplate = BannerTemplates[selectedTemplate];
         return (
             <BannerTemplate setFieldValue={setFieldValue} />
         );
@@ -106,7 +106,7 @@ const EditBanner = (props) => {
                                                         <option value="" disabled>
                                                             Choose your option
                                                         </option>
-                                                        <option value="TwoColAd">Two Column Ad</option>
+                                                        <option value="TwoColumnAd">Two Column Ad</option>
                                                         <option value="FullScreenAd">Full Screen Ad</option>
                                                         <option value="Slider">Slider</option>
                                                     </select>

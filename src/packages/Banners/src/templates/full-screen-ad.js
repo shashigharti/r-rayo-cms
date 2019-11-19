@@ -1,5 +1,4 @@
 import React from 'react';
-import { BannerContext } from '../..';
 
 export default (props) => {
     const { setFieldValue } = props;

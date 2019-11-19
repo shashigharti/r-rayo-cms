@@ -6,14 +6,20 @@ export const API_TEMPLATES_UPDATE = '/api/emails/templates/';
 export const API_TEMPLATES_DELETE = 'api/emails/templates/destroy';
 
 // Route: TEMPLATE
-export const TEMPLATE = 'emails/templates';
-export const TEMPLATES_EDIT = 'emails/templates/edit/:id/';
-export const TEMPLATES_CREATE = 'emails/templates/create';
+export const TEMPLATE = '/templates';
+export const TEMPLATES_EDIT = '/templates/edit/:id/';
+export const TEMPLATES_CREATE = '/templates/create';
 
 // Actions: TEMPLATE
 export const ACTIONS = [
   { name: 'Edit', url: '/templates/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/emails/templates/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/emails/templates/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: TEMPLATE

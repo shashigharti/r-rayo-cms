@@ -1,7 +1,7 @@
-const GroupReducer = (state, action) => {
+const ZipReducer = (state, action) => {
   switch (action.type) {
     case 'ADD':
-      return [...state.all, action.group];
+      return [...state.all, action.zip];
     case 'SET_FIELD':
       return {
         ...state,
@@ -12,13 +12,13 @@ const GroupReducer = (state, action) => {
       };
     case 'INIT':
       return action.default;
-    case 'DELETE':
-      return state;
     case 'RESET':
       return [];
+    case 'DELETE':
+      return state;
     default:
       return state;
   }
 };
 
-export { GroupReducer };
+export { ZipReducer };

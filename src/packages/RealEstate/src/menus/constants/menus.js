@@ -6,14 +6,20 @@ export const API_MENU_UPDATE = '/api/menus/';
 export const API_MENU_DELETE = 'api/menus/destroy';
 
 // Route: MENU
-export const MENU = 'menus';
+export const MENU = '/menus';
 export const MENU_EDIT = 'menus/edit/:id/';
 export const MENU_CREATE = 'menus/create';
 
 // Actions: MENU
 export const ACTIONS = [
   { name: 'Edit', url: 'menus/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/menus/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/menus/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: MENU

@@ -6,14 +6,20 @@ export const API_LEAD_UPDATE = '/api/leads/';
 export const API_LEAD_DELETE = '/api/leads/';
 
 // Route: LEAD
-export const LEAD = 'leads';
+export const LEAD = '/leads';
 export const LEAD_EDIT = 'leads/edit/:id/';
 export const LEAD_CREATE = 'leads/create';
 
 // Actions: LEAD
 export const ACTIONS = [
   { name: 'Edit', url: 'leads/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/leads/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/leads/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: LEAD

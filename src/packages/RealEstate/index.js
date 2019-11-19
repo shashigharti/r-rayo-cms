@@ -6,21 +6,22 @@ import LeadList from './src/leads/src/LeadList';
 import AddLead from './src/leads/src/AddLead';
 import EditLead from './src/leads/src/EditLead';
 
-import CityList from './src/landmarks/cities/src/CityList';
-import AddCity from './src/landmarks/cities/src/AddCity';
-import EditCity from './src/landmarks/cities/src/EditCity';
+import CityList from './src/locations/cities/src/CityList';
+import AddCity from './src/locations/cities/src/AddCity';
+import EditCity from './src/locations/cities/src/EditCity';
 
-import ZipList from './src/landmarks/zips/src/ZipList';
-import AddZip from './src/landmarks/zips/src/AddZip';
-import EditZip from './src/landmarks/zips/src/EditZip';
-import CountyList from './src/landmarks/counties/src/CountyList';
-import AddCounty from './src/landmarks/counties/src/AddCounty';
-import EditCounty from './src/landmarks/counties/src/EditCounty';
-import CityContextProvider, { CityContext } from './src/landmarks/cities/contexts/CityContext';
-import ZipContextProvider, { ZipContext } from './src/landmarks/zips/contexts/ZipContext';
+import ZipList from './src/locations/zips/src/ZipList';
+import AddZip from './src/locations/zips/src/AddZip';
+import EditZip from './src/locations/zips/src/EditZip';
+import CountyList from './src/locations/counties/src/CountyList';
+import AddCounty from './src/locations/counties/src/AddCounty';
+import EditCounty from './src/locations/counties/src/EditCounty';
+
+import CityContextProvider, { CityContext } from './src/locations/cities/contexts/CityContext';
+import ZipContextProvider, { ZipContext } from './src/locations/zips/contexts/ZipContext';
 import CountyContextProvider, {
   CountyContext,
-} from './src/landmarks/counties/contexts/CountyContext';
+} from './src/locations/counties/contexts/CountyContext';
 import AgentContextProvider, { AgentContext } from './src/agents/contexts/AgentContext';
 import LeadContextProvider, { LeadContext } from './src/leads/contexts/LeadContext';
 

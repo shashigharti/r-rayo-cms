@@ -1,9 +1,5 @@
 import Dashboard from './src/dashboard/Dashboard';
 
-//should remove
-
-import Templates from './src/email-management/Templates';
-//
 import TemplateList from './src/email-management/src/TemplateList';
 import AddTemplate from './src/email-management/src/AddTemplate';
 import EditTemplate from './src/email-management/src/EditTemplate';
@@ -53,7 +49,6 @@ export {
   Dashboard,
   //
   AddTemplate,
-  Templates,
   TemplateList,
   EditTemplate,
   TemplateContextProvider,
@@ -90,5 +85,5 @@ export {
   AuthContext,
   authReducer,
   apiService,
-  alertService
+  alertService,
 };

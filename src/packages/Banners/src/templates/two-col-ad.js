@@ -1,5 +1,7 @@
 import React from 'react';
 export default (props) => {
+    const { setFieldValue } = props;
+
     return (
         <div className="banner-template">
             <div className="row">
@@ -7,7 +9,7 @@ export default (props) => {
                     <label>Header</label>
                     <input type="text"
                         name="header"
-                        value={state.header}
+                        value={props.header}
                         onChange={e => setFieldValue('header', e.target.value)}
                         required
                     />
@@ -18,7 +20,7 @@ export default (props) => {
                     <label>Content</label>
                     <textarea
                         name="content"
-                        value={state.content}
+                        value={props.content}
                         className="materialize-textarea"
                         onChange={(e) => setFieldValue('content', e.target.value)}
                     />
@@ -29,7 +31,7 @@ export default (props) => {
                     <label>Button Text</label>
                     <input type="text"
                         name="button_text"
-                        value={state.button_text}
+                        value={props.button_text}
                         onChange={e => setFieldValue('button_text', e.target.value)}
                         required
                     />
@@ -38,7 +40,7 @@ export default (props) => {
                     <label>Button Url</label>
                     <input type="text"
                         name="button_url"
-                        value={state.button_url}
+                        value={props.button_url}
                         onChange={e => setFieldValue('button_url', e.target.value)}
                         required
                     />

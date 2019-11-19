@@ -12,7 +12,14 @@ const EditBanner = (props) => {
         id: '',
         name: '',
         slug: '',
-        banner_template: ''
+        banner_template: 'FullScreenAd',
+        area_types: '',
+        sub_areas: '',
+        property_ids: '',
+        header: '',
+        content: '',
+        button_text: '',
+        button_url: ''
     });
 
     useEffect(() => {
@@ -26,7 +33,13 @@ const EditBanner = (props) => {
             name: props.payload.name,
             slug: props.payload.slug,
             banner_template: 'FullScreenAd',
-            component: null
+            area_type: '',
+            sub_areas: '',
+            property_ids: '',
+            header: '',
+            content: '',
+            button_text: '',
+            button_url: ''
         });
     }, [props]);
 
@@ -41,6 +54,7 @@ const EditBanner = (props) => {
 
     const renderSelectedTemplate = selectedTemplate => {
         const BannerTemplate = BannerTemplates[selectedTemplate];
+        console.log(BannerTemplate);
         return (
             <BannerTemplate setFieldValue={setFieldValue} />
         );

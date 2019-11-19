@@ -1,70 +1,12 @@
-// import React, { useEffect, useState } from 'react';
-// import ReactQuill from 'react-quill';
-
-// import 'react-quill/dist/quill.snow.css';
-// import 'react-quill/dist/quill.bubble.css';
-
-// const Editor = props => {
-//   return
-//   const [state, setState] = useState({
-//     modules: {
-//       toolbar: [
-//         [{ font: [] }],
-//         [{ size: ['small', false, 'large', 'huge'] }],
-//         ['bold', 'italic', 'underline'],
-//         [{ list: 'ordered' }, { list: 'bullet' }],
-//         [{ align: [] }],
-//         [{ color: [] }, { background: [] }],
-//         ['clean'],
-//       ],
-//     },
-//     formats: [
-//       'font',
-//       'size',
-//       'bold',
-//       'italic',
-//       'underline',
-//       'list',
-//       'bullet',
-//       'align',
-//       'color',
-//       'background',
-//     ],
-//   });
-//   useEffect(() => {
-//     M.AutoInit();
-//   });
-
-//   useEffect(() => {
-//     M.updateTextFields();
-//   });
-
-//   return (
-//     <div>
-//       <ReactQuill
-//         theme='snow'
-//         modules={state.modules}
-//         formats={state.formats}
-//         onChange={props.onChange}
-//         value={props.value || ''}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Editor;
-
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css';
 
-class RichTextEditor extends Component {
-  constructor(props) {
-    super(props);
-
-    this.modules = {
+const Editor = props => {
+  const [state, setState] = useState({
+    modules: {
       toolbar: [
         [{ font: [] }],
         [{ size: ['small', false, 'large', 'huge'] }],
@@ -74,9 +16,8 @@ class RichTextEditor extends Component {
         [{ color: [] }, { background: [] }],
         ['clean'],
       ],
-    };
-
-    this.formats = [
+    },
+    formats: [
       'font',
       'size',
       'bold',
@@ -87,35 +28,36 @@ class RichTextEditor extends Component {
       'align',
       'color',
       'background',
-    ];
+    ],
+  });
+  useEffect(() => {
+    M.AutoInit();
+  });
 
-    this.state = {
-      comments: '',
-    };
+  useEffect(() => {
+    setState({
+      ...state,
+      value: props.value,
+      onChange: props.onChange,
+    });
+  }, [props]);
 
-    this.rteChange = this.rteChange.bind(this);
-  }
+  useEffect(() => {
+    M.updateTextFields();
+  });
 
-  rteChange = (content, delta, source, editor) => {
-    console.log(editor.getHTML()); // rich text
-    console.log(editor.getText()); // plain text
-    console.log(editor.getLength()); // number of characters
-  };
+  return (
+    <div>
+      <ReactQuill
+        theme='snow'
+        modules={state.modules}
+        formats={state.formats}
+        onChange={state.onChange}
+        value={state.value}
+        className='material-editor'
+      />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>
-        <ReactQuill
-          theme='snow'
-          modules={this.modules}
-          formats={this.formats}
-          onChange={this.rteChange}
-          value={this.props.value}
-          className='browser-default'
-        />
-      </div>
-    );
-  }
-}
-
-export default RichTextEditor;
+export default Editor;

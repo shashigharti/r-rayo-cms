@@ -29,9 +29,9 @@ const EditBanner = (props) => {
 
     useEffect(() => {
         setState({
-            id: props.payload.id,
-            name: props.payload.name,
-            slug: props.payload.slug,
+            id: props.payload.id || '',
+            name: props.payload.name || '',
+            slug: props.payload.slug || '',
             banner_template: 'FullScreenAd',
             area_type: '',
             sub_areas: '',

@@ -6,14 +6,20 @@ export const API_GROUP_UPDATE = '/api/groups/';
 export const API_GROUP_DELETE = 'api/groups/destroy';
 
 // Route: GROUP
-export const GROUP = 'groups';
+export const GROUP = '/groups';
 export const GROUP_EDIT = 'groups/edit/:id/';
 export const GROUP_CREATE = 'groups/create';
 
 // Actions: GROUP
 export const ACTIONS = [
   { name: 'Edit', url: 'groups/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/groups/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/groups/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: GROUP

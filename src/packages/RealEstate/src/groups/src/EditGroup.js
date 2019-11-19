@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import ToolBar from '../../../../Core/Components/ToolBar';
 import * as constants from '../constants';
 import { GroupContext } from '../../../';
@@ -13,7 +14,7 @@ const GroupEdit = props => {
     color: '',
     status: '',
   });
-
+  const [toList, setToList] = useState(false);
   useEffect(() => {
     M.AutoInit();
   });
@@ -35,7 +36,13 @@ const GroupEdit = props => {
     event.preventDefault();
     const { id } = state;
     const response = apiService.update(constants.API_GROUP_UPDATE + id, state);
-    const status = alertService.update(response);
+    const process = alertService.update(response);
+    process.then(status => {
+      if (status === true) {
+        pdispatch({ type: 'RESET' });
+        setTimeout(() => setToList(true), 500);
+      }
+    });
   };
 
   const setFieldValue = (field, value) => {
@@ -47,67 +54,73 @@ const GroupEdit = props => {
   };
 
   return (
-    <div id='main'>
-      <ToolBar breadcrumbs={constants.BREADCRUMB_GROUP_EDIT} toolbar={constants.TOOLBAR} />
-      <form onSubmit={handleSubmit}>
-        <div className='row'>
-          <div className='col s12'>
-            <div className='container-fluid edit--page'>
-              <div className='row'>
-                <div className='col s12'>
-                  <ul className='tabs'>
-                    <li className='tab'>
-                      <a className='active' href='#pages'>
-                        Edit Group
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div className='col s12'>
-                  <div className='panel card tab--content'>
-                    <div id='users' className='col s12'>
-                      <div className='row'>
-                        <div className='input-field col s6'>
-                          <label>Name</label>
-                          <input
-                            type='text'
-                            name='name'
-                            value={state.name}
-                            onChange={e => setFieldValue('name', e.target.value)}
-                          />
+    <>
+      {toList ? <Redirect to={constants.GROUP} /> : null}
+      <div id='main'>
+        <ToolBar breadcrumbs={constants.BREADCRUMB_GROUP_EDIT} toolbar={constants.TOOLBAR} />
+        <form onSubmit={handleSubmit}>
+          <div className='row'>
+            <div className='col s12'>
+              <div className='container-fluid edit--page'>
+                <div className='row'>
+                  <div className='col s12'>
+                    <ul className='tabs'>
+                      <li className='tab'>
+                        <a className='active' href='#pages'>
+                          Edit Group
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className='col s12'>
+                    <div className='panel card tab--content'>
+                      <div id='users' className='col s12'>
+                        <div className='row'>
+                          <div className='input-field col s6'>
+                            <label>Name</label>
+                            <input
+                              type='text'
+                              name='name'
+                              value={state.name}
+                              onChange={e => setFieldValue('name', e.target.value)}
+                            />
+                          </div>
+                          <div className='input-field col s6'>
+                            <input
+                              type='text'
+                              name='color'
+                              value={state.color}
+                              onChange={e => setFieldValue('color', e.target.value)}
+                            />
+                            <label>Color</label>
+                          </div>
                         </div>
-                        <div className='input-field col s6'>
-                          <input
-                            type='text'
-                            name='color'
-                            value={state.color}
-                            onChange={e => setFieldValue('color', e.target.value)}
-                          />
-                          <label>Color</label>
+                        <div className='row'>
+                          <div className='input-field col s6'>
+                            <select
+                              name='status'
+                              defaultValue={toString(state.status)}
+                              onChange={e => setFieldValue('status', e.target.value)}
+                            >
+                              <option value='' disabled>
+                                Choose your option
+                              </option>
+                              <option value='1'>Active</option>
+                              <option value='2'>InActive</option>
+                            </select>
+                            <label>Status</label>
+                          </div>
                         </div>
-                      </div>
-                      <div className='row'>
-                        <div className='input-field col s6'>
-                          <select
-                            name='status'
-                            defaultValue={toString(state.status)}
-                            onChange={e => setFieldValue('status', e.target.value)}
-                          >
-                            <option value='' disabled>
-                              Choose your option
-                            </option>
-                            <option value='1'>Active</option>
-                            <option value='2'>InActive</option>
-                          </select>
-                          <label>Status</label>
-                        </div>
-                      </div>
-                      <div className='row'>
-                        <div className='col s12'>
-                          <div className='input-field'>
-                            <button type='submit' className='btn gradient-45deg-purple-deep-orange'>
-                              Submit
-                            </button>
+                        <div className='row'>
+                          <div className='col s12'>
+                            <div className='input-field'>
+                              <button
+                                type='submit'
+                                className='btn gradient-45deg-purple-deep-orange'
+                              >
+                                Submit
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -117,9 +130,9 @@ const GroupEdit = props => {
               </div>
             </div>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 

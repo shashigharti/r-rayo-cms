@@ -6,14 +6,20 @@ export const API_CITY_UPDATE = '/api/cities/';
 export const API_CITY_DELETE = 'api/cities/destroy';
 
 // Route: CITY
-export const CITY = 'cities';
+export const CITY = '/cities';
 export const CITY_EDIT = 'cities/edit/:id/';
 export const CITY_CREATE = 'cities/create';
 
 // Actions: CITY
 export const ACTIONS = [
   { name: 'Edit', url: 'cities/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/cities/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/cities/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: CITY

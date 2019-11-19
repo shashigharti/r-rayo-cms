@@ -4,14 +4,14 @@ import DataList from '../../../../../Core/Components/DataList';
 import * as constants from './../constants';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 
-const ZipList = () => {
+const CityList = () => {
   return (
-    <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_ZIP} toolbar={constants.TOOLBAR} />
+    <div id='main'>
+      <ToolBar breadcrumbs={constants.BREADCRUMB_CITY} toolbar={constants.TOOLBAR} />
       <Resource
-        path={constants.API_ZIP}
+        path={constants.API_CITY}
         render={data => {
-          if (data.loading) return <p> Loading zips ... </p>;
+          if (data.loading) return <p> Loading cities ... </p>;
           if (data.payload.data != undefined) {
             return (
               <DataList
@@ -28,4 +28,4 @@ const ZipList = () => {
   );
 };
 
-export default ZipList;
+export default CityList;

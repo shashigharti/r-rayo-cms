@@ -1,7 +1,7 @@
-const CountyReducer = (state, action) => {
+const CityReducer = (state, action) => {
   switch (action.type) {
     case 'ADD':
-      return [...state.all, action.county];
+      return [...state.all, action.city];
     case 'SET_FIELD':
       return {
         ...state,
@@ -12,6 +12,8 @@ const CountyReducer = (state, action) => {
       };
     case 'INIT':
       return action.default;
+    case 'RESET':
+      return [];
     case 'DELETE':
       return state;
     default:
@@ -19,4 +21,4 @@ const CountyReducer = (state, action) => {
   }
 };
 
-export { CountyReducer };
+export { CityReducer };

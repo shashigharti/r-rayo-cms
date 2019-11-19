@@ -6,14 +6,20 @@ export const API_COUNTY_UPDATE = '/api/counties/';
 export const API_COUNTY_DELETE = 'api/counties/destroy';
 
 // Route: COUNTY
-export const COUNTY = 'counties';
+export const COUNTY = '/counties';
 export const COUNTY_EDIT = 'counties/edit/:id/';
 export const COUNTY_CREATE = 'counties/create';
 
 // Actions: COUNTY
 export const ACTIONS = [
   { name: 'Edit', url: 'counties/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/counties/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/counties/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: COUNTY

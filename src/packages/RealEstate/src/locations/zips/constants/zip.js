@@ -6,7 +6,7 @@ export const API_ZIP_UPDATE = '/api/zips/';
 export const API_ZIP_DELETE = 'api/zips/destroy';
 
 // Route: ZIP
-export const ZIP = 'zips';
+export const ZIP = '/zips';
 export const ZIP_EDIT = 'zips/edit/:id/';
 export const ZIP_CREATE = 'zips/create';
 

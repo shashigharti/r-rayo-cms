@@ -1,31 +1,17 @@
 import React, { Component, useState, useEffect } from 'react';
 import Resource from '../../../../../Core/Components/Resource';
 import DataList from '../../../../../Core/Components/DataList';
-import CityRow from './CityRow';
 import * as constants from './../constants';
 import ToolBar from '../../../../../Core/Components/ToolBar';
 
-const CityList = () => {
-  const [breadcrumbs, setBreadcrumbs] = useState([
-    {
-      name: 'Home',
-      subPath: '',
-      path: '',
-    },
-    {
-      name: 'Cities',
-      subPath: 'cities',
-      path: '/cities',
-    },
-  ]);
-
+const ZipList = () => {
   return (
-    <div id="main">
-      <ToolBar breadcrumbs={constants.BREADCRUMB_CITY} toolbar={constants.TOOLBAR} />
+    <div id='main'>
+      <ToolBar breadcrumbs={constants.BREADCRUMB_ZIP} toolbar={constants.TOOLBAR} />
       <Resource
-        path={constants.API_CITY}
+        path={constants.API_ZIP}
         render={data => {
-          if (data.loading) return <p> Loading cities ... </p>;
+          if (data.loading) return <p> Loading zips ... </p>;
           if (data.payload.data != undefined) {
             return (
               <DataList
@@ -42,4 +28,4 @@ const CityList = () => {
   );
 };
 
-export default CityList;
+export default ZipList;

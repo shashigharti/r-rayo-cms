@@ -90,86 +90,86 @@ const App = () => {
       <Router>
         <AuthContextProvider>
           <Header />
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/add-email-template" component={AddTemplate} />
+          <PrivateRoute exact path='/' component={Dashboard} />
+          <PrivateRoute exact path='/add-email-template' component={AddTemplate} />
 
-          <PrivateRoute exact path="/settings" component={Settings} />
+          <PrivateRoute exact path='/settings' component={Settings} />
 
           <TemplateContextProvider>
-            <PrivateRoute exact path="/templates" component={TemplateList} />
-            <PrivateRoute exact path="/templates/create" component={AddTemplate} />
-            <PrivateRoute exact path="/templates/edit/:id" component={EditTemplate} />
+            <PrivateRoute exact path='/templates' component={TemplateList} />
+            <PrivateRoute exact path='/templates/create' component={AddTemplate} />
+            <PrivateRoute exact path='/templates/edit/:id' component={EditTemplate} />
           </TemplateContextProvider>
 
           <RoleContextProvider>
-            <PrivateRoute exact path="/roles" component={RoleList} />
-            <PrivateRoute exact path="/roles/create" component={AddRole} />
-            <PrivateRoute exact path="/roles/edit/:id" component={AddRole} />
+            <PrivateRoute exact path='/roles' component={RoleList} />
+            <PrivateRoute exact path='/roles/create' component={AddRole} />
+            <PrivateRoute exact path='/roles/edit/:id' component={AddRole} />
           </RoleContextProvider>
 
           <UserContextProvider>
-            <PrivateRoute exact path="/users" component={UserList} />
-            <PrivateRoute exact path="/users/create" component={AddUser} />
-            <PrivateRoute exact path="/users/edit/:id/" component={EditUser} />
+            <PrivateRoute exact path='/users' component={UserList} />
+            <PrivateRoute exact path='/users/create' component={AddUser} />
+            <PrivateRoute exact path='/users/edit/:id/' component={EditUser} />
           </UserContextProvider>
 
           <PageContextProvider>
-            <PrivateRoute exact path="/pages" component={PageList} />
-            <PrivateRoute exact path="/pages/create" component={AddPage} />
-            <PrivateRoute exact path="/pages/edit/:id" component={EditPage} />
+            <PrivateRoute exact path='/pages' component={PageList} />
+            <PrivateRoute exact path='/pages/create' component={AddPage} />
+            <PrivateRoute exact path='/pages/edit/:id' component={EditPage} />
           </PageContextProvider>
 
           <CategoryContextProvider>
-            <PrivateRoute exact path="/pages/categories" component={PageCategoryList} />
-            <PrivateRoute exact path="/pages/categories/create" component={AddPageCategory} />
+            <PrivateRoute exact path='/pages/categories' component={PageCategoryList} />
+            <PrivateRoute exact path='/pages/categories/create' component={AddPageCategory} />
           </CategoryContextProvider>
 
           <BannerContextProvider>
-            <PrivateRoute exact path="/banners" component={BannerList} />
-            <PrivateRoute exact path="/banners/create" component={AddBanner} />
-            <PrivateRoute exact path="/banners/edit/:id" component={EditBanner} />
+            <PrivateRoute exact path='/banners' component={BannerList} />
+            <PrivateRoute exact path='/banners/create' component={AddBanner} />
+            <PrivateRoute exact path='/banners/edit/:id' component={EditBanner} />
           </BannerContextProvider>
 
           <AgentContextProvider>
-            <PrivateRoute exact path="/agents" component={AgentList} />
-            <PrivateRoute exact path="/agents/create" component={AddAgent} />
-            <PrivateRoute exact path="/agents/edit/:id" component={EditAgent} />
+            <PrivateRoute exact path='/agents' component={AgentList} />
+            <PrivateRoute exact path='/agents/create' component={AddAgent} />
+            <PrivateRoute exact path='/agents/edit/:id' component={EditAgent} />
           </AgentContextProvider>
 
           <LeadContextProvider>
-            <PrivateRoute exact path="/leads" component={LeadList} />
-            <PrivateRoute exact path="/leads/create" component={AddLead} />
-            <PrivateRoute exact path="/leads/edit/:id" component={EditLead} />
+            <PrivateRoute exact path='/leads' component={LeadList} />
+            <PrivateRoute exact path='/leads/create' component={AddLead} />
+            <PrivateRoute exact path='/leads/edit/:id' component={EditLead} />
           </LeadContextProvider>
 
           <CityContextProvider>
-            <PrivateRoute exact path="/cities" component={CityList} />
-            <PrivateRoute exact path="/cities/create" component={AddCity} />
-            <PrivateRoute exact path="/cities/edit/:id" component={EditCity} />
+            <PrivateRoute exact path='/cities' component={CityList} />
+            <PrivateRoute exact path='/cities/create' component={AddCity} />
+            <PrivateRoute exact path='/cities/edit/:id' component={EditCity} />
           </CityContextProvider>
 
           <ZipContextProvider>
-            <PrivateRoute exact path="/zips" component={ZipList} />
-            <PrivateRoute exact path="/zips/create" component={AddZip} />
-            <PrivateRoute exact path="/zips/edit/:id" component={EditZip} />
+            <PrivateRoute exact path='/zips' component={ZipList} />
+            <PrivateRoute exact path='/zips/create' component={AddZip} />
+            <PrivateRoute exact path='/zips/edit/:id' component={EditZip} />
           </ZipContextProvider>
 
           <CountyContextProvider>
-            <PrivateRoute exact path="/counties" component={CountyList} />
-            <PrivateRoute exact path="/counties/create" component={AddCounty} />
-            <PrivateRoute exact path="/counties/edit/:id" component={EditCounty} />
+            <PrivateRoute exact path='/counties' component={CountyList} />
+            <PrivateRoute exact path='/counties/create' component={AddCounty} />
+            <PrivateRoute exact path='/counties/edit/:id' component={EditCounty} />
           </CountyContextProvider>
 
           <GroupContextProvider>
-            <PrivateRoute exact path="/groups" component={GroupList} />
-            <PrivateRoute exact path="/groups/create" component={AddGroup} />
-            <PrivateRoute exact path="/groups/edit/:id" component={EditGroup} />
+            <PrivateRoute exact path='/groups' component={GroupList} />
+            <PrivateRoute exact path='/groups/create' component={AddGroup} />
+            <PrivateRoute exact path='/groups/edit/:id' component={EditGroup} />
           </GroupContextProvider>
 
           <MenuContextProvider>
-            <PrivateRoute exact path="/menus" component={MenuList} />
-            <PrivateRoute exact path="/menus/create" component={AddMenu} />
-            <PrivateRoute exact path="/menus/edit/:id" component={EditMenu} />
+            <PrivateRoute exact path='/menus' component={MenuList} />
+            <PrivateRoute exact path='/menus/create' component={AddMenu} />
+            <PrivateRoute exact path='/menus/edit/:id' component={EditMenu} />
           </MenuContextProvider>
 
           {/* <PrivateRoute exact path="/menus" component={Menus} />
@@ -188,8 +188,8 @@ const App = () => {
           <PrivateRoute exact path="/county-add" component={CountyEdit} />
           <PrivateRoute exact path="/leads" component={Leads} />
           <PrivateRoute exact path="/leads/:id" component={LeadDetails} /> */}
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
+          <Route path='/login' component={LoginPage} />
+          <Route path='/register' component={RegisterPage} />
         </AuthContextProvider>
       </Router>
     </>

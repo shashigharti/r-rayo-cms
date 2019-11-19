@@ -14092,5 +14092,45 @@ export const GlobalStyle = createGlobalStyle`
     .edit--page .input-field > label{
         font-size:1rem;
     }
+    .material-editor .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+        position: absolute;
+        margin-top: -1px;
+        right: 0;
+        top: 50%;
+        width: 18px;
+    }
+    .material-editor .ql-snow .ql-picker {
+        color: #444;
+        display: inline-block;
+        float: left;
+        font-size: 12px;
+        font-weight: 500;
+        height:8px;
+        position: relative;
+        vertical-align: middle;
+    }
+    .material-editor .select-wrapper input.select-dropdown {
+        font-size: 12px;
+        line-height: 1rem;
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 1rem;
+        margin-bottom:0px;
+    }
+    .material-editor .select-wrapper {
+        border: 1px solid #ccc;
+    }
+    .quill.material-editor {
+        margin-top: 22px;
+    }
+    .material-editor .ql-toolbar.ql-snow .ql-formats {
+        margin-right: 5px;
+        width: auto;
+    }
+    .material-editor .ql-container{
+        min-height:200px;
+    }
 
 `;

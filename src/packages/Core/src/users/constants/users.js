@@ -6,14 +6,20 @@ export const API_USER_UPDATE = '/api/users/';
 export const API_USER_DELETE = 'api/users/destroy';
 
 // Route: USER
-export const USER = 'users';
+export const USER = '/users';
 export const USER_EDIT = 'users/edit/:id/';
 export const USER_CREATE = 'users/create';
 
 // Actions: USER
 export const ACTIONS = [
   { name: 'Edit', url: 'users/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', url: '/api/users/', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/users/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: USER

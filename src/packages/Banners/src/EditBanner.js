@@ -4,22 +4,15 @@ import * as constants from '../constants';
 import { BannerContext } from '..';
 import { apiService, alertService } from '../../Core';
 import { EditResource } from '../../Core/Components/CRUD';
-import { FullScreenAd, Slider, TwoColumnAd } from './../src/templates'
-import { func } from 'prop-types';
+import * as BannerTemplates from './../src/templates';
 
 const EditBanner = (props) => {
-    const components = {
-        fullscreen: FullScreenAd,
-        slider: Slider,
-        twoColumn: TwoColumnAd
-    }
     const { dispatch: pdispatch } = useContext(BannerContext);
     const [state, setState] = useState({
         id: '',
         name: '',
         slug: '',
-        banner_template: '',
-        component: null
+        banner_template: ''
     });
 
     useEffect(() => {
@@ -32,33 +25,33 @@ const EditBanner = (props) => {
             id: props.payload.id,
             name: props.payload.name,
             slug: props.payload.slug,
-            banner_template: '',
+            banner_template: 'FullScreenAd',
             component: null
         });
     }, [props]);
 
     const handleSubmit = e => {
         event.preventDefault();
-        const { id } = state;
-        const response = apiService.update(constants.API_BANNER_UPDATE + id, state);
-        const status = alertService.update(response);
+        const updatePromise = apiService.update(constants.API_BANNER_UPDATE + id, state.id);
+
+        updatePromise.then(response => {
+            alertService.update(response.data);
+        });
     };
 
-    const setFieldValue = (field, value) => {
+    const renderSelectedTemplate = selectedTemplate => {
+        const BannerTemplate = BannerTemplates['FullScreenAd'];
+        return (
+            <BannerTemplate setFieldValue={setFieldValue} />
+        );
+    }
 
+    const setFieldValue = (field, value) => {
         setState({
             ...state,
             [field]: value,
         });
-        // if (field == 'banner_template') {
-        //     const SelectComponent = components[value];
-        //     setState({
-        //         ...state,
-        //         component: <SelectComponent props={state} callback={setFieldValue} />
-        //     })
-        // }
         pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
-
     };
 
     return (
@@ -113,9 +106,9 @@ const EditBanner = (props) => {
                                                         <option value="" disabled>
                                                             Choose your option
                                                         </option>
-                                                        <option value="two-col-ad">Two Column Ad</option>
-                                                        <option value="full-screen-ad">Full Screen Ad</option>
-                                                        <option value="slider">Slider</option>
+                                                        <option value="TwoColAd">Two Column Ad</option>
+                                                        <option value="FullScreenAd">Full Screen Ad</option>
+                                                        <option value="Slider">Slider</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -132,6 +125,9 @@ const EditBanner = (props) => {
                                                     />
                                                 </div>
                                             </div>
+
+                                            {renderSelectedTemplate(state.banner_template)}
+
                                             <div className="row">
                                                 <div className="col s12">
                                                     <div className="input-field">

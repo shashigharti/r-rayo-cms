@@ -1,8 +1,7 @@
 import React from 'react';
-const Slider = ({ props, callback }) => {
-    console.log(props);
+export default ({ props, callback }) => {
     return (
-        <>
+        <div className="banner-template">
             <div className="row">
                 <div className="input-field col s12">
                     <label>Areas</label>
@@ -55,7 +54,6 @@ const Slider = ({ props, callback }) => {
                     </select>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
-export default Slider;

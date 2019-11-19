@@ -1,7 +1,7 @@
 import React from 'react';
-const TwoColumnAd = () => {
+export default (props) => {
     return (
-        <>
+        <div className="banner-template">
             <div className="row">
                 <div className="input-field col s12">
                     <label>Header</label>
@@ -44,7 +44,6 @@ const TwoColumnAd = () => {
                     />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
-export default TwoColumnAd;

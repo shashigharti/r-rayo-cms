@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import M from 'materialize-css';
-
+import { Redirect } from 'react-router-dom';
 import { LoginDiv } from '../../../../Components/LoginDiv';
 import { LoginBg } from '../../../../Components/LoginBg';
 import { apiService } from '../../../..';
@@ -56,8 +55,10 @@ const RegsiterPage = props => {
         }
       });
   };
+  const { auth } = useContext(AuthContext);
   return (
     <>
+      {auth.isAuthenticated ? <Redirect to="/" /> : null}
       <LoginBg
         className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page"
         data-open="click"

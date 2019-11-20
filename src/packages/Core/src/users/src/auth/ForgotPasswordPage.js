@@ -1,40 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
+import { AuthContext } from '../../../../contexts/AuthContext';
 import { LoginDiv } from '../../../../Components/LoginDiv';
 import { LoginBg } from '../../../../Components/LoginBg';
-import { apiService } from '../../../..';
+import { apiService, alertService } from '../../../..';
+import { Redirect } from 'react-router-dom';
 
 const ForgotPasswordPage = props => {
   const [email, setEmail] = useState('');
   const hanldeSubmit = e => {
     e.preventDefault();
     const response = apiService.store('/api/password/reset', { email });
-    response
-      .then(response => {
-        console.log(response);
-        M.toast({ html: response.data.status });
+    const process = alertService.reset(response);
+    process.then(status => {
+      if (status == true) {
         props.history.push('/login');
-      })
-      .catch(err => {
-        console.log(err.response);
-        M.toast({ html: 'Something went wrong !' });
-        if (err.response.status == '422') {
-          const errors = err.response.data.errors;
-          Object.keys(errors).map(function(keys) {
-            errors[keys].map(function(message) {
-              M.toast({ html: message });
-            });
-          });
-        }
-        if (err.response.status == '302') {
-          const error = err.response.data.error;
-          M.toast({ html: error });
-        }
-      });
+      }
+    });
   };
+  const { auth } = useContext(AuthContext);
   return (
     <>
+      {auth.isAuthenticated ? <Redirect to="/" /> : null}
       <LoginBg>
         <div
           className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column login-bg  blank-page blank-page"

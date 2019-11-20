@@ -57,13 +57,13 @@ class FrontPageSettings extends Component {
             </div>
             <div className="col s4">
               <div className="input-field">
-                <textarea name="values" className="materialize-textarea" />
+                <textarea name="values" className="auto--height materialize-textarea" />
                 <label htmlFor="values">Values</label>
               </div>
             </div>
             <div className="col s4">
               <div className="input-field">
-                <textarea name="content" className="materialize-textarea" />
+                <textarea name="content" className="auto--height materialize-textarea" />
                 <label htmlFor="content">Content</label>
               </div>
             </div>
@@ -84,13 +84,13 @@ class FrontPageSettings extends Component {
             </div>
             <div className="col s4">
               <div className="input-field">
-                <textarea name="values" className="materialize-textarea" />
+                <textarea name="values" className="auto--height materialize-textarea" />
                 <label htmlFor="values">Values</label>
               </div>
             </div>
             <div className="col s4">
               <div className="input-field">
-                <textarea name="content" className="materialize-textarea" />
+                <textarea name="content" className="auto--height materialize-textarea" />
                 <label htmlFor="content">Content</label>
               </div>
             </div>
@@ -112,7 +112,7 @@ class FrontPageSettings extends Component {
                 }}
                 customClasses="mr-4 btn-small"
               >
-                <i className="material-icons center">add</i>
+                Add
               </Button>
               <Button type="submit" customClasses="btn-small purple">
                 Save
@@ -132,7 +132,7 @@ class FrontPageSettings extends Component {
                 }}
                 customClasses="mr-4 btn-small"
               >
-                <i className="material-icons center">add</i>
+                Add
               </Button>
               <Button type="submit" customClasses="btn-small purple">
                 Save

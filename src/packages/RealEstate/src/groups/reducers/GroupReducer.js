@@ -14,6 +14,8 @@ const GroupReducer = (state, action) => {
       return action.default;
     case 'DELETE':
       return state;
+    case 'RESET':
+      return [];
     default:
       return state;
   }

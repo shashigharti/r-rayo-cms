@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import Pagination from './Pagination';
 import { LinkAction, AnchorAction } from './ActionItems';
 import { generatePath } from 'react-router';
-import { apiService } from '../../Core';
+import { apiService, alertService } from '../../Core';
 
 const DataList = (props) => {
   const { data, component: Component, actions, columns } = props;
   const handleDelete = (e, params) => {
-    apiService.delete(params.url, params.id);
+    e.preventDefault();
+    const path = params.url + params.id;
+    const response = apiService.delete(path);
+    const status = alertService.delete(response);
   }
   return (
     <div className="row">
@@ -44,12 +47,14 @@ const DataList = (props) => {
                                     // TODO: temporary fix; generatePath function will be removed later
                                     url={generatePath(action.url, { id: row.id })}
                                     params={{ id: row.id }}
+                                    id={row.id}
                                     classname={action.classname}
                                   />
                                 ) : (
                                     <AnchorAction
                                       key={index}
                                       url={action.url}
+                                      id={row.id}
                                       callback={handleDelete}
                                       classname={action.classname}
                                     />

@@ -14055,6 +14055,82 @@ export const GlobalStyle = createGlobalStyle`
     .pagination--top span{
         font-size:12px;
     }
-  
+   .edit--page .input-field.col label {
+        transform: translateY(-14px) scale(.8);
+    }
+    .edit--page .select-wrapper + label {
+        position: absolute;
+        top: -2px;
+    }
+    .date-field p{
+        margin-bottom:0px;
+    }
+    textarea.auto--height.materialize-textarea{
+        min-height:auto;
+    }
+    h5{
+        margin-bottom:30px;
+    }
+    ul.pagination.theme--pagination.right {
+        margin-left: 6px;
+        margin-top: -6px !important;
+        vertical-align: middle;
+        margin-bottom: 0px !important;
+    }
+    #notifications-dropdown.dropdown-content{
+        width: 310px !important;
+        right: 58px !important;
+        left: auto !important;
+        top: 64px !important;
+    }
+    #profile-dropdown.dropdown-content{
+        width: 160px !important;
+        right: 13px !important;
+        left: auto !important;
+        top: 64px !important;
+    }
+    .edit--page .input-field > label{
+        font-size:1rem;
+    }
+    .material-editor .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+        position: absolute;
+        margin-top: -1px;
+        right: 0;
+        top: 50%;
+        width: 18px;
+    }
+    .material-editor .ql-snow .ql-picker {
+        color: #444;
+        display: inline-block;
+        float: left;
+        font-size: 12px;
+        font-weight: 500;
+        height:8px;
+        position: relative;
+        vertical-align: middle;
+    }
+    .material-editor .select-wrapper input.select-dropdown {
+        font-size: 12px;
+        line-height: 1rem;
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: 1rem;
+        margin-bottom:0px;
+    }
+    .material-editor .select-wrapper {
+        border: 1px solid #ccc;
+    }
+    .quill.material-editor {
+        margin-top: 22px;
+    }
+    .material-editor .ql-toolbar.ql-snow .ql-formats {
+        margin-right: 5px;
+        width: auto;
+    }
+    .material-editor .ql-container{
+        min-height:200px;
+    }
 
 `;

@@ -19,13 +19,16 @@ class ApiService {
     return axios.get(process.env.API_ENDPOINT + '/' + path);
   }
 
+  getByUrl(path) {
+    return axios.get(path);
+  }
+
   store(path, data) {
     return axios.post(path, data);
   }
 
-  delete(id, path) {
-    path = generatePath(path, { id });
-    return axios.delete(process.env.API_ENDPOINT + '/' + path);
+  delete(path) {
+    return axios.delete(path);
   }
 
   update(path, data) {

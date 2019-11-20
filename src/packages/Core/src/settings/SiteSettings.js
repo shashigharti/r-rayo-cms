@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button } from '../../Components/Button';
 import axios from 'axios';
 import M from 'materialize-css';
+import Editor from './../../../Core/Components/Editor';
 
 const model = 'site';
 class SiteSettings extends Component {
@@ -27,6 +28,10 @@ class SiteSettings extends Component {
   componentDidMount() {
     this.getDefaultSettings();
     M.AutoInit();
+  }
+
+  componentDidUpdate() {
+    M.updateTextFields();
   }
   getDefaultSettings() {
     const url = '/api/settings/' + model;
@@ -69,92 +74,95 @@ class SiteSettings extends Component {
     const { site } = this.state;
     return (
       <>
-        <form onSubmit={this.handleSubmit} className="mb-10">
-          <div className="row">
-            <div className="input-field col s6">
-              <input type="text" value={site.name || ''} name="name" onChange={this.handleChange} />
-              <label>Main Location Name</label>
+        <form onSubmit={this.handleSubmit} className='mb-10'>
+          <div className='row'>
+            <div className='input-field col s6'>
+              <input type='text' value={site.name || ''} name='name' onChange={this.handleChange} />
+              <label>Site Name</label>
             </div>
-            <div className="input-field col s6">
+            <div className='input-field col s6'>
               <input
-                type="text"
+                type='text'
                 value={site.phone || ''}
-                name="phone"
+                name='phone'
                 onChange={this.handleChange}
               />
               <label>Phone Number</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
               <input
-                type="text"
+                type='text'
                 value={site.action || ''}
-                name="action"
+                name='action'
                 onChange={this.handleChange}
               />
               <label>Homepage call to action</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
+              <Editor onChange={this.handleChange} value={site.realtor_info || ''} />
               <textarea
-                name="realtor_info"
+                name='realtor_info'
                 value={site.realtor_info || ''}
-                className="materialize-textarea"
+                className='materialize-textarea'
                 onChange={this.handleChange}
               ></textarea>
               <label>Realtor info</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
               <textarea
-                name="footer_left"
+                name='footer_left'
                 value={site.footer_left || ''}
-                className="materialize-textarea"
+                className='materialize-textarea'
                 onChange={this.handleChange}
               ></textarea>
               <label>Footer's Text (Left)</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
               <textarea
-                name="footer_right"
+                name='footer_right'
                 value={site.footer_right || ''}
-                className="materialize-textarea"
+                className='materialize-textarea'
                 onChange={this.handleChange}
               ></textarea>
               <label>Footer's Text (Right)</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
               <textarea
-                name="terms_condition"
+                name='terms_condition'
                 value={site.terms_condition || ''}
-                className="materialize-textarea"
+                className='materialize-textarea'
                 onChange={this.handleChange}
               ></textarea>
               <label>Terms and condition</label>
             </div>
           </div>
-          <div className="row">
-            <div className="input-field col s12">
+          <div className='row'>
+            <div className='input-field col s12'>
               <textarea
-                name="footer_eula"
+                name='footer_eula'
                 value={site.footer_eula || ''}
-                className="materialize-textarea"
+                className='materialize-textarea'
                 onChange={this.handleChange}
               ></textarea>
               <label>Footer EULA</label>
             </div>
           </div>
-          <div className="row">
-            <Button type="submit" className="purple btn">
-              Save
-            </Button>
+          <div className='row'>
+            <div className='col s12'>
+              <Button type='submit' className='purple btn'>
+                Save
+              </Button>
+            </div>
           </div>
         </form>
       </>

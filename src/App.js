@@ -9,22 +9,20 @@ import {
   PageCategoryList,
   AddPageCategory,
   CategoryContextProvider,
-  EditPageCategory,
   PageContextProvider,
 } from './packages/Pages';
 
 import {
   AddTemplate,
-  Templates,
   EditTemplate,
   TemplateContextProvider,
   AddRole,
   Settings,
   RegisterPage,
   LoginPage,
+  ForgotPasswordPage,
+  ResetPasswordPage,
   Dashboard,
-  Roles,
-  Users,
   Header,
   AuthContextProvider,
   UserList,
@@ -190,6 +188,8 @@ const App = () => {
           <PrivateRoute exact path="/leads/:id" component={LeadDetails} /> */}
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/password/forgot" component={ForgotPasswordPage} />
+          <Route path="/password/reset" component={ResetPasswordPage} />
         </AuthContextProvider>
       </Router>
     </>

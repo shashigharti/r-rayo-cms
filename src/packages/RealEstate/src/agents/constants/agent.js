@@ -6,14 +6,20 @@ export const API_AGENT_UPDATE = '/api/leads/agents/';
 export const API_AGENT_DELETE = 'api/leads/agents/destroy';
 
 // Route: AGENT
-export const AGENT = 'leads/agents';
+export const AGENT = '/agents';
 export const AGENT_EDIT = '/agents/edit/:id/';
-export const AGENT_CREATE = 'leads/agents/create';
+export const AGENT_CREATE = '/agents/create';
 
 // Actions: AGENT
 export const ACTIONS = [
   { name: 'Edit', url: '/agents/edit/:id/', classname: 'edit', type: 'LinkAction' },
-  { name: 'Delete', callback: 'handleDelete', classname: 'delete', type: 'AnchorAction' },
+  {
+    name: 'Delete',
+    url: '/api/leads/agents/',
+    callback: 'handleDelete',
+    classname: 'delete',
+    type: 'AnchorAction',
+  },
 ];
 
 // Toolbar: AGENT

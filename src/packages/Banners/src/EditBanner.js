@@ -156,11 +156,17 @@ const EditBanner = (props) => {
                                 </div>
                             </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </form>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </form>
+    </div>
+  );
 };
 
 export default EditResource(EditBanner, constants.API_BANNER_EDIT);

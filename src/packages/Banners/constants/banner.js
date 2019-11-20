@@ -3,7 +3,7 @@ export const API_BANNER = 'api/banners';
 export const API_BANNER_STORE = '/api/banners';
 export const API_BANNER_EDIT = '/api/banners/:id/edit';
 export const API_BANNER_UPDATE = '/api/banners/';
-export const API_BANNER_DELETE = 'api/banners/destroy';
+export const API_BANNER_DELETE = 'api/banners';
 
 // Route: Banner
 export const BANNER = 'banners';
@@ -12,8 +12,8 @@ export const BANNER_CREATE = 'banners/create';
 
 // Actions: Banner
 export const ACTIONS = [
-  { name: 'Edit', url: 'banners/edit/:id/', classname: '' },
-  { name: 'Delete', callback: 'handleDelete', classname: '' },
+  { name: 'Edit', url: 'banners/edit/:id/', classname: 'edit' },
+  { name: 'Delete', url: '/api/banners/', callback: 'handleDelete', classname: 'delete' },
 ];
 
 // Toolbar: Banner

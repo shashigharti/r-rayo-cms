@@ -11,7 +11,7 @@ const MenuList = () => {
       <Resource
         path={constants.API_MENU}
         render={data => {
-          if (data.loading) return <p> Loading groups ... </p>;
+          if (data.loading) return <p> Loading menus ... </p>;
           if (data.payload.data != undefined) {
             return (
               <DataList

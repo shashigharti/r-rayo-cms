@@ -88,7 +88,6 @@ const PageAdd = () => {
                               name='name'
                               value={state.name}
                               onChange={e => setFieldValue('name', e.target.value)}
-                              required
                             />
                           </div>
                           <div className='input-field col s6'>
@@ -97,7 +96,6 @@ const PageAdd = () => {
                               name='slug'
                               value={state.slug}
                               onChange={e => setFieldValue('slug', e.target.value)}
-                              required
                             />
                             <label>Slug</label>
                           </div>
@@ -109,7 +107,6 @@ const PageAdd = () => {
                               name='content'
                               value={state.content}
                               onChange={e => setFieldValue('content', e.target.value)}
-                              required
                             />
                             <label htmlFor='content'>Content</label>
                           </div>
@@ -120,7 +117,6 @@ const PageAdd = () => {
                               name='category_id'
                               defaultValue=''
                               onChange={e => setFieldValue('category_id', e.target.value)}
-                              required
                             >
                               <option value='' disabled>
                                 Choose your option

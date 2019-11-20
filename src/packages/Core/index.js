@@ -26,14 +26,13 @@ import SiteSettings from './src/settings/SiteSettings';
 // users
 import AddUser from './src/users/src/AddUser';
 import EditUser from './src/users/src/EditUser';
-import Users from './src/users/Users';
 import UserList from './src/users/src/UserList';
 import UserContextProvider, { UserContext } from './src/users/contexts/UserContext';
 
-import URow from './src/users/Row';
-import RegisterPage from './src/users/RegisterPage';
-import ForgotPasswordPage from './src/users/ForgotPasswordPage';
-import LoginPage from './src/users/LoginPage';
+import RegisterPage from './src/users/src/auth/RegisterPage';
+import ForgotPasswordPage from './src/users/src/auth/ForgotPasswordPage';
+import LoginPage from './src/users/src/auth/LoginPage';
+import ResetPasswordPage from './src/users/src/auth/ResetPasswordPage';
 
 // partials
 import Header from './Components/Header';
@@ -61,7 +60,6 @@ export {
   //
   AddRole,
   Roles,
-  URow,
   RoleList,
   RoleContextProvider,
   RoleContext,
@@ -76,10 +74,10 @@ export {
   //
   AddUser,
   EditUser,
-  Users,
   RRow,
   RegisterPage,
   ForgotPasswordPage,
+  ResetPasswordPage,
   LoginPage,
   UserList,
   UserContextProvider,

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import M from 'materialize-css';
 
-import { LoginDiv } from '../../Components/LoginDiv';
-import { LoginBg } from '../../Components/LoginBg';
-import { apiService } from '../../';
+import { LoginDiv } from '../../../../Components/LoginDiv';
+import { LoginBg } from '../../../../Components/LoginBg';
+import { apiService } from '../../../..';
 
 const RegsiterPage = props => {
   const { dispatch } = useContext(AuthContext);
@@ -59,79 +59,79 @@ const RegsiterPage = props => {
   return (
     <>
       <LoginBg
-        className='vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page'
-        data-open='click'
-        data-menu='vertical-menu-nav-dark'
-        data-col='1-column'
+        className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page"
+        data-open="click"
+        data-menu="vertical-menu-nav-dark"
+        data-col="1-column"
       >
-        <div className='row'>
-          <div className='col s12'>
-            <div className='container'>
-              <LoginDiv className='row'>
-                <div className='col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8'>
-                  <form name='form' onSubmit={handleSubmit}>
-                    <div className='row'>
-                      <div className='input-field col s12'>
-                        <h5 className='ml-4'>Register</h5>
-                        <p className='ml-4'>Join to our community now !</p>
+        <div className="row">
+          <div className="col s12">
+            <div className="container">
+              <LoginDiv className="row">
+                <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+                  <form name="form" onSubmit={handleSubmit}>
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <h5 className="ml-4">Register</h5>
+                        <p className="ml-4">Join to our community now !</p>
                       </div>
                     </div>
-                    <div className='input-field'>
-                      <label htmlFor='firstName'>First Name</label>
+                    <div className="input-field">
+                      <label htmlFor="firstName">First Name</label>
                       <input
-                        type='text'
-                        className='form-control'
-                        name='first_name'
+                        type="text"
+                        className="form-control"
+                        name="first_name"
                         value={state.first_name}
                         onChange={e => setFieldValue('first_name', e.target.value)}
                       />
                     </div>
-                    <div className='input-field'>
-                      <label htmlFor='lastName'>Last Name</label>
+                    <div className="input-field">
+                      <label htmlFor="lastName">Last Name</label>
                       <input
-                        type='text'
-                        className='form-control'
-                        name='last_name'
+                        type="text"
+                        className="form-control"
+                        name="last_name"
                         value={state.last_name}
                         onChange={e => setFieldValue('last_name', e.target.value)}
                       />
                     </div>
-                    <div className='input-field'>
-                      <label htmlFor='email'>Email</label>
+                    <div className="input-field">
+                      <label htmlFor="email">Email</label>
                       <input
-                        type='text'
-                        className='form-control'
-                        name='email'
+                        type="text"
+                        className="form-control"
+                        name="email"
                         value={state.email}
                         onChange={e => setFieldValue('email', e.target.value)}
                       />
                     </div>
-                    <div className='input-field'>
-                      <label htmlFor='password'>Password</label>
+                    <div className="input-field">
+                      <label htmlFor="password">Password</label>
                       <input
-                        type='password'
-                        className='form-control'
-                        name='password'
+                        type="password"
+                        className="form-control"
+                        name="password"
                         value={state.password}
                         onChange={e => setFieldValue('password', e.target.value)}
                       />
                     </div>
-                    <div className='input-field'>
-                      <label htmlFor='cpassword'>Confirm Password</label>
+                    <div className="input-field">
+                      <label htmlFor="cpassword">Confirm Password</label>
                       <input
-                        type='password'
-                        className='form-control'
-                        name='c_password'
+                        type="password"
+                        className="form-control"
+                        name="c_password"
                         value={state.c_password}
                         onChange={e => setFieldValue('c_password', e.target.value)}
                       />
                     </div>
-                    <div className='input-field'>
-                      <button className='btn btn-primary'>Register</button>
+                    <div className="input-field">
+                      <button className="btn btn-primary">Register</button>
                     </div>
                   </form>
-                  <p className='center-align'>
-                    Already registered? <Link to='/login'>Login</Link>
+                  <p className="center-align">
+                    Already registered? <Link to="/login">Login</Link>
                   </p>
                 </div>
               </LoginDiv>

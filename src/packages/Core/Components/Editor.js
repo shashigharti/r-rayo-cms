@@ -50,12 +50,12 @@ const Editor = props => {
   return (
     <div>
       <ReactQuill
-        theme='snow'
+        theme="snow"
         modules={state.modules}
         formats={state.formats}
         onChange={state.onChange}
         value={state.value}
-        className='material-editor'
+        className="material-editor"
       />
     </div>
   );

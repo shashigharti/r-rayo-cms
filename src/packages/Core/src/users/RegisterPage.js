@@ -1,204 +1,146 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import M from "materialize-css";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
+import { Link } from 'react-router-dom';
+import M from 'materialize-css';
 
-import { LoginDiv } from "../../Components/LoginDiv";
-import { LoginBg } from "../../Components/LoginBg";
+import { LoginDiv } from '../../Components/LoginDiv';
+import { LoginBg } from '../../Components/LoginBg';
+import { apiService } from '../../';
 
-class RegisterPage extends React.Component {
-  // constructor(props) {
-  //   super(props);
+const RegsiterPage = props => {
+  const { dispatch } = useContext(AuthContext);
+  const [state, setState] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+  });
 
-  //   this.state = {
-  //     user: {
-  //       first_name: "",
-  //       last_name: "",
-  //       email: "",
-  //       password: "",
-  //       c_password: ""
-  //     },
-  //     submitted: false
-  //   };
+  useEffect(() => {
+    M.AutoInit();
+  });
 
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
+  const setFieldValue = (field, value) => {
+    setState({
+      ...state,
+      [field]: value,
+    });
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   const { alert } = this.props;
-  //   if (alert.type !== prevProps.alert.type) {
-  //     M.toast({ html: alert.message });
-  //     alert.type = ""; // Reset alert after user alerted
-  //   }
-  // }
+    //api call for register
+    const response = apiService.store('/api/register', state);
+    response
+      .then(response => {
+        console.log('success', response);
+        dispatch({
+          type: 'REGISTER_SUCCESS',
+          user: response.data.user,
+          status: response.data.success,
+        });
+        props.history.push('/');
+      })
+      .catch(err => {
+        console.log(err.response);
+        M.toast({ html: 'Something went wrong !' });
+        if (err.response.status == '422') {
+          const errors = err.response.data.errors;
+          Object.keys(errors).map(function(keys) {
+            errors[keys].map(function(message) {
+              M.toast({ html: message });
+            });
+          });
+        }
+      });
+  };
+  return (
+    <>
+      <LoginBg
+        className='vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page'
+        data-open='click'
+        data-menu='vertical-menu-nav-dark'
+        data-col='1-column'
+      >
+        <div className='row'>
+          <div className='col s12'>
+            <div className='container'>
+              <LoginDiv className='row'>
+                <div className='col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8'>
+                  <form name='form' onSubmit={handleSubmit}>
+                    <div className='row'>
+                      <div className='input-field col s12'>
+                        <h5 className='ml-4'>Register</h5>
+                        <p className='ml-4'>Join to our community now !</p>
+                      </div>
+                    </div>
+                    <div className='input-field'>
+                      <label htmlFor='firstName'>First Name</label>
+                      <input
+                        type='text'
+                        className='form-control'
+                        name='first_name'
+                        value={state.first_name}
+                        onChange={e => setFieldValue('first_name', e.target.value)}
+                      />
+                    </div>
+                    <div className='input-field'>
+                      <label htmlFor='lastName'>Last Name</label>
+                      <input
+                        type='text'
+                        className='form-control'
+                        name='last_name'
+                        value={state.last_name}
+                        onChange={e => setFieldValue('last_name', e.target.value)}
+                      />
+                    </div>
+                    <div className='input-field'>
+                      <label htmlFor='email'>Email</label>
+                      <input
+                        type='text'
+                        className='form-control'
+                        name='email'
+                        value={state.email}
+                        onChange={e => setFieldValue('email', e.target.value)}
+                      />
+                    </div>
+                    <div className='input-field'>
+                      <label htmlFor='password'>Password</label>
+                      <input
+                        type='password'
+                        className='form-control'
+                        name='password'
+                        value={state.password}
+                        onChange={e => setFieldValue('password', e.target.value)}
+                      />
+                    </div>
+                    <div className='input-field'>
+                      <label htmlFor='cpassword'>Confirm Password</label>
+                      <input
+                        type='password'
+                        className='form-control'
+                        name='c_password'
+                        value={state.c_password}
+                        onChange={e => setFieldValue('c_password', e.target.value)}
+                      />
+                    </div>
+                    <div className='input-field'>
+                      <button className='btn btn-primary'>Register</button>
+                    </div>
+                  </form>
+                  <p className='center-align'>
+                    Already registered? <Link to='/login'>Login</Link>
+                  </p>
+                </div>
+              </LoginDiv>
+            </div>
+          </div>
+        </div>
+      </LoginBg>
+    </>
+  );
+};
 
-  // handleChange(event) {
-  //   const { name, value } = event.target;
-  //   const { user } = this.state;
-  //   this.setState({
-  //     user: {
-  //       ...user,
-  //       [name]: value
-  //     }
-  //   });
-  // }
-
-  // handleSubmit(event) {
-  //   event.preventDefault();
-
-  //   this.setState({ submitted: true });
-  //   const { user } = this.state;
-  //   const { dispatch } = this.props;
-  //   if (
-  //     user.first_name &&
-  //     user.last_name &&
-  //     user.email &&
-  //     user.password === user.c_password
-  //   ) {
-  //     dispatch(userActions.register(user));
-  //   }
-  // }
-
-  // render() {
-  //   const { registering } = this.props;
-  //   const { user, submitted } = this.state;
-  //   return (
-  //     <LoginBg
-  //       className="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 1-column blank-page blank-page"
-  //       data-open="click"
-  //       data-menu="vertical-menu-nav-dark"
-  //       data-col="1-column"
-  //     >
-  //       <div className="row">
-  //         <div className="col s12">
-  //           <div className="container">
-  //             <LoginDiv className="row">
-  //               <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
-  //                 <form name="form" onSubmit={this.handleSubmit}>
-  //                   <div className="row">
-  //                     <div className="input-field col s12">
-  //                       <h5 className="ml-4">Register</h5>
-  //                       <p className="ml-4">Join to our community now !</p>
-  //                     </div>
-  //                   </div>
-  //                   <div
-  //                     className={
-  //                       "input-field" +
-  //                       (submitted && !user.first_name ? " has-error" : "")
-  //                     }
-  //                   >
-  //                     <label htmlFor="firstName">First Name</label>
-  //                     <input
-  //                       type="text"
-  //                       className="form-control"
-  //                       name="first_name"
-  //                       value={user.first_name}
-  //                       onChange={this.handleChange}
-  //                     />
-  //                     {submitted && !user.first_name && (
-  //                       <div className="help-block red-text darken-3">
-  //                         First Name is required
-  //                       </div>
-  //                     )}
-  //                   </div>
-  //                   <div
-  //                     className={
-  //                       "input-field" +
-  //                       (submitted && !user.last_name ? " has-error" : "")
-  //                     }
-  //                   >
-  //                     <label htmlFor="lastName">Last Name</label>
-  //                     <input
-  //                       type="text"
-  //                       className="form-control"
-  //                       name="last_name"
-  //                       value={user.last_name}
-  //                       onChange={this.handleChange}
-  //                     />
-  //                     {submitted && !user.last_name && (
-  //                       <div className="help-block red-text darken-3">
-  //                         Last Name is required
-  //                       </div>
-  //                     )}
-  //                   </div>
-  //                   <div
-  //                     className={
-  //                       "input-field" +
-  //                       (submitted && !user.email ? " has-error" : "")
-  //                     }
-  //                   >
-  //                     <label htmlFor="email">Email</label>
-  //                     <input
-  //                       type="text"
-  //                       className="form-control"
-  //                       name="email"
-  //                       value={user.email}
-  //                       onChange={this.handleChange}
-  //                     />
-  //                     {submitted && !user.email && (
-  //                       <div className="help-block red-text darken-3">
-  //                         Email is required
-  //                       </div>
-  //                     )}
-  //                   </div>
-  //                   <div
-  //                     className={
-  //                       "input-field" +
-  //                       (submitted && !user.password ? " has-error" : "")
-  //                     }
-  //                   >
-  //                     <label htmlFor="password">Password</label>
-  //                     <input
-  //                       type="password"
-  //                       className="form-control"
-  //                       name="password"
-  //                       value={user.password}
-  //                       onChange={this.handleChange}
-  //                     />
-  //                     {submitted && !user.password && (
-  //                       <div className="help-block red-text darken-3">
-  //                         Password is required
-  //                       </div>
-  //                     )}
-  //                   </div>
-  //                   <div
-  //                     className={
-  //                       "input-field" +
-  //                       (submitted && !user.password ? " has-error" : "")
-  //                     }
-  //                   >
-  //                     <label htmlFor="cpassword">Confirm Password</label>
-  //                     <input
-  //                       type="password"
-  //                       className="form-control"
-  //                       name="c_password"
-  //                       value={user.c_password}
-  //                       onChange={this.handleChange}
-  //                     />
-  //                     {submitted && user.password !== user.c_password && (
-  //                       <div className="help-block red-text darken-3">
-  //                         Password do not match
-  //                       </div>
-  //                     )}
-  //                   </div>
-  //                   <div className="input-field">
-  //                     <button className="btn btn-primary">Register</button>
-  //                     {registering && (
-  //                       <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-  //                     )}
-  //                   </div>
-  //                 </form>
-  //                 <p className="center-align">
-  //                   Already registered? <Link to="/login">Login</Link>
-  //                 </p>
-  //               </div>
-  //             </LoginDiv>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </LoginBg>
-  //   );
-  // }
-}
-
-export default RegisterPage;
+export default RegsiterPage;

@@ -26,6 +26,7 @@ const EditBanner = props => {
     button_url: '',
     prices: [],
     locations: [],
+    images: [],
   });
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const EditBanner = props => {
       button_url: props.payload.button_url,
       prices: props.payload.prices,
       locations: props.payload.locations,
+      images: props.payload.images || [],
     });
   }, [props]);
 

@@ -23,6 +23,7 @@ const BannerAdd = () => {
     button_url: '',
     prices: [],
     locations: [],
+    images: [],
   });
 
   useEffect(() => {
@@ -124,6 +125,7 @@ const BannerAdd = () => {
                               <option value="FullScreenAd">Full Screen Ad</option>
                               <option value="Slider">Slider</option>
                               <option value="SingleColumnBlock">Single Column Block</option>
+                              <option value="BannerSlider">Banner Slider</option>
                             </select>
                           </div>
                         </div>

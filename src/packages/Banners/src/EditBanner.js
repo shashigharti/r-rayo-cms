@@ -17,13 +17,15 @@ const EditBanner = props => {
     banner_template: 'FullScreenAd',
     status: '',
     order: '',
-    area_types: '',
+    area_types: [],
     sub_areas: '',
-    property_ids: '',
+    property_ids: [],
     header: '',
     content: '',
     button_text: '',
     button_url: '',
+    prices: [],
+    locations: [],
   });
 
   useEffect(() => {
@@ -36,16 +38,18 @@ const EditBanner = props => {
       id: props.payload.id || '',
       name: props.payload.name || '',
       slug: props.payload.slug || '',
-      status: props.payload.status || '',
+      status: props.payload.status,
       order: props.payload.order,
       banner_template: props.payload.banner_template || 'FullScreenAd',
-      area_type: props.payload.area_type,
+      area_types: props.payload.area_types,
       sub_areas: props.payload.sub_areas,
       property_ids: props.payload.property_ids,
       header: props.payload.header,
       content: props.payload.content,
       button_text: props.payload.button_text,
       button_url: props.payload.button_url,
+      prices: props.payload.prices,
+      locations: props.payload.locations,
     });
   }, [props]);
 
@@ -55,7 +59,7 @@ const EditBanner = props => {
   const handleSubmit = e => {
     event.preventDefault();
     const { id } = state;
-    const response = apiService.update(constants.API_BANNER_UPDATE + id, state.id);
+    const response = apiService.update(constants.API_BANNER_UPDATE + id, state);
     const process = alertService.update(response);
     process.then(status => {
       if (status === true) {
@@ -136,6 +140,7 @@ const EditBanner = props => {
                               <option value="TwoColumnAd">Two Column Ad</option>
                               <option value="FullScreenAd">Full Screen Ad</option>
                               <option value="Slider">Slider</option>
+                              <option value="SingleColumnBlock">Single Column Block</option>
                             </select>
                           </div>
                         </div>
@@ -143,7 +148,7 @@ const EditBanner = props => {
                           <div className="input-field col s6">
                             <label>Status</label>
                             <select
-                              defaultValue={state.status}
+                              defaultValue={toString(state.status)}
                               name="status"
                               onChange={e => setFieldValue('status', e.target.value)}
                             >

@@ -123,7 +123,7 @@ const BannerAdd = () => {
                               <option value="TwoColumnAd">Two Column Ad</option>
                               <option value="FullScreenAd">Full Screen Ad</option>
                               <option value="Slider">Slider</option>
-                              <option value="Block">Block</option>
+                              <option value="SingleColumnBlock">Single Column Block</option>
                             </select>
                           </div>
                         </div>

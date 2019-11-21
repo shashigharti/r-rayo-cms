@@ -77,8 +77,7 @@ const RegsiterPage = props => {
                         <p className="ml-4">Join to our community now !</p>
                       </div>
                     </div>
-                    <div className="input-field">
-                      <label htmlFor="firstName">First Name</label>
+                    <div className="input-field ml-4 mr-4">                      
                       <input
                         type="text"
                         className="form-control"
@@ -86,9 +85,9 @@ const RegsiterPage = props => {
                         value={state.first_name}
                         onChange={e => setFieldValue('first_name', e.target.value)}
                       />
+                      <label htmlFor="firstName">First Name</label>
                     </div>
-                    <div className="input-field">
-                      <label htmlFor="lastName">Last Name</label>
+                    <div className="input-field ml-4 mr-4">                      
                       <input
                         type="text"
                         className="form-control"
@@ -96,9 +95,9 @@ const RegsiterPage = props => {
                         value={state.last_name}
                         onChange={e => setFieldValue('last_name', e.target.value)}
                       />
+                      <label htmlFor="lastName">Last Name</label>
                     </div>
-                    <div className="input-field">
-                      <label htmlFor="email">Email</label>
+                    <div className="input-field ml-4 mr-4">                      
                       <input
                         type="text"
                         className="form-control"
@@ -106,9 +105,9 @@ const RegsiterPage = props => {
                         value={state.email}
                         onChange={e => setFieldValue('email', e.target.value)}
                       />
+                      <label htmlFor="email">Email</label>
                     </div>
-                    <div className="input-field">
-                      <label htmlFor="password">Password</label>
+                    <div className="input-field ml-4 mr-4">                      
                       <input
                         type="password"
                         className="form-control"
@@ -116,9 +115,9 @@ const RegsiterPage = props => {
                         value={state.password}
                         onChange={e => setFieldValue('password', e.target.value)}
                       />
+                      <label htmlFor="password">Password</label>
                     </div>
-                    <div className="input-field">
-                      <label htmlFor="cpassword">Confirm Password</label>
+                    <div className="input-field ml-4 mr-4">                      
                       <input
                         type="password"
                         className="form-control"
@@ -126,14 +125,17 @@ const RegsiterPage = props => {
                         value={state.c_password}
                         onChange={e => setFieldValue('c_password', e.target.value)}
                       />
+                      <label htmlFor="cpassword">Confirm Password</label>
                     </div>
-                    <div className="input-field">
-                      <button className="btn btn-primary">Register</button>
+                    <div className="input-field ml-4 mr-4">
+                      <button className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Register</button>
                     </div>
                   </form>
-                  <p className="center-align">
-                    Already registered? <Link to="/login">Login</Link>
-                  </p>
+                  <div className="col s12">
+                    <p className="center-align">
+                      Already registered? <Link to="/login">Login</Link>
+                    </p>
+                  </div>
                 </div>
               </LoginDiv>
             </div>

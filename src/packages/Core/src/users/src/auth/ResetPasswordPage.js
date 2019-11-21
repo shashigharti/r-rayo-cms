@@ -70,53 +70,53 @@ const ResetPasswordPage = props => {
                   <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
                     <form className="login-form" onSubmit={hanldeSubmit}>
                       <div className="row">
+                        <div className="col s12 input-field">
+                          <h5 className="ml-4">Reset Password</h5>                        
+                        </div>
+                      </div>
+                      <div className="row margin">
                         <div className="col s12">
-                          <h5 className="ml-4">Reset Password</h5>
-                          <p className="ml-4">Your New Password</p>
+                          <div class="input-field  mr-4">
+                            <i className="material-icons prefix pt-2">person_outline</i>
+                            <input
+                              type="password"
+                              value={state.password}
+                              onChange={e => setFieldValue('password', e.target.value)}
+                            />
+                            <label htmlFor="email" className="center-align">
+                              New Password
+                            </label>
+                          </div>
                         </div>
                       </div>
                       <div className="row margin">
-                        <div className="input-field col s12">
-                          <i className="material-icons prefix pt-2">person_outline</i>
-                          <input
-                            type="password"
-                            value={state.password}
-                            onChange={e => setFieldValue('password', e.target.value)}
-                          />
-                          <label htmlFor="email" className="center-align">
-                            Password
-                          </label>
-                        </div>
-                      </div>
-                      <div className="row margin">
-                        <div className="input-field col s12">
-                          <i className="material-icons prefix pt-2">person_outline</i>
-                          <input
-                            type="password"
-                            value={state.password_confirmation}
-                            onChange={e => setFieldValue('password_confirmation', e.target.value)}
-                          />
-                          <label htmlFor="email" className="center-align">
-                            Password Confirmation
-                          </label>
+                        <div className="col s12">
+                          <div class="input-field mr-4">
+                            <i className="material-icons prefix pt-2">person_outline</i>
+                            <input
+                              type="password"
+                              value={state.password_confirmation}
+                              onChange={e => setFieldValue('password_confirmation', e.target.value)}
+                            />
+                            <label htmlFor="email" className="center-align">
+                              Password Confirmation
+                            </label>
+                          </div>
                         </div>
                       </div>
                       <div className="row">
                         <div className="input-field col s12">
-                          <button className="btn btn-primary col s12 mb-1">Submit</button>
+                          <div class="ml-4 mr-4">
+                            <button className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12">Submit</button>
+                          </div>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col s6 m6 l6">
-                          <p className="margin medium-small">
+                        <div className="col s12 m12 center l12">
+                          <p className="medium-small">
                             <Link to="/login">Login</Link>
                           </p>
-                        </div>
-                        <div className="col s6 m6 l6">
-                          <p className="margin right-align medium-small">
-                            <Link to="/register">Register</Link>
-                          </p>
-                        </div>
+                        </div>                       
                       </div>
                     </form>
                   </div>

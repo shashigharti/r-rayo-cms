@@ -78,7 +78,7 @@ const LoginPage = props => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="col s12 m12 l12 ml-2 mt-1">
+                      <div className="col s12 m12 l12 ml-4 mt-1">
                         <p>
                           <label>
                             <input type="checkbox" />
@@ -88,13 +88,15 @@ const LoginPage = props => {
                       </div>
                     </div>
                     <div className="row">
-                      <div className="input-field col s12">
-                        <button
-                          type="submit"
-                          className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
-                        >
-                          Login
-                        </button>
+                      <div className="col s12">
+                        <div className="input-field ml-4 mr-4">
+                          <button
+                            type="submit"
+                            className="btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
+                          >
+                            Login
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </form>

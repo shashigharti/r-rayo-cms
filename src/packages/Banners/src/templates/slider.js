@@ -16,7 +16,9 @@ export default props => {
           <select
             defaultValue={state.area_types}
             name="area_types"
-            onChange={e => setFieldValue('area_types', e.target.value)}
+            onChange={e =>
+              setFieldValue('area_types', Array.from(e.target.selectedOptions, item => item.value))
+            }
             multiple
           >
             <option value="" disabled>

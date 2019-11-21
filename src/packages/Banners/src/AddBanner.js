@@ -13,14 +13,16 @@ const BannerAdd = () => {
     name: '',
     slug: '',
     banner_template: 'FullScreenAd',
-    area_types: '',
+    area_types: [],
     sub_areas: '',
-    property_ids: '',
+    property_ids: [],
     header: '',
     content: '',
     order: '',
     button_text: '',
     button_url: '',
+    prices: [],
+    locations: [],
   });
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const BannerAdd = () => {
   const renderSelectedTemplate = selectedTemplate => {
     const BannerTemplate = BannerTemplates[selectedTemplate];
     console.log(BannerTemplate);
-    return <BannerTemplate setFieldValue={setFieldValue} />;
+    return <BannerTemplate setFieldValue={setFieldValue} state={state} />;
   };
 
   const setFieldValue = (field, value) => {
@@ -65,7 +67,6 @@ const BannerAdd = () => {
     });
     pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
   };
-
   return (
     <>
       {toList ? <Redirect to={constants.BANNER} /> : null}
@@ -122,6 +123,7 @@ const BannerAdd = () => {
                               <option value="TwoColumnAd">Two Column Ad</option>
                               <option value="FullScreenAd">Full Screen Ad</option>
                               <option value="Slider">Slider</option>
+                              <option value="Block">Block</option>
                             </select>
                           </div>
                         </div>

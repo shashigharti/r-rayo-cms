@@ -102,7 +102,7 @@ const LoginPage = props => {
                     Not Registered ? <Link to="/register">Register</Link>
                   </p>
                   <p className="center-align">
-                    Forgot Password ? <Link to="/forgot-password">Reset Password</Link>
+                    Forgot Password ? <Link to="/password/recover">Reset Password</Link>
                   </p>
                 </div>
               </LoginDiv>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from '../Button';
-import './media.css';
+// import './media.css';
 
 class Media extends Component {
   constructor(props) {

@@ -5,6 +5,7 @@ import { BannerContext } from '..';
 import { apiService, alertService } from '../../Core';
 import * as BannerTemplates from './../src/templates';
 import { Redirect } from 'react-router-dom';
+import { Media, MediaContextProvider } from '../../Core/';
 
 const BannerAdd = () => {
   const { dispatch: pdispatch } = useContext(BannerContext);
@@ -23,7 +24,7 @@ const BannerAdd = () => {
     button_url: '',
     prices: [],
     locations: [],
-    images: [],
+    images: ['1', '2', '3'],
   });
 
   useEffect(() => {
@@ -61,12 +62,31 @@ const BannerAdd = () => {
     return <BannerTemplate setFieldValue={setFieldValue} state={state} />;
   };
 
+  const renderMediaTemplate = selected => {
+    return <Media selected={selected} callback={handleMedia} />;
+  };
+
   const setFieldValue = (field, value) => {
     setState({
       ...state,
       [field]: value,
     });
     pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
+  };
+
+  const handleMedia = e => {
+    const value = e.target.getAttribute('data-id');
+    let selected = state.images;
+    if (selected.includes(value)) {
+      selected = selected.filter(e => e !== value);
+    } else {
+      selected.push(value);
+    }
+    setState({
+      ...state,
+      images: selected,
+    });
+    pdispatch({ type: 'SET_FIELD', current_page: { images, selected } });
   };
   return (
     <>
@@ -156,7 +176,7 @@ const BannerAdd = () => {
                         </div>
 
                         {renderSelectedTemplate(state.banner_template)}
-
+                        {renderMediaTemplate(state.images)}
                         <div className="row">
                           <div className="col s12">
                             <div className="input-field">

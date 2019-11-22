@@ -10,23 +10,18 @@ class Images extends Component {
       images: [],
     };
   }
-
   componentDidMount() {
-    const response = apiService.getByUrl(constants.MEDIA_API);
-    response.then(payload => {
-      this.setState({
-        ...this.state,
-        images: payload.data,
-      });
-    });
+    M.AutoInit();
   }
-
   render() {
-    const { images } = this.state;
-    const { selected } = this.props;
+    const { selected, images } = this.props;
     const url = 'http://localhost:8000'; //was having problem because of extra /
     return (
       <>
+        <div className="input-field col s6">
+          <label>Search</label>
+          <input type="text" name="name" onChange={e => this.props.filterImages(e.target.value)} />
+        </div>
         <div id="images" className="clearfix tab--content">
           <div className="col s12">
             {images.length > 0 &&

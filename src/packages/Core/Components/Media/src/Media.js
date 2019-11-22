@@ -2,17 +2,24 @@ import React, { Component, useState, useEffect, useContext } from 'react';
 import { apiService, alertService } from '../../../';
 import * as constants from '../constants';
 import Images from './Images';
+import { string } from 'prop-types';
 
 class Media extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.intialState = {
       file: '',
-      title: '',
-      content: '',
+      name: '',
+      slug: '',
       selected: [],
+      images: [],
+      filteredImages: [],
+    };
+    this.state = {
+      ...this.intialState,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getImages = this.getImages.bind(this);
   }
 
   componentDidMount() {
@@ -33,8 +40,21 @@ class Media extends Component {
     e.preventDefault();
     let data = new FormData();
     data.append('file', this.state.file);
+    data.append('name', this.state.name);
+    data.append('slug', this.state.slug);
     const response = apiService.store(constants.MEDIA_STORE, data);
     const process = alertService.store(response);
+    process.then(status => {
+      const input = document.getElementById('input-file-now');
+      const input_file = document.getElementById('input-file-text');
+      input.value = null;
+      input_file.value = null;
+      if (status == true) {
+        this.setState({
+          ...this.intialState,
+        });
+      }
+    });
   };
 
   handleSelected = e => {
@@ -51,8 +71,36 @@ class Media extends Component {
     });
   };
 
+  getImages() {
+    const response = apiService.getByUrl(constants.MEDIA_API);
+    response.then(payload => {
+      this.setState({
+        ...this.state,
+        images: payload.data,
+        filteredImages: payload.data,
+      });
+    });
+  }
+  filterImages = value => {
+    const { images } = this.state;
+    let filteredImages = [];
+    if (value === '') {
+      filteredImages = images;
+    } else {
+      images.map(image => {
+        const name = image.name.toLowerCase();
+        console.log(name);
+        if (name.search(value.toLowerCase()) !== -1) {
+          filteredImages.push(image);
+        }
+      });
+    }
+    this.setState({
+      filteredImages: filteredImages,
+    });
+  };
   render() {
-    const { selected } = this.state;
+    const { selected, filteredImages } = this.state;
     return (
       <>
         <div className="row">
@@ -76,29 +124,31 @@ class Media extends Component {
                       </a>
                     </li>
                     <li className="tab">
-                      <a href="#images">Images</a>
+                      <a href="#images" onClick={this.getImages}>
+                        Images
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div id="upload" className="clearfix tab--content">
-                  {/* <div className="input-field col s6">
-                    <label>Title</label>
+                  <div className="input-field col s6">
+                    <label>Name</label>
                     <input
                       type="text"
-                      name="title"
-                      value={this.state.title}
-                      onChange={e => this.setFieldValue('title', e.target.value)}
+                      name="name"
+                      value={this.state.name}
+                      onChange={e => this.setFieldValue('name', e.target.value)}
                     />
                   </div>
-                  <div className="input-field col s12">
+                  <div className="input-field col s6">
                     <input
                       type="text"
-                      name="content"
-                      value={this.state.content}
-                      onChange={e => this.setFieldValue('content', e.target.value)}
+                      name="slug"
+                      value={this.state.slug}
+                      onChange={e => this.setFieldValue('slug', e.target.value)}
                     />
-                    <label>Content</label>
-                  </div> */}
+                    <label>Slug</label>
+                  </div>
                   <div className="col s12">
                     <div className="file-field input-field">
                       <div className="btn">
@@ -127,7 +177,12 @@ class Media extends Component {
                   </div>
                 </div>
 
-                <Images action={this.props.callback} selected={selected} />
+                <Images
+                  action={this.handleSelected}
+                  selected={selected}
+                  images={filteredImages}
+                  filterImages={this.filterImages}
+                />
               </div>
               <div className="modal-footer">
                 <a href="#!" className="modal-action modal-close waves-effect waves-red btn-flat ">
@@ -136,7 +191,7 @@ class Media extends Component {
                 <a
                   href="#!"
                   className="modal-action modal-close waves-effect waves-green btn-flat "
-                  onClick={this.handleApply}
+                  onClick={e => this.props.callback(this.props.field, selected)}
                 >
                   Apply
                 </a>

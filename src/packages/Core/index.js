@@ -49,6 +49,8 @@ import { authReducer } from './reducers/authReducer';
 import { apiService } from './services/ApiService';
 import { alertService } from './services/AlertService';
 
+import Media from './Components/Media/src/Media';
+import MediaContextProvider, { MediaContext } from './Components/Media/contexts/MediaContext';
 export {
   Dashboard,
   //
@@ -92,4 +94,7 @@ export {
   SideMenu,
   SideMenuContext,
   SideMenuContextProvider,
+  Media,
+  MediaContextProvider,
+  MediaContext,
 };

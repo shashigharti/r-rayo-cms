@@ -5,6 +5,7 @@ import { BannerContext } from '..';
 import { apiService, alertService } from '../../Core';
 import * as BannerTemplates from './../src/templates';
 import { Redirect } from 'react-router-dom';
+import { Media, MediaContextProvider } from '../../Core/';
 
 const BannerAdd = () => {
   const { dispatch: pdispatch } = useContext(BannerContext);
@@ -23,7 +24,7 @@ const BannerAdd = () => {
     button_url: '',
     prices: [],
     locations: [],
-    images: [],
+    images: ['1', '2', '3'],
   });
 
   useEffect(() => {
@@ -68,6 +69,7 @@ const BannerAdd = () => {
     });
     pdispatch({ type: 'SET_FIELD', current_page: { field, value } });
   };
+
   return (
     <>
       {toList ? <Redirect to={constants.BANNER} /> : null}
@@ -154,9 +156,8 @@ const BannerAdd = () => {
                             />
                           </div>
                         </div>
-
                         {renderSelectedTemplate(state.banner_template)}
-
+                        <Media selected={state.images} callback={setFieldValue} field="images" />
                         <div className="row">
                           <div className="col s12">
                             <div className="input-field">

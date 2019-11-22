@@ -14144,5 +14144,8 @@ export const GlobalStyle = createGlobalStyle`
     .input-field .prefix.active {
         color: #9b75cc;
     }
+    .media-overlay{
+        border: 2px solid blue;
+    }
 
 `;

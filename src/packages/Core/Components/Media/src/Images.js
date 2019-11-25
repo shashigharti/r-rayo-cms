@@ -30,15 +30,15 @@ class Images extends Component {
                   <div className="col s4" key={image.id}>
                     <div
                       className={
-                        selected.includes(image.id.toString())
+                        selected == image.id.toString()
                           ? 'media-overlay media-image'
                           : 'media-image'
                       }
                     >
                       <img
                         data-id={image.id}
-                        src={`${url}${image.file}`}
-                        onClick={this.props.action}
+                        src={process.env.API_ENDPOINT + `uploads/${image.id}/${image.file}`}
+                        onClick={e => this.props.action(image.id)}
                       />
                     </div>
                   </div>

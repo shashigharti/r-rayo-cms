@@ -6,6 +6,7 @@ import { apiService, alertService } from '../../Core';
 import { EditResource } from '../../Core/Components/CRUD';
 import * as BannerTemplates from './../src/templates';
 import { Redirect } from 'react-router-dom';
+import { Media } from '../../Core/';
 
 const EditBanner = props => {
   const { dispatch: pdispatch } = useContext(BannerContext);
@@ -26,7 +27,7 @@ const EditBanner = props => {
     button_url: '',
     prices: [],
     locations: [],
-    images: [],
+    image: '',
   });
 
   useEffect(() => {
@@ -34,7 +35,6 @@ const EditBanner = props => {
   }, [state]);
 
   useEffect(() => {
-    console.log(props);
     setState({
       id: props.payload.id || '',
       name: props.payload.name || '',
@@ -51,13 +51,14 @@ const EditBanner = props => {
       button_url: props.payload.button_url,
       prices: props.payload.prices,
       locations: props.payload.locations,
-      images: props.payload.images || [],
+      image: props.payload.image || '',
     });
   }, [props]);
 
   useEffect(() => {
     M.updateTextFields();
   });
+
   const handleSubmit = e => {
     event.preventDefault();
     const { id } = state;
@@ -73,7 +74,6 @@ const EditBanner = props => {
 
   const renderSelectedTemplate = selectedTemplate => {
     const BannerTemplate = BannerTemplates[selectedTemplate];
-    console.log(BannerTemplate);
     return <BannerTemplate setFieldValue={setFieldValue} state={state} />;
   };
 
@@ -171,9 +171,13 @@ const EditBanner = props => {
                             />
                           </div>
                         </div>
-
                         {renderSelectedTemplate(state.banner_template)}
-
+                        <Media
+                          key={state.id}
+                          selected={state.image}
+                          callback={setFieldValue}
+                          field="image"
+                        />
                         <div className="row">
                           <div className="col s12">
                             <div className="input-field">

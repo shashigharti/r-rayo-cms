@@ -5,7 +5,7 @@ import { BannerContext } from '..';
 import { apiService, alertService } from '../../Core';
 import * as BannerTemplates from './../src/templates';
 import { Redirect } from 'react-router-dom';
-import { Media, MediaContextProvider } from '../../Core/';
+import { Media } from '../../Core/';
 
 const BannerAdd = () => {
   const { dispatch: pdispatch } = useContext(BannerContext);
@@ -24,7 +24,7 @@ const BannerAdd = () => {
     button_url: '',
     prices: [],
     locations: [],
-    images: ['1', '2', '3'],
+    image: '',
   });
 
   useEffect(() => {
@@ -157,7 +157,7 @@ const BannerAdd = () => {
                           </div>
                         </div>
                         {renderSelectedTemplate(state.banner_template)}
-                        <Media selected={state.images} callback={setFieldValue} field="images" />
+                        <Media selected={state.image} callback={setFieldValue} field="image" />
                         <div className="row">
                           <div className="col s12">
                             <div className="input-field">

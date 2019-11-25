@@ -11,7 +11,7 @@ class Media extends Component {
       file: '',
       name: '',
       slug: '',
-      selected: [],
+      selected: '',
       images: [],
       filteredImages: [],
     };
@@ -23,6 +23,7 @@ class Media extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     this.setState({
       ...this.state,
       selected: this.props.selected,
@@ -57,17 +58,10 @@ class Media extends Component {
     });
   };
 
-  handleSelected = e => {
-    const value = e.target.getAttribute('data-id');
-    let { selected } = this.state;
-    if (selected.includes(value)) {
-      selected = selected.filter(e => e !== value);
-    } else {
-      selected.push(value);
-    }
+  handleSelected = value => {
     this.setState({
       ...this.state,
-      selected: selected,
+      selected: value,
     });
   };
 
@@ -103,7 +97,7 @@ class Media extends Component {
     const { selected, filteredImages } = this.state;
     return (
       <>
-        <div className="row">
+        <div className="row" key={this.props.selected}>
           <div className="col s12">
             <label>Thumbnail</label>
             <br />
@@ -191,7 +185,10 @@ class Media extends Component {
                 <a
                   href="#!"
                   className="modal-action modal-close waves-effect waves-green btn-flat "
-                  onClick={e => this.props.callback(this.props.field, selected)}
+                  onClick={e => {
+                    e.preventDefault();
+                    return this.props.callback(this.props.field, selected);
+                  }}
                 >
                   Apply
                 </a>

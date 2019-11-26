@@ -143,6 +143,7 @@ const EditBanner = props => {
                               <option value="FullScreenAd">Full Screen Ad</option>
                               <option value="Slider">Slider</option>
                               <option value="SingleColumnBlock">Single Column Block</option>
+                              <option value="MainBanner">Main Banner</option>
                             </select>
                           </div>
                         </div>

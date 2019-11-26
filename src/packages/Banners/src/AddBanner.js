@@ -128,6 +128,7 @@ const BannerAdd = () => {
                               <option value="Slider">Slider</option>
                               <option value="SingleColumnBlock">Single Column Block</option>
                               <option value="BannerSlider">Banner Slider</option>
+                              <option value="MainBanner">Main Banner</option>
                             </select>
                           </div>
                         </div>

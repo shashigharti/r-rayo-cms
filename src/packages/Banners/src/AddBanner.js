@@ -23,7 +23,7 @@ const BannerAdd = () => {
     button_text: '',
     button_url: '',
     prices: [],
-    locations: [],
+    location: '',
     image: '',
   });
 

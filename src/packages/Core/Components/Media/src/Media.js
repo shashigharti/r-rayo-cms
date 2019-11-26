@@ -9,8 +9,6 @@ class Media extends Component {
     super(props);
     this.intialState = {
       file: '',
-      name: '',
-      slug: '',
       selected: '',
       images: [],
       filteredImages: [],
@@ -41,8 +39,6 @@ class Media extends Component {
     e.preventDefault();
     let data = new FormData();
     data.append('file', this.state.file);
-    data.append('name', this.state.name);
-    data.append('slug', this.state.slug);
     const response = apiService.store(constants.MEDIA_STORE, data);
     const process = alertService.store(response);
     process.then(status => {
@@ -125,24 +121,6 @@ class Media extends Component {
                   </ul>
                 </div>
                 <div id="upload" className="clearfix tab--content">
-                  <div className="input-field col s6">
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={this.state.name}
-                      onChange={e => this.setFieldValue('name', e.target.value)}
-                    />
-                  </div>
-                  <div className="input-field col s6">
-                    <input
-                      type="text"
-                      name="slug"
-                      value={this.state.slug}
-                      onChange={e => this.setFieldValue('slug', e.target.value)}
-                    />
-                    <label>Slug</label>
-                  </div>
                   <div className="col s12">
                     <div className="file-field input-field">
                       <div className="btn">
@@ -170,13 +148,14 @@ class Media extends Component {
                     </button>
                   </div>
                 </div>
-
-                <Images
-                  action={this.handleSelected}
-                  selected={selected}
-                  images={filteredImages}
-                  filterImages={this.filterImages}
-                />
+                <div id="images" className="clearfix tab--content">
+                  <Images
+                    action={this.handleSelected}
+                    selected={selected}
+                    images={filteredImages}
+                    filterImages={this.filterImages}
+                  />
+                </div>
               </div>
               <div className="modal-footer">
                 <a href="#!" className="modal-action modal-close waves-effect waves-red btn-flat ">

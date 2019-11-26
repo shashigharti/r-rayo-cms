@@ -41,21 +41,17 @@ export default props => {
         <div className="input-field col s12">
           <label>Locations</label>
           <select
-            defaultValue={state.locations}
-            name="locations"
-            multiple
-            onChange={e =>
-              setFieldValue('locations', Array.from(e.target.selectedOptions, item => item.value))
-            }
+            defaultValue={state.location}
+            name="location"
+            onChange={e => setFieldValue('location', e.target.value)}
           >
             <option value="" disabled>
               Choose your option
             </option>
-            <option value="1">Cities</option>
-            <option value="2">Zips</option>
-            <option value="3">School</option>
-            <option value="4">Subdivision</option>
-            <option value="5">All</option>
+            <option value="Atlantis">Atlantis</option>
+            <option value="Boca Raton">Boca Raton</option>
+            <option value="Boynton Beach">Boynton Beach</option>
+            <option value="Clewiston">Clewiston</option>
           </select>
         </div>
       </div>

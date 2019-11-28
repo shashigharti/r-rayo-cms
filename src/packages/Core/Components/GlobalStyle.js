@@ -14249,5 +14249,85 @@ export const GlobalStyle = createGlobalStyle`
         th.info-col {
             width: 8%;
         }
+        /*leads table*/
+
+        .table thead th {
+        vertical-align: middle;
+        border-bottom: 1px solid #d5d6d7 !important;
+        padding: 0.4rem 3px;
+        }
+        .col-sub-heading {
+        display: inline-block;
+        position: relative;
+        }
+        .sortable-icon {
+        color: #bababa;
+        }
+        .info-unit a{
+        font-size: 9px !important;
+        }
+        .sortMenu {
+        position: absolute;
+        background: #fff;
+        box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 15px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        min-width: 100px;
+        z-index: 1;
+        color: #999;
+        display: none;
+        }
+        .leads-table th {
+        font-size: 0.75rem;
+        color: gray;
+        }
+        .col-sub-heading:hover .sortMenu {
+        display: block;
+        }
+        .name-col {
+        width: 10%;
+        }
+        .v-line {
+        border-left: 1px solid #ccc;
+        height: 20px;
+        margin: 0 5px;
+        }
+        .table a {
+        font-size: 12px;
+        }
+        .status-dlg {
+        line-height: 12px;
+        }
+        .leads-table td .info-unit a {
+        cursor: pointer;
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.87);
+        }
+        .leads-table td .info-unit a:hover {
+        color: #038cb8;
+        }
+        .table-custom tr td {
+        border: 0px !important;
+        padding: 0;
+        }
+        .info-unit small {
+        font-size: 12px;
+        }
+        .table-custom tr {
+        border: none !important;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* page table */
+
+        .data-table th,
+        .data-table td {
+        padding: 15px !important;
+        }
+        .data-table {
+        font-size: 12px;
+        }
+
 
 `;

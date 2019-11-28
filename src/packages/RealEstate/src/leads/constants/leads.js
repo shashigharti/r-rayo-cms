@@ -30,7 +30,18 @@ export const TOOLBAR = [
 ];
 
 // Columns: LEAD
-export const COLUMNS = [{ key: 'id', display: 'ID' }, { key: 'firstname', display: 'First Name' }];
+export const COLUMNS = [
+  { key: 'id', display: 'ID' },
+  { key: 'city', display: 'City' },
+  { key: 'timeframe', display: 'TimeFrame' },
+  { key: 'status', display: 'Status' },
+  { key: 'last_login', display: 'Last Login' },
+  { key: 'login_count', display: 'Login Count' },
+  { key: 'age', display: 'Age' },
+  { key: 'source', display: 'Source' },
+  { key: 'info', display: 'Info' },
+  { key: '', display: 'Actions' },
+];
 
 // Breadcrumb: LEAD
 export const BREADCRUMB_LEAD = [

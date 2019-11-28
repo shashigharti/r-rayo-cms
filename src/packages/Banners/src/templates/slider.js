@@ -16,17 +16,14 @@ export default props => {
           <select
             defaultValue={state.area_types}
             name="area_types"
-            onChange={e =>
-              setFieldValue('area_types', Array.from(e.target.selectedOptions, item => item.value))
-            }
-            multiple
+            onChange={e => setFieldValue('area_types', e.target.value)}
           >
             <option value="" disabled>
               Choose your option
             </option>
-            <option value="cities">Cities</option>
-            <option value="counties">Counties</option>
-            <option value="school">High School</option>
+            <option value="city">Cities</option>
+            <option value="county">Counties</option>
+            <option value="subdivision">Subdivision</option>
           </select>
         </div>
       </div>
@@ -41,27 +38,22 @@ export default props => {
             <option value="" disabled>
               Choose your option
             </option>
-            <option value="1">City 1</option>
-            <option value="2">City 2</option>
-            <option value="3">City 3</option>
+            <option value="Atlantis">Atlantis</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Belle Glade">Belle Glade</option>
+            <option value="Casa de Campo">Casa de Campo</option>
           </select>
         </div>
       </div>
       <div className="row">
-        <div className="input-field col s12">
-          <label>Items</label>
-          <select
-            defaultValue={state.property_ids}
-            name="property_ids"
-            onChange={e => setFieldValue('property_ids', e.target.value)}
-          >
-            <option value="" disabled>
-              Choose your option
-            </option>
-            <option value="1">Property 1</option>
-            <option value="2">Property 2</option>
-            <option value="3">Property 3</option>
-          </select>
+        <div className="input-field col s6">
+          <label>Properties count</label>
+          <input
+            name="property_count"
+            value={state.property_count}
+            className="materialize-textarea"
+            onChange={e => setFieldValue('property_count', e.target.value)}
+          />
         </div>
       </div>
     </div>

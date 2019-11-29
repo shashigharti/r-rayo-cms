@@ -3,8 +3,15 @@ import { generatePath } from 'react-router';
 
 /** @class ApiService is a parent class responsible for all the rest api calls. */
 class ApiService {
+  constructor(axios) {
+    // set base url for production
+    this._axios = axios.create({
+      baseURL: process.env.API_ENDPOINT
+    });
+  }
+
   getAll(path) {
-    return axios.get(process.env.API_ENDPOINT + '/' + path);
+    return this._axios.get(path);
   }
 
   /**
@@ -16,24 +23,28 @@ class ApiService {
    */
   getById(id, path) {
     path = generatePath(path, { id });
-    return axios.get(process.env.API_ENDPOINT + '/' + path);
+    return this._axios.get(path);
   }
 
   getByUrl(path) {
-    return axios.get(path);
+    return this._axios.get(path);
   }
 
   store(path, data) {
-    return axios.post(path, data);
+    return this._axios.post(path, data);
+  }
+
+  post(path, data) {
+    return this._axios.post(path, data);
   }
 
   delete(path) {
-    return axios.delete(path);
+    return this._axios.delete(path);
   }
 
   update(path, data) {
-    return axios.put(path, data);
+    return this._axios.put(path, data);
   }
 }
 
-export const apiService = new ApiService();
+export const apiService = new ApiService(axios);

@@ -5,6 +5,7 @@ import { LoginDiv } from '../../../../Components/LoginDiv';
 import { LoginBg } from '../../../../Components/LoginBg';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import { apiService } from '../../../../../Core';
 
 const LoginPage = props => {
   const { dispatch } = useContext(AuthContext);
@@ -13,10 +14,7 @@ const LoginPage = props => {
 
   const handleLogin = e => {
     e.preventDefault();
-
-    // api call for login
-    axios
-      .post('/api/login', { email, password })
+    apiService.post('/api/login', { email, password })
       .then(response => {
         dispatch({
           type: 'LOGIN_SUCCESS',
@@ -24,8 +22,7 @@ const LoginPage = props => {
           status: response.data.success,
         });
         props.history.push('/');
-      })
-      .catch(err => {
+      }).catch(err => {
         dispatch({ type: 'LOGIN_ERROR', status: err.response.data.success });
         M.toast({ html: 'Please enter valid email / password' });
       });

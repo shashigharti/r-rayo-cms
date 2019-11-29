@@ -5,6 +5,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 require('http-proxy-middleware');
 
 module.exports = () => {
+
   // call dotenv and it will return an Object with a parsed key
   const env = dotenv.config().parsed;
 
@@ -80,13 +81,8 @@ module.exports = () => {
       proxy: {
         '/api': env.API_ENDPOINT,
       },
+      public: 'http://localhost/react-core/dist'
     },
-    devtool: 'cheap-module-eval-source-map',
-    externals: {
-      // global app config object. Can be removed now
-      config: JSON.stringify({
-        apiUrl: '',
-      }),
-    },
+    devtool: 'cheap-module-eval-source-map'
   };
 };

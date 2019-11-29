@@ -99,3 +99,7 @@ i.fa, i.fas {
 th.info-col {
     width: 8%;
 }
+.leads-table th {
+    color: #424040;
+    font-weight: bold;
+}

@@ -5,7 +5,7 @@ export const SideNav = styled.aside`
   z-index: 999;
   top: 0;
 
-  width: 250px;
+  width: 214px;
   height: 100%;
 
   -webkit-transition: 0.3s ease all;
@@ -16,7 +16,7 @@ export const SideNav = styled.aside`
   span.badge.new {
     line-height: 20px;
     margin-top: 11px;
-    background-color: #6b4994;
+    background-color:#9c27b0;
   }
 
   .brand-sidebar {
@@ -26,7 +26,7 @@ export const SideNav = styled.aside`
 
     width: inherit;
     height: 64px;
-    background: transparent;
+    background:#575758;
     -webkit-box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
 
@@ -59,7 +59,7 @@ export const SideNav = styled.aside`
     color: #333;
   }
   .brand-sidebar span.logo-text {
-    font-size: 24px;
+    font-size: 22px;
     color: #fff;
     visibility: visible;
     padding-left: 8px;
@@ -152,6 +152,7 @@ export const SideNav = styled.aside`
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     backface-visibility: hidden;
+    background: #575758 !important;
   }
   .sidenav.native-scroll {
     overflow-y: scroll !important;
@@ -192,9 +193,7 @@ export const SideNav = styled.aside`
 
     padding: 0;
   }
-  .sidenav li a {
-    color: rgba(0, 0, 0, 0.87);
-  }
+ 
   .sidenav li a i {
     font-size: 1.4rem;
     line-height: inherit;
@@ -236,9 +235,9 @@ export const SideNav = styled.aside`
     font-size: 0.7rem;
   }
   .sidenav li a.active {
-    color: #fff;
-    background: #9b75cc;
-    box-shadow: 1px 2px 3px 0 rgb(132,65,144);
+    color: #fff !important;
+    background: #9c27b0 !important;
+    box-shadow: 1px 1px 3px 0 rgb(122,82,175) !important;
   }
   .sidenav li a.active i {
     color: #fff;

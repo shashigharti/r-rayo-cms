@@ -21,7 +21,7 @@
 }
 #breadcrumbs-wrapper .breadcrumbs > li {
     display: inline-block;
-    font-size: 12px;
+    font-size: 11px;
 }
 #breadcrumbs-wrapper .breadcrumbs > li + li::before {
     font-family: 'Material Icons', sans-serif;
@@ -33,7 +33,7 @@
 }
 #breadcrumbs-wrapper .breadcrumbs .active,#breadcrumbs-wrapper .breadcrumbs .active a{
     font-weight: normal;
-    color: #9e9e9e !important;
+    color: #616060 !important;
 }
 #breadcrumbs-wrapper .breadcrumbs-title {
     font-size: 1.4rem;

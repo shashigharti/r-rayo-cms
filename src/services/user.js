@@ -16,7 +16,8 @@ function login(email, password) {
     const credentials = {
         email, password
     };
-    return axios.post('/api/login', credentials).then(response => {
+    console.log(process.env.API_ENDPOINT + '/api/login');
+    return axios.post(process.env.API_ENDPOINT + '/api/login', credentials).then(response => {
         return Promise.resolve(response.data.user);
     }).catch(e => {
         return Promise.reject(e);

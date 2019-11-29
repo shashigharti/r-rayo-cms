@@ -155,9 +155,8 @@ nav.display-none.search-sm
     input.search-box-sm:not(:focus) {
     color: #fff;
 }
-.navbar--theme {
-    background: #6b4994;
-}
+
+
 @media only screen and (max-width: 600px) {
     .navbar .nav-wrapper .dropdown-content {
         left: 0 !important;

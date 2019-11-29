@@ -85,7 +85,7 @@ const App = () => {
   }, []);
   return (
     <>
-      <Router>
+      <Router basename="/react-core/dist">
         <AuthContextProvider>
           <Header />
           <PrivateRoute exact path="/" component={Dashboard} />

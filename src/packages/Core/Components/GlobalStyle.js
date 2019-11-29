@@ -5554,7 +5554,7 @@ export const GlobalStyle = createGlobalStyle`
                      -o-transition: background-color .3s;
                         transition: background-color .3s;
             
-                color: #fff;
+                color: #6b6666;
             }
             nav ul a.btn,
             nav ul a.btn-large,
@@ -9627,8 +9627,8 @@ export const GlobalStyle = createGlobalStyle`
             }
             .sidenav li > a
             {
-                font-size: 14px;
-                font-weight: 500;
+                font-size: 12px;
+                font-weight: 600 !important;
                 line-height: 48px;
             
                 display: block;
@@ -9636,12 +9636,13 @@ export const GlobalStyle = createGlobalStyle`
                 height: 48px;
                 padding: 0 32px;
             
-                color: rgba(0, 0, 0, .87);
+                color: #e2dddd !important;
             }
             .sidenav li > a:hover
             {
-                background-color: rgba(0, 0, 0, .015);
+                color: #fff !important;
             }
+           
             .sidenav li > a.btn,
             .sidenav li > a.btn-large,
             .sidenav li > a.btn-small,
@@ -9687,7 +9688,9 @@ export const GlobalStyle = createGlobalStyle`
                 height: 48px;
                 margin: 0 32px 0 0;
             
-                color: rgba(0, 0, 0, .54);
+                color: #e2dddd;
+                font-size: 16px !important;
+                width: 1rem !important;
             }
             .sidenav .divider
             {
@@ -12149,7 +12152,7 @@ export const GlobalStyle = createGlobalStyle`
     {
         #main
         {
-            padding-left: 250px;
+            padding-left: 220px;
         }
         #main.main-full
         {
@@ -13519,7 +13522,7 @@ export const GlobalStyle = createGlobalStyle`
     
     
     /*----------------------------------------
-    \tDropdown
+    Dropdown
     ------------------------------------------*/
     .dropdown-content li:hover,
     .dropdown-content li.active
@@ -14013,10 +14016,9 @@ export const GlobalStyle = createGlobalStyle`
     
     
     // Color CSS
-    .gradient-45deg-purple-deep-orange
-    {
-        background: #9b75cc !important; 
-        box-shadow: 3px 3px 4px 0 rgb(132, 65, 144);
+    .gradient-45deg-purple-deep-orange {
+        background: #9c27b0!important;
+        box-shadow: 3px 3px 4px 0 rgb(78, 51, 113);
     }
     .gradient-45deg-purple-deep-orange:hover,.gradient-45deg-purple-deep-orange:focus
     {
@@ -14231,7 +14233,7 @@ export const GlobalStyle = createGlobalStyle`
         margin-top: 10px;
         }
         .filter--bar {
-        margin-top: 20px;
+        margin-top:0px;
         }
         i.fa, i.fas {
         margin-right: 3px;
@@ -14323,11 +14325,51 @@ export const GlobalStyle = createGlobalStyle`
 
         .data-table th,
         .data-table td {
-        padding: 15px !important;
+        padding: 6px !important;
         }
         .data-table {
-        font-size: 12px;
+        font-size: 11px;
+        }
+        .filter--bar .theme__tabs .tab a{
+          font-size: 11px;
+          font-weight: bold;
+        }
+        .filter--bar select {
+            display: block;
+            height: 2rem !important;
+            font-size: 12px;
+            border: 1px solid #ccc !important;
+        }
+        .filter--bar .theme--select {
+            margin-top: 5px;
+        }
+        .navbar .navbar--theme{
+            background:#ffff !important;
+        }
+        .data-table .btn-small i{
+            margin-right:0px;
+        }
+        table,td,th{
+          font-size: 11px;
+        }
+        .notification-button .notifications-badge {
+            background-color: #9c27b0 !important;
+            box-shadow: 0 0 10px 0 #9c27b0 !important;
+        }
+        .select-wrapper input.select-dropdown {
+            font-size: 12px !important;
+        }
+        #main input{
+            font-size:12px !important
+        }
+        textarea.materialize-textarea{
+            font-size:12px;
+        }
+        .panel .btn.gradient-45deg-purple-deep-orange {
+            font-size: 11px;
+            line-height: 30px;
+            height: 30px;
+            padding: 0px 15px;
         }
 
-
-`;
+`

@@ -72,8 +72,11 @@
 
 .data-table th,
 .data-table td {
-  padding: 15px !important;
+  padding: 6px !important;
 }
 .data-table {
   font-size: 12px;
+}
+table,td,th{
+  font-size: 11px;
 }

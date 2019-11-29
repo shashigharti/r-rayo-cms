@@ -1,5 +1,4 @@
 {
-    "mode": "development",
     "private": true,
     "scripts": {
         "start": "webpack-dev-server --open --mode development",

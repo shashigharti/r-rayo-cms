@@ -1,9 +1,9 @@
 // API: USER
-export const API_USER = 'api/users';
-export const API_USER_EDIT = '/api/users/:id/edit';
-export const API_USER_STORE = '/api/users';
-export const API_USER_UPDATE = '/api/users/';
-export const API_USER_DELETE = 'api/users/destroy';
+export const API_USER = 'api/admins';
+export const API_USER_EDIT = '/api/admins/:id/edit';
+export const API_USER_STORE = '/api/admins';
+export const API_USER_UPDATE = '/api/admins/';
+export const API_USER_DELETE = 'api/admins/destroy';
 
 // Route: USER
 export const USER = '/users';

@@ -149,7 +149,7 @@ class PriceSettings extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col s12">
+            <div className="col s12 mt-3">
               <Button type="submit" className="purple btn">
                 Save
               </Button>

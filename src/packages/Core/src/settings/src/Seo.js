@@ -63,7 +63,7 @@ const Seo = props => {
       </div>
 
       <div className='row'>
-        <div className='col s12'>
+        <div className='col s12 mt-3'>
           <button type='submit' className='btn gradient-45deg-purple-deep-orange'>
             Submit
           </button>

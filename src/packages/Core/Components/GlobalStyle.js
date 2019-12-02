@@ -14371,5 +14371,8 @@ export const GlobalStyle = createGlobalStyle`
             height: 30px;
             padding: 0px 15px;
         }
+        .purple.btn{
+            font-size:11px;
+        }
 
 `

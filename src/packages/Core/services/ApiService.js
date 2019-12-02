@@ -39,7 +39,7 @@ class ApiService {
   }
 
   delete(path) {
-    return this._axios.delete(path);
+    return axios.delete(path);
   }
 
   update(path, data) {

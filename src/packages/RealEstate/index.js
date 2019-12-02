@@ -5,6 +5,7 @@ import EditAgent from './src/agents/src/EditAgent';
 import LeadList from './src/leads/src/LeadList';
 import AddLead from './src/leads/src/AddLead';
 import EditLead from './src/leads/src/EditLead';
+import LeadDetail from './src/leads/src/Details/LeadDetail';
 
 import CityList from './src/locations/cities/src/CityList';
 import AddCity from './src/locations/cities/src/AddCity';
@@ -43,6 +44,7 @@ export {
   LeadList,
   AddLead,
   EditLead,
+  LeadDetail,
   LeadContextProvider,
   LeadContext,
   CityList,

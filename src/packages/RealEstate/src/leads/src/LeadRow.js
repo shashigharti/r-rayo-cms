@@ -78,9 +78,9 @@ const LeadRow = ({ row, onDelete, GetLeads }) => {
         <div className="row">
           <div className="col s12">
             <span className="name lead">
-              <Link to={`/leads/${row.id}`} className="">
-                {row.firstname + ' ' + row.lastname}
-              </Link>
+              {/* <Link to={`/leads/details/${row.id}`} className=""> */}
+              {row.firstname + ' ' + row.lastname}
+              {/* </Link> */}
             </span>
             {row.phone_number && (
               <div>
@@ -95,9 +95,25 @@ const LeadRow = ({ row, onDelete, GetLeads }) => {
           </div>
         </div>
       </td>
-      <td />
+      <td>
+        <div className="row">
+          <div className="col s12">
+            <div>{row.online || 'Offline'}</div>
+          </div>
+        </div>
+      </td>
       <td className="center-align">
-        <small>unknown</small>
+        <div className="row">
+          <div className="col s12">
+            <div>
+              <small>{row.timezone || 'NA'}</small>
+            </div>
+
+            <div>
+              <small>{row.city || 'NA'}</small>
+            </div>
+          </div>
+        </div>
       </td>
       <td>
         <div>

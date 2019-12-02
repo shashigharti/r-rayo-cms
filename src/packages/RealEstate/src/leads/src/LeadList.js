@@ -172,7 +172,7 @@ const LeadList = () => {
                               <tr>
                                 <th />
                                 <th className="name-col">Name</th>
-                                <th className="tags-col">Tags</th>
+                                <th className="tags-col">Online Status</th>
                                 <th className="budg-city-time-col text-center">
                                   <div className="sortable-head col-sub-heading">
                                     <i className="fas fa-dollar-sign" />

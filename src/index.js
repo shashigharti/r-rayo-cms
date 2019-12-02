@@ -47,6 +47,7 @@ import {
   LeadList,
   AddLead,
   EditLead,
+  LeadDetail,
   LeadContextProvider,
   CityList,
   AddCity,
@@ -140,6 +141,7 @@ const App = () => {
             <PrivateRoute exact path="/leads" component={LeadList} />
             <PrivateRoute exact path="/leads/create" component={AddLead} />
             <PrivateRoute exact path="/leads/edit/:id" component={EditLead} />
+            <PrivateRoute exact path="/leads/details/:id" component={LeadDetail} />
           </LeadContextProvider>
 
           <CityContextProvider>
@@ -197,7 +199,6 @@ const App = () => {
     </>
   );
 };
-
 
 const theme = {
   font: 'Muli',

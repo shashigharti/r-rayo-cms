@@ -20,42 +20,45 @@ const Settings = () => {
       <div className='row'>
         <div className='col s12'>
           <div className='container-fluid'>
-            <div className='card'>
-              <div className='card-content'>
-                <div className='row'>
-                  <div className='col s12 mb-3'>
+            <div className="row">
+              <div className='col s12 mt-3'>
                     <ul className='tabs'>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#test1'>General</a>
                       </li>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#site'>Site</a>
                       </li>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#seo'>Seo</a>
                       </li>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#priceDiv'>Price</a>
                       </li>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#frontPageDiv'>Frontpage</a>
                       </li>
                       {/* <li className='tab col s2'>
                         <a href='#linkDiv'>Link</a>
                       </li> */}
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a className='active' href='#searchDiv'>
                           Search
                         </a>
                       </li>
-                      <li className='tab col s2'>
+                      <li className='tab'>
                         <a href='#test3'>Agent</a>
                       </li>
-                      <li className='tab col s3'>
+                      <li className='tab'>
                         <a href='#test4'>Users</a>
                       </li>
                     </ul>
                   </div>
+            </div>
+            <div className='card'>
+              <div className='card-content'>
+                <div className='row'>
+                 
                   <div id='seo' className='col s12'>
                     <Seo />
                   </div>

@@ -6384,7 +6384,7 @@ export const GlobalStyle = createGlobalStyle`
             
                 white-space: nowrap;
             
-                background-color: #fff;
+                background-color:transparent;
             }
             .tabs.tabs-transparent
             {
@@ -6451,19 +6451,19 @@ export const GlobalStyle = createGlobalStyle`
                         transition: color .28s ease, background-color .28s ease;
                 text-overflow: ellipsis;
             
-                color: rgba(156, 39, 176, .7);
+                color:rgb(87, 87, 88);
             }
             .tabs .tab a:focus,
             .tabs .tab a:focus.active
             {
                 outline: none;
-                background-color: rgba(195, 76, 215, .2);
+                background-color: #ebc9f1;
             }
             .tabs .tab a:hover,
             .tabs .tab a.active
             {
-                color: #9c27b0;
-                background-color: transparent;
+                color: #312f2f;
+                background-color: #ebc9f1;
             }
             .tabs .tab.disabled a,
             .tabs .tab.disabled a:hover

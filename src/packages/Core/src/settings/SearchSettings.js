@@ -105,19 +105,19 @@ class SearchSettings extends Component {
     return (
       <div className="container-fluid">
         <form onSubmit={this.handleSubmit}>
-          <div className="row mb-4">
+          <div className="row mb-2">
             <label htmlFor="one">First Column</label>
             <select className="browser-default" name="one" id="one" multiple={true} />
           </div>
-          <div className="row mb-4">
+          <div className="row mb-2">
             <label htmlFor="two">Second Column</label>
             <select className="browser-default" name="two" id="two" multiple={true} />
           </div>
-          <div className="row mb-4">
+          <div className="row mb-2">
             <label htmlFor="three">Third Column</label>
             <select className="browser-default" name="three" id="three" multiple={true} />
           </div>
-          <div className="row mb-4">
+          <div className="row mb-3">
             <label htmlFor="four">Fourth Column</label>
             <select className="browser-default" name="four" id="four" multiple={true} />
           </div>

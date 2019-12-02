@@ -125,7 +125,7 @@ class FrontPageSettings extends Component {
           <h5>Price</h5>
           {priceDiv}
           <div className="row">
-            <div className="col s2">
+            <div className="col s2 mt-3">
               <Button
                 onClick={() => {
                   this.handleAdd('price');

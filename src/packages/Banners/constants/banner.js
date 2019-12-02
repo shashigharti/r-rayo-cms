@@ -24,7 +24,11 @@ export const TOOLBAR = [
 ];
 
 // Columns: Banner
-export const COLUMNS = [{ key: 'id', display: 'ID' }, { key: 'name', display: 'Name' }];
+export const COLUMNS = [
+  { key: 'id', display: 'ID' },
+  { key: 'name', display: 'Name' },
+  { key: 'banner_template', display: 'Template' },
+];
 
 // Breadcrumb: Banner
 export const BREADCRUMB_BANNER = [

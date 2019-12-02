@@ -43,7 +43,7 @@ class ApiService {
   }
 
   update(path, data) {
-    return this._axios.put(path, data);
+    return axios.put(path, data);
   }
 }
 

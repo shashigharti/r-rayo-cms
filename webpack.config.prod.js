@@ -21,6 +21,7 @@ module.exports = () => {
   }, {});
 
   return {
+    mode: 'production',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, './../../../../public/assets/js'),

@@ -1,8 +1,9 @@
 {
+    "mode": "development",
     "private": true,
     "scripts": {
-        "start": "webpack-dev-server --open --mode development",
-        "prod": "webpack --mode production",
+        "start": "webpack-dev-server --open --mode development --config webpack.config.dev.js",
+        "prod": "webpack --mode production --config webpack.config.prod.js",
         "watch": "webpack --watch"
     },
     "devDependencies": {

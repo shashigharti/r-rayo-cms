@@ -72,7 +72,6 @@ const LeadRow = ({ row, onDelete, GetLeads }) => {
       <td>
         <label>
           <input value={row.id} type="checkbox" onChange={e => handleSelected(e.target.value)} />
-          <span>Red</span>
         </label>
       </td>
       <td>
@@ -85,12 +84,12 @@ const LeadRow = ({ row, onDelete, GetLeads }) => {
             </span>
             {row.phone_number && (
               <div>
-                <i className="fas fa-phone mr-2" />
+                <i className="fa fa-phone mr-2" />
                 <small>{row.phone_number || 'NA'}</small>
               </div>
             )}
             <div>
-              <i className="fas fa-envelope mr-2" />
+              <i className="fa fa-envelope mr-2" />
               <small>{row.email || 'NA'}</small>
             </div>
           </div>

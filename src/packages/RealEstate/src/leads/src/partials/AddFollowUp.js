@@ -56,7 +56,7 @@ const AddFollowUp = props => {
 
   return (
     <>
-      <div className="view-box followups" data-id={state.lead_id}>
+      <div className="view-box followups edit--page" data-id={state.lead_id}>
         <div className="box-content">
           <form onSubmit={handleSubmit}>
             <div className="row">
@@ -64,16 +64,19 @@ const AddFollowUp = props => {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col s12">
-                      <ul className="tabs">
-                        <li className="tab">
-                          <a className="active" href="#pages">
-                            Add Followup
-                          </a>
-                        </li>
-                      </ul>
+                      <h6 className="">
+                        Add Followup
+                        <i
+                          className="fa fa-times right clickable"
+                          onClick={e => {
+                            e.preventDefault();
+                            return closeBox();
+                          }}
+                        ></i>
+                      </h6>
                     </div>
                     <div className="col s12">
-                      <div className="panel card tab--content">
+                      <div className="panel">
                         <div id="users" className="col s12">
                           <div className="row">
                             <div className="input-field col s12">
@@ -106,6 +109,8 @@ const AddFollowUp = props => {
                                 type="textarea"
                                 name="note"
                                 value={state.note}
+                                placeholder="Notes"
+                                rows={10}
                                 onChange={e => setFieldValue('note', e.target.value)}
                               />
                             </div>

@@ -8411,9 +8411,7 @@ export const GlobalStyle = createGlobalStyle`
             /* Textarea */
             textarea
             {
-                width: 100%;
-                height: 3rem;
-            
+                width: 100%;            
                 background-color: transparent;
             }
             textarea.materialize-textarea
@@ -14334,12 +14332,7 @@ export const GlobalStyle = createGlobalStyle`
           font-size: 11px;
           font-weight: bold;
         }
-        .filter--bar select {
-            display: block;
-            height: 2rem !important;
-            font-size: 12px;
-            border: 1px solid #ccc !important;
-        }
+        
         .filter--bar .theme--select {
             margin-top: 5px;
         }
@@ -14372,7 +14365,7 @@ export const GlobalStyle = createGlobalStyle`
             padding: 0px 15px;
         }
         .view-box {
-            width: 270px;
+            width: 300px;
             text-align: left;
             position: absolute;
             background: rgb(250, 250, 250);
@@ -14382,7 +14375,7 @@ export const GlobalStyle = createGlobalStyle`
             color: rgba(0, 0, 0, 0.87);
             z-index: 1;
             top:0;
-            left:0;
+            right:0;
         }
         .view-box .box-title {
             padding: 5px 15px 2px 10px;
@@ -14393,8 +14386,10 @@ export const GlobalStyle = createGlobalStyle`
         }
         .view-box .box-content {
             margin-top: 15px;
-            font-size: 0.9rem;
-            font-family: "Open Sans", Arial, sans-serif;
+            font-size: 12px;
+            font-family: "Open Sans",Arial,sans-serif;
+            padding-bottom: 15px;
+            padding-left: 10px;
         }
         .view-box img {
             width: 85px;

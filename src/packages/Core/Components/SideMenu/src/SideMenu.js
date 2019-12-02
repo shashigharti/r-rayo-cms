@@ -27,19 +27,19 @@ const SideMenu = props => {
   });
   const menus = state.menus;
   return (
-    <SideNav className='nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded'>
-      <div className='brand-sidebar'>
-        <h1 className='logo-wrapper'>
-          <Link className='brand-logo darken-1' to='/'>
-            <span className='logo-text hide-on-med-and-down'>RealEstateNepal</span>
+    <SideNav className="nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded">
+      <div className="brand-sidebar">
+        <h1 className="logo-wrapper">
+          <Link className="brand-logo darken-1" to="/">
+            <span className="logo-text hide-on-med-and-down">RealWebSystem</span>
           </Link>
         </h1>
       </div>
       <ul
-        className='sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow'
-        id='slide-out'
-        data-menu='menu-navigation'
-        data-collapsible='menu-accordion'
+        className="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+        id="slide-out"
+        data-menu="menu-navigation"
+        data-collapsible="menu-accordion"
       >
         {menus.length != 0
           ? menus.map(menu => {
@@ -55,13 +55,13 @@ const SideMenu = props => {
             })
           : null}
       </ul>
-      <div className='navigation-background'></div>
+      <div className="navigation-background"></div>
       <a
-        className='sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only'
-        href='#'
-        data-target='slide-out'
+        className="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
+        href="#"
+        data-target="slide-out"
       >
-        <i className='material-icons'>menu</i>
+        <i className="material-icons">menu</i>
       </a>
     </SideNav>
   );

@@ -51,7 +51,7 @@ const AddNote = props => {
 
   return (
     <>
-      <div className="view-box add-notes" data-id={state.lead_id}>
+      <div className="view-box add-notes edit--page" data-id={state.lead_id}>
         <div className="box-content">
           <form onSubmit={handleSubmit}>
             <div className="row">
@@ -59,16 +59,19 @@ const AddNote = props => {
                 <div className="container-fluid">
                   <div className="row">
                     <div className="col s12">
-                      <ul className="tabs">
-                        <li className="tab">
-                          <a className="active" href="#pages">
-                            Add note
-                          </a>
-                        </li>
-                      </ul>
+                      <h6 className="">
+                        Add Note
+                        <i
+                          className="fa fa-times right clickable"
+                          onClick={e => {
+                            e.preventDefault();
+                            return closeBox();
+                          }}
+                        ></i>
+                      </h6>
                     </div>
                     <div className="col s12">
-                      <div className="panel card tab--content">
+                      <div className="panel">
                         <div id="users" className="col s12">
                           <div className="row">
                             <div className="input-field col s12">
@@ -84,6 +87,7 @@ const AddNote = props => {
                               <textarea
                                 type="textarea"
                                 name="note"
+                                rows={10}
                                 value={state.note}
                                 onChange={e => setFieldValue('note', e.target.value)}
                               />

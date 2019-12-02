@@ -3,9 +3,9 @@ export default props => {
   const { firstname, lastname, results, id, closeBox } = props;
   return (
     <>
-      <div className="view-box reports" data-id={id}>
+      <div className="view-box rating" data-id={id}>
         <div className="box-title">
-          {firstname} {lastname} - "Reports"
+          {firstname} {lastname} - "Rating"
           <i
             className="fa fa-times right clickable"
             onClick={e => {
@@ -15,15 +15,11 @@ export default props => {
           ></i>
         </div>
         <div className="box-content">
-          {results.length > 0 &&
-            results.map(result => {
-              return (
-                <div className="row viewed-lead" key={result.id}>
-                  <p>{result.name}</p>
-                  <p>{result.type}</p>
-                </div>
-              );
-            })}
+          <div className="row viewed-lead">
+            <div className="col s8">
+              <p>{results ? results.ratings : 'No Rating Yet'}</p>
+            </div>
+          </div>
         </div>
       </div>
     </>

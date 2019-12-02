@@ -6,7 +6,7 @@ class ApiService {
   constructor(axios) {
     // set base url for production
     this._axios = axios.create({
-      baseURL: process.env.API_ENDPOINT
+      baseURL: process.env.API_ENDPOINT,
     });
   }
 
@@ -31,9 +31,9 @@ class ApiService {
   }
 
   store(path, data) {
-    return this._axios.post(path, data);
+    // return this._axios.post(path, data); //not working
+    return axios.post(path, data);
   }
-
   post(path, data) {
     return this._axios.post(path, data);
   }

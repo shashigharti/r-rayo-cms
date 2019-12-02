@@ -14371,5 +14371,52 @@ export const GlobalStyle = createGlobalStyle`
             height: 30px;
             padding: 0px 15px;
         }
+        .view-box {
+            width: 270px;
+            text-align: left;
+            position: absolute;
+            background: rgb(250, 250, 250);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid #ccc;
+            font-family: "Roboto Condensed", sans-serif;
+            color: rgba(0, 0, 0, 0.87);
+            z-index: 1;
+            top:0;
+            left:0;
+        }
+        .view-box .box-title {
+            padding: 5px 15px 2px 10px;
+            border-bottom: 1px solid #ccc;
+            background: #e8e8e8;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        .view-box .box-content {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            font-family: "Open Sans", Arial, sans-serif;
+        }
+        .view-box img {
+            width: 85px;
+            height: 70px;
+            padding: 0;
+            overflow: hidden;
+            object-fit: cover;
+        }
+        .view-box .vw-lead-name {
+            font-weight: 600;
+        }
+        .view-box .vw-lead-address, .view-box .vw-lead-price {
+            font-weight: 200;
+        }
+        .leads__view-container{
+            position:relative;
+        }
+      
+        .leads__view-container .view-box.views.show {
+            top: 18px;
+            display: block;
+        }
 
-`
+
+`;

@@ -4,6 +4,10 @@ export const API_LEAD_EDIT = 'api/leads/:id/edit';
 export const API_LEAD_STORE = '/api/leads';
 export const API_LEAD_UPDATE = '/api/leads/';
 export const API_LEAD_DELETE = '/api/leads/';
+export const API_LEAD_TYPE = '/api/leads/type/';
+export const API_LEAD_AGENT = '/api/leads/agent/';
+export const API_LEAD_FOLLOWUP_STORE = '/api/followups/leads';
+export const API_LEAD_NOTE_STORE = '/api/notes/leads';
 
 // Route: LEAD
 export const LEAD = '/leads';

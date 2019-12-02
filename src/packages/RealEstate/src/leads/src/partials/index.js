@@ -1,7 +1,27 @@
-import Views from './views';
-import Alerts from './alerts';
-import Favourites from './favourites';
-import Reports from './reports';
-import Distance from './distance';
+import views from './views';
+import alerts from './alerts';
+import favourites from './favourites';
+import reports from './reports';
+import distances from './distances';
+import notes from './notes';
+import emails from './emails';
+import calls from './calls';
+import rating from './rating';
+import replies from './replies';
+import AddFollowUp from './AddFollowUp';
+import AddNote from './AddNote';
 
-export { Views, Alerts, Favourites, Reports, Distance };
+export {
+  views,
+  alerts,
+  favourites,
+  reports,
+  distances,
+  notes,
+  emails,
+  calls,
+  rating,
+  replies,
+  AddFollowUp,
+  AddNote,
+};

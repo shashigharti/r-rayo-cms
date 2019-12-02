@@ -1,13 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Partials from './partials';
 
-const LeadRow = ({ row, onDelete }) => {
-  const { Views, Alerts, Favourites, Reports, Distance } = Partials;
+const LeadRow = ({ row, onDelete, GetLeads }) => {
+  const [state, setState] = useState({
+    show: false,
+    name: '',
+    id: '',
+    selected: [],
+  });
+
+  useEffect(() => {
+    M.AutoInit();
+  });
+
+  const showBox = (name, id) => {
+    const boxes = document.querySelectorAll('.view-box');
+    boxes.forEach(box => {
+      box.style.display = 'none';
+    });
+    setState({
+      ...state,
+      ['show']: true,
+      ['name']: name,
+      ['id']: id,
+    });
+    const box = document.querySelector(`.${name}[data-id="${id}"]`);
+    box.style.display = 'block';
+  };
+
+  const renderBoxComponent = () => {
+    const BoxComponent = Partials[state.name];
+    return (
+      <BoxComponent
+        key={row.id}
+        id={row.id}
+        results={row[state.name]}
+        firstname={row.firstname}
+        lastname={row.lastname}
+        closeBox={closeBox}
+      />
+    );
+  };
+
+  const renderAddComponent = (name, id) => {
+    const AddComponent = Partials[state.name];
+    return <AddComponent id={row.id} closeBox={closeBox} />;
+  };
+  const closeBox = () => {
+    setState({
+      ...state,
+      ['show']: false,
+      ['name']: '',
+      ['id']: '',
+    });
+  };
+  const handleSelected = id => {
+    let { selected } = state;
+    if (selected.includes(id)) {
+      selected = selected.first(e => e !== id);
+    } else {
+      selected.push(id);
+    }
+    setState({
+      ...state,
+      ['selected']: selected,
+    });
+  };
   return (
     <tr>
       <td>
-        <input type="checkbox" value="[object Object]" />
+        <label>
+          <input value={row.id} type="checkbox" onChange={e => handleSelected(e.target.value)} />
+          <span>Red</span>
+        </label>
       </td>
       <td>
         <div className="row">
@@ -39,7 +105,12 @@ const LeadRow = ({ row, onDelete }) => {
           <a href="#">{row.agent && row.agent.first_name + ' ' + row.agent.last_name}</a>
         </div>
         <div>
-          <select className="browser-default" name="status"></select>
+          <select name="status" defaultValue={row.status}>
+            <option value="untouched">Untouched</option>
+            <option value="assigned">Assigned</option>
+            <option value="contacted">Contacted</option>
+            <option value="showing">Showing</option>
+          </select>
         </div>
       </td>
       <td>
@@ -63,12 +134,22 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <div href="#" title="Click for Properties Viewed">
-                      <i aria-hidden="true" className="fa fa-eye fa-fw" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('views', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-eye fa-fw"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.views_count : 0}</sub>
+                        <sub>{row['views'].length}</sub>
                       </small>
-                      <Views views={row.views} firstname={row.firstname} lastname={row.lastname} />
+                      {state.show &&
+                        state.name == 'views' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
                     </div>
                   </div>
                 </div>
@@ -76,17 +157,23 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Favorite Properties">
-                      <i className="fas fa-heart" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('favourites', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-heart"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.favourites_count : 0}</sub>
+                        <sub>{row['favourites'].length}</sub>
                       </small>
-                    </a>
-                    <Favourites
-                      favourites={row.favourites}
-                      firstname={row.firstname}
-                      lastname={row.lastname}
-                    />
+                      {state.show &&
+                        state.name == 'favourites' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -97,7 +184,7 @@ const LeadRow = ({ row, onDelete }) => {
                   <div>
                     <a
                       href="#"
-                      title="Neighborhood Camps"
+                      title="Feature Coming Soon"
                       className="tooltipped"
                       data-position="bottom"
                       data-tooltip="Feature Coming Soon"
@@ -113,17 +200,23 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Market Reports">
-                      <small>MR</small>
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('reports', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-eye fa-fw"
+                      />
                       <small>
-                        <sub>0</sub>
+                        <sub>{row['reports'].length}</sub>
                       </small>
-                    </a>
-                    <Reports
-                      reports={row.reports}
-                      firstname={row.firstname}
-                      lastname={row.lastname}
-                    />
+                      {state.show &&
+                        state.name == 'reports' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -132,34 +225,46 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Listings / Alerts" className="position-relative">
-                      <i aria-hidden="true" className="fa fa-bullhorn" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('alerts', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-bullhorn"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.search_count : 0}</sub>
+                        <sub>{row['alerts'].length}</sub>
                       </small>
-                    </a>
-                    <Alerts
-                      firstname={row.firstname}
-                      lastname={row.lastname}
-                      alerts={row.searches}
-                    />
+                      {state.show &&
+                        state.name == 'alerts' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Distance / Drivetime">
-                      <i aria-hidden="true" className="fa fa-car fa-fw" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('distances', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-car fa-fw"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.distance_count : 0}</sub>
+                        <sub>{row['distances'].length}</sub>
                       </small>
-                    </a>
-                    <Distance
-                      distances={row.distances}
-                      firstname={row.firstname}
-                      lastname={row.lastname}
-                    />
+                      {state.show &&
+                        state.name == 'distances' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -174,50 +279,46 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <a title="Click to see communications">
-                      <i aria-hidden="true" className="fa fa-envelope fa-fw" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('emails', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-envelope fa-fw"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.emails_count : 0}</sub>
+                        <sub>{row['emails'].length}</sub>
                       </small>
-                    </a>
+                      {state.show &&
+                        state.name == 'emails' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Click to see notes">
-                      <i className="fas fa-sticky-note" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('notes', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-sticky-note"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.notes_count : 0}</sub>
+                        <sub>{row['notes'].length}</sub>
                       </small>
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div className="info-unit">
-                  <div>
-                    <a href="#" title="Click to see calls detail">
-                      <i aria-hidden="true" className="fa fa-phone fa-fw" />
-                      <small>
-                        <sub>{row.metadata ? row.metadata.calls_count : 0}</sub>
-                      </small>
-                    </a>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="info-unit">
-                  <div>
-                    <a title="Click to see replies">
-                      <i className="fas fa-reply" />
-                      <small>
-                        <sub>{row.metadata ? row.metadata.email_replies_count : 0}</sub>
-                      </small>
-                    </a>
+                      {state.show &&
+                        state.name == 'notes' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -226,12 +327,71 @@ const LeadRow = ({ row, onDelete }) => {
               <td>
                 <div className="info-unit">
                   <div>
-                    <a href="#" title="Click to rate lead.">
-                      <i className="fas fa-star" />
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('calls', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-phone fa-fw"
+                      />
                       <small>
-                        <sub>{row.metadata ? row.metadata.distance_count : 0}</sub>
+                        <sub>{row['calls'].length}</sub>
                       </small>
-                    </a>
+                      {state.show &&
+                        state.name == 'calls' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div className="info-unit">
+                  <div>
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('replies', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-reply"
+                      />
+                      <small>
+                        <sub>{row['replies'].length}</sub>
+                      </small>
+                      {state.show &&
+                        state.name == 'replies' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div className="info-unit">
+                  <div>
+                    <div className="leads__view-container">
+                      <i
+                        onClick={e => {
+                          e.preventDefault();
+                          return showBox('rating', row.id);
+                        }}
+                        aria-hidden="true"
+                        className="fa fa-star"
+                      />
+                      <small>
+                        <sub>{row.rating ? row['rating'].ratings : ''}</sub>
+                      </small>
+                      {state.show &&
+                        state.name == 'rating' &&
+                        state.id == row.id &&
+                        renderBoxComponent()}
+                    </div>
                   </div>
                 </div>
               </td>
@@ -240,13 +400,37 @@ const LeadRow = ({ row, onDelete }) => {
         </table>
       </td>
       <td>
-        <a href="#">Add</a>
+        <a href="#">{row.contact_status || 'Not Contacted yet'}</a>
       </td>
       <td>
-        <a href="#">
-          Lead review
-          <i className="fas fa-external-link-alt ml-2" />
-        </a>
+        <div className="leads__view-container">
+          <a
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              return showBox('AddFollowUp', row.id);
+            }}
+          >
+            <i className="fa fa-plus" />
+            Add
+          </a>
+          {state.show && state.name == 'AddFollowUp' && state.id == row.id && renderAddComponent()}
+        </div>
+      </td>
+      <td>
+        <div className="leads__view-container">
+          <a
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              return showBox('AddNote', row.id);
+            }}
+          >
+            <i className="fa fa-plus" />
+            Add
+          </a>
+          {state.show && state.name == 'AddNote' && state.id == row.id && renderAddComponent()}
+        </div>
       </td>
     </tr>
   );

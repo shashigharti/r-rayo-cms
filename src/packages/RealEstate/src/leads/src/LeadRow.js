@@ -114,7 +114,7 @@ const LeadRow = ({ row, onDelete, GetLeads }) => {
       </td>
       <td>
         <small>
-          <span>{row.last_login || 'NA'}</span>
+          <span>{row.last_active || 'NA'}</span>
         </small>
         <br />
         <small>{row.metadata ? row.metadata.login_count + ' times' : 'N/A'}</small>

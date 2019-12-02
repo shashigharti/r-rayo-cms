@@ -14371,9 +14371,12 @@ export const GlobalStyle = createGlobalStyle`
             height: 30px;
             padding: 0px 15px;
         }
+<<<<<<< HEAD
         .purple.btn{
             font-size:11px;
         }
+=======
+>>>>>>> b76e15822594a451f3bffa40304a012d91507f16
         .view-box {
             width: 270px;
             text-align: left;

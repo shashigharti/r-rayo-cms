@@ -22,10 +22,9 @@ module.exports = () => {
 
   return {
     entry: './src/index.js',
-    mode: 'development',
     output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: './app.js',
+      path: path.resolve(__dirname, './../../../../public/assets/js'),
+      filename: './app.min.js',
     },
     module: {
       rules: [
@@ -81,7 +80,7 @@ module.exports = () => {
       proxy: {
         '/api': env.API_ENDPOINT,
       },
-      public: 'http://localhost/react-core/dist'
+      public: env.BASE_URL,
     },
     devtool: 'cheap-module-eval-source-map'
   };

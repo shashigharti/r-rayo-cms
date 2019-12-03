@@ -35,7 +35,7 @@ class ApiService {
     return axios.post(path, data);
   }
   post(path, data) {
-    return this._axios.post(path, data);
+    return axios.post(path, data);
   }
 
   delete(path) {

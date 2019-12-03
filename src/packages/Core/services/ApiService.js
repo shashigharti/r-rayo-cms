@@ -31,19 +31,18 @@ class ApiService {
   }
 
   store(path, data) {
-    // return this._axios.post(path, data); //not working
-    return axios.post(path, data);
+    return this._axios.post(path, data);
   }
   post(path, data) {
-    return axios.post(path, data);
+    return this._axios.post(path, data);
   }
 
   delete(path) {
-    return axios.delete(path);
+    return this._axios.delete(path);
   }
 
   update(path, data) {
-    return axios.put(path, data);
+    return this._axios.put(path, data);
   }
 }
 

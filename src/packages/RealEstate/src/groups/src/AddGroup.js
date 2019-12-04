@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import ToolBar from '../../../../Core/Components/ToolBar';
+import ColorPicker from '../../../../Core/Components/ColorPicker';
 import * as constants from '../constants';
 import { GroupContext } from '../../../';
 import { apiService, alertService } from '../../../../Core';
@@ -55,68 +56,64 @@ const AddGroup = () => {
   return (
     <>
       {toList ? <Redirect to={constants.GROUP} /> : null}
-      <div id='main'>
+      <div id="main">
         <ToolBar breadcrumbs={constants.BREADCRUMB_GROUP_CREATE} toolbar={constants.TOOLBAR} />
         <form onSubmit={handleSubmit}>
-          <div className='row'>
-            <div className='col s12'>
-              <div className='container-fluid'>
-                <div className='row'>
-                  <div className='col s12'>
-                    <ul className='tabs'>
-                      <li className='tab'>
-                        <a className='active' href='#pages'>
+          <div className="row">
+            <div className="col s12">
+              <div className="container-fluid">
+                <div className="row">
+                  <div className="col s12">
+                    <ul className="tabs">
+                      <li className="tab">
+                        <a className="active" href="#pages">
                           Add Group
                         </a>
                       </li>
                     </ul>
                   </div>
-                  <div className='col s12'>
-                    <div className='panel card tab--content'>
-                      <div id='users' className='col s12'>
-                        <div className='row'>
-                          <div className='input-field col s6'>
+                  <div className="col s12">
+                    <div className="panel card tab--content">
+                      <div id="users" className="col s12">
+                        <div className="row">
+                          <div className="input-field col s6">
                             <label>Name</label>
                             <input
-                              type='text'
-                              name='name'
+                              type="text"
+                              name="name"
                               value={state.name}
                               onChange={e => setFieldValue('name', e.target.value)}
                             />
                           </div>
-                          <div className='input-field col s6'>
-                            <input
-                              type='text'
-                              name='color'
-                              value={state.color}
-                              onChange={e => setFieldValue('color', e.target.value)}
-                            />
-                            <label>Color</label>
-                          </div>
-                        </div>
-                        <div className='row'>
-                          <div className='input-field col s6'>
+                          <div className="input-field col s6">
                             <select
-                              name='status'
-                              defaultValue=''
+                              name="status"
+                              defaultValue=""
                               value={state.value}
                               onChange={e => setFieldValue('status', e.target.value)}
                             >
-                              <option value='' disabled>
+                              <option value="" disabled>
                                 Choose your option
                               </option>
-                              <option value='1'>Active</option>
-                              <option value='2'>InActive</option>
+                              <option value="1">Active</option>
+                              <option value="2">InActive</option>
                             </select>
                             <label>Status</label>
                           </div>
                         </div>
-                        <div className='row'>
-                          <div className='col s12'>
-                            <div className='input-field'>
+                        <div className="row">
+                          <div className="input-field col s6">
+                            <ColorPicker color={state.color} setFieldValue={setFieldValue} />
+                            <label>Color</label>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col s12">
+                            <div className="input-field">
                               <button
-                                type='submit'
-                                className='btn gradient-45deg-purple-deep-orange'
+                                type="submit"
+                                className="btn gradient-45deg-purple-deep-orange"
                               >
                                 Submit
                               </button>

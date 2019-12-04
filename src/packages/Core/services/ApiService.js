@@ -4,10 +4,14 @@ import { generatePath } from 'react-router';
 /** @class ApiService is a parent class responsible for all the rest api calls. */
 class ApiService {
   constructor(axios) {
-    // set base url for production
-    this._axios = axios.create({
-      baseURL: process.env.API_ENDPOINT,
-    });
+    if (process.env.NODE_ENV == 'production') {
+      // set base url for production
+      this._axios = axios.create({
+        baseURL: process.env.API_ENDPOINT,
+      });
+    } else {
+      this._axios = axios;
+    }
   }
 
   getAll(path) {

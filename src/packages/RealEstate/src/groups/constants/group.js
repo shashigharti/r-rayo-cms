@@ -1,6 +1,6 @@
 // API: GROUP
 export const API_GROUP = 'api/groups';
-export const API_GROUP_EDIT = 'api/groups/:id/edit';
+export const API_GROUP_EDIT = '/api/groups/:id/edit';
 export const API_GROUP_STORE = '/api/groups';
 export const API_GROUP_UPDATE = '/api/groups/';
 export const API_GROUP_DELETE = 'api/groups/destroy';

@@ -28,6 +28,7 @@ const EditBanner = props => {
     prices: [],
     location: '',
     image: '',
+    property_counts: [],
   });
 
   useEffect(() => {
@@ -52,6 +53,7 @@ const EditBanner = props => {
       prices: props.payload.prices,
       location: props.payload.location,
       image: props.payload.image || '',
+      property_counts: props.payload.property_counts,
     });
   }, [props]);
 

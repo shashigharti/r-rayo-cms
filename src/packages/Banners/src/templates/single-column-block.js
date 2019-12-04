@@ -55,29 +55,6 @@ export default props => {
           </select>
         </div>
       </div>
-      <div className="row">
-        <div className="input-field col s12">
-          <label>Items</label>
-          <select
-            defaultValue={state.property_ids}
-            name="property_ids"
-            multiple
-            onChange={e =>
-              setFieldValue(
-                'property_ids',
-                Array.from(e.target.selectedOptions, item => item.value),
-              )
-            }
-          >
-            <option value="" disabled>
-              Choose your option
-            </option>
-            <option value="1">Property 1</option>
-            <option value="2">Property 2</option>
-            <option value="3">Property 3</option>
-          </select>
-        </div>
-      </div>
     </div>
   );
 };

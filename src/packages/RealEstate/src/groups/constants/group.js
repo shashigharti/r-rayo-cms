@@ -7,7 +7,7 @@ export const API_GROUP_DELETE = 'api/groups/destroy';
 
 // Route: GROUP
 export const GROUP = '/groups';
-export const GROUP_EDIT = 'groups/edit/:id/';
+export const GROUP_EDIT = 'groups/edit/:id';
 export const GROUP_CREATE = 'groups/create';
 
 // Actions: GROUP

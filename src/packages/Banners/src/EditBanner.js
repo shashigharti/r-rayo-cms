@@ -19,7 +19,7 @@ const EditBanner = props => {
     status: '',
     order: '',
     area_types: '',
-    sub_areas: '',
+    sub_areas: [],
     property_count: '',
     header: '',
     content: '',

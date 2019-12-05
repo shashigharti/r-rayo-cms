@@ -15,7 +15,7 @@ const BannerAdd = () => {
     slug: '',
     banner_template: 'FullScreenAd',
     area_types: '',
-    sub_areas: '',
+    sub_areas: [],
     property_count: '',
     header: '',
     content: '',
@@ -25,6 +25,7 @@ const BannerAdd = () => {
     prices: [],
     location: '',
     image: '',
+    property_counts: [],
   });
 
   useEffect(() => {

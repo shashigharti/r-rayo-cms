@@ -55,6 +55,26 @@ export default props => {
           </select>
         </div>
       </div>
+      <div className="row">
+        <div className="input-field col s12">
+          <label>Sub Areas</label>
+          <select
+            defaultValue={state.sub_areas}
+            name="sub_areas"
+            multiple
+            onChange={e =>
+              setFieldValue('sub_areas', Array.from(e.target.selectedOptions, item => item.value))
+            }
+          >
+            <option value="" disabled>
+              Choose your option
+            </option>
+            <option value="condos">Condos</option>
+            <option value="neighbourhood">Neighbourhood</option>
+            <option value="acreages">Acreages</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };

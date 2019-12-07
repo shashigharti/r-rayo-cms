@@ -58,7 +58,6 @@ const BannerAdd = () => {
 
   const renderSelectedTemplate = selectedTemplate => {
     const BannerTemplate = BannerTemplates[selectedTemplate];
-    console.log(BannerTemplate);
     return <BannerTemplate setFieldValue={setFieldValue} state={state} />;
   };
 

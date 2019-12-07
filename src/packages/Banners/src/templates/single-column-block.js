@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectDropDown } from './../../../Core';
 
 export default props => {
   const { setFieldValue, state } = props;
-
-  // Run once
   useEffect(() => {
-    // Inject new property to state and set the default value
-    // setFieldValue('location_type', 'cities');
-    // setFieldValue('location', [{ 1: 'Atlantis' }, { 2: 'Counties' }]);
-
-    console.log(state);
-  });
+    setFieldValue('location_type', 'cities')
+  }, []);
 
   useEffect(() => {
     M.AutoInit();
@@ -47,41 +41,31 @@ export default props => {
           </select>
         </div>
       </div>
-      {/* <div className="row">
+      <div className="row">
         <div className="input-field col s12">
-          <label>Locations</label>
-          <select
+          <label>Location Type</label>
+          <SelectDropDown
             defaultValue={state.location_type}
-            name="location_type"
-            onChange={e => setFieldValue('location_type', e.target.value)}
-          >
-            <option value="cities">Cities</option>
-            <option value="counties">Counties</option>
-            <option value="areas">Areas</option>
-            <option value="subdivisions">Subdivisions</option>
-          </select>
+            name="location"
+            onChange={e => setFieldValue('location', e.target.value)}
+            options={[
+              { title: 'Cities', value: 'Cities' },
+              { title: 'Counties', value: 'Counties' },
+              { title: 'Areas', value: 'areas' },
+            ]}
+          />
         </div>
-      </div> */}
+      </div>
+
       <div className="row">
         <div className="input-field col s12">
           <label>Select {state.location_type}</label>
           <SelectDropDown
-            //onChange={e => setFieldValue('location', e.target.value)}
-            options={state.location}
-          />
-          {/* <select
             defaultValue={state.location}
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
-          >
-            <option value="" disabled>
-              Choose your option
-            </option>
-            <option value="Atlantis">Atlantis</option>
-            <option value="Boca Raton">Boca Raton</option>
-            <option value="Boynton Beach">Boynton Beach</option>
-            <option value="Clewiston">Clewiston</option>
-          </select> */}
+            options={[{ title: 'Atlantis', value: 'Atlantis' }, { title: 'Boca Raton', value: 'CounBoca Ratonties' }]}
+          />
         </div>
       </div>
     </div>

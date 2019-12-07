@@ -42,7 +42,7 @@ import SideMenuContextProvider, {
 } from './Components/SideMenu/contexts/SideMenuContext';
 import Media from './Components/Media/src/Media';
 import MediaContextProvider, { MediaContext } from './Components/Media/contexts/MediaContext';
-import SelectDropDown from './Components';
+import SelectDropDown from './Components/SelectDropDown';
 
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';

@@ -1,9 +1,9 @@
-import React from 'react';
-import { apiService } from '..';
+import React, { useState, useEffect } from 'react';
+//import { apiService } from '..';
 
 const SelectDropDown = (props) => {
     const { endpointURL = null, ...elemProp } = props;
-    const { options, setOptions } = useState(props.options);
+    const [options, setOptions] = useState(props.options);
 
     useEffect(() => {
         // Make an ajax call
@@ -17,7 +17,7 @@ const SelectDropDown = (props) => {
     }, [])
 
     return (
-        <>
+        <div className="select-dropdown">
             <select
                 {...elemProp}
             >
@@ -27,7 +27,7 @@ const SelectDropDown = (props) => {
                     );
                 })}
             </select>
-        </>
+        </div>
     );
 }
 

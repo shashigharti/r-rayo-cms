@@ -11,6 +11,7 @@ import TemplateContextProvider, {
 import AddRole from './src/roles/src/AddRole';
 import Roles from './src/roles/RolePageList';
 import RRow from './src/roles/Row';
+
 // roles
 import RoleList from './src/roles/src/RoleList';
 import RoleContextProvider, { RoleContext } from './src/roles/contexts/RoleContext';
@@ -23,34 +24,32 @@ import SearchSettings from './src/settings/SearchSettings';
 import Settings from './src/settings/Settings';
 import SiteSettings from './src/settings/SiteSettings';
 
-// users
+// users/login/registration
 import AddUser from './src/users/src/AddUser';
 import EditUser from './src/users/src/EditUser';
 import UserList from './src/users/src/UserList';
 import UserContextProvider, { UserContext } from './src/users/contexts/UserContext';
-
 import RegisterPage from './src/users/src/auth/RegisterPage';
 import ForgotPasswordPage from './src/users/src/auth/ForgotPasswordPage';
 import LoginPage from './src/users/src/auth/LoginPage';
 import ResetPasswordPage from './src/users/src/auth/ResetPasswordPage';
 
-// partials
+// components
 import Header from './Components/Header';
-
 import SideMenu from './Components/SideMenu/src/SideMenu';
 import SideMenuContextProvider, {
   SideMenuContext,
 } from './Components/SideMenu/contexts/SideMenuContext';
+import Media from './Components/Media/src/Media';
+import MediaContextProvider, { MediaContext } from './Components/Media/contexts/MediaContext';
+import SelectDropDown from './Components';
 
 // contexts
 import AuthContextProvider, { AuthContext } from './contexts/AuthContext';
 import { authReducer } from './reducers/authReducer';
-
 import { apiService } from './services/ApiService';
 import { alertService } from './services/AlertService';
 
-import Media from './Components/Media/src/Media';
-import MediaContextProvider, { MediaContext } from './Components/Media/contexts/MediaContext';
 export {
   Dashboard,
   //
@@ -97,4 +96,7 @@ export {
   Media,
   MediaContextProvider,
   MediaContext,
+
+  // components
+  SelectDropDown
 };

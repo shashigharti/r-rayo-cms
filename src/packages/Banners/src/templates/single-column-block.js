@@ -1,12 +1,22 @@
 import React, { useEffect } from 'react';
+import { SelectDropDown } from './../../../Core';
+
 export default props => {
+  const { setFieldValue, state } = props;
+
+  // Run once
+  useEffect(() => {
+    // Inject new property to state and set the default value
+    // setFieldValue('location_type', 'cities');
+    // setFieldValue('location', [{ 1: 'Atlantis' }, { 2: 'Counties' }]);
+
+    console.log(state);
+  });
+
   useEffect(() => {
     M.AutoInit();
-  });
-  useEffect(() => {
     M.updateTextFields();
   });
-  const { setFieldValue, state } = props;
 
   return (
     <div className="banner-template">
@@ -37,10 +47,29 @@ export default props => {
           </select>
         </div>
       </div>
-      <div className="row">
+      {/* <div className="row">
         <div className="input-field col s12">
           <label>Locations</label>
           <select
+            defaultValue={state.location_type}
+            name="location_type"
+            onChange={e => setFieldValue('location_type', e.target.value)}
+          >
+            <option value="cities">Cities</option>
+            <option value="counties">Counties</option>
+            <option value="areas">Areas</option>
+            <option value="subdivisions">Subdivisions</option>
+          </select>
+        </div>
+      </div> */}
+      <div className="row">
+        <div className="input-field col s12">
+          <label>Select {state.location_type}</label>
+          <SelectDropDown
+            //onChange={e => setFieldValue('location', e.target.value)}
+            options={state.location}
+          />
+          {/* <select
             defaultValue={state.location}
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
@@ -52,7 +81,7 @@ export default props => {
             <option value="Boca Raton">Boca Raton</option>
             <option value="Boynton Beach">Boynton Beach</option>
             <option value="Clewiston">Clewiston</option>
-          </select>
+          </select> */}
         </div>
       </div>
     </div>

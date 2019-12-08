@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { SelectDropDown } from './../../../Core';
+import * as constants from '../../constants';
 
 export default props => {
   const { setFieldValue, state } = props;
   useEffect(() => {
-    setFieldValue('location_type', 'cities')
+    setFieldValue('location_type', 'Cities');
   }, []);
 
   useEffect(() => {
     M.AutoInit();
     M.updateTextFields();
   });
-
   return (
     <div className="banner-template">
       <div className="row">
@@ -46,13 +46,14 @@ export default props => {
           <label>Location Type</label>
           <SelectDropDown
             defaultValue={state.location_type}
-            name="location"
-            onChange={e => setFieldValue('location', e.target.value)}
+            name="location_type"
+            onChange={e => setFieldValue('location_type', e.target.value)}
             options={[
               { title: 'Cities', value: 'Cities' },
               { title: 'Counties', value: 'Counties' },
-              { title: 'Areas', value: 'areas' },
+              { title: 'Zips', value: 'Zips' },
             ]}
+            maps={{ value: 'value', title: 'title' }}
           />
         </div>
       </div>
@@ -61,10 +62,13 @@ export default props => {
         <div className="input-field col s12">
           <label>Select {state.location_type}</label>
           <SelectDropDown
+            key={state.location_type}
             defaultValue={state.location}
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
-            options={[{ title: 'Atlantis', value: 'Atlantis' }, { title: 'Boca Raton', value: 'CounBoca Ratonties' }]}
+            options={[]}
+            endpointURL={constants.DROPDOWN_APIS[state.location_type]}
+            maps={{ value: 'id', title: 'name' }}
           />
         </div>
       </div>
@@ -84,7 +88,9 @@ export default props => {
             </option>
             <option value="condos">Condos</option>
             <option value="neighbourhood">Neighbourhood</option>
+            <option value="communities">Communities</option>
             <option value="acreages">Acreages</option>
+            <option value="waterfront">Waterfront</option>
           </select>
         </div>
       </div>

@@ -77,3 +77,10 @@ export const BREADCRUMB_BANNER_CREATE = [
     path: '/banners/create',
   },
 ];
+
+export const DROPDOWN_APIS = {
+  Cities: '/api/dropdown/cities',
+  Counties: '/api/dropdown/counties',
+  Zips: '/api/dropdown/zips',
+  Areas: '/api/dropdown/areas',
+};

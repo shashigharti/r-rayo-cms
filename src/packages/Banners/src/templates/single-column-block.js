@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { SelectDropDown } from './../../../Core';
+
 export default props => {
+  const { setFieldValue, state } = props;
+  useEffect(() => {
+    setFieldValue('location_type', 'cities')
+  }, []);
+
   useEffect(() => {
     M.AutoInit();
-  });
-  useEffect(() => {
     M.updateTextFields();
   });
-  const { setFieldValue, state } = props;
 
   return (
     <div className="banner-template">
@@ -39,20 +43,29 @@ export default props => {
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <label>Locations</label>
-          <select
+          <label>Location Type</label>
+          <SelectDropDown
+            defaultValue={state.location_type}
+            name="location"
+            onChange={e => setFieldValue('location', e.target.value)}
+            options={[
+              { title: 'Cities', value: 'Cities' },
+              { title: 'Counties', value: 'Counties' },
+              { title: 'Areas', value: 'areas' },
+            ]}
+          />
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="input-field col s12">
+          <label>Select {state.location_type}</label>
+          <SelectDropDown
             defaultValue={state.location}
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
-          >
-            <option value="" disabled>
-              Choose your option
-            </option>
-            <option value="Atlantis">Atlantis</option>
-            <option value="Boca Raton">Boca Raton</option>
-            <option value="Boynton Beach">Boynton Beach</option>
-            <option value="Clewiston">Clewiston</option>
-          </select>
+            options={[{ title: 'Atlantis', value: 'Atlantis' }, { title: 'Boca Raton', value: 'CounBoca Ratonties' }]}
+          />
         </div>
       </div>
       <div className="row">

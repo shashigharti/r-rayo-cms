@@ -21,9 +21,9 @@ export default props => {
             <option value="" disabled>
               Choose your option
             </option>
-            <option value="city">Cities</option>
-            <option value="county">Counties</option>
-            <option value="subdivision">Subdivision</option>
+            <option value="city_id">Cities</option>
+            <option value="county_id">Counties</option>
+            <option value="subdivision_id">Subdivision</option>
           </select>
         </div>
       </div>

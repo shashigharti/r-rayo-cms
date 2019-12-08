@@ -26,6 +26,7 @@ const BannerAdd = () => {
     location: '',
     image: '',
     property_counts: [],
+    location_type: 'cities',
   });
 
   useEffect(() => {

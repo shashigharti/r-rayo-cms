@@ -79,8 +79,8 @@ export const BREADCRUMB_BANNER_CREATE = [
 ];
 
 export const DROPDOWN_APIS = {
-  Cities: '/api/dropdown/cities',
-  Counties: '/api/dropdown/counties',
-  Zips: '/api/dropdown/zips',
-  Areas: '/api/dropdown/areas',
+  cities: '/api/dropdown/cities',
+  counties: '/api/dropdown/counties',
+  zips: '/api/dropdown/zips',
+  areas: '/api/dropdown/areas',
 };

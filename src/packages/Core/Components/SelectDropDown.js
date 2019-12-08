@@ -26,6 +26,7 @@ const SelectDropDown = props => {
   return (
     <div className="select-dropdown">
       <select {...elemProp}>
+        <option value="">Choose your option</option>
         {options.length > 0 &&
           options.map((option, index) => {
             return (

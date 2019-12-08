@@ -5,10 +5,6 @@ import * as constants from '../../constants';
 export default props => {
   const { setFieldValue, state } = props;
   useEffect(() => {
-    setFieldValue('location_type', 'Cities');
-  }, []);
-
-  useEffect(() => {
     M.AutoInit();
     M.updateTextFields();
   });
@@ -46,12 +42,13 @@ export default props => {
           <label>Location Type</label>
           <SelectDropDown
             defaultValue={state.location_type}
+            value={state.location_type}
             name="location_type"
             onChange={e => setFieldValue('location_type', e.target.value)}
             options={[
-              { title: 'Cities', value: 'Cities' },
-              { title: 'Counties', value: 'Counties' },
-              { title: 'Zips', value: 'Zips' },
+              { title: 'Cities', value: 'cities' },
+              { title: 'Counties', value: 'counties' },
+              { title: 'Zips', value: 'zips' },
             ]}
             maps={{ value: 'value', title: 'title' }}
           />
@@ -63,7 +60,7 @@ export default props => {
           <label>Select {state.location_type}</label>
           <SelectDropDown
             key={state.location_type}
-            defaultValue={state.location}
+            defaultValue=""
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
             options={[]}

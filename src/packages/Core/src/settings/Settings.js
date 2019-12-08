@@ -5,6 +5,7 @@ import FrontPageSettings from './FrontPageSettings';
 import GeneralSettings from './GeneralSettings';
 import Site from './src/Site';
 import Seo from './src/Seo';
+import SearchBlock from './src/search-block';
 import Search from './src/search';
 
 const Settings = () => {
@@ -43,11 +44,11 @@ const Settings = () => {
                       </li> */}
                   <li className="tab">
                     <a className="active" href="#searchDiv">
-                      Search
+                      Search Blocks
                     </a>
                   </li>
                   <li className="tab">
-                    <a href="#test3">Agent</a>
+                    <a href="#test3">Advance Search</a>
                   </li>
                   <li className="tab">
                     <a href="#test4">Users</a>
@@ -77,10 +78,10 @@ const Settings = () => {
                     <LinkSettings />
                   </div> */}
                   <div id="searchDiv" className="col s12">
-                    <Search />
+                    <SearchBlock />
                   </div>
                   <div id="test3" className="col s12">
-                    Agent Settings
+                    <Search />
                   </div>
                   <div id="test4" className="col s12">
                     Users

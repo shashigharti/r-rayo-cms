@@ -21,9 +21,9 @@ export default props => {
             <option value="" disabled>
               Choose your option
             </option>
-            <option value="city">Cities</option>
-            <option value="county">Counties</option>
-            <option value="subdivision">Subdivision</option>
+            <option value="city_id">Cities</option>
+            <option value="county_id">Counties</option>
+            <option value="subdivision_id">Subdivision</option>
           </select>
         </div>
       </div>
@@ -31,9 +31,9 @@ export default props => {
         <div className="input-field col s12">
           <label>Cities</label>
           <select
-            defaultValue={state.sub_areas}
-            name="sub_areas"
-            onChange={e => setFieldValue('sub_areas', e.target.value)}
+            defaultValue={state.location}
+            name="location"
+            onChange={e => setFieldValue('location', e.target.value)}
           >
             <option value="" disabled>
               Choose your option

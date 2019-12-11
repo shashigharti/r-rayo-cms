@@ -20,7 +20,7 @@ const SettingResource = (WrappedComponent, apiEndpoint) => {
         .getByUrl(apiEndpoint)
         .then(response => {
           this.setState({
-            payload: response.data.data.values,
+            payload: response.data.data,
             loading: false,
           });
         })

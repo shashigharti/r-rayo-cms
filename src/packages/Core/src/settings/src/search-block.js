@@ -5,10 +5,15 @@ import { SettingResource } from '../../../Components/CRUD';
 
 const SearchBlock = props => {
   const [state, setState] = useState({
-    first_block: [],
-    second_block: [],
-    third_block: [],
-    fourth_block: [],
+    slug: 'search-block',
+    package_name: 'real-estate',
+    display_name: 'Search Block',
+    values: {
+      first_block: [],
+      second_block: [],
+      third_block: [],
+      fourth_block: [],
+    },
   });
   useEffect(() => {
     M.AutoInit();
@@ -16,10 +21,15 @@ const SearchBlock = props => {
 
   useEffect(() => {
     setState({
-      first_block: props.payload.first_block || [],
-      second_block: props.payload.second_block || [],
-      third_block: props.payload.third_block || [],
-      fourth_block: props.payload.fourth_block || [],
+      slug: 'search-block',
+      package_name: 'real-estate',
+      display_name: 'Search Block',
+      values: {
+        first_block: props.payload.values.first_block || [],
+        second_block: props.payload.values.second_block || [],
+        third_block: props.payload.values.third_block || [],
+        fourth_block: props.payload.values.fourth_block || [],
+      },
     });
   }, [props]);
 
@@ -30,7 +40,10 @@ const SearchBlock = props => {
   const setFieldValue = (field, value) => {
     setState({
       ...state,
-      [field]: value,
+      values: {
+        ...state.values,
+        [field]: value,
+      },
     });
   };
 
@@ -43,9 +56,9 @@ const SearchBlock = props => {
   return (
     <form onSubmit={handleSubmit} className="mb-10">
       <div className="row">
-        <div class="input-field col s12">
+        <div className="input-field col s12">
           <select
-            value={state.first_block}
+            value={state.values.first_block}
             multiple
             onChange={e =>
               setFieldValue(
@@ -63,9 +76,9 @@ const SearchBlock = props => {
       </div>
 
       <div className="row">
-        <div class="input-field col s12">
+        <div className="input-field col s12">
           <select
-            value={state.second_block}
+            value={state.values.second_block}
             multiple
             onChange={e =>
               setFieldValue(
@@ -83,9 +96,9 @@ const SearchBlock = props => {
       </div>
 
       <div className="row">
-        <div class="input-field col s12">
+        <div className="input-field col s12">
           <select
-            value={state.third_block}
+            value={state.values.third_block}
             multiple
             onChange={e =>
               setFieldValue(
@@ -103,9 +116,9 @@ const SearchBlock = props => {
       </div>
 
       <div className="row">
-        <div class="input-field col s12">
+        <div className="input-field col s12">
           <select
-            value={state.fourth_block}
+            value={state.values.fourth_block}
             multiple
             onChange={e =>
               setFieldValue(

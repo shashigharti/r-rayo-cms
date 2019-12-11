@@ -41,7 +41,6 @@ export default props => {
         <div className="input-field col s12">
           <label>Location Type</label>
           <SelectDropDown
-            defaultValue={state.location_type}
             value={state.location_type}
             name="location_type"
             onChange={e => setFieldValue('location_type', e.target.value)}
@@ -60,7 +59,8 @@ export default props => {
           <label>Select {state.location_type}</label>
           <SelectDropDown
             key={state.location_type}
-            defaultValue=""
+            defaultValue={state.location}
+            value={state.location}
             name="location"
             onChange={e => setFieldValue('location', e.target.value)}
             options={[]}

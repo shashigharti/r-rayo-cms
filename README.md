@@ -1,33 +1,33 @@
 # Core Module
 ## Getting Started
-npm install
-npm run build
-create a .env file
+1. npm install
+2. npm run build
+3. create a .env file
 
 ## Conventions for React
 https://github.com/airbnb/javascript/tree/master/react#naming
 
 # Tools
-eslint
-prettier
-Simple React Snippets
+1. eslint
+2. prettier
+3. Simple React Snippets
 
 
 # Coding Conventions: 
 ## Branching
-### Features
+#1. Features
 If new feature is being added then use this convention:
 features/{task-id}/{name-of-the-task}
 
-### Enhancements
+2. Enhancements
 If its a enhancement of existing feature the branch name should follow this convention:
 enhancements/{task-id}/{name-of-the-task}
 
-### Bugs
+3. Bugs
 If it is a bug use this convention:
 bugs/{task-id}/{name-of-the-task}
 
-### JSDoc
+# JSDoc
 https://en.wikipedia.org/wiki/JSDoc
 
 
